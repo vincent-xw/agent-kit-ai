@@ -1,0 +1,30 @@
+companion-android/app/src/main/AndroidManifest.xml
+  s_142549cdb9f2cd::t_830b07c0f90ef6 13
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_142549cdb9f2cd::t_49d5b883aff9ce 48,51
+companion-android/app/src/main/java/com/agentkit/companion/MainActivity.kt
+  s_142549cdb9f2cd::t_608d2682aefae8 46
+companion-android/app/src/main/res/layout/activity_main.xml
+  s_142549cdb9f2cd::t_bd218e103988fa 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "f558f08252b0ccd78e23b3dea858c9457983e5e3",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_142549cdb9f2cd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "80a50cd3-57c4-4f8d-af6c-28eba4e0abf4",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
