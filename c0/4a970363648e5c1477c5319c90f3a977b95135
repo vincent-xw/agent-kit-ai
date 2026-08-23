@@ -1,0 +1,20 @@
+docs/superpowers/specs/2026-08-24-webui-run-loop-ux-design.md
+  s_a16184b10dbec2::t_fb679e4d27a31a 101-103
+  s_a16184b10dbec2::t_bed23914b1d70b 34-36,38-45,47-51,53,55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "c04a970363648e5c1477c5319c90f3a977b95135",
+  "prompts": {},
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
