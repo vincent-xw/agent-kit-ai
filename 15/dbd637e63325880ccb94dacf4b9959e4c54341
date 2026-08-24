@@ -1,0 +1,27 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_a16184b10dbec2::t_78ac316a5f01b9 58-60
+examples/flutter-dev-bff/public/assets/app.js
+  s_a16184b10dbec2::t_a1e3934b10e2c8 782-791
+  s_a16184b10dbec2::t_077e5cbd4a363b 807-809
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "15dbd637e63325880ccb94dacf4b9959e4c54341",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
