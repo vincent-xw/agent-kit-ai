@@ -1,0 +1,30 @@
+examples/flutter-dev-bff/src/services/fallback-provider.ts
+  s_a16184b10dbec2::t_57e7a37b1de164 50-55
+examples/flutter-dev-bff/src/flutter-tools.ts
+  s_a16184b10dbec2::t_23ea4a7b05b319 302-308
+  s_a16184b10dbec2::t_885f292737e072 295-301,309-312
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_a16184b10dbec2::t_377b8570873f36 302-307,310-311
+  s_a16184b10dbec2::t_fed9c9de41a025 301,308-309
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "d687cdcf3d05a5d21b45c7158bdbafb15932f4ec",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
