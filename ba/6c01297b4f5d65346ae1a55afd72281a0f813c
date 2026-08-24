@@ -1,0 +1,24 @@
+companion-android/app/src/main/java/com/agentkit/companion/MainActivity.kt
+  s_a16184b10dbec2::t_66f20e24b2f63c 6,18-19,23,35,41,43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "ba6c01297b4f5d65346ae1a55afd72281a0f813c",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
