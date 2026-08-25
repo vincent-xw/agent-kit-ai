@@ -1,0 +1,26 @@
+examples/flutter-dev-bff/src/services/todo-store.ts
+  s_a16184b10dbec2::t_8bf92b538730fd 1-70
+examples/flutter-dev-bff/src/services/todo-store.test.ts
+  s_a16184b10dbec2::t_526ffb95e109b6 1-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "1c4b778a0041af66f391e23b4924d1fb4eaab3e9",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
