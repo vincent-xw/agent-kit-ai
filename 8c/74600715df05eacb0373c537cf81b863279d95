@@ -1,0 +1,25 @@
+docs/superpowers/plans/2026-08-24-plan-todo.md
+  s_a16184b10dbec2::t_fbb23fe60422f0 262,265-269,271-272,282-287
+  s_a16184b10dbec2::t_78449090dde9b5 1-261,263-264,270,273-281,288-430
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "8c74600715df05eacb0373c537cf81b863279d95",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
