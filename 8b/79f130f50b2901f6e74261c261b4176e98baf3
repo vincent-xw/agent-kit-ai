@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_a16184b10dbec2::t_83dfa268395670 226
+  s_a16184b10dbec2::t_498ab43e3bf95f 46,48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "8b79f130f50b2901f6e74261c261b4176e98baf3",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
