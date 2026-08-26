@@ -1,0 +1,27 @@
+examples/flutter-dev-bff/src/services/vision-client.test.ts
+  s_96d4834653edd5::t_b636598ba57703 52-81
+  s_96d4834653edd5::t_827745334506d8 32
+examples/flutter-dev-bff/src/services/vision-client.ts
+  s_96d4834653edd5::t_5014dc703302fc 7-39,50,52,59-60,88-96,99
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "fb9c0f2f209bdb00dae8a1e326f6d2ff611b4f4b",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_96d4834653edd5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e1c98f0c-0b9d-422b-b71c-0b05f9efa455",
+        "model": "mimo-v2.5-pro"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
