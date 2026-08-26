@@ -1,0 +1,28 @@
+examples/flutter-dev-bff/src/services/webview/cdp-client.test.ts
+  s_96d4834653edd5::t_2f2c13bc0014be 193-224
+examples/flutter-dev-bff/src/services/webview/cdp-client.ts
+  s_96d4834653edd5::t_84f1588a481b78 229-231,241-247,249-251,267-271
+  s_96d4834653edd5::t_49a002027075ab 92-95
+  s_96d4834653edd5::t_71edca78bfce55 272
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "ecc3e00f14640e0f92571c1b865f01556a093a98",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_96d4834653edd5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e1c98f0c-0b9d-422b-b71c-0b05f9efa455",
+        "model": "moonshotai/Kimi-K2.7-Code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
