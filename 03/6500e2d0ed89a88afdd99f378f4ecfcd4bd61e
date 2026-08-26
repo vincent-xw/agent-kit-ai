@@ -1,0 +1,26 @@
+examples/flutter-dev-bff/src/services/webview/cdp-client.ts
+  s_5b8dea50439e9f::t_79cea6fb14d996 210-212
+  s_5b8dea50439e9f::t_2e267a706bb9f3 121-122
+  s_5b8dea50439e9f::t_a61fc10b2d6382 221-222,224
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "036500e2d0ed89a88afdd99f378f4ecfcd4bd61e",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_5b8dea50439e9f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "289d9b9d-fc39-46a8-aa21-d0b8e73c6db8",
+        "model": "mimo-v2.5-pro"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
