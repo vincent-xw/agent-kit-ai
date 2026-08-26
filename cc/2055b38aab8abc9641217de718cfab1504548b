@@ -1,0 +1,61 @@
+examples/flutter-dev-bff/public/index.html
+  s_96d4834653edd5::t_f2119e742b4811 22
+examples/flutter-dev-bff/src/services/log-format.test.ts
+  s_96d4834653edd5::t_0d663d4449cbe1 29-34,39,42-43
+examples/flutter-dev-bff/src/session-export.ts
+  s_96d4834653edd5::t_d7ac8d8a330845 4-6
+packages/core/src/harness.ts
+  s_96d4834653edd5::t_2aabef03a8218c 364
+  s_96d4834653edd5::t_648f3e05cd8968 192,198
+  s_96d4834653edd5::t_9dc36a729d63ea 221
+  s_96d4834653edd5::t_9fce52ad6b5db1 252
+packages/core/src/console-audit.test.ts
+  s_96d4834653edd5::t_10dffbd85ab11d 10,20
+  s_96d4834653edd5::t_62ec8d5d3e80db 3,6-9,11-19,21-23
+  s_96d4834653edd5::t_3e48b0b770f01e 31,43-44
+  s_96d4834653edd5::t_dcc60a12f92c9c 24
+packages/core/src/llm-client.ts
+  s_96d4834653edd5::t_75309dd21dc0da 253
+  s_96d4834653edd5::t_1da730f966c606 448
+  s_96d4834653edd5::t_23c2ac30607f5e 248
+  s_96d4834653edd5::t_007d7feb9a3851 339,343
+  s_96d4834653edd5::t_c1b4d562d5922f 293,372
+  s_96d4834653edd5::t_526922485e6a5f 264
+  s_96d4834653edd5::t_18371a5bede04e 286,364
+  s_96d4834653edd5::t_b3c7e726c4524e 309,396
+examples/flutter-dev-bff/src/services/log-format.ts
+  s_96d4834653edd5::t_1f572f54c5f46f 31,34-35,44,47-48
+examples/flutter-dev-bff/src/session-export.test.ts
+  s_96d4834653edd5::t_4f43c984c97ed7 52
+  s_96d4834653edd5::t_7a3e8c2d7df08e 47
+  s_96d4834653edd5::t_25bcf57f7ac07e 37
+  s_96d4834653edd5::t_3010f08548aa17 14,16-17
+packages/core/src/console-audit.ts
+  s_96d4834653edd5::t_80405f383476db 62
+  s_96d4834653edd5::t_05fb9ad300adae 64
+  s_96d4834653edd5::t_464e36477eb8dd 26-27
+  s_96d4834653edd5::t_a81a45f5a634a6 89,99,105,108
+packages/core/src/contracts.ts
+  s_96d4834653edd5::t_0af5f1e4107161 74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "cc2055b38aab8abc9641217de718cfab1504548b",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_96d4834653edd5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e1c98f0c-0b9d-422b-b71c-0b05f9efa455",
+        "model": "moonshotai/Kimi-K2.7-Code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
