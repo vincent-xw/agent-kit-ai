@@ -1,0 +1,29 @@
+examples/flutter-dev-bff/src/services/webview/cdp-client.test.ts
+  s_7398a7c5c32312::t_46b763410c886e 181-182
+  s_7398a7c5c32312::t_61765026311079 157,161
+examples/flutter-dev-bff/src/server.ts
+  s_7398a7c5c32312::t_a7f925ff07d789 434
+examples/flutter-dev-bff/src/services/skill-store.test.ts
+  s_7398a7c5c32312::t_8e2f5cb0ae0bfd 79-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "859a29bdc3a3cc6ecf855dc311ea3c6dbdfea5ef",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_7398a7c5c32312": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2368450d-4980-44ab-85cb-a29a22c8e8aa",
+        "model": "mimo-v2.5-pro"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
