@@ -1,0 +1,27 @@
+examples/flutter-dev-bff/public/assets/app.js
+  s_7398a7c5c32312::t_ae689eddd75bb4 918
+  s_7398a7c5c32312::t_e6e2c03d058c3d 846
+  s_7398a7c5c32312::t_ee5a645c8db280 1432-1443,1445-1446
+  s_7398a7c5c32312::t_3c9b551cb51131 823-825,833
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "e6366ed3daeadd7809de1238b11dbc2b838d8eed",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_7398a7c5c32312": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2368450d-4980-44ab-85cb-a29a22c8e8aa",
+        "model": "mimo-v2.5-pro"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
