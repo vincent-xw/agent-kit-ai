@@ -1,0 +1,40 @@
+examples/flutter-dev-bff/src/server.test.ts
+  s_879a41707a4d7f::t_03733ec815f7fb 504-533
+  s_879a41707a4d7f::t_5a43644c9aa229 584,587-588
+packages/core/src/harness.ts
+  s_879a41707a4d7f::t_22377cabf6c4b0 238
+examples/flutter-dev-bff/src/server.ts
+  s_879a41707a4d7f::t_97987a951c53a0 534
+  s_879a41707a4d7f::t_e217204fa80b35 307-308,310-312
+packages/core/src/harness.test.ts
+  s_879a41707a4d7f::t_59d6f9cb966140 408
+  s_879a41707a4d7f::t_c4006e788905fd 417
+packages/core/src/llm-client.ts
+  s_879a41707a4d7f::t_9963d32ebde072 163-168
+  s_879a41707a4d7f::t_463f457a1f1476 539
+packages/core/src/llm-client.test.ts
+  s_879a41707a4d7f::t_37707bdb16f34e 191-219
+packages/core/src/contracts.ts
+  s_879a41707a4d7f::t_a261d8dc64f22d 12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "31858a88d77ae0af6bc326207edda0ee40eac3fa",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_879a41707a4d7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a38a1457-5318-451a-9559-fee9a6cad3cf",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
