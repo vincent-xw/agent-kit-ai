@@ -1,0 +1,26 @@
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_879a41707a4d7f::t_6ddf87c3f78310 217-222
+examples/flutter-dev-bff/src/prompts.ts
+  s_879a41707a4d7f::t_1aa67ba9efa4d9 65-106,109,111-112,114-118,120-122,124,129,131,135-137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "9aa73eb3974b7524b72920e3e4f0429292cabaf8",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_879a41707a4d7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a38a1457-5318-451a-9559-fee9a6cad3cf",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
