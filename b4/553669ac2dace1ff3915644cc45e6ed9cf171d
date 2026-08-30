@@ -1,0 +1,21 @@
+LICENSE
+  s_f0d24fa799f9cf::t_4320a8ca175963 1-21
+README.md
+  s_f0d24fa799f9cf::t_692cac2fa91c9f 26-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "b4553669ac2dace1ff3915644cc45e6ed9cf171d",
+  "prompts": {},
+  "sessions": {
+    "s_f0d24fa799f9cf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04e25-625b-7e10-9fc9-15ba466cd3b1",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
