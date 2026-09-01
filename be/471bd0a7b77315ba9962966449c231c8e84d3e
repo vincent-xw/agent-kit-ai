@@ -1,0 +1,24 @@
+docs/superpowers/specs/2026-08-31-device-supervisor-design.md
+  s_f0d24fa799f9cf::t_2e3ba21f111c1e 1-375
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "be471bd0a7b77315ba9962966449c231c8e84d3e",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_f0d24fa799f9cf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04e25-625b-7e10-9fc9-15ba466cd3b1",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
