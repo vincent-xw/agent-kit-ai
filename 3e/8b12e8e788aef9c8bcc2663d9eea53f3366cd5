@@ -1,0 +1,48 @@
+examples/flutter-dev-bff/.env.example
+  h_c3a612a540ca0b 19-20,24,27,47
+  h_c3a612a540ca0b 21,25,28,32,34,39,41,44,48
+companion-android/app/build.gradle.kts
+  s_f0d24fa799f9cf::t_e3b68fb69f1f6e 21-22,33
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_f0d24fa799f9cf::t_3112f472adc116 4,9,21-43,51-52,69,71-76,101,110-117,121-122,124-140,147,149-155,159,161-196,198-230
+  s_f0d24fa799f9cf::t_bc427e59ee1e24 101-102
+companion-android/app/src/main/java/com/agentkit/companion/RawAccessibilityTreeDumper.kt
+  s_f0d24fa799f9cf::t_ae6ce01d9908b8 1-140
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  h_c3a612a540ca0b 5,8-23,29,31-271,274,276,284-431,546
+companion-android/app/src/main/java/com/agentkit/companion/HttpServerHolder.kt
+  h_c3a612a540ca0b 3-4,13,18,20-23,25-31,35,41,43,47
+companion-android/app/src/main/res/xml/accessibility_service_config.xml
+  h_c3a612a540ca0b 2,7,9
+docs/investigations/2026-08-29-wechat-accessibility-investigation.md
+  h_c3a612a540ca0b 1-584
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_f0d24fa799f9cf::t_98017a52fbbd50 291
+examples/flutter-dev-bff/src/flutter-tools.ts
+  s_f0d24fa799f9cf::t_a3458a7f7ba370 438,441,443,529
+examples/flutter-dev-bff/src/services/adb-client.ts
+  s_f0d24fa799f9cf::t_cc392dce9dc6eb 145-146
+examples/flutter-dev-bff/src/services/companion-provider.ts
+  s_f0d24fa799f9cf::t_0a2988fcd8dca5 32-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "3e8b12e8e788aef9c8bcc2663d9eea53f3366cd5",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_f0d24fa799f9cf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04e25-625b-7e10-9fc9-15ba466cd3b1",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
