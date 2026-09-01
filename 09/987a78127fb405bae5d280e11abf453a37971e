@@ -1,0 +1,47 @@
+examples/flutter-dev-bff/README.md
+  s_f0d24fa799f9cf::t_c5fb188ff91de6 30,41,45-46
+examples/flutter-dev-bff/docs/custom-tools.md
+  s_f0d24fa799f9cf::t_f5e30eafe7987d 5,260
+examples/flutter-dev-bff/docs/guide.md
+  s_f0d24fa799f9cf::t_143312105b8fde 76,94
+examples/flutter-dev-bff/docs/tools.md
+  s_f0d24fa799f9cf::t_fb177b8df7987c 3,48-49,52-65,229
+examples/flutter-dev-bff/public/assets/app.js
+  s_f0d24fa799f9cf::t_0bf4c9db7c727b 659-666,689-705
+examples/flutter-dev-bff/public/custom-tools.html
+  s_f0d24fa799f9cf::t_7976c2f5116f3c 149,448
+examples/flutter-dev-bff/public/guide.html
+  s_f0d24fa799f9cf::t_218c6d2842ccb7 247,266
+examples/flutter-dev-bff/public/tools.html
+  s_f0d24fa799f9cf::t_9178623a874df0 147,183-184,187-198,345
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_f0d24fa799f9cf::t_16f39162d7847a 99,237-252,445-483
+examples/flutter-dev-bff/src/flutter-tools.ts
+  s_f0d24fa799f9cf::t_949a11b5f6d399 5,16-23,160-162,179,184,455-468,475,496,514-521,549-584,589,597,612,616-617,621-623,644,652,655,657,660,675,677,682,687,711,734,750,766,789,798,801,803-804,824,826,830,844,849,865-866,870,877,898-899,902,923-924,926
+examples/flutter-dev-bff/src/prompts.ts
+  s_f0d24fa799f9cf::t_6e756707797304 10-12
+examples/flutter-dev-bff/src/sse.test.ts
+  s_f0d24fa799f9cf::t_35e901769a7913 91-112
+examples/flutter-dev-bff/src/tool-events.test.ts
+  s_f0d24fa799f9cf::t_33e36acb81e3e6 51-79
+examples/flutter-dev-bff/src/tool-events.ts
+  s_f0d24fa799f9cf::t_b15541bdb8d516 1,23-37,46
+packages/core/src/contracts.ts
+  s_f0d24fa799f9cf::t_c2ae789d6872e7 95-113,120-121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "09987a78127fb405bae5d280e11abf453a37971e",
+  "prompts": {},
+  "sessions": {
+    "s_f0d24fa799f9cf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04e25-625b-7e10-9fc9-15ba466cd3b1",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
