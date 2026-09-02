@@ -1,0 +1,58 @@
+companion-android/app/src/main/java/com/agentkit/companion/AccessibilityPermissionPromptGate.kt
+  s_f0d24fa799f9cf::t_b9cdeab74b8eee 1-22
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHealthState.kt
+  s_f0d24fa799f9cf::t_29de6a35b54314 3,141
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_f0d24fa799f9cf::t_4b141d59598233 192-203,248-253,258-263,274-279,290-295,377,386-393,396-404,409-414,424-430,438-444,452-458,491-516,594-616,618-623,636-642,779-785,799-805,881-882,885-898,902-915,917-923,926-933,936-942,950-957,960,963-970,972-978
+companion-android/app/src/main/java/com/agentkit/companion/CompanionProtocol.kt
+  s_f0d24fa799f9cf::t_2ae2990a75428c 1-129
+companion-android/app/src/main/java/com/agentkit/companion/HttpServerHolder.kt
+  s_f0d24fa799f9cf::t_2270e497d4ce66 16-17,115-128
+companion-android/app/src/main/java/com/agentkit/companion/LoopbackHealthProbe.kt
+  s_f0d24fa799f9cf::t_b46abea6b6ad33 1-45
+companion-android/app/src/main/java/com/agentkit/companion/MainActivity.kt
+  s_f0d24fa799f9cf::t_e2b65c9a4718f1 36-37,117-122,166-167,175-181
+companion-android/app/src/test/java/com/agentkit/companion/AccessibilityPermissionPromptGateTest.kt
+  s_f0d24fa799f9cf::t_7b2742b67fea4b 1-25
+companion-android/app/src/test/java/com/agentkit/companion/AccessibilityServiceConfigTest.kt
+  s_f0d24fa799f9cf::t_0562227b6dce8e 3,21-30
+companion-android/app/src/test/java/com/agentkit/companion/CompanionHealthStateTest.kt
+  s_f0d24fa799f9cf::t_6a5f8b8907dfb9 24
+companion-android/app/src/test/java/com/agentkit/companion/CompanionHttpServerTest.kt
+  s_f0d24fa799f9cf::t_b4101e2f4fbc4b 1-31
+companion-android/app/src/test/java/com/agentkit/companion/CompanionProtocolTest.kt
+  s_f0d24fa799f9cf::t_8e3b9bf16f7eea 1-54
+docs/acceptance/2026-09-02-companion-tool-decoupling.md
+  s_f0d24fa799f9cf::t_595c619413007d 1-38
+examples/flutter-dev-bff/src/services/adb-client.test.ts
+  s_f0d24fa799f9cf::t_9f0f948cd9edde 176,178-190,205-206
+examples/flutter-dev-bff/src/services/adb-client.ts
+  s_f0d24fa799f9cf::t_6767fc040f1701 132,134-138,140-141,146-147,155-182
+examples/flutter-dev-bff/src/services/companion-client.test.ts
+  s_f0d24fa799f9cf::t_7218bf41699ddb 10,32,43,49,63-95,114,160-257,330-355,378,380,384-393
+examples/flutter-dev-bff/src/services/companion-client.ts
+  s_f0d24fa799f9cf::t_13b08639f45673 7,10,36-77,154-155,158-161,168-169,176-212,218-221,225,233-234,237-244,248-253,256,259,261,263,269,276-280,285,296,298,303-304,310,322-323,327,330,336,347-348,355,357,364,366,370-380,386,388,394-395,398,406,410,412-414,416-424,427,429-432,437-527,529-545,548-562,564-583,586-587,593,598-691,702,706-723,726-785,787-790
+examples/flutter-dev-bff/src/services/device-supervisor-types.ts
+  s_f0d24fa799f9cf::t_ca0dde714c7c3a 31-51,100-101,116-117,128-130
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "45f0f693448df43cf9c1496ea863e3218154cf2d",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_f0d24fa799f9cf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04e25-625b-7e10-9fc9-15ba466cd3b1",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
