@@ -1,0 +1,19 @@
+docs/superpowers/specs/2026-09-02-webui-session-recovery-design.md
+  s_81b5d3594d9295::t_1e88d27878f655 1-207
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "c38069e56df9f4bbdd534803de2d5951797cc2f5",
+  "prompts": {},
+  "sessions": {
+    "s_81b5d3594d9295": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06190-57cf-7af2-91ee-104e174e6db5",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
