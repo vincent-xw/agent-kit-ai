@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/src/server.test.ts
+  s_c3f5cae44dbff1::t_33ebe5bccb21b0 3-5,12-13,624-673
+examples/flutter-dev-bff/src/server.ts
+  s_c3f5cae44dbff1::t_6d0a4911697f97 103,105-109,131-133,141-142,145,159-175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "b3d123222c7c55b0404669c4132d9ff8640c913c",
+  "prompts": {},
+  "sessions": {
+    "s_c3f5cae44dbff1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a061cf-c340-75b2-ae78-9c8ee0d65d67",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
