@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/src/session-history.test.ts
+  s_7f8af32ffa2582::t_0ca399069df92c 41-52
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_7f8af32ffa2582::t_6b313ec71ab220 1-407
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "922c31e262cba9fb696ec568be00b22442aa0456",
+  "prompts": {},
+  "sessions": {
+    "s_7f8af32ffa2582": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06322-34d1-7e23-8e47-972025cd5b94",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
