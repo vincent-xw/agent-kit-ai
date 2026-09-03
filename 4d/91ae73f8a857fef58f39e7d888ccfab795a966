@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_2e75bc08e5e2d3::t_8250ce58abb46e 24,40,45,60-73,78,445-449,454
+examples/flutter-dev-bff/public/assets/app.js
+  s_2e75bc08e5e2d3::t_f9e3f159ea4eca 47-64,69-78,243-244,257,335-336,347-349,353-356,539,541-543,547,575,577-579,582,647,650-651,653,657,659,705,1820,1831
+examples/flutter-dev-bff/public/index.html
+  s_2e75bc08e5e2d3::t_1ca66e015b91fa 20-21,36
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_2e75bc08e5e2d3::t_f9ed2371b85f37 15-16,21,25-32,146-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "4d91ae73f8a857fef58f39e7d888ccfab795a966",
+  "prompts": {},
+  "sessions": {
+    "s_2e75bc08e5e2d3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a064f9-025e-7ac0-9ab2-fba254b8712e",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
