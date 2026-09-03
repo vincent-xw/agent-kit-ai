@@ -1,0 +1,67 @@
+docs/acceptance/2026-09-03-webui-session-recovery.md
+  s_73d0a593f54c3b::t_6c4dbaafd6334f 1-95
+examples/flutter-dev-bff/README.md
+  s_73d0a593f54c3b::t_5c01300500fbd0 27-28
+examples/flutter-dev-bff/docs/guide.md
+  s_73d0a593f54c3b::t_ce84124d7fa0f7 74
+examples/flutter-dev-bff/docs/packaged-user-guide.md
+  s_73d0a593f54c3b::t_c8c664ca261b72 1-166
+examples/flutter-dev-bff/public/assets/app.js
+  s_73d0a593f54c3b::t_63f9fe9f22de27 306,354-358,740-745,859,910,1080-1085
+examples/flutter-dev-bff/public/companion.html
+  s_73d0a593f54c3b::t_fcc73890f10622 144
+examples/flutter-dev-bff/public/custom-tools.html
+  s_73d0a593f54c3b::t_0e2924c00987a6 145
+examples/flutter-dev-bff/public/guide.html
+  s_73d0a593f54c3b::t_eaf497cce1029c 144,245
+examples/flutter-dev-bff/public/packaged-user-guide.html
+  s_73d0a593f54c3b::t_c31aca53d3db3c 1-72
+examples/flutter-dev-bff/public/settings.html
+  s_73d0a593f54c3b::t_fd2948b7040483 144
+examples/flutter-dev-bff/public/skills.html
+  s_73d0a593f54c3b::t_b953e69c708304 144,253
+examples/flutter-dev-bff/public/tools.html
+  s_73d0a593f54c3b::t_a0f4474522ddff 144
+examples/flutter-dev-bff/src/flutter-tools.ts
+  s_7bea11e8315e77::t_a04d533776d0c1 555,563-575
+examples/flutter-dev-bff/src/prompts.ts
+  s_7bea11e8315e77::t_4f684897368ebd 12
+examples/flutter-dev-bff/src/server.ts
+  s_73d0a593f54c3b::t_7fe79bf1450022 3,92,424-441,967-1002
+examples/flutter-dev-bff/src/services/device-supervisor.test.ts
+  s_7bea11e8315e77::t_61a3d47c3963f3 225,245-267,288-309
+examples/flutter-dev-bff/src/services/device-supervisor.ts
+  s_7bea11e8315e77::t_d9420aa40ca283 33-34,342-346,350,370-380,384-388,392,446-496
+examples/flutter-dev-bff/src/services/webui-run-store.ts
+  s_73d0a593f54c3b::t_c86e45c0006e49 16-25,38,53,77,80,84,87-90,94,108-115
+examples/flutter-dev-bff/src/tool-events.test.ts
+  s_7bea11e8315e77::t_6c0d3c3fefe730 28-35,59-73
+examples/flutter-dev-bff/src/tool-events.ts
+  s_7bea11e8315e77::t_6736070202b3c4 47-48,53,79-86
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_73d0a593f54c3b::t_457883dc6f9d95 162-189,321-352,476-497,527-553
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "d7219abe9b7891c1cb7b91798fb33e5d06ab110b",
+  "prompts": {},
+  "sessions": {
+    "s_73d0a593f54c3b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06506-38cd-7f30-9222-5d5c5cdfc295",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    },
+    "s_7bea11e8315e77": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0651e-9140-79d0-8b9b-c6ea0f1aa295",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
