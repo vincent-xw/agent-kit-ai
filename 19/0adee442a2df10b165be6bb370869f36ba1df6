@@ -1,0 +1,21 @@
+README.md
+  s_73d0a593f54c3b::t_ef1639228a8906 40
+docs/agent-kit-2.0-update.md
+  s_73d0a593f54c3b::t_443631bcdaa6d1 1-101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "190adee442a2df10b165be6bb370869f36ba1df6",
+  "prompts": {},
+  "sessions": {
+    "s_73d0a593f54c3b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06506-38cd-7f30-9222-5d5c5cdfc295",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
