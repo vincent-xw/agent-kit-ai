@@ -1,0 +1,21 @@
+AGENTS.md
+  s_2e75bc08e5e2d3::t_14e57060dd429a 63
+CLAUDE.md
+  s_2e75bc08e5e2d3::t_99a0bea798b89f 4,43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "7cfb4ee3c62e0506ccecccebeee20e338de2ec31",
+  "prompts": {},
+  "sessions": {
+    "s_2e75bc08e5e2d3": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a064f9-025e-7ac0-9ab2-fba254b8712e",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
