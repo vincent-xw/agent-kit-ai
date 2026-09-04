@@ -1,0 +1,70 @@
+CLAUDE.md
+  s_1064e302912824::t_e38f02e48ca5fc 4
+companion-android/app/build.gradle.kts
+  s_1064e302912824::t_8c2c7f20ac8a70 13-14
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_1064e302912824::t_06e3358561dd3d 42-44,502-503,515-519,799,801,826,850-887,889-900,905-910,915-917,925-927,930,933,941-945,961
+companion-android/app/src/main/java/com/agentkit/companion/CompanionProtocol.kt
+  s_1064e302912824::t_14e6bf77b83887 59-63,75-80
+companion-android/app/src/main/java/com/agentkit/companion/NodeTreeDumper.kt
+  s_1064e302912824::t_5de3ad05526c10 35-43,45-48,50-66,72,74,78,80,137-161,165-166
+companion-android/app/src/test/java/com/agentkit/companion/CompanionProtocolTest.kt
+  s_1064e302912824::t_3b7de59f02daf5 63-89
+examples/flutter-dev-bff/README.md
+  s_1064e302912824::t_9cb0599e9eb434 46
+examples/flutter-dev-bff/docs/companion.md
+  s_1064e302912824::t_5fd1ec8ad930c9 23,28
+examples/flutter-dev-bff/public/assets/app.js
+  s_1064e302912824::t_43edb57b1c9926 209
+examples/flutter-dev-bff/src/prompts.test.ts
+  s_1064e302912824::t_bd46824fcc194c 19-28,36-45
+examples/flutter-dev-bff/src/prompts.ts
+  s_1064e302912824::t_f8f085736d6c8b 1-5,16-17,42,47,61-76,78,81,97,99,102
+examples/flutter-dev-bff/src/server.test.ts
+  s_1064e302912824::t_110c23cba63660 80-82,100-102,104-106,109-114,901-975
+examples/flutter-dev-bff/src/server.ts
+  s_1064e302912824::t_408024b54a64e2 85,210,255-257,328
+examples/flutter-dev-bff/src/services/companion-bootstrap.test.ts
+  s_1064e302912824::t_cb090232872dd0 12,82,259-324,359-394
+examples/flutter-dev-bff/src/services/companion-client.test.ts
+  s_1064e302912824::t_0c05b9f8a8372b 68,111-158
+examples/flutter-dev-bff/src/services/companion-client.ts
+  s_1064e302912824::t_26535e8aea16cd 71-75,772-778
+examples/flutter-dev-bff/src/services/device-supervisor.test.ts
+  s_1064e302912824::t_43a0cce1437602 482,493-515
+examples/flutter-dev-bff/src/services/device-supervisor.ts
+  s_1064e302912824::t_f9d207c0d903ba 187-191,446-447,746-753,940-942
+examples/flutter-dev-bff/src/services/uiautomator-provider.test.ts
+  s_1064e302912824::t_62d31252bebea2 12,47,49,59,81-84
+examples/flutter-dev-bff/src/services/uiautomator-provider.ts
+  s_1064e302912824::t_a681c2bed60313 162-163
+examples/flutter-dev-bff/src/services/webview/cdp-client.test.ts
+  s_1064e302912824::t_c2d9ec3d278510 108-113,249,265-291
+examples/flutter-dev-bff/src/services/webview/cdp-client.ts
+  s_1064e302912824::t_83410e84337be0 11,15-49,90-91,99,101,109-110,115-119,129-132,161-164,169-172,179-180,187,192-195,201-206,209,212,215,218-222,224-228,235,239-244,247,249-250,257,259-264,269-270,276,278,281-287,289,314-320,324,333,339,344-345,349-356,358-359,364,368,370,373-389,392-400,406,421,424-428,433,462,468-538
+examples/flutter-dev-bff/src/tools/user-interaction-tools.test.ts
+  s_1064e302912824::t_bbc19f49c8832d 34,39-52,114
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_1064e302912824::t_e2b0d3e260e494 527-573
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "c3fabe40b5cd1009922f531273ae35e494d78923",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_1064e302912824": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06642-2577-7f21-941c-5b96cdf31a3d",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
