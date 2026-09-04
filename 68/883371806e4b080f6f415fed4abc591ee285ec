@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_13d4fecc8b5285::t_70f5c7e009695f 193-201
+examples/flutter-dev-bff/public/assets/app.js
+  s_13d4fecc8b5285::t_3ec1d12d8d91e3 1904,1917,1920-2003,2026,2042,2058
+examples/flutter-dev-bff/public/index.html
+  s_13d4fecc8b5285::t_d2c266d52113a8 156-162
+examples/flutter-dev-bff/src/services/memory-provider.test.ts
+  s_13d4fecc8b5285::t_8fdd482149c610 57-78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "68883371806e4b080f6f415fed4abc591ee285ec",
+  "prompts": {},
+  "sessions": {
+    "s_13d4fecc8b5285": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06bb6-a859-7453-8a0d-09e56d8ef54e",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
