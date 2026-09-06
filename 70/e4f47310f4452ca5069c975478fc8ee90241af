@@ -1,0 +1,37 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_13d4fecc8b5285::t_ef4bc39bf89ed5 189-192
+examples/flutter-dev-bff/public/assets/app.js
+  s_13d4fecc8b5285::t_12f7783102efb9 1903,1915,1918-1946
+examples/flutter-dev-bff/public/index.html
+  s_13d4fecc8b5285::t_bf117dca045a66 150-155
+examples/flutter-dev-bff/src/services/memory-candidate-extractor.test.ts
+  s_13d4fecc8b5285::t_680b12387dbfea 1-20
+examples/flutter-dev-bff/src/services/memory-candidate-extractor.ts
+  s_13d4fecc8b5285::t_a0437f40c34c9d 1-31
+examples/flutter-dev-bff/src/services/memory-provider.test.ts
+  s_1064e302912824::t_20b627babb5ad8 33-56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "70e4f47310f4452ca5069c975478fc8ee90241af",
+  "prompts": {},
+  "sessions": {
+    "s_1064e302912824": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06642-2577-7f21-941c-5b96cdf31a3d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    },
+    "s_13d4fecc8b5285": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06bb6-a859-7453-8a0d-09e56d8ef54e",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

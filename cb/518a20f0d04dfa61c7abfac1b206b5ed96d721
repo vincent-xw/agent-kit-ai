@@ -1,0 +1,19 @@
+docs/superpowers/specs/2026-09-04-local-rag-multi-workspace-design.md
+  s_13d4fecc8b5285::t_a4a0045948b706 1-184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "cb518a20f0d04dfa61c7abfac1b206b5ed96d721",
+  "prompts": {},
+  "sessions": {
+    "s_13d4fecc8b5285": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06bb6-a859-7453-8a0d-09e56d8ef54e",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

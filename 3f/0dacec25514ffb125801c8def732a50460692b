@@ -1,0 +1,51 @@
+docs/superpowers/plans/2026-09-04-local-rag.md
+  s_13d4fecc8b5285::t_b64c16041ae69d 1-109
+examples/flutter-dev-bff/public/assets/app.css
+  s_13d4fecc8b5285::t_92df2a379feaf1 185-188
+examples/flutter-dev-bff/public/assets/app.js
+  s_13d4fecc8b5285::t_1e47f68451f469 1901-1908,1913,1922-1923,1932-1947
+examples/flutter-dev-bff/public/index.html
+  s_13d4fecc8b5285::t_5d5fc3fd7604db 142-148
+examples/flutter-dev-bff/src/server.test.ts
+  s_13d4fecc8b5285::t_90c4d5cb67c982 5,268-269,916-917,929-954
+examples/flutter-dev-bff/src/services/memory-provider.test.ts
+  s_13d4fecc8b5285::t_076c7da69e3e3f 1-33
+examples/flutter-dev-bff/src/services/memory-provider.ts
+  s_1064e302912824::t_0239abaf079919 1-134
+examples/flutter-dev-bff/src/services/rag-harness.test.ts
+  s_13d4fecc8b5285::t_85910c986773ea 1-40
+examples/flutter-dev-bff/src/services/rag-harness.ts
+  s_13d4fecc8b5285::t_ec19431bb30a47 1-41
+examples/flutter-dev-bff/src/services/workspace-indexer.test.ts
+  s_13d4fecc8b5285::t_5322c342073735 1-40
+examples/flutter-dev-bff/src/services/workspace-indexer.ts
+  s_13d4fecc8b5285::t_0491f6bbdc1a8a 1-96
+examples/flutter-dev-bff/src/services/workspace-store.test.ts
+  s_13d4fecc8b5285::t_e81317e5b1337d 4,26,37-66
+examples/flutter-dev-bff/src/services/workspace-store.ts
+  s_13d4fecc8b5285::t_e130ce74cd8203 3-16,21-33,36,39-47,50-51,53-66,74-75,81-82,85-111,115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "3f0dacec25514ffb125801c8def732a50460692b",
+  "prompts": {},
+  "sessions": {
+    "s_1064e302912824": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06642-2577-7f21-941c-5b96cdf31a3d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    },
+    "s_13d4fecc8b5285": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06bb6-a859-7453-8a0d-09e56d8ef54e",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
