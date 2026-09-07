@@ -1,0 +1,47 @@
+docs/superpowers/plans/2026-09-07-local-inspection-workflow-implementation.md
+  s_099e6e2ecd6699::t_d6226d5732e259 5-6,61,82,88,92,98,115,136,142,146,152,172,195,201,205,211,233,253,259,263,269,289,313,319,323,329,349,373,379,383,389,408,422,428,432,438,457,470,476,480,486,492
+examples/flutter-dev-bff/README.md
+  s_099e6e2ecd6699::t_4f2cea1f8e26ea 25-44
+examples/flutter-dev-bff/docs/guide.md
+  s_099e6e2ecd6699::t_f8b13d9a4fa6b7 47-65
+examples/flutter-dev-bff/public/assets/app.css
+  s_099e6e2ecd6699::t_ce80e593f68f36 127,258-259,341-414
+examples/flutter-dev-bff/public/assets/app.js
+  s_099e6e2ecd6699::t_69496bf7b2bfe3 40-49,1075-1083,1909-2203
+examples/flutter-dev-bff/public/index.html
+  s_099e6e2ecd6699::t_18bce2554b693d 50-53,60-63,112,117-204,206
+examples/flutter-dev-bff/src/bridge.test.ts
+  s_099e6e2ecd6699::t_442d6bcc239429 28,71
+examples/flutter-dev-bff/src/server.test.ts
+  s_099e6e2ecd6699::t_ed776c5a5ee7ac 52-53,351-365,442-474
+examples/flutter-dev-bff/src/server.ts
+  s_099e6e2ecd6699::t_5eedc4fae5e5fa 78,104,313-314,502-507,746,772,1527-1558
+examples/flutter-dev-bff/src/services/workflow-runner.test.ts
+  s_099e6e2ecd6699::t_af4f7ac44683cd 74-99
+examples/flutter-dev-bff/src/services/workflow-runner.ts
+  s_099e6e2ecd6699::t_34855175e4553c 5-6,19-20,214-225
+examples/flutter-dev-bff/src/workflows/inspection-fixture.test.ts
+  s_099e6e2ecd6699::t_45fbdfa7f5bb4a 1-15
+examples/flutter-dev-bff/src/workflows/inspection-fixture.ts
+  s_099e6e2ecd6699::t_4c0450a923afdb 1-166
+packages/core/src/json-schema.test.ts
+  s_099e6e2ecd6699::t_000f7b3768b1ba 89-98
+packages/core/src/json-schema.ts
+  s_099e6e2ecd6699::t_5cb727f1d75f6f 32-33,55,59-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "2f23fb7a3677266e0814fca9e4764e80f4fbbe37",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
