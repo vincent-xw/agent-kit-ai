@@ -1,0 +1,27 @@
+examples/flutter-dev-bff/src/services/artifact-store.test.ts
+  s_099e6e2ecd6699::t_fd8e5681e02e6b 1-25
+examples/flutter-dev-bff/src/services/artifact-store.ts
+  s_099e6e2ecd6699::t_3df7ff90997843 1-35
+examples/flutter-dev-bff/src/services/workflow-runner.test.ts
+  s_099e6e2ecd6699::t_50be9209936b50 1-96
+examples/flutter-dev-bff/src/services/workflow-runner.ts
+  s_099e6e2ecd6699::t_96b6253d0859a0 1-259
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_099e6e2ecd6699::t_8c9808ac5f27f8 135,439-442
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "d6c1383ddcd4c9ca5b7ab3ba3d8bad01e7dd78a9",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
