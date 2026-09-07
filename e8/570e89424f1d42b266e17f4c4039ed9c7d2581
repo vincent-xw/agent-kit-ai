@@ -1,0 +1,19 @@
+docs/agent-kit-5.0-update.md
+  s_32dc276bf1f2bb::t_f4af459c555d60 44-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "e8570e89424f1d42b266e17f4c4039ed9c7d2581",
+  "prompts": {},
+  "sessions": {
+    "s_32dc276bf1f2bb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0798a-2d7a-7420-a71f-21cbcf98b6d8",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
