@@ -1,0 +1,23 @@
+examples/flutter-dev-bff/src/workflows/types.ts
+  s_099e6e2ecd6699::t_ff889e5fa62151 1-129
+examples/flutter-dev-bff/src/workflows/validator.test.ts
+  s_099e6e2ecd6699::t_f96834622180b8 1-71
+examples/flutter-dev-bff/src/workflows/validator.ts
+  s_099e6e2ecd6699::t_d41dde34bc3d97 1-138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "408906c261c3f2ba838cc8f5799b8d208c5c2999",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
