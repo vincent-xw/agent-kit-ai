@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/README.md
+  s_32dc276bf1f2bb::t_2528583a54611f 29
+examples/flutter-dev-bff/deploy/pack-binary.sh
+  s_32dc276bf1f2bb::t_fdfb8199a2cfaf 15-22
+examples/flutter-dev-bff/docs/packaged-user-guide.md
+  s_32dc276bf1f2bb::t_c559e48ee7734d 3
+examples/flutter-dev-bff/src/package-delivery.test.ts
+  s_32dc276bf1f2bb::t_f287a7e0618729 13,45-51,60-67,75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "c553c9d055a64b067dc03c51d7f6c5c4e43d698c",
+  "prompts": {},
+  "sessions": {
+    "s_32dc276bf1f2bb": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0798a-2d7a-7420-a71f-21cbcf98b6d8",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
