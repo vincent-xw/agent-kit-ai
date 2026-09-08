@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/src/server.test.ts
+  s_099e6e2ecd6699::t_7b1b473211ce08 1919,1928
+examples/flutter-dev-bff/src/services/tool-loader.test.ts
+  s_099e6e2ecd6699::t_1541e68a725bd3 84-97
+examples/flutter-dev-bff/src/services/tool-loader.ts
+  s_099e6e2ecd6699::t_9be8f4bf7508e2 33-38,40-41,49,58-62,88-91
+examples/flutter-dev-bff/src/workflows/legacy-inspection-converter.test.ts
+  s_099e6e2ecd6699::t_6de326a350ec84 1-124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "d64e1956560c8f869b209db47f7b95436bf43340",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
