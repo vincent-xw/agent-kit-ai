@@ -1,0 +1,29 @@
+examples/flutter-dev-bff/src/server.test.ts
+  s_099e6e2ecd6699::t_1e1b6edd7b9f0d 528-567
+examples/flutter-dev-bff/src/server.ts
+  s_099e6e2ecd6699::t_ac8e9027661bba 104,828-924,960-983,1062-1068,1109,1113-1120,1126-1135,1864
+examples/flutter-dev-bff/src/services/workflow-command-gateway.test.ts
+  s_099e6e2ecd6699::t_53263984036bfd 1-91
+examples/flutter-dev-bff/src/services/workflow-command-gateway.ts
+  s_099e6e2ecd6699::t_f91b808a97942b 1-232
+examples/flutter-dev-bff/src/services/workflow-store-migrations.ts
+  s_099e6e2ecd6699::t_4e0a208f7fe965 59,98-99
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_099e6e2ecd6699::t_a34015e8c9c47b 204-205,272,430,923-925,932-939
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "cf433c56d8d2ab4e2e6a4c531bdf8ba60527effe",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
