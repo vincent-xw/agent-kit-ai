@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/src/server.test.ts
+  s_099e6e2ecd6699::t_8291752a4fc7b6 18-19,76-137,481-557,729-771
+examples/flutter-dev-bff/src/server.ts
+  s_099e6e2ecd6699::t_3e3da1511f9866 103,110-111,113,115,512-517,789-830,833,839-843,848-852,855,886-916,937-992,998-1012,1014-1016,1019,1023-1024,1026-1027,1037-1097,1100,1139-1147,1174-1177,1184-1239,1267,1287,1315,1317-1322,1347,1369,1390,2153,2157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "de8cda5abcff628d401d1db331569ecd83f51660",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
