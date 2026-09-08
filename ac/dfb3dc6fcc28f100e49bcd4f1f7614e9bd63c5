@@ -1,0 +1,23 @@
+examples/flutter-dev-bff/src/services/workflow-runner.test.ts
+  s_099e6e2ecd6699::t_fb76efed3fa6e3 5-22,55-144,229-336
+examples/flutter-dev-bff/src/services/workflow-runner.ts
+  s_099e6e2ecd6699::t_a45e7f01cd4ce9 1,7-9,19,30-40,104-109,117,278,289-305,314-797
+examples/flutter-dev-bff/src/workflows/inspection-fixture.ts
+  s_099e6e2ecd6699::t_bb622ffb6812de 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "acdfb3dc6fcc28f100e49bcd4f1f7614e9bd63c5",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
