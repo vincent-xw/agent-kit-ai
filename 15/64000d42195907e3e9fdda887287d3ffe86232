@@ -1,0 +1,30 @@
+examples/flutter-dev-bff/src/services/workflow-command-gateway.test.ts
+  s_f348ba62fb2a1d::t_f8fba828a4acb4 60-71
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_28fec0654500cf 1295,1299-1316,1326-1344,1346
+  s_f348ba62fb2a1d::t_8af3b8c36643d3 633
+  s_f348ba62fb2a1d::t_3f39997da65436 1094,1097-1117,1129,1184-1188,1377
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_44e4096d6dd17f 616-634
+  s_f348ba62fb2a1d::t_43df143f0e4aff 2059-2075
+  s_f348ba62fb2a1d::t_7ba5ee65247814 2039,2046-2055
+  s_f348ba62fb2a1d::t_26937272c94a6f 2056-2058
+examples/flutter-dev-bff/src/services/workflow-command-gateway.ts
+  s_f348ba62fb2a1d::t_3f39997da65436 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "1564000d42195907e3e9fdda887287d3ffe86232",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
