@@ -1,0 +1,59 @@
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_415e5238e749cd 377-386,483
+  s_f348ba62fb2a1d::t_80e397fa0ce657 474-482
+  s_f348ba62fb2a1d::t_8545738e5fe42b 621,627
+  s_f348ba62fb2a1d::t_d2b78fb385bdc6 484
+examples/flutter-dev-bff/public/assets/app.css
+  s_f348ba62fb2a1d::t_8545738e5fe42b 372-377,389-392
+  s_f348ba62fb2a1d::t_5d09b72f0584b0 364
+  s_f348ba62fb2a1d::t_be705918175ad6 177-182
+  s_f348ba62fb2a1d::t_baa497920af78f 508,648,651,655-656,661,663,668
+examples/flutter-dev-bff/public/index.html
+  s_f348ba62fb2a1d::t_be705918175ad6 71-89
+  s_f348ba62fb2a1d::t_a2ad15d2257e1e 190
+  s_f348ba62fb2a1d::t_e90cf8edfb2570 170-175
+examples/flutter-dev-bff/public/assets/app.js
+  s_f348ba62fb2a1d::t_df0a58d288a9ad 393,395-396
+  s_f348ba62fb2a1d::t_a5b9b84bdf6986 2566-2567,2572-2574,2578,2739-2740,2847-2850,2855
+  s_f348ba62fb2a1d::t_be705918175ad6 13,394,397-407,489,1534,1541,2399,2405
+  s_f348ba62fb2a1d::t_e90cf8edfb2570 284,286-301,331-334,338-351,1365,2520-2521,2568-2571,2575-2577,2630,2636-2675,2734-2738,2742-2746,2753-2757,2789-2796,2953
+  s_f348ba62fb2a1d::t_443e94e16e0a5f 1696-1698,1701-1702,1712,1729
+  s_f348ba62fb2a1d::t_54cfb1dea869a7 2041-2042
+  s_f348ba62fb2a1d::t_cb5792caf47074 1038,1042,1046-1052,1058-1081,1086-1090,1093-1097,1114-1116,1141
+  s_f348ba62fb2a1d::t_642a7d585d9ea9 2308-2314,2322
+  s_f348ba62fb2a1d::t_0b9f46c356b58e 1964-1968,1970-1972,1992-1995
+  s_f348ba62fb2a1d::t_c0fd31497d48b4 625-693
+  s_f348ba62fb2a1d::t_bfbbd96c2a748c 1524-1525,1527-1532,1540,1543-1544,1551-1554
+  s_f348ba62fb2a1d::t_de3d1d9e064841 1407,1410-1426,1433,1447-1448,1452,1472,1474-1477,1480
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_60b53157d40731 1297-1299,1301,1304,1308,1339,1355,1371
+  s_f348ba62fb2a1d::t_4a7ab8b59ebe33 1277-1278,2355-2356
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_f348ba62fb2a1d::t_ca909781234228 38,64,102,518-522,534-536,545-572
+  s_f348ba62fb2a1d::t_97cafe18a91181 338-347,367-369
+  s_f348ba62fb2a1d::t_073673606f87d2 19,31-33,55-56,96-97,288-337,370-422
+  s_f348ba62fb2a1d::t_cd1c57518733d9 478
+  s_f348ba62fb2a1d::t_c31da9ab8cd4a7 34,348-366
+  s_f348ba62fb2a1d::t_85785d76757993 36,423-424,573-596
+  s_f348ba62fb2a1d::t_b21d1b1681fabd 426-477,479-499,532-533
+  s_f348ba62fb2a1d::t_e7c6b7b46b68e2 537-541,543-544
+  s_f348ba62fb2a1d::t_50194fceeb142c 100
+  s_f348ba62fb2a1d::t_b1fa1329ba7185 542
+  s_f348ba62fb2a1d::t_5e07a998bccaa8 425
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "0977d9d4cacbebc3883d175b3bf0b8c6c68f5240",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
