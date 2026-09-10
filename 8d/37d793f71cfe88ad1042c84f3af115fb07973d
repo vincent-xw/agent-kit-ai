@@ -1,0 +1,31 @@
+examples/flutter-dev-bff/src/services/workflow-command-gateway.test.ts
+  s_f348ba62fb2a1d::t_46f43cc6b4a286 9,45-47,106-118
+  s_f348ba62fb2a1d::t_3c86525bee5c64 119-120
+examples/flutter-dev-bff/src/services/workflow-command-gateway.ts
+  s_f348ba62fb2a1d::t_4f3fcb477be270 230-232
+examples/flutter-dev-bff/public/assets/app.js
+  s_f348ba62fb2a1d::t_4f3fcb477be270 352-357,1371-1375,2601-2607,2612,2614,2955-2964
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_f348ba62fb2a1d::t_d0b10c20d48cf4 439
+  s_f348ba62fb2a1d::t_46f43cc6b4a286 65,101-108,400-438,440
+  s_f348ba62fb2a1d::t_651373cedb32bf 441
+examples/flutter-dev-bff/public/assets/app.css
+  s_f348ba62fb2a1d::t_f0e1594838a407 432-434
+  s_f348ba62fb2a1d::t_4f3fcb477be270 366,368,370,372-374,378,435-439
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "8d37d793f71cfe88ad1042c84f3af115fb07973d",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
