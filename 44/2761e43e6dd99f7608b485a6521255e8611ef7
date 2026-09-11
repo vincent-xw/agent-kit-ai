@@ -1,0 +1,29 @@
+examples/flutter-dev-bff/src/services/xlsx-service.test.ts
+  s_f348ba62fb2a1d::t_7393a88419ccee 37-70
+examples/flutter-dev-bff/src/tools/host-tools.ts
+  s_f348ba62fb2a1d::t_83dab93ad72db2 46-50,125-135
+  s_f348ba62fb2a1d::t_e929af6e1b83bc 136-138
+  s_f348ba62fb2a1d::t_254f4f71653228 139-140
+examples/flutter-dev-bff/src/services/workflow-runtime-adapter.ts
+  s_f348ba62fb2a1d::t_83dab93ad72db2 184
+examples/flutter-dev-bff/src/tools/host-tools.test.ts
+  s_f348ba62fb2a1d::t_7393a88419ccee 94-105
+examples/flutter-dev-bff/src/services/xlsx-service.ts
+  s_f348ba62fb2a1d::t_83dab93ad72db2 24-57,96-136,139-183
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "442761e43e6dd99f7608b485a6521255e8611ef7",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
