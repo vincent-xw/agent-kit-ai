@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_ea360efe3b2ad8::t_8c284d87cc4b15 1335-1336
+  s_ea360efe3b2ad8::t_626e0fb7be7479 1391,1398
+  s_ea360efe3b2ad8::t_86fc582aaea577 1437
+  s_ea360efe3b2ad8::t_63d36fae463102 1376,1378,1390,1393,1397,1400
+examples/flutter-dev-bff/src/webui-visual-system.test.ts
+  s_ea360efe3b2ad8::t_f0ca2bc711c7f2 63
+  s_ea360efe3b2ad8::t_309854eabccba9 60-62,64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "3a13df988541684854b4990045cab9b9595e91ac",
+  "prompts": {},
+  "sessions": {
+    "s_ea360efe3b2ad8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08f6a-d363-7412-ba8a-093b3f574c3d",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
