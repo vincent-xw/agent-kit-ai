@@ -1,0 +1,49 @@
+examples/flutter-dev-bff/src/services/workflow-chat-session.test.ts
+  s_f348ba62fb2a1d::t_771331417bbf7c 292,324-351
+  s_f348ba62fb2a1d::t_b9326c83473f40 213-216,243,254,284,290-291
+  s_f348ba62fb2a1d::t_f9c3bb7420265d 352
+  s_ea360efe3b2ad8::t_117e3b6c453f32 50,71,91,111,210,313
+docs/acceptance/2026-09-08-agent-runtime-workflow.md
+  s_f348ba62fb2a1d::t_f5797e04eba741 126-131,133-140
+  s_f348ba62fb2a1d::t_4c598426ed4847 132
+  s_f348ba62fb2a1d::t_f319fad6ab4ea9 3,39,100-125
+  s_f348ba62fb2a1d::t_cbc70f2f9bfb16 141-143
+examples/flutter-dev-bff/src/services/workflow-editor-discovery.ts
+  s_f348ba62fb2a1d::t_e82514ee8a9e50 1-10
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_87ac237c31470f 5,18,26,152-155,2205,2235-2239,2247-2347
+  s_f348ba62fb2a1d::t_ec42188591c1ca 2348-2349
+examples/flutter-dev-bff/src/prompts.ts
+  s_f348ba62fb2a1d::t_569275a4a2d626 80,90-95
+examples/flutter-dev-bff/src/prompts.test.ts
+  s_f348ba62fb2a1d::t_771331417bbf7c 68-76
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_4fa3f728367a59 130,1343-1347
+examples/flutter-dev-bff/src/services/workflow-chat-session.ts
+  s_f348ba62fb2a1d::t_e82514ee8a9e50 18,85-86,394,405-406
+  s_f348ba62fb2a1d::t_959e66a1e7a65b 410-411,420-421
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "f8d51ecea9a26ef268d5f23788a1a9b4cea31476",
+  "prompts": {},
+  "sessions": {
+    "s_ea360efe3b2ad8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08f6a-d363-7412-ba8a-093b3f574c3d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    },
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
