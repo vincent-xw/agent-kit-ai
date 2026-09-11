@@ -1,0 +1,31 @@
+examples/flutter-dev-bff/public/assets/theme.css
+  s_ea360efe3b2ad8::t_38a7aeb8960acc 40,42-43,131,133-134
+examples/flutter-dev-bff/src/webui-visual-system.test.ts
+  s_ea360efe3b2ad8::t_9a3f48a6d42115 20-21
+  s_ea360efe3b2ad8::t_7b45dd03ae3151 78-85
+examples/flutter-dev-bff/public/assets/app.js
+  s_ea360efe3b2ad8::t_95ba5bb81eccf1 3526-3535,3537-3541,3564-3565,3571-3572,3576-3580,3582-3587
+  s_ea360efe3b2ad8::t_acf1e10174c3ce 3895-3896,3917-3918,3924-3925
+  s_ea360efe3b2ad8::t_822b4b2225ed56 3589-3594
+  s_ea360efe3b2ad8::t_4acf91360d93a5 4020-4022
+  s_ea360efe3b2ad8::t_6c2a9775314bde 3588
+examples/flutter-dev-bff/public/assets/app.css
+  s_ea360efe3b2ad8::t_aa75fbb6b8976e 752,771,964,1654,1857,1890
+  s_ea360efe3b2ad8::t_3f546968871eb5 2776-3041
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "80ebb9dd5b55c2d7dceb95fd2a2ba48e3499726b",
+  "prompts": {},
+  "sessions": {
+    "s_ea360efe3b2ad8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08f6a-d363-7412-ba8a-093b3f574c3d",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
