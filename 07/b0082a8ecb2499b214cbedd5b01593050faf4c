@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_03b3ea0e7b7e65 1333-1339,1964-1971
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_463cd93b0f263e 665,672-673,679,685,690-730
+examples/flutter-dev-bff/src/services/workflow-chat-session.test.ts
+  s_f348ba62fb2a1d::t_f75f3bd722585c 175-184
+examples/flutter-dev-bff/src/services/workflow-chat-session.ts
+  s_f348ba62fb2a1d::t_735c5e3c68579d 350-359,454
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "07b0082a8ecb2499b214cbedd5b01593050faf4c",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
