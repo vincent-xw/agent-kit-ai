@@ -1,0 +1,41 @@
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_aca4ddd44b9b86 1933-1935
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_58ed2613976bf2 492-493,2322-2326
+  s_f348ba62fb2a1d::t_8984cb3851b66a 2327
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_f348ba62fb2a1d::t_7dfba4d0b90e69 34-35,318-406,472,474
+  s_f348ba62fb2a1d::t_23fcb1b287b31e 494,496
+examples/flutter-dev-bff/public/assets/app.js
+  s_f348ba62fb2a1d::t_a679046fce4d0f 2648-2710,2720,2722,2727-2734
+  s_f348ba62fb2a1d::t_6a15a1a6c7c8b5 2861-2875,2878-2923,2938-2940
+  s_f348ba62fb2a1d::t_311eba1354e115 2942-2955
+  s_f348ba62fb2a1d::t_c76454087fd430 3231-3236,3247-3248
+  s_f348ba62fb2a1d::t_d0e925f09f8380 46,2606-2611
+  s_f348ba62fb2a1d::t_ce17bebdf39325 2941
+examples/flutter-dev-bff/public/index.html
+  s_f348ba62fb2a1d::t_fbe1005b5ee4d4 194
+  s_f348ba62fb2a1d::t_d6696bb3008266 170-187,190-192
+examples/flutter-dev-bff/public/assets/app.css
+  s_f348ba62fb2a1d::t_287fce82bea03e 390-406,3068-3072,3074
+  s_f348ba62fb2a1d::t_9ad59bc72e540e 3073
+  s_f348ba62fb2a1d::t_fa136e357fce0c 3075
+docs/superpowers/plans/2026-09-12-workflow-optimization-completion.md
+  s_f348ba62fb2a1d::t_bd8c82e454e3fc 118,134,140,146,150,176,187,193,199,203,227,231,237,241,245
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "a1d929f1c8282a07c5a128c18652126fd8130c86",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
