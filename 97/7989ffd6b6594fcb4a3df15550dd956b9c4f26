@@ -1,0 +1,59 @@
+examples/flutter-dev-bff/src/services/workflow-capability-invoker.test.ts
+  s_f348ba62fb2a1d::t_1bf49aba484d03 10
+examples/flutter-dev-bff/src/services/workflow-agent-task.test.ts
+  s_f348ba62fb2a1d::t_1bf49aba484d03 34,71
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_f348ba62fb2a1d::t_0a0bf653938177 10,13,16-34,59-60,297-298,312-320,328-332
+  s_f348ba62fb2a1d::t_e922e926da15c1 511,815-825
+  s_f348ba62fb2a1d::t_dcdc7b37e1c5dd 870-874,880,885-937,939
+  s_f348ba62fb2a1d::t_a6c4bffc7c1f4c 470-474,481-510,512
+  s_f348ba62fb2a1d::t_6b768471820031 1043-1044,1046-1052
+  s_f348ba62fb2a1d::t_06e42d3edacbba 513
+  s_f348ba62fb2a1d::t_0a158f6a7c303a 938
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_1bf49aba484d03 1313
+examples/flutter-dev-bff/src/workflows/agent-task-workflow-fixture.ts
+  s_f348ba62fb2a1d::t_1bf49aba484d03 272
+examples/flutter-dev-bff/src/services/workflow-runner.test.ts
+  s_f348ba62fb2a1d::t_1bf49aba484d03 140
+examples/flutter-dev-bff/src/services/workflow-store-migrations.test.ts
+  s_f348ba62fb2a1d::t_210b99917cd6f0 60-63
+examples/flutter-dev-bff/src/services/workflow-chat-session.test.ts
+  s_f348ba62fb2a1d::t_a3c070a0f75e4c 187-197
+examples/flutter-dev-bff/src/services/workflow-outbox-dispatcher.test.ts
+  s_f348ba62fb2a1d::t_1bf49aba484d03 19
+docs/superpowers/plans/2026-09-12-workflow-optimization-completion.md
+  s_f348ba62fb2a1d::t_bd7bd08d2004bc 45,59,65,89,95
+examples/flutter-dev-bff/src/services/workflow-store-migrations.ts
+  s_f348ba62fb2a1d::t_f48608ff0eb49a 44-56,155-157
+examples/flutter-dev-bff/src/services/workflow-store.test.ts
+  s_f348ba62fb2a1d::t_6c2040c9dac97e 63,83,111,216,236
+  s_f348ba62fb2a1d::t_5cab2e8bc8487b 330
+  s_f348ba62fb2a1d::t_cb0df539ae3c4e 323
+  s_f348ba62fb2a1d::t_6bcf12d8487975 300-314,316-319,324-327,329
+  s_f348ba62fb2a1d::t_63bce579e941e6 315
+  s_f348ba62fb2a1d::t_9f64eb0d78b723 320-322
+  s_f348ba62fb2a1d::t_0ed54571d33641 328
+examples/flutter-dev-bff/src/workflows/generic-workflow-fixture.ts
+  s_f348ba62fb2a1d::t_1bf49aba484d03 195
+examples/flutter-dev-bff/src/workflows/types.ts
+  s_f348ba62fb2a1d::t_0a0bf653938177 36-37
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_a3c070a0f75e4c 2207-2208
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "977989ffd6b6594fcb4a3df15550dd956b9c4f26",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
