@@ -1,0 +1,42 @@
+examples/flutter-dev-bff/src/services/workflow-command-gateway.test.ts
+  s_f348ba62fb2a1d::t_3ca02cdfb074eb 63-74
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_8886d815cadb90 1207-1213
+  s_f348ba62fb2a1d::t_c41f322a495a65 1214-1215
+  s_f348ba62fb2a1d::t_091f6127ad5e76 120,144
+  s_f348ba62fb2a1d::t_3017894fa0e442 1388-1434,1436-1482
+  s_f348ba62fb2a1d::t_585bea442a90e8 1809-1811
+  s_f348ba62fb2a1d::t_a8497f7154b48e 1198
+  s_f348ba62fb2a1d::t_3d709e2de0abbf 1139-1197,1199-1206,1216-1265
+  s_f348ba62fb2a1d::t_15ce4426ac8e46 1435
+examples/flutter-dev-bff/src/services/workflow-runner.test.ts
+  s_f348ba62fb2a1d::t_3ca02cdfb074eb 141,168-236
+  s_f348ba62fb2a1d::t_40c4a3975e18c4 18-19,125-127,145
+examples/flutter-dev-bff/src/services/workflow-command-gateway.ts
+  s_f348ba62fb2a1d::t_e746fcc415900b 13
+examples/flutter-dev-bff/src/services/workflow-runner.ts
+  s_f348ba62fb2a1d::t_e746fcc415900b 504-505,794-800
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_6316bee86809e5 2388
+  s_f348ba62fb2a1d::t_6267eed6517e1b 2393-2400,2402-2452
+  s_f348ba62fb2a1d::t_c41f322a495a65 2401
+  s_f348ba62fb2a1d::t_a591e72d33d2dd 2263
+  s_f348ba62fb2a1d::t_e247ed97119516 2259-2262,2264-2289
+  s_f348ba62fb2a1d::t_7a3a3f0e1a0c2f 2290-2387,2389-2392
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "2fce72aae36bfa711f0fb04c491a152e02545468",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
