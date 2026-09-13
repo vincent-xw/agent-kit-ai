@@ -1,0 +1,73 @@
+examples/flutter-dev-bff/src/services/ask-service.ts
+  s_f348ba62fb2a1d::t_63d644b85af888 10-31,37-38,51,58-75,77-79,81-106,108-115,117-121
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_e4c017689be8cc 590,592-600
+examples/flutter-dev-bff/src/prompts.ts
+  s_f348ba62fb2a1d::t_8f1aefd2623fc0 102-104
+  s_f348ba62fb2a1d::t_0de5e393a20bb6 96-99,110
+examples/flutter-dev-bff/src/services/webui-run-store.ts
+  s_f348ba62fb2a1d::t_fec34aed0b914f 21-22,28-31,125-127
+examples/flutter-dev-bff/src/tools/user-interaction-tools.ts
+  s_f348ba62fb2a1d::t_17f18c412d7224 3,18-24,33,82-89,100-124
+  s_f348ba62fb2a1d::t_5376eec4970346 25-31,97-98,126-127
+  s_f348ba62fb2a1d::t_911e17a4e369ef 32,93-96,99,125,128
+examples/flutter-dev-bff/src/services/workflow-row-agent-template.ts
+  s_f348ba62fb2a1d::t_ce0f5cfabd9ff5 73
+  s_f348ba62fb2a1d::t_214f77780e5df0 1-72,74-296
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_f348ba62fb2a1d::t_f39479a2a2a17e 1210-1226
+  s_f348ba62fb2a1d::t_53d2950dd32779 1227-1263
+examples/flutter-dev-bff/public/assets/app.css
+  s_f348ba62fb2a1d::t_f3bce783ebbdfa 436,1628-1630
+  s_f348ba62fb2a1d::t_e407c4159cb7d7 1631-1632
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_12928e302e9d84 1650-1668
+  s_f348ba62fb2a1d::t_6afb2eda4f5b8e 2157-2198
+  s_f348ba62fb2a1d::t_b08b8cdddab825 2666,2734,2935-2936,3019
+examples/flutter-dev-bff/src/prompts.test.ts
+  s_f348ba62fb2a1d::t_f15d26072b64c6 91
+  s_f348ba62fb2a1d::t_f39479a2a2a17e 89-90,92-95
+  s_f348ba62fb2a1d::t_b08b8cdddab825 54,96-98
+examples/flutter-dev-bff/src/services/workflow-chat-session.ts
+  s_f348ba62fb2a1d::t_19c124f95e71ae 690-696,698-705
+  s_f348ba62fb2a1d::t_fa81d07219a11d 19
+  s_f348ba62fb2a1d::t_b68bca6d30d22f 697
+  s_f348ba62fb2a1d::t_7d095d8b7e3767 764-853,856-858
+  s_f348ba62fb2a1d::t_b4e828829847bd 69-86,541-546,548,550
+examples/flutter-dev-bff/src/services/webui-run-store.test.ts
+  s_f348ba62fb2a1d::t_d1ff96188e86fb 74-88
+examples/flutter-dev-bff/src/services/workflow-chat-session.test.ts
+  s_f348ba62fb2a1d::t_8680c6c098344e 505-508
+  s_f348ba62fb2a1d::t_1f73afcfb2306d 641-693
+  s_f348ba62fb2a1d::t_1827215db7067c 456-463,478-504,509-521
+  s_f348ba62fb2a1d::t_a85768e03b1472 464-477
+  s_f348ba62fb2a1d::t_2f44223cef7296 439-440
+  s_f348ba62fb2a1d::t_19c124f95e71ae 694-731
+examples/flutter-dev-bff/src/session-history.ts
+  s_f348ba62fb2a1d::t_467280cbe90167 11-16,31-47,62-88
+examples/flutter-dev-bff/src/services/ask-service.test.ts
+  s_f348ba62fb2a1d::t_f39479a2a2a17e 71-118
+examples/flutter-dev-bff/public/assets/app.js
+  s_f348ba62fb2a1d::t_b156fe3442d8ea 1065-1075,1141-1147,1156-1157
+  s_f348ba62fb2a1d::t_d8fe2d2926f35c 1834-1838,1846
+examples/flutter-dev-bff/src/tools/user-interaction-tools.test.ts
+  s_f348ba62fb2a1d::t_006a1c846ca154 74
+  s_f348ba62fb2a1d::t_a875915a244396 2,69-73
+  s_f348ba62fb2a1d::t_f39479a2a2a17e 53-68,75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "06975cbe89e703b83f11860fafce429a8bb80dfd",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
