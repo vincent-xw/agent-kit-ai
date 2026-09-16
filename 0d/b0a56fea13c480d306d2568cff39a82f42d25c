@@ -1,0 +1,37 @@
+examples/flutter-dev-bff/public/assets/app.js
+  s_16621256c6b5d1::t_386ab39fe0c0bc 51-52,1358-1364,1376,1396-1403,1410-1417
+  s_16621256c6b5d1::t_ff7107c927f318 3254-3266
+  s_16621256c6b5d1::t_709900316d145a 1365-1375,1404-1409,1935
+  s_16621256c6b5d1::t_f64df9ff667e23 2028-2029,2042,2066-2067,2140-2143,2180-2183
+  s_16621256c6b5d1::t_8756ef9299c0d4 2279-2283,2299
+  s_16621256c6b5d1::t_93eaecfb09f3c8 3395,3728
+  s_16621256c6b5d1::t_b1fd723a098443 1544-1546,1933-1934
+  s_16621256c6b5d1::t_7d003baed4b01e 1418
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_16621256c6b5d1::t_351db4caaf0df8 260-262
+  s_16621256c6b5d1::t_e38b99c6c077a4 11
+  s_16621256c6b5d1::t_60c45a60e83087 451
+  s_16621256c6b5d1::t_6d294c9dc56d51 722-793,1245,1249-1267
+  s_16621256c6b5d1::t_5c6614a001cbed 2053-2066
+examples/flutter-dev-bff/public/assets/app.css
+  s_16621256c6b5d1::t_0cada216ee2ac4 354,356-359,361,364-368
+  s_16621256c6b5d1::t_192e0d9747d458 2699,3225-3226
+  s_16621256c6b5d1::t_d944687b6db6ce 3272-3274
+  s_16621256c6b5d1::t_1d56b7319a3717 3275-3276
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "0db0a56fea13c480d306d2568cff39a82f42d25c",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
