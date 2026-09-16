@@ -1,0 +1,22 @@
+examples/flutter-dev-bff/public/assets/app.js
+  s_16621256c6b5d1::t_a5734a5711f791 1532-1552,1574-1575,1579,3774-3777
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_16621256c6b5d1::t_8e3926ab97d51e 794-812,947-970
+  s_16621256c6b5d1::t_79e62f3fab395e 971
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "d50b67aee1140bc4c1a7ce8888ca2123563c9844",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
