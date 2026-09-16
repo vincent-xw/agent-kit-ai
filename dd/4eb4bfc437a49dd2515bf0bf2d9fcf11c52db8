@@ -1,0 +1,36 @@
+examples/flutter-dev-bff/src/services/workflow-knowledge-types.ts
+  s_16621256c6b5d1::t_ae0542c04f0d96 2,116-123,135
+examples/flutter-dev-bff/src/server.ts
+  s_16621256c6b5d1::t_49e007a6b7e0c9 650-658
+examples/flutter-dev-bff/src/services/workflow-agent-task.test.ts
+  s_16621256c6b5d1::t_fbc14292788f6a 12,111
+  s_16621256c6b5d1::t_4b385ba2e6ece7 13,66,77-83,88-110,112-119
+examples/flutter-dev-bff/src/services/workflow-knowledge-context-builder.test.ts
+  s_16621256c6b5d1::t_2926fe89bf0205 97,106-124
+  s_16621256c6b5d1::t_6472c9191a8365 6-7,49-79,81-96,98-105,125-170,173,185,207,226,241,263,273
+examples/flutter-dev-bff/src/services/workflow-knowledge-context-builder.ts
+  s_16621256c6b5d1::t_35b489093be2db 212
+  s_16621256c6b5d1::t_ed17f9a24041b4 110,116-117,195
+  s_16621256c6b5d1::t_69a21fd3d0caa8 127
+  s_16621256c6b5d1::t_b856a87ff6970d 2,4,8,21-22,36-37,95-109,111-115,118-126,128-135,215,217,258
+examples/flutter-dev-bff/src/prompts.ts
+  s_16621256c6b5d1::t_b8acd57c35fdd6 129
+examples/flutter-dev-bff/src/services/workflow-agent-task.ts
+  s_16621256c6b5d1::t_4120fdbb9f80ec 256,260
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "dd4eb4bfc437a49dd2515bf0bf2d9fcf11c52db8",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
