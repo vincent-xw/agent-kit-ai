@@ -1,0 +1,43 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_16621256c6b5d1::t_6681c186f11af7 200-203,205
+examples/flutter-dev-bff/src/services/workflow-chat-session.ts
+  s_16621256c6b5d1::t_b617060465d9bb 20,615-633,639
+examples/flutter-dev-bff/src/services/memory-candidate-extractor.test.ts
+  s_16621256c6b5d1::t_e713ff19ab61f0 20-54
+examples/flutter-dev-bff/src/services/memory-candidate-extractor.ts
+  s_16621256c6b5d1::t_b617060465d9bb 11-33,40,46-49
+examples/flutter-dev-bff/src/services/memory-provider.test.ts
+  s_16621256c6b5d1::t_e713ff19ab61f0 97-134
+examples/flutter-dev-bff/src/services/memory-provider.ts
+  s_16621256c6b5d1::t_ccc4e74b1f7867 44,79-83,241-260,424-427,429-433,510,512,518-545
+  s_16621256c6b5d1::t_09f32ebaea6039 546
+examples/flutter-dev-bff/src/server.ts
+  s_16621256c6b5d1::t_15dc23f043ef52 2505-2525
+examples/flutter-dev-bff/src/services/workflow-chat-session.test.ts
+  s_16621256c6b5d1::t_e713ff19ab61f0 11,54-73
+examples/flutter-dev-bff/public/assets/app.js
+  s_16621256c6b5d1::t_6681c186f11af7 4120,4122-4147,4149-4157,4159-4176,4178-4190,4195-4201,4220,4235
+  s_16621256c6b5d1::t_529f7fe19228a7 4121,4148,4158,4177
+examples/flutter-dev-bff/src/server.test.ts
+  s_16621256c6b5d1::t_a585627d8c81ac 2196-2234
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_16621256c6b5d1::t_10a3de336bd1f2 1655-1699,1703-1705
+  s_16621256c6b5d1::t_a585627d8c81ac 43,73,121
+  s_16621256c6b5d1::t_2d1edcb443dec5 1700-1702
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "a676aabc15c2fb2fbbe58d3fc285c2549a52eafb",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
