@@ -1,0 +1,40 @@
+examples/flutter-dev-bff/public/assets/app.js
+  s_16621256c6b5d1::t_ab8fa1dde36fde 4260,4265,4742-4748
+  s_16621256c6b5d1::t_3f87b6e1f53e67 3798-3806
+  s_16621256c6b5d1::t_912c6662a477a6 3725-3787,3792-3797,3807-3865
+  s_16621256c6b5d1::t_a31d783e23bca8 33
+  s_16621256c6b5d1::t_72fd8ba541297a 4749-4750
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_16621256c6b5d1::t_cea39422bd6cb3 754-789
+examples/flutter-dev-bff/src/tool-events.ts
+  s_16621256c6b5d1::t_dc8eafdbd59a09 88,99,110,123
+examples/flutter-dev-bff/public/assets/app.css
+  s_16621256c6b5d1::t_20862fdb778117 469-473
+examples/flutter-dev-bff/public/index.html
+  s_16621256c6b5d1::t_3bec666738cfec 265-272
+  s_16621256c6b5d1::t_be194be94b3509 263-264
+examples/flutter-dev-bff/src/services/workflow-tool-events.test.ts
+  s_16621256c6b5d1::t_b7d3b4beddd85e 16,23-24,39,45
+examples/flutter-dev-bff/src/services/workflow-runtime-adapter.ts
+  s_16621256c6b5d1::t_0225aa5c5c5fd0 569
+examples/flutter-dev-bff/src/server.ts
+  s_16621256c6b5d1::t_38bf075e86cf55 696
+examples/flutter-dev-bff/src/server.test.ts
+  s_16621256c6b5d1::t_2e9b09ddccb81a 804,808
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "e5d6db8e298ee4e313a03982f926c6299a3026f8",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
