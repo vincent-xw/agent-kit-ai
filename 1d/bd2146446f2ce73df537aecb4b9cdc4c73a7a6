@@ -1,0 +1,45 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_16621256c6b5d1::t_541d88e467a56c 2185,2192-2193,2202-2203,2212-2213,2224-2225,2236-2237,2243-2244,2255-2256,2265
+  s_16621256c6b5d1::t_19d575107fc9df 2264,3349-3350
+  s_16621256c6b5d1::t_773a3c122ba390 129,180-181,187-192,1005,1305,1321,1332
+examples/flutter-dev-bff/public/index.html
+  s_16621256c6b5d1::t_576e81f15dab8c 53,64
+  s_16621256c6b5d1::t_859b1697bfdcfc 295-308,310-317
+examples/flutter-dev-bff/src/workflows/types.ts
+  s_16621256c6b5d1::t_7b291980df49bc 149
+examples/flutter-dev-bff/src/workflows/validator.test.ts
+  s_16621256c6b5d1::t_fe7f28f84bb244 203
+packages/core/src/harness.ts
+  s_16621256c6b5d1::t_7b291980df49bc 53,165,252-256
+examples/flutter-dev-bff/src/webui-memory-management.test.ts
+  s_16621256c6b5d1::t_fe7f28f84bb244 1-36,38-39
+  s_16621256c6b5d1::t_2ffd22ab9a535e 37
+examples/flutter-dev-bff/src/services/workflow-row-agent-template.test.ts
+  s_16621256c6b5d1::t_fe7f28f84bb244 24
+examples/flutter-dev-bff/public/assets/app.js
+  s_16621256c6b5d1::t_ffb3e65d646c10 4259,4737-4753,4755
+  s_16621256c6b5d1::t_452b4d1acea39c 4754
+  s_16621256c6b5d1::t_32ddf47dd17f5a 4756
+examples/flutter-dev-bff/src/workflows/validator.ts
+  s_16621256c6b5d1::t_7b291980df49bc 159
+packages/core/src/harness.test.ts
+  s_16621256c6b5d1::t_fe7f28f84bb244 541-567
+examples/flutter-dev-bff/src/services/workflow-row-agent-template.ts
+  s_16621256c6b5d1::t_7b291980df49bc 204-205
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "1dbd2146446f2ce73df537aecb4b9cdc4c73a7a6",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
