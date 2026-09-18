@@ -1,0 +1,32 @@
+examples/agent-runtime-bff/public/guide.html
+  s_16621256c6b5d1::t_a419e14235c423 165,168
+examples/agent-runtime-bff/public/packaged-user-guide.html
+  s_16621256c6b5d1::t_36db0466764720 32-35,53,61
+examples/agent-runtime-bff/public/settings.html
+  s_16621256c6b5d1::t_83c6aa543d1a9c 156-163,166-169,172-174
+examples/agent-runtime-bff/src/server.test.ts
+  s_16621256c6b5d1::t_c49d65e6e59674 7,3501-3510
+examples/agent-runtime-bff/src/server.ts
+  s_16621256c6b5d1::t_9964fbbd3e2e31 3264-3270,3279-3284,3286,3313-3318,3320,3353-3360,3418-3419
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "bc6db2dff3a66127edf632998871a69328eaf00f",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
