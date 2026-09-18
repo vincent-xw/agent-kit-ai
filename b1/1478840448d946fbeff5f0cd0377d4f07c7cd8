@@ -1,0 +1,30 @@
+examples/agent-runtime-bff/src/server.ts
+  s_16621256c6b5d1::t_83890e8d4ec4af 865-866,870,2429-2430,2434
+packages/adapter-sqlite/src/index.test.ts
+  s_16621256c6b5d1::t_a9aba0ee2330a5 99-122
+packages/adapter-sqlite/src/index.ts
+  s_16621256c6b5d1::t_e1d6db026ab60e 150-151,161
+packages/core/src/contracts.ts
+  s_16621256c6b5d1::t_0a6fc532052c02 3-4,46-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "b11478840448d946fbeff5f0cd0377d4f07c7cd8",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
