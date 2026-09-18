@@ -1,0 +1,24 @@
+examples/agent-runtime-bff/src/services/model-profile-store.ts
+  s_16621256c6b5d1::t_608e2faff2a302 248
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "824dd2484c38440f316f980f4a82a897b62be8fa",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
