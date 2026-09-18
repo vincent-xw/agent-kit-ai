@@ -1,0 +1,26 @@
+examples/agent-runtime-bff/src/server.test.ts
+  s_16621256c6b5d1::t_ca175f04d45aa6 49,61,1549-1551,1554,1556,3352-3397
+examples/agent-runtime-bff/src/server.ts
+  s_16621256c6b5d1::t_ebc93aeb93f7b0 116-117,436-447,465-466,485-507,599-603,876-878,880-881,3061-3084,3093
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5a1e1942c46246203f9f9faf9fbf754dcc174098",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
