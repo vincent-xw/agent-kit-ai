@@ -1,0 +1,38 @@
+examples/agent-runtime-bff/public/assets/app.css
+  s_16621256c6b5d1::t_6101fc4480d4da 124-136,139,305-306
+examples/agent-runtime-bff/public/assets/app.js
+  s_16621256c6b5d1::t_7e253d7c068a00 4770-4772,4814,4839,4903,4931-4932,4943,4948,5041
+examples/agent-runtime-bff/public/index.html
+  s_16621256c6b5d1::t_2286748f4b3b7f 53,64,116,119,350-352,357-359,370
+examples/agent-runtime-bff/src/server.test.ts
+  s_16621256c6b5d1::t_af0952bb75ef46 398,421-424,478-480
+examples/agent-runtime-bff/src/server.ts
+  s_16621256c6b5d1::t_0e0c438f8d1bba 2763,2839
+examples/agent-runtime-bff/src/services/model-profile-store.ts
+  s_16621256c6b5d1::t_ef7d70b17cae23 133-134,139,229,236,267
+examples/agent-runtime-bff/src/webui-model-management.test.ts
+  s_16621256c6b5d1::t_30dac75ae6145e 59-82,214-236
+examples/agent-runtime-bff/src/webui-session-recovery.test.ts
+  s_16621256c6b5d1::t_102d046abfe5f8 1788,1791-1794
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4c30d1d0ab3deae594a20a4b7862bc0e59405ba0",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
