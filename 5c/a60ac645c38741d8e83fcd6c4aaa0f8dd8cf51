@@ -1,0 +1,26 @@
+packages/core/src/token-context-manager.test.ts
+  s_16621256c6b5d1::t_d11c9eee138fea 32-46
+packages/core/src/token-context-manager.ts
+  s_16621256c6b5d1::t_f3c6a08d3aece2 35-39,58-60,77,79,95,167-170
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5ca60ac645c38741d8e83fcd6c4aaa0f8dd8cf51",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
