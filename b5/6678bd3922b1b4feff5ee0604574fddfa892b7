@@ -1,0 +1,21 @@
+packages/core/src/harness.test.ts
+  s_16621256c6b5d1::t_bfccabe40290e5 89,95-119
+packages/core/src/harness.ts
+  s_16621256c6b5d1::t_bfcac363415e2a 279-281,283-287
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "b56678bd3922b1b4feff5ee0604574fddfa892b7",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
