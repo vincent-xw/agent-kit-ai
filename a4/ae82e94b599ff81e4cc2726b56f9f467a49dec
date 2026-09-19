@@ -1,0 +1,25 @@
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_16621256c6b5d1::t_a4d8e5ad5c98ac 184-230
+examples/agent-runtime-bff/src/services/workflow-agent-task.ts
+  s_16621256c6b5d1::t_3522768932eb3f 198-203,205
+examples/agent-runtime-bff/src/services/workflow-row-agent-template.test.ts
+  s_16621256c6b5d1::t_88c48df0eadf1c 59-84
+examples/agent-runtime-bff/src/services/workflow-row-agent-template.ts
+  s_16621256c6b5d1::t_bb9f4249de8460 140-146
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "a4ae82e94b599ff81e4cc2726b56f9f467a49dec",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
