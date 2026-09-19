@@ -1,0 +1,29 @@
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_16621256c6b5d1::t_7a190aa459fde0 150-183
+examples/agent-runtime-bff/src/services/workflow-agent-task.ts
+  s_16621256c6b5d1::t_d4b0598c2fbc61 11,316-318,324-327,331,334-342
+examples/agent-runtime-bff/src/services/workflow-memory-safety.test.ts
+  s_16621256c6b5d1::t_30ef17e36e2ada 2,44-63
+examples/agent-runtime-bff/src/services/workflow-memory-safety.ts
+  s_16621256c6b5d1::t_c9cf4008c3016c 48-67
+examples/agent-runtime-bff/src/workflows/validator.test.ts
+  s_16621256c6b5d1::t_8925793716ee26 237-315
+examples/agent-runtime-bff/src/workflows/validator.ts
+  s_16621256c6b5d1::t_c3e13947e91aac 224-271,428
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5ead4ae3eba70676d29c82a7bce33932c9b8bb92",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
