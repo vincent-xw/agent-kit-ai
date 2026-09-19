@@ -1,0 +1,25 @@
+examples/agent-runtime-bff/.env.example
+  s_16621256c6b5d1::t_feeed9c664824f 27-28
+examples/agent-runtime-bff/src/server.ts
+  s_16621256c6b5d1::t_b64a68c1da3e2c 464-465,670-674,678-682,3305-3306,3416-3417,3439
+examples/agent-runtime-bff/src/tool-events.test.ts
+  s_16621256c6b5d1::t_b408009c45c8d8 3,255-345
+examples/agent-runtime-bff/src/tool-events.ts
+  s_16621256c6b5d1::t_845694f71dbc5f 1,17-50,58-69,91-132
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "f74d62bf53eb7e1b272d32568ff6c1505904c3ab",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
