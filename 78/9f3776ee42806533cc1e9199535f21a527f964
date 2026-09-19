@@ -1,0 +1,23 @@
+examples/agent-runtime-bff/src/server.ts
+  s_16621256c6b5d1::t_4f76ff4a9ce846 1158-1161
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_16621256c6b5d1::t_61749c6660e820 67,84,122-156
+examples/agent-runtime-bff/src/services/workflow-agent-task.ts
+  s_16621256c6b5d1::t_e34e4c700d171f 51-57,428-429
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "789f3776ee42806533cc1e9199535f21a527f964",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
