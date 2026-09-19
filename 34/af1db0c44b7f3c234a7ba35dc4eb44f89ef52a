@@ -1,0 +1,21 @@
+examples/agent-runtime-bff/src/services/workflow-memory-safety.test.ts
+  s_16621256c6b5d1::t_06ffcc05709b87 43-73
+examples/agent-runtime-bff/src/services/workflow-memory-safety.ts
+  s_16621256c6b5d1::t_b038c5a0d6937f 32-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "34af1db0c44b7f3c234a7ba35dc4eb44f89ef52a",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
