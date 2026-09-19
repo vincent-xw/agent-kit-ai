@@ -1,0 +1,25 @@
+packages/core/src/contracts.ts
+  s_16621256c6b5d1::t_87949e25712567 19
+packages/core/src/errors.ts
+  s_16621256c6b5d1::t_9f2309caae6c11 10
+packages/core/src/harness.test.ts
+  s_16621256c6b5d1::t_3ecb737e7fe742 471-472,1543-1577
+packages/core/src/harness.ts
+  s_16621256c6b5d1::t_3301e4259b5212 426-433
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "c4a7e62fbe0851ac7ec18d475e44f14189e1ca88",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
