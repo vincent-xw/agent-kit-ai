@@ -1,0 +1,25 @@
+AGENTS.md
+  s_d1356a974525d7::t_7a3f6b8fce52e5 20-26
+examples/agent-runtime-bff/src/server.test.ts
+  s_d1356a974525d7::t_cc7affa80cc4c2 5
+examples/agent-runtime-bff/src/services/workflow-memory-projector.test.ts
+  s_d1356a974525d7::t_22fa395fec858a 97-98
+examples/agent-runtime-bff/src/webui-session-recovery.test.ts
+  s_d1356a974525d7::t_3121046f8162ba 1886,1888-1889
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "110ec68fb0fff457e1eeb1412526ebb8b631049c",
+  "prompts": {},
+  "sessions": {
+    "s_d1356a974525d7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bc34-1b3e-75a0-a088-bcbe7b23a028",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
