@@ -1,0 +1,19 @@
+docs/superpowers/plans/2026-09-20-android-device-manager-emulator-implementation-plan.md
+  s_b6d1dfe778ddd7::t_cf253619425fa7 1-481
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "f2c5a3ddb2bccd3e402ad5a8329b6e9cf43750af",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
