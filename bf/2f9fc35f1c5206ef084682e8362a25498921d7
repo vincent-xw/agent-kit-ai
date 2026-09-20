@@ -1,0 +1,33 @@
+examples/agent-runtime-bff/public/assets/app.js
+  s_d1356a974525d7::t_3d4acedc72c6c5 4935-4937,4939-4940,4957-4958
+examples/agent-runtime-bff/public/guide.html
+  s_d1356a974525d7::t_fb828cfbe296f9 201
+examples/agent-runtime-bff/public/index.html
+  s_d1356a974525d7::t_074bf7df4765de 376,380-395,397-398
+examples/agent-runtime-bff/src/services/model-profile-store.test.ts
+  s_d1356a974525d7::t_8c263faa70d0f0 135-152
+examples/agent-runtime-bff/src/services/model-profile-store.ts
+  s_d1356a974525d7::t_342eaca1dca6a3 156,424
+examples/agent-runtime-bff/src/services/vision-client.test.ts
+  s_d1356a974525d7::t_9112c8de656aef 22-26,39-49,97
+examples/agent-runtime-bff/src/services/vision-client.ts
+  s_d1356a974525d7::t_a43dcf513c822e 1-2,7-8,72-74
+examples/agent-runtime-bff/src/webui-model-management.test.ts
+  s_d1356a974525d7::t_cd67a40f2e3537 20-26,29-39,51,198-262
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "bf2f9fc35f1c5206ef084682e8362a25498921d7",
+  "prompts": {},
+  "sessions": {
+    "s_d1356a974525d7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bc34-1b3e-75a0-a088-bcbe7b23a028",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
