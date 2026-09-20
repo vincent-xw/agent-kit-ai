@@ -1,0 +1,39 @@
+examples/agent-runtime-bff/src/server.test.ts
+  s_b6d1dfe778ddd7::t_8d201eca5ee3bd 54-63,511-512
+examples/agent-runtime-bff/src/services/adb-client.test.ts
+  s_b6d1dfe778ddd7::t_854dbc0a3ee24e 15,18,25,32,49,51,59,64,71,76,83,102-103,111,119,125-140,143,150,163-164,169,180,312,321
+examples/agent-runtime-bff/src/services/adb-client.ts
+  s_b6d1dfe778ddd7::t_e5ab5b8a2e3e18 54,58,66-67,75,84,94,100,105-106,109,123-125,129,171,214,223,231-232,239-240,253,255-260,262-263,266,270,285,298,303,307,323,330,340,345,350
+examples/agent-runtime-bff/src/services/companion-bootstrap.test.ts
+  s_b6d1dfe778ddd7::t_66fad1fec1fcc1 36,62,98,100,105-106,122,142,146,159,180,231,243,292,295-296,315,349
+examples/agent-runtime-bff/src/services/companion-bootstrap.ts
+  s_b6d1dfe778ddd7::t_a544cc2c1e9441 16-17,78,86,119,127-128,136,143,229,233-234,277,296,302,314
+examples/agent-runtime-bff/src/services/device-provider.ts
+  s_b6d1dfe778ddd7::t_f050bb97837467 1,3-8,12-24
+examples/agent-runtime-bff/src/services/device-target-resolver.ts
+  s_b6d1dfe778ddd7::t_71e226c390f586 72-79
+examples/agent-runtime-bff/src/services/uiautomator-provider.test.ts
+  s_b6d1dfe778ddd7::t_4af111d3bf4f19 17-18,45,56,66,88,91-93,95,98,101-105,112,114,120,122,126,133,135,137,147,149,157,159,162,171,173,184,186,189,195,198
+examples/agent-runtime-bff/src/services/uiautomator-provider.ts
+  s_b6d1dfe778ddd7::t_8ce3a220427058 2,114-119,123,126-128,132,138,140,191,196-197,200,203,207-212,216,219,221-222,239,245,247-248,253-254,256,263,265
+examples/agent-runtime-bff/src/services/webview/cdp-client.test.ts
+  s_b6d1dfe778ddd7::t_55414fdc6051ee 97,103,111,118,132,150,173,193,201,209,214,232,245,256,262,276
+examples/agent-runtime-bff/src/services/webview/cdp-client.ts
+  s_b6d1dfe778ddd7::t_dab008997a9790 17,76,101,111,115-116,119,126,133,135,165,167,173,175,196,198,206-207,210-211,222-225,227,233,248,478
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4605f44ea5cf1d3ebd50fd0224d7abaa515bda00",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
