@@ -1,0 +1,33 @@
+examples/agent-runtime-bff/src/flutter-tools.test.ts
+  s_b6d1dfe778ddd7::t_f2a4890b2b9b24 1142-1167
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_fee96199d45866 786-790,796,1163-1166
+examples/agent-runtime-bff/src/prompts.ts
+  s_b6d1dfe778ddd7::t_074e7a8f9f4c04 15
+examples/agent-runtime-bff/src/services/adb-client.test.ts
+  s_b6d1dfe778ddd7::t_a0b27d59f1ed35 2-4,7-14,170-204
+examples/agent-runtime-bff/src/services/adb-client.ts
+  s_b6d1dfe778ddd7::t_de2e73bc29e644 30-42,327-336,343,345-354,359-363,379-380,385-388,451-464
+examples/agent-runtime-bff/src/services/device-supervisor-types.ts
+  s_b6d1dfe778ddd7::t_19f97495c7df59 108-112
+examples/agent-runtime-bff/src/services/device-supervisor.test.ts
+  s_b6d1dfe778ddd7::t_203bce225a4838 568-585
+examples/agent-runtime-bff/src/services/device-supervisor.ts
+  s_b6d1dfe778ddd7::t_cb58f9de0617a4 659,665-669,676,681
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "17839a14a15828a9c6219d9b60507ff97fed9856",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
