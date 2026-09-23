@@ -1,0 +1,53 @@
+examples/agent-runtime-bff/src/workflows/runtime-types.ts
+  s_b6d1dfe778ddd7::t_940e56f88e93de 111-112
+examples/agent-runtime-bff/src/services/workflow-capability-invoker.ts
+  s_b6d1dfe778ddd7::t_940e56f88e93de 14-15,141
+examples/agent-runtime-bff/src/webui-session-recovery.test.ts
+  s_b6d1dfe778ddd7::t_358faca96ec4a5 894,896,900,902-913,921-942
+examples/agent-runtime-bff/public/assets/app.js
+  s_b6d1dfe778ddd7::t_84dbc41ab56902 1823-1830
+  s_b6d1dfe778ddd7::t_dcf5b739eb052f 3642
+  s_b6d1dfe778ddd7::t_01fd0066499dc7 726,1547,1616-1621,2540
+  s_b6d1dfe778ddd7::t_653afd88afb99b 2384-2385,2427,2438
+examples/agent-runtime-bff/src/services/workflow-runtime-adapter.ts
+  s_b6d1dfe778ddd7::t_940e56f88e93de 568-569,591
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_b6d1dfe778ddd7::t_358faca96ec4a5 319
+examples/agent-runtime-bff/src/services/workflow-capability-invoker.test.ts
+  s_b6d1dfe778ddd7::t_358faca96ec4a5 56,64
+examples/agent-runtime-bff/src/tool-events.ts
+  s_b6d1dfe778ddd7::t_940e56f88e93de 151,155,167,178,197-221
+  s_b6d1dfe778ddd7::t_5e95a77e9a75ba 222
+examples/agent-runtime-bff/src/server.ts
+  s_b6d1dfe778ddd7::t_940e56f88e93de 177-178
+  s_b6d1dfe778ddd7::t_0d4786f072e067 942,1590,1631-1632
+examples/agent-runtime-bff/src/server.test.ts
+  s_b6d1dfe778ddd7::t_358faca96ec4a5 2670-2671,2729-2730
+  s_b6d1dfe778ddd7::t_2844d4d3a75c82 937,941
+examples/agent-runtime-bff/src/services/workflow-tool-events.test.ts
+  s_b6d1dfe778ddd7::t_358faca96ec4a5 19,24-25,29-52
+  s_b6d1dfe778ddd7::t_6c115e94b754d5 53-54
+examples/agent-runtime-bff/src/services/workflow-agent-task.ts
+  s_b6d1dfe778ddd7::t_940e56f88e93de 400
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "225695a97e4fa9bc86f4f4e6ea38e5e8b574facf",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
