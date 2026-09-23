@@ -1,0 +1,97 @@
+examples/agent-runtime-bff/src/services/model-profile-store.ts
+  s_7cf0884d181e10::t_64f8ab6dd8804b 31,41,55,106,124,181-189,201,302,309-315,323-325,349-351,360,366,374
+  s_7cf0884d181e10::t_a215482292e7d7 207-211
+examples/agent-runtime-bff/src/services/vision-client.test.ts
+  s_b6d1dfe778ddd7::t_e5c1c6f0e89bdd 33
+  s_b6d1dfe778ddd7::t_943c8fdc1dca7b 37-66
+packages/core/src/contracts.ts
+  s_7cf0884d181e10::t_e4acdeeda415b9 51-52
+examples/agent-runtime-bff/src/services/model-profile-probe.ts
+  s_7cf0884d181e10::t_b1bc0edb3ffa52 14-27,50-52,65,99-162,166
+  s_7cf0884d181e10::t_00f9c81d8b2507 163-165
+examples/agent-runtime-bff/public/assets/app.css
+  s_7cf0884d181e10::t_b09b39c81785cb 274-281
+examples/agent-runtime-bff/public/packaged-user-guide.html
+  s_7cf0884d181e10::t_5be79f5d606269 35
+examples/agent-runtime-bff/src/server.test.ts
+  s_7cf0884d181e10::t_2b8e9aa1c55dda 3515,3520,3524,3527,3675-3700,3702
+  s_7cf0884d181e10::t_37363975c9ba79 3650-3672
+  s_7cf0884d181e10::t_4008bd536a4ba8 3512-3514
+  s_7cf0884d181e10::t_ab74d2baabff85 3516-3519
+  s_7cf0884d181e10::t_a23ae7b79c0e89 3521-3523
+  s_7cf0884d181e10::t_1e6739d9bff943 3525-3526
+  s_7cf0884d181e10::t_2a75ea0a20a192 3528-3530
+  s_7cf0884d181e10::t_d4c60834b6dd46 3673-3674
+  s_7cf0884d181e10::t_c45f02df3bc143 3701
+  s_b6d1dfe778ddd7::t_11133c1af6fc6f 3511,3531-3533,3566
+examples/agent-runtime-bff/public/guide.html
+  s_7cf0884d181e10::t_5be79f5d606269 198,201,210
+examples/agent-runtime-bff/src/services/model-profile-probe.test.ts
+  s_7cf0884d181e10::t_d8c637fc74594b 3,22-58,81-92
+  s_7cf0884d181e10::t_8d4f6bff671fc8 93
+examples/agent-runtime-bff/docs/packaged-user-guide.md
+  s_7cf0884d181e10::t_5be79f5d606269 41,49-50,118,157
+examples/agent-runtime-bff/src/services/vision-client.ts
+  s_b6d1dfe778ddd7::t_304f1244491e4f 11-27,64-68,83,109-113,116-125
+  s_b6d1dfe778ddd7::t_bc3b8fcdaff4e3 76-77
+examples/agent-runtime-bff/src/server.ts
+  s_7cf0884d181e10::t_486c984a7e6fdf 124,3022-3023,3025-3026,3029,3036-3037,3051-3053,3055-3064,3067
+  s_7cf0884d181e10::t_a55c66da24382f 3024,3027-3028,3030-3035,3038-3050,3054
+  s_7cf0884d181e10::t_76836dbbf15899 3065-3066
+  s_7cf0884d181e10::t_81d66c77d1bbf6 3068
+examples/agent-runtime-bff/src/services/model-profile-store.test.ts
+  s_7cf0884d181e10::t_8e9268dc89477d 93-100,126-135
+  s_7cf0884d181e10::t_3e534d4e4601d5 101-125
+examples/agent-runtime-bff/public/index.html
+  s_7cf0884d181e10::t_3214cd5d13e662 393-408
+  s_7cf0884d181e10::t_497f3aa3008bc9 428
+examples/agent-runtime-bff/src/webui-model-management.test.ts
+  s_7cf0884d181e10::t_2b8e9aa1c55dda 321-353,375
+  s_7cf0884d181e10::t_3b0c288b70cab4 53
+  s_7cf0884d181e10::t_398ebaf51a0b00 27-29,269-320,354-373
+  s_7cf0884d181e10::t_3df73ac3c500d6 73,88
+  s_7cf0884d181e10::t_b7e2e58a737c71 374
+  s_7cf0884d181e10::t_902c2075570bc3 376
+packages/core/src/llm-client.test.ts
+  s_7cf0884d181e10::t_a459e189f28ea7 119-128
+examples/agent-runtime-bff/docs/settings.md
+  s_7cf0884d181e10::t_5be79f5d606269 21,23-27,30-32,37
+examples/agent-runtime-bff/docs/guide.md
+  s_7cf0884d181e10::t_5be79f5d606269 26,32-33,99-103
+  s_7cf0884d181e10::t_d2a84c30e4f4cd 104
+examples/agent-runtime-bff/public/settings.html
+  s_7cf0884d181e10::t_5be79f5d606269 157
+packages/core/src/llm-client.ts
+  s_7cf0884d181e10::t_e4acdeeda415b9 24-25,261
+examples/agent-runtime-bff/public/assets/app.js
+  s_b6d1dfe778ddd7::t_637e80e89005bb 5095-5101,5105,5207-5208,5285-5389,5413-5420,5446-5448,5483-5489
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4df4753610547873a88eb65b44024147eda562ce",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_7cf0884d181e10": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0cc51-8caa-7921-b615-3d8c25642145",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    },
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
