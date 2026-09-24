@@ -1,0 +1,42 @@
+examples/agent-runtime-bff/src/prompts.ts
+  s_b6d1dfe778ddd7::t_f877f974fead28 25
+examples/agent-runtime-bff/src/services/device-supervisor.test.ts
+  s_b6d1dfe778ddd7::t_2d446eeec3df7e 187-193,196-211,214-222,227-243,1087-1090,1093
+  s_b6d1dfe778ddd7::t_8786876974d45a 194,223-225
+  s_b6d1dfe778ddd7::t_e2934350da5160 212-213
+  s_b6d1dfe778ddd7::t_fd5a7271a1acf7 195,226,1086
+examples/agent-runtime-bff/src/server.ts
+  s_b6d1dfe778ddd7::t_f877f974fead28 1058
+examples/agent-runtime-bff/src/services/device-supervisor.ts
+  s_b6d1dfe778ddd7::t_560069a61dc621 535
+  s_b6d1dfe778ddd7::t_2f2d7169050805 3,511-512,519-524,526-528,545-568,612-637
+  s_b6d1dfe778ddd7::t_76309a7f64ff05 638
+examples/agent-runtime-bff/src/services/adb-client.test.ts
+  s_b6d1dfe778ddd7::t_fd5a7271a1acf7 303-348
+examples/agent-runtime-bff/src/services/adb-client.ts
+  s_b6d1dfe778ddd7::t_9999037f133faf 13-18,187-207,497-528
+  s_b6d1dfe778ddd7::t_b4296ffa72374f 529
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_f877f974fead28 963
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "199fd9b9d65585b926e1a697e2787ee5929b8347",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
