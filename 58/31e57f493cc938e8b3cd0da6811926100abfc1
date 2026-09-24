@@ -1,0 +1,28 @@
+examples/agent-runtime-bff/src/webui-session-recovery.test.ts
+  s_b6d1dfe778ddd7::t_bd821b51b0ca89 2459-2491,2494-2502,2504-2509,2511-2513
+  s_b6d1dfe778ddd7::t_3ee7ecde59243e 2510
+  s_b6d1dfe778ddd7::t_37b9a1b8ce77cc 2492-2493,2503
+examples/agent-runtime-bff/public/assets/app.js
+  s_b6d1dfe778ddd7::t_4017d6de073a82 1152-1165,2851,2860
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5831e57f493cc938e8b3cd0da6811926100abfc1",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
