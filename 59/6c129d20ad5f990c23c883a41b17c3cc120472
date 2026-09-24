@@ -1,0 +1,34 @@
+examples/agent-runtime-bff/src/prompts.test.ts
+  s_b6d1dfe778ddd7::t_591d4127e9877b 40-44
+examples/agent-runtime-bff/src/services/device-supervisor.ts
+  s_b6d1dfe778ddd7::t_8948b25b71a0c9 497-513
+  s_b6d1dfe778ddd7::t_4017d6de073a82 495-496,514
+examples/agent-runtime-bff/src/services/device-supervisor.test.ts
+  s_b6d1dfe778ddd7::t_ee505f282f944d 244,274-284
+  s_b6d1dfe778ddd7::t_bd821b51b0ca89 245-273,285-286
+examples/agent-runtime-bff/src/prompts.ts
+  s_b6d1dfe778ddd7::t_591d4127e9877b 40
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_591d4127e9877b 509
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "596c129d20ad5f990c23c883a41b17c3cc120472",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
