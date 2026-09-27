@@ -1,0 +1,112 @@
+examples/agent-runtime-bff/src/jev-shadow-benchmark.test.ts
+  s_1a5b5e7571c223::t_f34099b8a22d49 17
+  s_1a5b5e7571c223::t_7338a267edc517 50
+  s_1a5b5e7571c223::t_ac05b4fa7adcda 1-16,18-49,51-102
+examples/agent-runtime-bff/src/services/workflow-agent-task.ts
+  s_1a5b5e7571c223::t_543da3e28ece1b 15-16,50-51,53-55,289-290,295-308,310-318,320-325,457-475,481-494
+  s_1a5b5e7571c223::t_0ffa360d48f44e 52,291-294,309
+  s_1a5b5e7571c223::t_db6d18631cf4fc 319
+examples/agent-runtime-bff/src/services/jev-shadow-evaluator.ts
+  s_1a5b5e7571c223::t_221ceeb1201847 443-447
+  s_1a5b5e7571c223::t_c58de4fdb23994 45,47-48,50,92,135,137,157,163-164,166-168,175-176,255,257-264,266,313,315
+  s_1a5b5e7571c223::t_ae393c045d55d1 1-2,4-10,13-38,40-44,49,51-53,56-59,61-83,85-91,93-101,103-134,136,138-156,158-162,177-197,200-201,204-222,224-227,230-233,235-247,250-254,265,267-283,285-286,288-301,314,317-321,329-343,351-361,369-377,391-401,410-411,413-433,435-442,448-497,499-512,514-526
+  s_1a5b5e7571c223::t_db6d18631cf4fc 12,39,198-199,202-203,223,434
+  s_1a5b5e7571c223::t_d76794f023fff9 3,54-55,284,302-312,316,322-328,344-350,362-368,378-390,402-409
+  s_1a5b5e7571c223::t_c4193c45540ec5 102
+  s_1a5b5e7571c223::t_415538488c5c67 11,60,84,228-229,234,287,412,498,513
+  s_1a5b5e7571c223::t_47720e444fd63b 46,165,169-174,248-249,256
+examples/agent-runtime-bff/src/services/jev-shadow-state.ts
+  s_1a5b5e7571c223::t_c4193c45540ec5 86,209,213-217
+  s_1a5b5e7571c223::t_966b957bee857c 1-35,37,40-41,51-57,59-69,71-78,80-85,87-120,127-129,136,140-159,161-162,164-167,170-193,202-208,210-212,218-247,249-251
+  s_1a5b5e7571c223::t_f420d23f4b280b 79,121-126,130-135,137-139,248
+  s_1a5b5e7571c223::t_3f50397008532a 160,163,168-169
+  s_1a5b5e7571c223::t_fe166ffb8fdcf4 36,38-39,42-50,58,70,194-201
+examples/agent-runtime-bff/src/jev-shadow-benchmark.ts
+  s_1a5b5e7571c223::t_bcf16a7c55c859 21
+  s_1a5b5e7571c223::t_69b2dbb224a240 84,102
+  s_1a5b5e7571c223::t_e203d1a53aafbf 1-20,22-83,85-101,103-148
+examples/agent-runtime-bff/public/assets/app.js
+  s_1a5b5e7571c223::t_3597627dc3198d 5108-5114,5208,5212-5222,5226-5251,5554
+  s_1a5b5e7571c223::t_9990a62462da2b 5223-5225
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_1a5b5e7571c223::t_f838499f09b6da 6,69-73,89,97-126,128-153
+  s_1a5b5e7571c223::t_db6d18631cf4fc 127
+examples/agent-runtime-bff/package.json
+  s_1a5b5e7571c223::t_c6fb6dcecf013c 28
+examples/agent-runtime-bff/src/services/jev-shadow-model-config-store.ts
+  s_1a5b5e7571c223::t_58841b015d0b06 23,148-153
+  s_1a5b5e7571c223::t_583b3dee4d46b6 1-22,24-147,154-160
+examples/agent-runtime-bff/public/assets/app.css
+  s_1a5b5e7571c223::t_8ad8d84f4a1ac9 2702-2716
+examples/agent-runtime-bff/src/webui-model-management.test.ts
+  s_1a5b5e7571c223::t_dcb5a834e6685f 20-29,103-149
+  s_1a5b5e7571c223::t_0f115c9059957b 150
+examples/agent-runtime-bff/src/services/jev-shadow-evaluator.test.ts
+  s_1a5b5e7571c223::t_3b834cfa427dcf 186-211
+  s_1a5b5e7571c223::t_c49648e850b841 69,85-88,90-93
+  s_1a5b5e7571c223::t_a05741bab0f642 62-68,70-84,89,94-103
+  s_1a5b5e7571c223::t_221ceeb1201847 132-134
+  s_1a5b5e7571c223::t_446bd3457ad497 1-34,36-61,104-127,129-131,135-143,146-185,212-238
+  s_1a5b5e7571c223::t_48e7e2164ff6e5 128,145
+  s_1a5b5e7571c223::t_db6d18631cf4fc 35
+  s_1a5b5e7571c223::t_6da2226881a209 144
+examples/agent-runtime-bff/src/services/jev-shadow-state.test.ts
+  s_1a5b5e7571c223::t_34499c5b726659 17-20,49,51,54
+  s_1a5b5e7571c223::t_61fbe1a0a088e6 1-16,21-48,50,52-53,55-159
+examples/agent-runtime-bff/src/server.ts
+  s_1a5b5e7571c223::t_e46706a3c2437b 143,552,721-726,728-730,1112,1427,3121
+  s_1a5b5e7571c223::t_a1074546192323 727
+  s_1a5b5e7571c223::t_7bc68087f4d3b2 142,720,731,1117-1175,1426,1428-1431
+  s_1a5b5e7571c223::t_3309a23ca6677e 86,518-519
+  s_1a5b5e7571c223::t_b01c427c7019b3 1116
+  s_1a5b5e7571c223::t_ff49e9097039ff 1432
+  s_1a5b5e7571c223::t_eead4fa9bd524b 3118-3120
+  s_1a5b5e7571c223::t_081168405831ee 3122-3124
+  s_1a5b5e7571c223::t_0f3838a223c5a2 3109,3114-3117,3125-3130,3595,3609
+examples/agent-runtime-bff/src/services/model-call-trace.ts
+  s_1a5b5e7571c223::t_d200fc18b699e3 1-41
+examples/agent-runtime-bff/public/index.html
+  s_1a5b5e7571c223::t_8028edd0c56e50 355,376-401
+  s_1a5b5e7571c223::t_a57df50c163034 402-403
+examples/agent-runtime-bff/src/services/jev-shadow-report.test.ts
+  s_1a5b5e7571c223::t_8bff91b29e2bfb 57,63-64,67-68,71
+  s_1a5b5e7571c223::t_7be0bc78b7061f 4-5,15,18,22,56,85
+  s_1a5b5e7571c223::t_ee21a5ada459fb 1-3,6-14,16-17,19-21,23-55,58-62,65-66,69-70,72-84,86-91,114
+  s_1a5b5e7571c223::t_4dbbe42caac19f 92-113
+examples/agent-runtime-bff/src/server.test.ts
+  s_1a5b5e7571c223::t_a4218a5ca45057 784-786
+  s_1a5b5e7571c223::t_2aa915121ace35 705-723,728-731,742-748,772-783,787-799,801-809
+  s_1a5b5e7571c223::t_e926a73e622164 752-769
+  s_1a5b5e7571c223::t_9f71be7ce5a3c9 732-741
+  s_1a5b5e7571c223::t_381c376c72db59 3700,3718-3772
+  s_1a5b5e7571c223::t_75a35dc3fbcdad 749-751,770-771
+  s_1a5b5e7571c223::t_5b713477abe064 724-727,800
+  s_1a5b5e7571c223::t_f84ba0c8af3094 3773
+examples/agent-runtime-bff/src/services/jev-shadow-report.ts
+  s_1a5b5e7571c223::t_b5c61d895c094a 1-29,31-53,55-67,69-119,121-122,125-133,135-268,271-293,295-352,355-359
+  s_1a5b5e7571c223::t_8152269fda3092 30,68
+  s_1a5b5e7571c223::t_c4193c45540ec5 120,123-124,134
+  s_1a5b5e7571c223::t_37256d7f69818e 54
+  s_1a5b5e7571c223::t_ec84e7f14225e8 269-270,294,353-354
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "3d6302660acc9aa75309ffa91695a3cf067c9b9d",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
