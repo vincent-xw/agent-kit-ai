@@ -1,0 +1,19 @@
+examples/agent-runtime-bff/src/services/workflow-row-agent-template.ts
+  s_1a5b5e7571c223::t_876e6a53b8e482 176-184,188-197,310
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "721ca4848002ae04964730efb9da839260c29e20",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
