@@ -1,0 +1,30 @@
+packages/core/package.json
+  s_1a5b5e7571c223::t_834eb89fe4aec1 25
+scripts/sync-core-version.mjs
+  s_1a5b5e7571c223::t_834eb89fe4aec1 1-28
+packages/adapter-sqlite/package.json
+  s_1a5b5e7571c223::t_834eb89fe4aec1 25
+package.json
+  s_1a5b5e7571c223::t_3bd74dda6bd10a 22
+  s_1a5b5e7571c223::t_834eb89fe4aec1 15
+packages/bff-hono/package.json
+  s_1a5b5e7571c223::t_834eb89fe4aec1 25
+pnpm-lock.yaml
+  s_1a5b5e7571c223::t_50dc93774dbf47 14-16,22,740-742,965-967,1035-1039,1044-1047,1141-1143,1305-1308,1329-1331,1410-1412,1472-1474,1628-1631,1678-1683,1711-1714,2277-2280,2399,2405,2485-2486,2541-2552,2555-2556,2637-2638,2807-2808,2841-2842,2913-2914,2973-2974,3215-3216,3253-3265,3288-3290,3296,3311,3322,3325,3329,3347-3348
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "5d0088faf6332987e8e8ae9375c11be7fdcaec32",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
