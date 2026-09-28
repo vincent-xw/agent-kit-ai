@@ -1,0 +1,121 @@
+examples/browser-extension-bff/package.json
+  s_1a5b5e7571c223::t_2de027dac40b2c 17,19,30-32
+packages/core/package.json
+  s_1a5b5e7571c223::t_2de027dac40b2c 2
+examples/agent-runtime-bff/package.json
+  s_1a5b5e7571c223::t_2de027dac40b2c 21,23,40-42
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 5
+examples/agent-runtime-bff/src/flutter-tools.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 3
+examples/agent-runtime-bff/src/services/vision-client.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/services/rag-harness.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/tools/host-tools-glossary.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 5
+examples/agent-runtime-bff/src/workflows/runtime-types.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+packages/bff-hono/src/index.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1-2
+examples/agent-runtime-bff/src/services/workflow-agent-task.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 2
+README.md
+  s_1a5b5e7571c223::t_2de027dac40b2c 7-9,33
+examples/agent-runtime-bff/src/services/workflow-runtime-adapter.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 3
+docs/acceptance/2026-09-08-agent-runtime-workflow.md
+  s_1a5b5e7571c223::t_2de027dac40b2c 29
+docs/security.md
+  s_1a5b5e7571c223::t_2de027dac40b2c 8
+examples/agent-runtime-bff/src/tools/host-tools.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 5
+examples/agent-runtime-bff/src/services/memory-curator.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/services/workflow-chat-session.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 4
+examples/agent-runtime-bff/src/session-export.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 3
+examples/agent-runtime-bff/src/workflows/agent-task-workflow-fixture.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 7
+examples/agent-runtime-bff/src/services/model-profile-store.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 4
+packages/bff-hono/package.json
+  s_1a5b5e7571c223::t_2de027dac40b2c 2,31
+examples/agent-runtime-bff/src/services/workflow-hooks.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/services/model-profile-store.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 4-5
+examples/agent-runtime-bff/src/tool-events.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1-2
+examples/agent-runtime-bff/src/define-tool.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/browser-extension-bff/src/execute-loop.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/browser-extension-bff/src/tool-events.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/services/model-profile-probe.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/tools/host-tools.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 6
+examples/agent-runtime-bff/src/services/tool-loader.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 5
+examples/agent-runtime-bff/src/tool-events.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 3-4
+examples/browser-extension-bff/src/server.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 32-35
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 4
+packages/adapter-sqlite/src/index.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+packages/adapter-sqlite/src/index.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 4-5
+examples/browser-extension-bff/src/server.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 3
+packages/bff-hono/src/index.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1-2
+examples/agent-runtime-bff/src/server.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 44-45,54-55
+examples/agent-runtime-bff/src/services/jev-shadow-model-config-store.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 2
+examples/agent-runtime-bff/src/server.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 2-3
+examples/agent-runtime-bff/src/session-history.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/session-export.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/tools/user-interaction-tools.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 2
+examples/agent-runtime-bff/src/services/rag-harness.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 2
+examples/agent-runtime-bff/src/tools/user-interaction-tools.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 2
+examples/browser-extension-bff/README.md
+  s_1a5b5e7571c223::t_2de027dac40b2c 36
+examples/agent-runtime-bff/src/services/workflow-runtime-adapter.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 1
+examples/agent-runtime-bff/src/session-history.test.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 2
+examples/browser-extension-bff/src/browser-tools.ts
+  s_1a5b5e7571c223::t_2de027dac40b2c 3
+packages/adapter-sqlite/package.json
+  s_1a5b5e7571c223::t_2de027dac40b2c 2,31
+pnpm-lock.yaml
+  s_1a5b5e7571c223::t_9bcc6b9caa2919 26,29,32,81,84,87,109,119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "e51e9737826f6e19600504efe95ededcfe89598e",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
