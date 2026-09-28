@@ -1,0 +1,21 @@
+AGENTS.md
+  s_1a5b5e7571c223::t_70519afe27f3c1 73
+CLAUDE.md
+  s_1a5b5e7571c223::t_70519afe27f3c1 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "fa43f9d5fa0b00856453332657a5d2437583dedb",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
