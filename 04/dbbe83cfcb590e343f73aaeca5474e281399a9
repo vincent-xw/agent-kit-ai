@@ -1,0 +1,59 @@
+examples/agent-runtime-bff/docs/guide.md
+  s_1a5b5e7571c223::t_bae75ff52b8f8c 77-98,130
+examples/agent-runtime-bff/public/guide.html
+  s_1a5b5e7571c223::t_3f54028fc90b11 144
+  s_1a5b5e7571c223::t_cbbd113c492555 189-202,298
+  s_1a5b5e7571c223::t_720b264eff05e0 32-39
+examples/agent-runtime-bff/public/workflow.html
+  s_1a5b5e7571c223::t_56db8f3be6ff32 84,114
+  s_1a5b5e7571c223::t_d402c69e1dd7f5 1-83,85-113,115-128
+examples/agent-runtime-bff/public/custom-tools.html
+  s_1a5b5e7571c223::t_8c05cd1ddb6316 156,158,167,180
+  s_1a5b5e7571c223::t_9cb2e8e3615369 35,153-154,157,159-165,168-179,181-193,195,204
+  s_1a5b5e7571c223::t_3f54028fc90b11 145
+  s_ca82d32ea3465f::t_9c10632d8cc622 33-34,36-40,155
+examples/agent-runtime-bff/public/tools.html
+  s_1a5b5e7571c223::t_3f54028fc90b11 144
+  s_1a5b5e7571c223::t_bbd409fb065eb7 32-39
+examples/agent-runtime-bff/public/rag.html
+  s_1a5b5e7571c223::t_3f54028fc90b11 25
+examples/agent-runtime-bff/public/packaged-user-guide.html
+  s_1a5b5e7571c223::t_3f54028fc90b11 12
+examples/agent-runtime-bff/docs/custom-tools.md
+  s_1a5b5e7571c223::t_bae75ff52b8f8c 13,15,18-23,25,27,29,31-55,57,74
+examples/agent-runtime-bff/public/skills.html
+  s_1a5b5e7571c223::t_3f54028fc90b11 144
+  s_1a5b5e7571c223::t_8ce2c22f80eb50 32-39
+examples/agent-runtime-bff/public/companion.html
+  s_1a5b5e7571c223::t_3f54028fc90b11 144
+  s_1a5b5e7571c223::t_406a03dccf14ab 32-39
+examples/agent-runtime-bff/public/settings.html
+  s_1a5b5e7571c223::t_3f54028fc90b11 144
+  s_1a5b5e7571c223::t_df5e0d2c4ce1ad 32-39
+examples/agent-runtime-bff/docs/workflow.md
+  s_1a5b5e7571c223::t_b1d36de6236653 1-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "04dbbe83cfcb590e343f73aaeca5474e281399a9",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    },
+    "s_ca82d32ea3465f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "67843bda-d930-4441-94c2-8b9f5326d3f1",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}
