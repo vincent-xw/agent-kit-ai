@@ -1,0 +1,22 @@
+.gitmodules
+  s_2a68b6072e3ad9::t_5daf62fa655a53 4-5
+  s_2a68b6072e3ad9::t_5b08e748a1d115 6
+companion-android
+  s_2a68b6072e3ad9::t_3c4f3f5a531da7 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "e2cadefd04ed311e6fc4d42f585a838b62dac9a2",
+  "prompts": {},
+  "sessions": {
+    "s_2a68b6072e3ad9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f65e-5ba4-7283-bc12-3fcf8838e767",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
