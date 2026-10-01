@@ -1,0 +1,3 @@
+[submodule "examples/agent-runtime-bff"]
+	path = examples/agent-runtime-bff
+	url = https://github.com/vincent-xw/agent-runtime-bff.git

@@ -1,0 +1,26 @@
+{
+  "name": "agent-kit",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev:browser": "pnpm --filter browser-extension-bff dev",
+    "dev:runtime": "pnpm --filter agent-runtime-bff dev",
+    "start:browser": "pnpm --filter browser-extension-bff start",
+    "start:runtime": "pnpm --filter agent-runtime-bff start",
+    "build:companion": "./companion-android/gradlew -p companion-android clean assembleDebug",
+    "pkg:runtime": "pnpm --filter agent-runtime-bff run pkg",
+    "release:bump": "bumpp --no-commit --no-tag --no-push packages/core/package.json packages/adapter-sqlite/package.json packages/bff-hono/package.json && node scripts/sync-core-version.mjs",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.1",
+    "bumpp": "12.3.0",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  }
+}

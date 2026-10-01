@@ -1,0 +1,36 @@
+{
+  "name": "@agentkit-ai/adapter-sqlite",
+  "version": "1.1.0",
+  "description": "Agent Kit 的 Node SQLite 适配器：会话存储与 AES-256-GCM 密钥库。",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuewen/agent-kit.git",
+    "directory": "packages/adapter-sqlite"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "publish:npm": "pnpm publish --registry=https://registry.npmjs.org --access=public",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@agentkit-ai/core": "workspace:*"
+  },
+  "devDependencies": {
+    "zod": "3.24.4"
+  }
+}

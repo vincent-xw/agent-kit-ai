@@ -1,0 +1,41 @@
+{
+  "name": "browser-extension-bff",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prestart": "pnpm --filter @agentkit-ai/core --filter @agentkit-ai/bff-hono --filter @agentkit-ai/adapter-sqlite --filter browser-extension-bff build",
+    "start": "node --env-file-if-exists=.env dist/server.js",
+    "predev": "pnpm --filter @agentkit-ai/core --filter @agentkit-ai/bff-hono --filter @agentkit-ai/adapter-sqlite build",
+    "dev": "tsc -p tsconfig.json --watch --preserveWatchOutput & node --watch --env-file-if-exists=.env dist/server.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "bundle": "pnpm build && node build.mjs",
+    "pkg": "PKG_CACHE_PATH=./.pkg-cache pnpm bundle && PKG_CACHE_PATH=./.pkg-cache npx pkg dist/server.bundle.cjs --targets node22-macos-arm64,node22-macos-x64,node22-win-x64 --no-bytecode --public --out-path dist/pkg",
+    "pkg:macos": "PKG_CACHE_PATH=./.pkg-cache pnpm bundle && PKG_CACHE_PATH=./.pkg-cache npx pkg dist/server.bundle.cjs --targets node22-macos-arm64,node22-macos-x64 --no-bytecode --public --out-path dist/pkg",
+    "pkg:win": "PKG_CACHE_PATH=./.pkg-cache pnpm bundle && PKG_CACHE_PATH=./.pkg-cache npx pkg dist/server.bundle.cjs --targets node22-win-x64 --no-bytecode --public --out-path dist/pkg",
+    "pkg:proxy": "echo '用法: HTTPS_PROXY=http://127.0.0.1:7890 pnpm pkg' && HTTPS_PROXY=${HTTPS_PROXY:-http://127.0.0.1:7890} PKG_CACHE_PATH=./.pkg-cache pnpm pkg"
+  },
+  "dependencies": {
+    "@agentkit-ai/adapter-sqlite": "workspace:*",
+    "@agentkit-ai/bff-hono": "workspace:*",
+    "@agentkit-ai/core": "workspace:*",
+    "@hono/node-server": "^2.1.0",
+    "hono": "^4.8.5",
+    "zod": "3.24.4"
+  },
+  "devDependencies": {
+    "@yao-pkg/pkg": "^6.0.0",
+    "esbuild": "^0.25.0"
+  }
+}

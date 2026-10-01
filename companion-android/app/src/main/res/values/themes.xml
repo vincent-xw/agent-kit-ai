@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 页面已经提供自己的标题区域；移除默认 ActionBar，避免顶部标题栏遮住首行文案。 -->
+    <style name="Theme.Companion" parent="Theme.AppCompat.Light.NoActionBar" />
+</resources>

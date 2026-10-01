@@ -1,0 +1,33 @@
+{
+  "name": "@agentkit-ai/core",
+  "version": "1.1.0",
+  "description": "Agent Kit 核心运行时：工具注册、受限 harness、JSON Schema 转换与稳定错误码。",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuewen/agent-kit.git",
+    "directory": "packages/core"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "publish:npm": "pnpm publish --registry=https://registry.npmjs.org --access=public",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "zod": "3.24.4"
+  }
+}

@@ -1,0 +1,8 @@
+packages:
+  - packages/*
+  - examples/*
+allowBuilds:
+  # esbuild 是 vitest 的传递依赖，需要 postinstall 释放原生二进制。
+  # 之前这里是字面占位字符串 "set this to true or false"，会让每次
+  # pnpm --filter 先触发 pnpm install 再失败。
+  esbuild: true

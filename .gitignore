@@ -1,0 +1,49 @@
+node_modules/
+dist/
+coverage/
+test-results/
+.wrangler/
+.dev.vars
+# 真实密钥只留在本地；.env.example 是模板，可以提交。
+.env
+.env.local
+!.env.example
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+# BFF 按日轮转文件日志目录（运行时在 dist/log，由 dist/ 覆盖；此处兜底源码/打包场景）
+examples/agent-runtime-bff/log/
+.pnpm-store/
+.pkg-cache/
+# ime-setup.sh 记录的切换前输入法，仅本地有意义
+.ime-previous
+.DS_Store
+# 微信无障碍临时 Debug 快照，可能包含聊天文本，不进入代码库
+wechat-lingxi-debug.json
+# 开发调试时由 Companion 安装流程留存的带版本灵犀 APK，不进入代码库
+lingxi-v*-debug.apk
+# 历史版本遗留的无版本 APK 也不进入代码库，但运行时不会再把它作为安装源
+lingxi.apk
+# Claude Code 生成的 git worktree 目录，属于构建产物，不入库
+.claude/worktrees/
+docs/shared/
+
+# 私有 Agent Runtime BFF 的设计记录留在私有历史仓库中。
+docs/acceptance/
+docs/investigations/
+docs/superpowers/
+docs/agent-kit-2.0-update.md
+docs/agent-kit-5.0-update.md
+AGENT_RUNTIME_BFF.md
+
+# Runtime BFF 的离线 APK 资源不属于公开包仓库。
+resources/
+
+# 本机 Agent 工具状态与索引。
+.agent/
+.claude/
+.codex/
+.dirac-cache/
+.gitnexus/
+.superpowers/
+.dirac-cache/symbol-index.db

@@ -1,0 +1,34 @@
+{
+  "name": "@agentkit-ai/bff-hono",
+  "version": "1.0.0",
+  "description": "Agent Kit 的 Hono BFF 路由：鉴权边界与远端 Tool Host 回填协议。",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuewen/agent-kit.git",
+    "directory": "packages/bff-hono"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "publish:npm": "pnpm publish --registry=https://registry.npmjs.org --access=public",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@agentkit-ai/core": "workspace:*",
+    "hono": "4.8.5"
+  }
+}
