@@ -1,3 +1,6 @@
 [submodule "examples/agent-runtime-bff"]
 	path = examples/agent-runtime-bff
 	url = https://github.com/vincent-xw/agent-runtime-bff.git
+[submodule "companion-android"]
+	path = companion-android
+	url = https://github.com/vincent-xw/agent-kit-companion.git
