@@ -1,0 +1,26 @@
+packages/core/src/index.ts
+  s_2a68b6072e3ad9::t_b46b6ed0598e8a 2
+packages/core/src/harness.test.ts
+  s_2a68b6072e3ad9::t_e3d0ad6e82e292 43,58-64,66,70-72,81,87,90-101
+  s_2a68b6072e3ad9::t_aaeb1d32fb5e33 83-85
+packages/core/package.json
+  s_2a68b6072e3ad9::t_f5f9e80dbed9d6 3
+packages/core/src/harness.ts
+  s_2a68b6072e3ad9::t_1cb5746d885c2c 517-520
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "2ae41b9c6c200d37f5613ff82bc4aee0587fb71d",
+  "prompts": {},
+  "sessions": {
+    "s_2a68b6072e3ad9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f65e-5ba4-7283-bc12-3fcf8838e767",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
