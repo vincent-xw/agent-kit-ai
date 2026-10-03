@@ -514,7 +514,10 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
           ...(finishes
             ? {}
             : selectedTool
-              ? { tools: toToolSchemas([selectedTool]) }
+              ? {
+                  // 保留当前可见工具全集，避免历史 assistant tool_calls 引用的工具不在本轮声明中。
+                  tools: toToolSchemas(visibleTools),
+                }
               : decision === null && toolSchemas.length > 0
                 // 根据未暴露给调用方的 ToolDefinition 重新生成 Schema，确保每次 Completion 使用独立对象。
                 ? { tools: toToolSchemas(visibleTools) }

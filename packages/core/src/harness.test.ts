@@ -40,7 +40,7 @@ describe('AgentHarness', () => {
     expect(requestToolNames).toEqual(['visible_tool'])
   })
 
-  it('默认 Control Flow Provider 为每个可见工具轮次决策并限制主 LLM 权限', async () => {
+  it('默认 Control Flow Provider 连续强制工具时保留历史工具对应的可见定义', async () => {
     const tools = createToolRegistry()
     let executions = 0
     for (const name of ['observe', 'other']) {
@@ -55,15 +55,21 @@ describe('AgentHarness', () => {
     const harness = createAgentHarness({
       llm: { complete: async (request) => {
         requests.push(request)
-        return requests.length === 1
-          ? { type: 'tool_calls', calls: [{ callId: 'selected-call', toolName: 'observe', input: {} }], content: '不得提交的正文' }
-          : { type: 'final', output: '完成' }
+        if (requests.length === 1) {
+          return { type: 'tool_calls', calls: [{ callId: 'selected-call', toolName: 'observe', input: {} }], content: '不得提交的正文' }
+        }
+        if (requests.length === 2) {
+          return { type: 'tool_calls', calls: [{ callId: 'selected-call-2', toolName: 'other', input: {} }], content: '不得提交的工具正文' }
+        }
+        return { type: 'final', output: '完成' }
       } },
-      sessions, tools, maxSteps: 2,
+      sessions, tools, maxSteps: 3,
       controlFlowDecisionProvider: {
         decide: async (input) => {
           decisions.push(input)
-          return decisions.length === 1 ? { type: 'call_tool', toolName: 'observe' } : { type: 'finish' }
+          if (decisions.length === 1) return { type: 'call_tool', toolName: 'observe' }
+          if (decisions.length === 2) return { type: 'call_tool', toolName: 'other' }
+          return { type: 'finish' }
         },
       },
     })
@@ -72,16 +78,27 @@ describe('AgentHarness', () => {
       sessionId: 'provider-loop', runInstanceId: 'run-scope-1', input: '观察', context: {},
     })).resolves.toMatchObject({ type: 'final', output: '完成' })
 
-    expect(decisions).toHaveLength(2)
+    expect(decisions).toHaveLength(3)
     expect(decisions[0]?.decisionId).not.toBe(decisions[1]?.decisionId)
-    expect(decisions.map((decision) => decision.availableToolNames)).toEqual([['observe', 'other'], ['observe', 'other']])
+    expect(decisions.map((decision) => decision.availableToolNames)).toEqual([
+      ['observe', 'other'], ['observe', 'other'], ['observe', 'other'],
+    ])
     expect(decisions.every((decision) => decision.runInstanceId === 'run-scope-1')).toBe(true)
-    expect(requests[0]?.tools?.map((tool) => tool.name)).toEqual(['observe'])
+    expect(requests[0]?.tools?.map((tool) => tool.name)).toEqual(['observe', 'other'])
     expect(requests[0]?.toolChoice).toEqual({ type: 'tool', toolName: 'observe' })
     expect(requests[0]?.parallelToolCalls).toBe(false)
-    expect(requests[1]?.tools).toBeUndefined()
-    expect(requests[1]?.toolChoice).toEqual({ type: 'none' })
-    expect(executions).toBe(1)
+    expect(requests[1]?.messages).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        role: 'assistant',
+        toolCalls: expect.arrayContaining([expect.objectContaining({ callId: 'selected-call', toolName: 'observe' })]),
+      }),
+    ]))
+    expect(requests[1]?.tools?.map((tool) => tool.name)).toEqual(['observe', 'other'])
+    expect(requests[1]?.toolChoice).toEqual({ type: 'tool', toolName: 'other' })
+    expect(requests[1]?.parallelToolCalls).toBe(false)
+    expect(requests[2]?.tools).toBeUndefined()
+    expect(requests[2]?.toolChoice).toEqual({ type: 'none' })
+    expect(executions).toBe(2)
     const saved = await sessions.load('provider-loop')
     expect(saved.filter((message) => message.role === 'assistant')[0]).toMatchObject({ content: null })
     expect(JSON.stringify(saved)).not.toContain('不得提交的正文')

@@ -1,6 +1,6 @@
 {
   "name": "@agentkit-ai/core",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Agent Kit 核心运行时：工具注册、受限 harness、JSON Schema 转换与稳定错误码。",
   "license": "MIT",
   "repository": {
