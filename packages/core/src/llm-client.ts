@@ -1,6 +1,18 @@
 import { AgentKitError } from './errors.js'
 import type { LlmResult, SessionMessage, ToolCall, ToolSchema } from './contracts.js'
 
+const RATE_LIMIT_BACKOFF_BASE_MS = 1_000
+const RATE_LIMIT_BACKOFF_MAX_MS = 60_000
+const RETRY_AFTER_JITTER_MAX_MS = 250
+
+interface RequestPacerState {
+  nextRequestAt: number
+  queue: Promise<void>
+}
+
+// Core 每次 LLM 补全都可能创建新客户端，因此限速状态必须跨客户端实例共享。
+const requestPacers = new Map<string, RequestPacerState>()
+
 /** 支持的 LLM 服务商协议；默认值保持 OpenAI 兼容端点的现有行为。 */
 export type LlmProvider = 'openai-compatible' | 'opencode-go'
 
@@ -25,7 +37,11 @@ export interface LlmClientConfig {
   reasoningEffort?: string
   /** 请求超时毫秒数，默认 30 秒。 */
   timeoutMs?: number
-  /** 最大重试次数（0-5），默认 3。重试网络错误、5xx/429 和服务端带 trace_id 的模糊 invalid_request_error；普通 4xx 参数错误不重试。 */
+  /** 同一接入点凭据的请求最小开始间隔；0 表示不主动降频。 */
+  minRequestIntervalMs?: number
+  /** 同一接入点凭据共享限速状态的标识；不提供时使用 endpoint 与 API Key 组合。 */
+  rateLimitKey?: string
+  /** 最大重试次数（0-5），默认 3。429 遵循 Retry-After 或使用带上限的指数退避；网络错误、5xx 和服务端带 trace_id 的模糊 invalid_request_error 仍按原策略重试。普通 4xx 参数错误不重试。 */
   maxRetries?: number
   /**
    * 调试钩子。仅用于 verbose 排障：打印发给 LLM 的完整请求体与收到的原始响应。
@@ -221,7 +237,14 @@ function parseUsage(payload: unknown): Pick<LlmTraceEvent, 'promptTokens' | 'com
  * 所以逐层降级：结构化 message → code → 原始文本截断。
  * 只取错误描述，不回显整个正文 —— 那里可能带上请求回显。
  */
-async function readErrorResponse(response: { status: number; text(): Promise<string> }): Promise<{ detail: string; retryableOpaque400: boolean }> {
+interface ParsedLlmHttpError {
+  detail: string
+  code?: string
+  type?: string
+  retryableOpaque400: boolean
+}
+
+async function readErrorResponse(response: { status: number; text(): Promise<string> }): Promise<ParsedLlmHttpError> {
   let raw: string
   try {
     raw = await response.text()
@@ -238,16 +261,22 @@ async function readErrorResponse(response: { status: number; text(): Promise<str
     }
     const nested = payload.error ?? payload
     const message = typeof nested.message === 'string' ? nested.message.trim() : ''
+    const code = typeof nested.code === 'string' && nested.code.trim() ? nested.code.trim() : undefined
     const type = typeof nested.type === 'string' ? nested.type.trim() : ''
     const detail = message
-      || (typeof nested.code === 'string' && nested.code.trim() ? `code=${nested.code}` : '')
+      || (code ? `code=${code}` : '')
       || (typeof nested.type === 'string' && nested.type.trim() ? `type=${nested.type}` : '')
       || (typeof payload.message === 'string' && payload.message.trim() ? payload.message.trim() : '')
     // 仅对服务端返回的无具体原因 trace_id 拒绝重试；其它 400 通常是稳定的请求参数错误。
     const retryableOpaque400 = response.status === 400
       && type === 'invalid_request_error'
       && /^invalid request error\s+trace_id:\s*[a-z0-9_-]+$/i.test(message)
-    return { detail: detail || (raw.length > 300 ? `${raw.slice(0, 300)}…` : raw), retryableOpaque400 }
+    return {
+      detail: detail || (raw.length > 300 ? `${raw.slice(0, 300)}…` : raw),
+      ...(code ? { code } : {}),
+      ...(type ? { type } : {}),
+      retryableOpaque400,
+    }
   } catch {
     // 不是 JSON，退回原始文本。
   }
@@ -259,6 +288,11 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
   const timeoutMs = config.timeoutMs ?? 30_000
   const maxRetries = Math.max(0, Math.min(5, config.maxRetries ?? 3))
   const endpoint = `${config.baseUrl.replace(/\/+$/, '')}/chat/completions`
+  const minRequestIntervalMs = config.minRequestIntervalMs ?? 0
+  if (!Number.isInteger(minRequestIntervalMs) || minRequestIntervalMs < 0 || minRequestIntervalMs > 60_000) {
+    throw new RangeError('minRequestIntervalMs 必须是 0 到 60000 之间的整数')
+  }
+  const rateLimitKey = config.rateLimitKey ?? `${endpoint}\u0000${config.apiKey}`
   const trace = config.trace
 
   return {
@@ -287,9 +321,9 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
       trace?.({ requestId, phase: 'request', body, durationMs: 0, ...(request.sessionId ? { sessionId: request.sessionId } : {}) })
 
       if (config.onDelta) {
-        return completeStream(endpoint, config, body, requestId, trace, request, timeoutMs, maxRetries)
+        return completeStream(endpoint, config, body, requestId, trace, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
       }
-      return completeJson(endpoint, config, body, requestId, trace, request.sessionId, request.signal, timeoutMs, maxRetries)
+      return completeJson(endpoint, config, body, requestId, trace, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
     },
   }
 }
@@ -313,9 +347,22 @@ async function completeJson(
   signal: AbortSignal | undefined,
   timeoutMs: number,
   maxRetries: number,
+  minRequestIntervalMs: number,
+  rateLimitKey: string,
 ): Promise<LlmResult> {
   let lastError: AgentKitError | null = null
+  let retryDelayBeforeAttemptMs = 0
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
+    if (retryDelayBeforeAttemptMs > 0) {
+      await waitForRetryDelay(retryDelayBeforeAttemptMs, signal)
+      retryDelayBeforeAttemptMs = 0
+    }
+    await waitForLlmRequestStart({
+      endpoint,
+      rateLimitKey,
+      minRequestIntervalMs,
+      ...(signal ? { signal } : {}),
+    })
     const startedAt = Date.now()
     const controller = new AbortController()
     const abort = () => controller.abort()
@@ -323,7 +370,13 @@ async function completeJson(
     else signal?.addEventListener('abort', abort, { once: true })
     const timer = setTimeout(() => controller.abort(), timeoutMs)
     try {
-      let response: { ok: boolean; status: number; json(): Promise<unknown>; text(): Promise<string> }
+      let response: {
+        ok: boolean
+        status: number
+        headers?: { get(name: string): string | null }
+        json(): Promise<unknown>
+        text(): Promise<string>
+      }
       try {
         response = await fetch(endpoint, {
           method: 'POST',
@@ -340,12 +393,19 @@ async function completeJson(
       }
       if (!response.ok) {
         const errorResponse = await readErrorResponse(response)
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: { status: response.status, detail: errorResponse.detail } })
+        const retryAfter = response.headers?.get('retry-after') ?? null
+        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter) })
         lastError = new AgentKitError(
           'LLM_RESPONSE_INVALID',
-          `LLM 返回 HTTP ${response.status}${errorResponse.detail ? `：${errorResponse.detail}` : ''}`,
+          formatLlmHttpErrorMessage(response.status, errorResponse, retryAfter),
         )
         if ((!isRetryableStatus(response.status) && !errorResponse.retryableOpaque400) || attempt >= maxRetries) throw lastError
+        if (response.status === 429) {
+          const delayMs = rateLimitRetryDelay(retryAfter, attempt)
+          // Retry-After 超过自动等待上限时停止重试，避免早于服务端许可时间再次请求。
+          if (delayMs === null) throw lastError
+          retryDelayBeforeAttemptMs = delayMs
+        }
         continue
       }
       let payload: unknown
@@ -390,12 +450,25 @@ async function completeStream(
   request: LlmClientRequest,
   timeoutMs: number,
   maxRetries: number,
+  minRequestIntervalMs: number,
+  rateLimitKey: string,
 ): Promise<LlmResult> {
   const sessionId = request.sessionId
   const onDelta = config.onDelta!
   let lastError: AgentKitError | null = null
+  let retryDelayBeforeAttemptMs = 0
 
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
+    if (retryDelayBeforeAttemptMs > 0) {
+      await waitForRetryDelay(retryDelayBeforeAttemptMs, request.signal)
+      retryDelayBeforeAttemptMs = 0
+    }
+    await waitForLlmRequestStart({
+      endpoint,
+      rateLimitKey,
+      minRequestIntervalMs,
+      ...(request.signal ? { signal: request.signal } : {}),
+    })
     const startedAt = Date.now()
     const controller = new AbortController()
     const abort = () => controller.abort()
@@ -421,9 +494,16 @@ async function completeStream(
 
       if (!response.ok) {
         const errorResponse = await readErrorResponse(response)
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: { status: response.status, detail: errorResponse.detail } })
-        lastError = new AgentKitError('LLM_RESPONSE_INVALID', `LLM 返回 HTTP ${response.status}${errorResponse.detail ? `：${errorResponse.detail}` : ''}`)
+        const retryAfter = response.headers.get('retry-after')
+        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter) })
+        lastError = new AgentKitError('LLM_RESPONSE_INVALID', formatLlmHttpErrorMessage(response.status, errorResponse, retryAfter))
         if ((!isRetryableStatus(response.status) && !errorResponse.retryableOpaque400) || attempt >= maxRetries) throw lastError
+        if (response.status === 429) {
+          const delayMs = rateLimitRetryDelay(retryAfter, attempt)
+          // Retry-After 超过自动等待上限时停止重试，避免早于服务端许可时间再次请求。
+          if (delayMs === null) throw lastError
+          retryDelayBeforeAttemptMs = delayMs
+        }
         continue
       }
 
@@ -610,4 +690,129 @@ function assembleStreamResult(acc: StreamAccumulator): LlmResult {
 function isRetryableStatus(status: number | undefined): boolean {
   if (status === undefined) return true
   return status >= 500 || status === 429
+}
+
+/** 把上游错误的有限诊断字段写入 trace；不记录完整错误正文或请求回显。 */
+function llmHttpErrorTrace(
+  status: number,
+  error: ParsedLlmHttpError,
+  retryAfter: string | null,
+): Record<string, unknown> {
+  return {
+    status,
+    detail: error.detail,
+    ...(error.code ? { code: error.code } : {}),
+    ...(error.type ? { type: error.type } : {}),
+    ...(retryAfter ? { retryAfter } : {}),
+  }
+}
+
+/** 将 Provider 错误转成可供 Assistant 与用户理解的提示，区分限流与模糊 400。 */
+function formatLlmHttpErrorMessage(status: number, error: ParsedLlmHttpError, retryAfter: string | null): string {
+  const diagnostics = [
+    ...(error.code ? [`error_code=${error.code}`] : []),
+    ...(error.type ? [`type=${error.type}`] : []),
+    ...(error.detail ? [error.detail] : []),
+  ]
+  const base = `LLM 返回 HTTP ${status}${diagnostics.length > 0 ? `：${diagnostics.join('；')}` : ''}`
+  const providerError = `${error.code ?? ''} ${error.type ?? ''} ${error.detail}`.toLowerCase()
+  const waitInstruction = retryAfter
+    ? `请遵循 Retry-After（${retryAfter}）等待后再重试。`
+    : '请等待约 60 秒后再发起一次重试。'
+
+  if (/\btpm\b|tokens?[\s_-]*per[\s_-]*minute|token.{0,24}(rate|limit|minute)/iu.test(providerError)) {
+    return `${base}。服务端错误指向 TPM/Token 速率限制；${waitInstruction}较长上下文也会增加 Token 用量。`
+  }
+  if (/\brpm\b|\brps\b|requests?[\s_-]*per[\s_-]*(minute|second)|requestbursttoo.?fast/iu.test(providerError)) {
+    return `${base}。服务端错误指向请求频率限制（RPM/RPS）；${waitInstruction}`
+  }
+  if (status === 429 || /requests are too frequent|too many requests|rate.?limit/iu.test(providerError)) {
+    return `${base}。服务端未说明是 RPM/RPS 还是 TPM 限额；${waitInstruction}如果请求上下文较大，也可能受到 TPM 限制。`
+  }
+  if (status === 400 && error.retryableOpaque400) {
+    return `${base}。服务端没有说明具体原因；长上下文可能触及 Token 或上下文长度限制，但尚未确认。请勿连续快速重放，可等待约 60 秒后仅重试一次；若仍返回 400，请先缩短上下文或检查请求参数。`
+  }
+  return base
+}
+
+/** 让同一端点凭据的请求按真实开始时间错开；请求耗时已覆盖间隔时不增加等待。 */
+/** 给绕过 createLlmClient 的同端点推理请求复用全局调度器，例如模型连通性探测。 */
+export async function waitForLlmRequestStart(options: {
+  endpoint: string
+  rateLimitKey: string
+  minRequestIntervalMs: number
+  signal?: AbortSignal
+}): Promise<void> {
+  const { endpoint, rateLimitKey, minRequestIntervalMs, signal } = options
+  if (!Number.isInteger(minRequestIntervalMs) || minRequestIntervalMs < 0 || minRequestIntervalMs > 60_000) {
+    throw new RangeError('minRequestIntervalMs 必须是 0 到 60000 之间的整数')
+  }
+  if (minRequestIntervalMs === 0) return
+
+  const key = `${endpoint}\u0000${rateLimitKey}`
+  let state = requestPacers.get(key)
+  if (!state) {
+    state = { nextRequestAt: 0, queue: Promise.resolve() }
+    requestPacers.set(key, state)
+  }
+
+  // 只串行化预约过程；网络请求彼此不锁住，慢请求不会额外阻塞已经到期的下一次。
+  const previous = state.queue
+  let release!: () => void
+  state.queue = new Promise<void>((resolve) => { release = resolve })
+  await previous
+  try {
+    if (signal?.aborted) throw signal.reason
+    const remainingMs = state.nextRequestAt - Date.now()
+    if (remainingMs > 0) await waitForRetryDelay(remainingMs, signal)
+    if (signal?.aborted) throw signal.reason
+    state.nextRequestAt = Date.now() + minRequestIntervalMs
+  } finally {
+    release()
+  }
+}
+
+/** 解析 HTTP Retry-After；支持秒数和 HTTP 日期，过去的日期表示可立即重试。 */
+function parseRetryAfterMs(value: string | null): number | undefined {
+  if (value === null) return undefined
+  const normalized = value.trim()
+  if (!normalized) return undefined
+  const seconds = Number(normalized)
+  if (Number.isFinite(seconds) && seconds >= 0) return Math.ceil(seconds * 1_000)
+  const timestamp = Date.parse(normalized)
+  if (!Number.isFinite(timestamp)) return undefined
+  return Math.max(0, timestamp - Date.now())
+}
+
+/** 429 使用 Retry-After 或有上限的等比例抖动退避，避免多次快速重放请求。 */
+function rateLimitRetryDelay(retryAfterHeader: string | null | undefined, attempt: number): number | null {
+  const retryAfterMs = parseRetryAfterMs(retryAfterHeader ?? null)
+  if (retryAfterMs !== undefined) {
+    if (retryAfterMs > RATE_LIMIT_BACKOFF_MAX_MS) return null
+    const jitterCap = Math.min(RETRY_AFTER_JITTER_MAX_MS, RATE_LIMIT_BACKOFF_MAX_MS - retryAfterMs)
+    return retryAfterMs + Math.floor(Math.random() * (jitterCap + 1))
+  }
+
+  const ceiling = Math.min(RATE_LIMIT_BACKOFF_MAX_MS, RATE_LIMIT_BACKOFF_BASE_MS * 2 ** attempt)
+  const floor = Math.ceil(ceiling / 2)
+  return floor + Math.floor(Math.random() * (ceiling - floor + 1))
+}
+
+/** 退避期间仍响应调用方取消，且不占用单次 HTTP 请求的 timeout 预算。 */
+function waitForRetryDelay(ms: number, signal: AbortSignal | undefined): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (signal?.aborted) {
+      reject(signal.reason)
+      return
+    }
+    const abort = () => {
+      clearTimeout(timer)
+      reject(signal?.reason)
+    }
+    const timer = setTimeout(() => {
+      signal?.removeEventListener('abort', abort)
+      resolve()
+    }, ms)
+    signal?.addEventListener('abort', abort, { once: true })
+  })
 }

@@ -1,5 +1,5 @@
 /** Agent Kit 当前发布版本。 */
-export const AGENT_KIT_VERSION = '1.1.1'
+export const AGENT_KIT_VERSION = '1.2.0'
 
 export * from './errors.js'
 export * from './contracts.js'

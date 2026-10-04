@@ -50,6 +50,10 @@ export interface LlmSecret {
   provider?: LlmProvider
   /** 模型允许的思考强度；为空时沿用服务端默认行为，不发送 reasoning_effort。 */
   reasoningEffort?: string
+  /** 同一凭据的请求最小开始间隔；未配置时为 0，保持历史行为。 */
+  minRequestIntervalMs?: number
+  /** 同一接入点与凭据共享限速状态的不可逆标识，不包含 API Key 明文。 */
+  rateLimitKey?: string
 }
 
 /** 密钥提供者，浏览器/H5 侧永远不应有可调用的实现。 */
