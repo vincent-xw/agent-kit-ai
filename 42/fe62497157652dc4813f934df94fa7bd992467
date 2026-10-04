@@ -1,0 +1,31 @@
+packages/core/package.json
+  s_2a68b6072e3ad9::t_90b9fa28db454a 3
+packages/core/src/contracts.ts
+  s_2a68b6072e3ad9::t_8b122baf9115a8 53-56
+packages/core/src/index.ts
+  s_2a68b6072e3ad9::t_e95ffbd000e634 2
+packages/core/src/llm-client.ts
+  s_2a68b6072e3ad9::t_8b122baf9115a8 7-11,13-15,40-43,240-247,264,267,274-279,291-295,324,326,350-351,396-397,400,404,453-454,497-499,502
+  s_2a68b6072e3ad9::t_18323414f0f8f0 694-738,750-772
+  s_2a68b6072e3ad9::t_117917b5a06ee2 44
+  s_2a68b6072e3ad9::t_35aec9dc97a78d 739-749
+  s_2a68b6072e3ad9::t_c0e37d7f0eea2d 778-780,782
+  s_2a68b6072e3ad9::t_0350e820f098cd 360-365,466-471
+  s_2a68b6072e3ad9::t_908203c17512ec 4-6,12,354,356-359,373-379,403,405-408,459,462-465,501,503-506,773-777,781,783-818
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "42fe62497157652dc4813f934df94fa7bd992467",
+  "prompts": {},
+  "sessions": {
+    "s_2a68b6072e3ad9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f65e-5ba4-7283-bc12-3fcf8838e767",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
