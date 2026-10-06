@@ -1,0 +1,35 @@
+examples/browser-extension-bff/src/server.ts
+  s_2a68b6072e3ad9::t_e79f7a1d66218b 302
+  s_2a68b6072e3ad9::t_25cb517b8ae3a9 303
+packages/core/package.json
+  s_2a68b6072e3ad9::t_8240851383f713 3
+packages/core/src/llm-client.ts
+  s_2a68b6072e3ad9::t_91d18bc1450911 413,527,737,745,799-800,879-883
+  s_2a68b6072e3ad9::t_a398bc76fd1a79 363,400-403,409-412,416,419-420,422-424,426,431
+  s_2a68b6072e3ad9::t_db7fe732794e15 802
+  s_2a68b6072e3ad9::t_741dbfa686bbf1 798,809-810,812-816,825-840,861,866-878,884-900
+  s_2a68b6072e3ad9::t_6f2d1844c4e22a 481,513-516,523-526,528-531,533-534,536-538,540,545
+  s_2a68b6072e3ad9::t_f576aa700a60ec 8,421,535,811
+  s_2a68b6072e3ad9::t_5c07755a6c67ea 4-7,9-10,15-17,52
+  s_2a68b6072e3ad9::t_3d7192a45a7bf1 427-428,541-542,767-769,854-856,858-859
+  s_2a68b6072e3ad9::t_995417b7e71075 729,750-755,765
+  s_2a68b6072e3ad9::t_97e6679935367a 766
+  s_2a68b6072e3ad9::t_944760162d34ac 841
+  s_2a68b6072e3ad9::t_4d0369329845f1 901
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "b7096386a5069b8d00a9c956035102ba750c0adb",
+  "prompts": {},
+  "sessions": {
+    "s_2a68b6072e3ad9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f65e-5ba4-7283-bc12-3fcf8838e767",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
