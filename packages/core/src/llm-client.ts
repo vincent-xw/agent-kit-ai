@@ -1,12 +1,20 @@
 import { AgentKitError } from './errors.js'
 import type { LlmResult, SessionMessage, ToolCall, ToolSchema } from './contracts.js'
 
-const RATE_LIMIT_BACKOFF_BASE_MS = 1_000
-const RATE_LIMIT_BACKOFF_MAX_MS = 60_000
+const TRANSIENT_BACKOFF_BASE_MS = 1_000
+const TRANSIENT_BACKOFF_MAX_MS = 60_000
+const RATE_LIMIT_BACKOFF_BASE_MS = 60_000
+const RATE_LIMIT_BACKOFF_MAX_MS = 15 * 60_000
+const RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS = 2 * 60_000
+const RATE_LIMIT_MAX_RETRIES = 2
+const RATE_LIMIT_JITTER_MAX_MS = 10_000
 const RETRY_AFTER_JITTER_MAX_MS = 250
 
 interface RequestPacerState {
   nextRequestAt: number
+  cooldownUntil: number
+  consecutiveRateLimitFailures: number
+  lastRateLimitAt: number
   queue: Promise<void>
 }
 
@@ -41,7 +49,7 @@ export interface LlmClientConfig {
   minRequestIntervalMs?: number
   /** 同一接入点凭据共享限速状态的标识；不提供时使用 endpoint 与 API Key 组合。 */
   rateLimitKey?: string
-  /** 最大重试次数（0-5），默认 3。429 遵循 Retry-After 或使用带上限的指数退避；网络错误、5xx 和服务端带 trace_id 的模糊 invalid_request_error 仍按原策略重试。普通 4xx 参数错误不重试。 */
+  /** 最大重试次数（0-5），默认 3。429 最多重试 2 次并共享冷却；网络错误、408/425、5xx 和特定模糊 400 使用指数退避；其它 4xx 不重试。 */
   maxRetries?: number
   /**
    * 调试钩子。仅用于 verbose 排障：打印发给 LLM 的完整请求体与收到的原始响应。
@@ -352,6 +360,7 @@ async function completeJson(
 ): Promise<LlmResult> {
   let lastError: AgentKitError | null = null
   let retryDelayBeforeAttemptMs = 0
+  let rateLimitRetries = 0
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
     if (retryDelayBeforeAttemptMs > 0) {
       await waitForRetryDelay(retryDelayBeforeAttemptMs, signal)
@@ -388,26 +397,38 @@ async function completeJson(
         if (signal?.aborted) throw error
         trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, error })
         lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 请求失败', { cause: error })
-        if (attempt < maxRetries) continue
+        if (attempt < maxRetries) {
+          retryDelayBeforeAttemptMs = transientRetryDelay(attempt)
+          continue
+        }
         throw lastError
       }
       if (!response.ok) {
         const errorResponse = await readErrorResponse(response)
         const retryAfter = response.headers?.get('retry-after') ?? null
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter) })
+        const validRetryAfter = parseRetryAfterMs(retryAfter) === undefined ? null : retryAfter
+        const rateLimitCooldownMs = response.status === 429
+          ? recordLlmRateLimit(endpoint, rateLimitKey, validRetryAfter)
+          : undefined
+        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter, rateLimitCooldownMs) })
         lastError = new AgentKitError(
           'LLM_RESPONSE_INVALID',
-          formatLlmHttpErrorMessage(response.status, errorResponse, retryAfter),
+          formatLlmHttpErrorMessage(response.status, errorResponse, validRetryAfter, rateLimitCooldownMs),
         )
-        if ((!isRetryableStatus(response.status) && !errorResponse.retryableOpaque400) || attempt >= maxRetries) throw lastError
         if (response.status === 429) {
-          const delayMs = rateLimitRetryDelay(retryAfter, attempt)
-          // Retry-After 超过自动等待上限时停止重试，避免早于服务端许可时间再次请求。
-          if (delayMs === null) throw lastError
-          retryDelayBeforeAttemptMs = delayMs
+          // 429 按服务端等待时间或共享冷却退避，单次逻辑请求最多额外重试两次。
+          if (attempt >= maxRetries || rateLimitRetries >= RATE_LIMIT_MAX_RETRIES
+            || rateLimitCooldownMs === undefined || rateLimitCooldownMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) throw lastError
+          rateLimitRetries += 1
+          retryDelayBeforeAttemptMs = rateLimitCooldownMs
+          continue
         }
+        if ((!isRetryableStatus(response.status) && !errorResponse.retryableOpaque400) || attempt >= maxRetries) throw lastError
+        retryDelayBeforeAttemptMs = transientRetryDelay(attempt, validRetryAfter)
+        if (retryDelayBeforeAttemptMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) throw lastError
         continue
       }
+      markLlmRequestSuccess(endpoint, rateLimitKey, startedAt)
       let payload: unknown
       try {
         payload = await response.json()
@@ -457,6 +478,7 @@ async function completeStream(
   const onDelta = config.onDelta!
   let lastError: AgentKitError | null = null
   let retryDelayBeforeAttemptMs = 0
+  let rateLimitRetries = 0
 
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
     if (retryDelayBeforeAttemptMs > 0) {
@@ -488,24 +510,39 @@ async function completeStream(
         if (request.signal?.aborted) throw error
         trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, error })
         lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 请求失败', { cause: error })
-        if (attempt < maxRetries) continue
+        if (attempt < maxRetries) {
+          retryDelayBeforeAttemptMs = transientRetryDelay(attempt)
+          continue
+        }
         throw lastError
       }
 
       if (!response.ok) {
         const errorResponse = await readErrorResponse(response)
         const retryAfter = response.headers.get('retry-after')
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter) })
-        lastError = new AgentKitError('LLM_RESPONSE_INVALID', formatLlmHttpErrorMessage(response.status, errorResponse, retryAfter))
-        if ((!isRetryableStatus(response.status) && !errorResponse.retryableOpaque400) || attempt >= maxRetries) throw lastError
+        const validRetryAfter = parseRetryAfterMs(retryAfter) === undefined ? null : retryAfter
+        const rateLimitCooldownMs = response.status === 429
+          ? recordLlmRateLimit(endpoint, rateLimitKey, validRetryAfter)
+          : undefined
+        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter, rateLimitCooldownMs) })
+        lastError = new AgentKitError(
+          'LLM_RESPONSE_INVALID',
+          formatLlmHttpErrorMessage(response.status, errorResponse, validRetryAfter, rateLimitCooldownMs),
+        )
         if (response.status === 429) {
-          const delayMs = rateLimitRetryDelay(retryAfter, attempt)
-          // Retry-After 超过自动等待上限时停止重试，避免早于服务端许可时间再次请求。
-          if (delayMs === null) throw lastError
-          retryDelayBeforeAttemptMs = delayMs
+          // 429 按服务端等待时间或共享冷却退避，单次逻辑请求最多额外重试两次。
+          if (attempt >= maxRetries || rateLimitRetries >= RATE_LIMIT_MAX_RETRIES
+            || rateLimitCooldownMs === undefined || rateLimitCooldownMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) throw lastError
+          rateLimitRetries += 1
+          retryDelayBeforeAttemptMs = rateLimitCooldownMs
+          continue
         }
+        if ((!isRetryableStatus(response.status) && !errorResponse.retryableOpaque400) || attempt >= maxRetries) throw lastError
+        retryDelayBeforeAttemptMs = transientRetryDelay(attempt, validRetryAfter)
+        if (retryDelayBeforeAttemptMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) throw lastError
         continue
       }
+      markLlmRequestSuccess(endpoint, rateLimitKey, startedAt)
 
       // 端点可能忽略 stream:true 返回普通 JSON（某些代理或不支持流式的端点），
       // 或测试 mock 不提供 body/headers。检测 content-type 做 fallback。
@@ -689,7 +726,7 @@ function assembleStreamResult(acc: StreamAccumulator): LlmResult {
 
 function isRetryableStatus(status: number | undefined): boolean {
   if (status === undefined) return true
-  return status >= 500 || status === 429
+  return status === 408 || status === 425 || status === 429 || status >= 500
 }
 
 /** 把上游错误的有限诊断字段写入 trace；不记录完整错误正文或请求回显。 */
@@ -697,6 +734,7 @@ function llmHttpErrorTrace(
   status: number,
   error: ParsedLlmHttpError,
   retryAfter: string | null,
+  clientCooldownMs?: number,
 ): Record<string, unknown> {
   return {
     status,
@@ -704,11 +742,17 @@ function llmHttpErrorTrace(
     ...(error.code ? { code: error.code } : {}),
     ...(error.type ? { type: error.type } : {}),
     ...(retryAfter ? { retryAfter } : {}),
+    ...(clientCooldownMs !== undefined ? { clientCooldownMs } : {}),
   }
 }
 
 /** 将 Provider 错误转成可供 Assistant 与用户理解的提示，区分限流与模糊 400。 */
-function formatLlmHttpErrorMessage(status: number, error: ParsedLlmHttpError, retryAfter: string | null): string {
+function formatLlmHttpErrorMessage(
+  status: number,
+  error: ParsedLlmHttpError,
+  retryAfter: string | null,
+  fallbackCooldownMs?: number,
+): string {
   const diagnostics = [
     ...(error.code ? [`error_code=${error.code}`] : []),
     ...(error.type ? [`type=${error.type}`] : []),
@@ -718,7 +762,11 @@ function formatLlmHttpErrorMessage(status: number, error: ParsedLlmHttpError, re
   const providerError = `${error.code ?? ''} ${error.type ?? ''} ${error.detail}`.toLowerCase()
   const waitInstruction = retryAfter
     ? `请遵循 Retry-After（${retryAfter}）等待后再重试。`
-    : '请等待约 60 秒后再发起一次重试。'
+    : `客户端已对该接入点设置约 ${Math.ceil((fallbackCooldownMs ?? RATE_LIMIT_BACKOFF_BASE_MS) / 1_000)} 秒冷却，请在冷却结束后重试。`
+
+  if (status !== 429 && retryAfter && isRetryableStatus(status)) {
+    return `${base}。服务端建议遵循 Retry-After（${retryAfter}）后再重试。`
+  }
 
   if (/\btpm\b|tokens?[\s_-]*per[\s_-]*minute|token.{0,24}(rate|limit|minute)/iu.test(providerError)) {
     return `${base}。服务端错误指向 TPM/Token 速率限制；${waitInstruction}较长上下文也会增加 Token 用量。`
@@ -747,29 +795,48 @@ export async function waitForLlmRequestStart(options: {
   if (!Number.isInteger(minRequestIntervalMs) || minRequestIntervalMs < 0 || minRequestIntervalMs > 60_000) {
     throw new RangeError('minRequestIntervalMs 必须是 0 到 60000 之间的整数')
   }
-  if (minRequestIntervalMs === 0) return
+  const state = getRequestPacerState(endpoint, rateLimitKey)
+  const now = Date.now()
+  if (minRequestIntervalMs === 0 && state.cooldownUntil <= now && state.nextRequestAt <= now) return
 
-  const key = `${endpoint}\u0000${rateLimitKey}`
-  let state = requestPacers.get(key)
-  if (!state) {
-    state = { nextRequestAt: 0, queue: Promise.resolve() }
-    requestPacers.set(key, state)
-  }
-
-  // 只串行化预约过程；网络请求彼此不锁住，慢请求不会额外阻塞已经到期的下一次。
+  // 冷却期内统一阻塞同凭据的新请求；其他时间只串行化预约，不锁住网络请求。
   const previous = state.queue
   let release!: () => void
   state.queue = new Promise<void>((resolve) => { release = resolve })
   await previous
   try {
     if (signal?.aborted) throw signal.reason
-    const remainingMs = state.nextRequestAt - Date.now()
+    const remainingMs = Math.max(state.nextRequestAt, state.cooldownUntil) - Date.now()
+    // Retry-After 远大于交互式请求可接受时限时直接失败，避免新会话静默挂起很久。
+    if (remainingMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) {
+      throw new AgentKitError(
+        'LLM_RESPONSE_INVALID',
+        `LLM 接入点仍处于限流冷却，请约 ${Math.ceil(remainingMs / 1_000)} 秒后重试。`,
+      )
+    }
     if (remainingMs > 0) await waitForRetryDelay(remainingMs, signal)
     if (signal?.aborted) throw signal.reason
     state.nextRequestAt = Date.now() + minRequestIntervalMs
   } finally {
     release()
   }
+}
+
+/** 获取同一端点凭据共享的调度状态；供正常间隔和 429 冷却共用。 */
+function getRequestPacerState(endpoint: string, rateLimitKey: string): RequestPacerState {
+  const key = `${endpoint}\u0000${rateLimitKey}`
+  let state = requestPacers.get(key)
+  if (!state) {
+    state = {
+      nextRequestAt: 0,
+      cooldownUntil: 0,
+      consecutiveRateLimitFailures: 0,
+      lastRateLimitAt: 0,
+      queue: Promise.resolve(),
+    }
+    requestPacers.set(key, state)
+  }
+  return state
 }
 
 /** 解析 HTTP Retry-After；支持秒数和 HTTP 日期，过去的日期表示可立即重试。 */
@@ -784,18 +851,52 @@ function parseRetryAfterMs(value: string | null): number | undefined {
   return Math.max(0, timestamp - Date.now())
 }
 
-/** 429 使用 Retry-After 或有上限的等比例抖动退避，避免多次快速重放请求。 */
-function rateLimitRetryDelay(retryAfterHeader: string | null | undefined, attempt: number): number | null {
-  const retryAfterMs = parseRetryAfterMs(retryAfterHeader ?? null)
+/** 短暂性网络或服务端错误优先遵循 Retry-After，否则使用有上限的等比例退避。 */
+function transientRetryDelay(attempt: number, retryAfterHeader: string | null = null): number {
+  const retryAfterMs = parseRetryAfterMs(retryAfterHeader)
   if (retryAfterMs !== undefined) {
-    if (retryAfterMs > RATE_LIMIT_BACKOFF_MAX_MS) return null
-    const jitterCap = Math.min(RETRY_AFTER_JITTER_MAX_MS, RATE_LIMIT_BACKOFF_MAX_MS - retryAfterMs)
-    return retryAfterMs + Math.floor(Math.random() * (jitterCap + 1))
+    // 只加正向抖动，避免早于服务端建议时间重试。
+    return retryAfterMs + Math.floor(Math.random() * (RETRY_AFTER_JITTER_MAX_MS + 1))
   }
-
-  const ceiling = Math.min(RATE_LIMIT_BACKOFF_MAX_MS, RATE_LIMIT_BACKOFF_BASE_MS * 2 ** attempt)
+  const ceiling = Math.min(TRANSIENT_BACKOFF_MAX_MS, TRANSIENT_BACKOFF_BASE_MS * 2 ** attempt)
   const floor = Math.ceil(ceiling / 2)
   return floor + Math.floor(Math.random() * (ceiling - floor + 1))
+}
+
+/** 收到 429 后设置跨请求冷却，优先采用服务端 Retry-After。 */
+function recordLlmRateLimit(endpoint: string, rateLimitKey: string, retryAfterHeader: string | null): number {
+  const state = getRequestPacerState(endpoint, rateLimitKey)
+  const now = Date.now()
+  const retryAfterMs = parseRetryAfterMs(retryAfterHeader ?? null)
+  let delayMs: number
+  if (retryAfterMs !== undefined) {
+    // 只加正向抖动，保证不会早于服务端建议时间再次请求。
+    delayMs = retryAfterMs + Math.floor(Math.random() * (RETRY_AFTER_JITTER_MAX_MS + 1))
+  } else {
+    const ceiling = Math.min(
+      RATE_LIMIT_BACKOFF_MAX_MS,
+      RATE_LIMIT_BACKOFF_BASE_MS * 2 ** state.consecutiveRateLimitFailures,
+    )
+    const jitterCap = Math.min(
+      RATE_LIMIT_JITTER_MAX_MS,
+      Math.max(0, RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS - ceiling),
+      RATE_LIMIT_BACKOFF_MAX_MS - ceiling,
+    )
+    delayMs = ceiling + Math.floor(Math.random() * (jitterCap + 1))
+  }
+
+  state.consecutiveRateLimitFailures += 1
+  state.lastRateLimitAt = now
+  state.cooldownUntil = Math.max(state.cooldownUntil, now + delayMs)
+  return Math.max(0, state.cooldownUntil - now)
+}
+
+/** 只有在最新一次限流之后发起并成功的请求，才会解除共享冷却。 */
+function markLlmRequestSuccess(endpoint: string, rateLimitKey: string, startedAt: number): void {
+  const state = requestPacers.get(`${endpoint}\u0000${rateLimitKey}`)
+  if (!state || startedAt < state.lastRateLimitAt) return
+  state.cooldownUntil = 0
+  state.consecutiveRateLimitFailures = 0
 }
 
 /** 退避期间仍响应调用方取消，且不占用单次 HTTP 请求的 timeout 预算。 */
