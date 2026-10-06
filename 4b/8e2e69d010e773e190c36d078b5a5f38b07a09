@@ -1,0 +1,14 @@
+examples/agent-runtime-bff
+  h_a390bb826605cb 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4b8e2e69d010e773e190c36d078b5a5f38b07a09",
+  "prompts": {},
+  "humans": {
+    "h_a390bb826605cb": {
+      "author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
