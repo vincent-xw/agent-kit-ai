@@ -149,17 +149,38 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
       setState(sessionId, state)
     },
     async forceCompress(sessionId, messages) {
-      const compressed = await runCompress(messages, sessionId)
+      const originalUsage = estimateMessages(messages)
+      // 手动压缩以当前估算用量为基准压到一半，不受模型自动压缩水位影响。
+      const compressed = await compressMessages(
+        messages,
+        {
+          limit: Math.max(1, originalUsage),
+          highWatermark: 0,
+          lowWatermark: low,
+          preserveRecentUnits: preserve,
+        },
+        options.summarizer,
+        sessionId,
+      )
+      const compressedUsage = estimateMessages(compressed.messages)
+      const didCompress = compressed.compressedCount > 0 && compressedUsage < originalUsage
+      const nextMessages = didCompress ? compressed.messages : messages
       const state: SessionState = {
         ...getState(sessionId),
-        raw: compressed.messages,
-        trimmed: compressed.messages,
-        compressedCount: getState(sessionId).compressedCount + (compressed.compressedCount > 0 ? 1 : 0),
+        raw: nextMessages,
+        trimmed: nextMessages,
+        compressedCount: getState(sessionId).compressedCount + (didCompress ? 1 : 0),
         lastUpdatedAt: new Date().toISOString(),
       }
-      if (compressed.summary !== undefined) state.summary = compressed.summary
+      if (didCompress) {
+        // 手动压缩后用压缩后的消息估算用量，避免继续显示压缩前的 Provider usage。
+        delete state.lastUsageTotal
+        delete state.lastUsageHit
+        delete state.lastUsageMiss
+      }
+      if (didCompress && compressed.summary !== undefined) state.summary = compressed.summary
       setState(sessionId, state)
-      return compressed.messages
+      return nextMessages
     },
     setSummarizer(summarizer) {
       options.summarizer = summarizer

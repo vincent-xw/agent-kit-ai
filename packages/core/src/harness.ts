@@ -256,6 +256,10 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
     const trimmed = await deps.context.load(sessionId)
     const summary = await deps.context.getSummary(sessionId)
     if (!summary) return trimmed
+    // TokenContextManager 会把摘要随裁剪消息持久化；已存在时不再重复注入同一段摘要。
+    if (trimmed.some((message) => message.role === 'system'
+      && typeof message.content === 'string'
+      && message.content === `Earlier conversation summary: ${summary}`)) return trimmed
     return [{ role: 'system', content: summary }, ...trimmed]
   }
 

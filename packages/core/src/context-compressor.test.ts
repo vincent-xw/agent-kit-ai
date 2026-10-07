@@ -34,6 +34,31 @@ describe('compressMessages', () => {
     expect(result.messages.find((m) => m.role === 'assistant' && m.content === 'new a')).toBeDefined()
   })
 
+  it('移除旧工具轮次已经降到低水位以下时仍生成包含目标和进度的摘要', async () => {
+    const messages: SessionMessage[] = [
+      { role: 'user', content: `目标：完成收货地址填写后核对总价，不要重复提交。${'旧目标上下文 '.repeat(500)}` },
+      { role: 'assistant', content: null, toolCalls: [{ callId: 'fill-address', toolName: 'mobile_set_text', input: { field: '收货地址' } }] },
+      { role: 'tool', callId: 'fill-address', toolName: 'mobile_set_text', content: `已填写收货地址，订单尚未提交。${'大页面快照 '.repeat(2_000)}` },
+      { role: 'user', content: '继续核对订单，不要从头开始。' },
+      { role: 'assistant', content: '我会先确认收货地址和总价。' },
+    ]
+
+    const result = await compressMessages(messages, {
+      limit: 1_000,
+      highWatermark: 0.8,
+      lowWatermark: 0.5,
+      preserveRecentUnits: 2,
+    })
+
+    expect(result.messages[0]).toMatchObject({
+      role: 'system',
+      content: expect.stringContaining('Earlier conversation summary:'),
+    })
+    expect(result.summary).toContain('不要重复提交')
+    expect(result.summary).toContain('已填写收货地址，订单尚未提交')
+    expect(result.messages.some((message) => message.role === 'tool')).toBe(false)
+  })
+
   it('丢弃后仍超阈值则摘要旧轮次', async () => {
     let summarizerSessionId: string | undefined
     const summarizer = async (_messages: SessionMessage[], sessionId?: string) => {

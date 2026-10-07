@@ -51,10 +51,22 @@ describe('createTokenContextManager', () => {
     expect(cm.getStatus('s1').used).toBe(42)
   })
 
-  it('forceCompress 返回压缩后的消息', async () => {
-    const cm = createTokenContextManager({ model: 'm', limit: 200, highWatermark: 0.8, lowWatermark: 0.5 })
+  it('手动压缩会绕过自动水位并压缩低于 80% 的历史', async () => {
+    const cm = createTokenContextManager({ model: 'm', limit: 1_000_000, highWatermark: 0.8, lowWatermark: 0.5 })
     const original = makeLongMessages(10)
     const compressed = await cm.forceCompress('s1', original)
     expect(compressed.length).toBeLessThan(original.length)
+  })
+
+  it('手动压缩后不再用压缩前的 Provider usage 覆盖新估算值', async () => {
+    const cm = createTokenContextManager({ model: 'm', limit: 1_000_000 })
+    const original = makeLongMessages(10)
+    await cm.save('s1', original)
+    cm.onLlmTrace({ requestId: 'r1', phase: 'response', durationMs: 1, sessionId: 's1', totalTokens: 900_000 })
+
+    const compressed = await cm.forceCompress('s1', original)
+
+    expect(compressed.length).toBeLessThan(original.length)
+    expect(cm.getStatus('s1').used).toBeLessThan(900_000)
   })
 })
