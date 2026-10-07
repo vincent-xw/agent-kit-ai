@@ -1,0 +1,42 @@
+packages/core/package.json
+  s_2a68b6072e3ad9::t_1c5d5943917057 3
+packages/core/src/index.ts
+  s_2a68b6072e3ad9::t_daf09c4b16a00c 2
+packages/core/src/token-context-manager.test.ts
+  s_2a68b6072e3ad9::t_36980776f91a42 54-55,60-70
+  s_2a68b6072e3ad9::t_c36fee9ef2f7b3 71
+packages/core/src/context-compressor.test.ts
+  s_2a68b6072e3ad9::t_065dfc77fe745c 37-61
+packages/core/src/harness.ts
+  s_2a68b6072e3ad9::t_85f7f44e2dd3a4 259-262
+packages/core/src/context-compressor.ts
+  s_2a68b6072e3ad9::t_9fb1ed3a0c17fb 46
+  s_2a68b6072e3ad9::t_b95205d54a4962 50,53-59,66-69
+  s_2a68b6072e3ad9::t_ed656a1eb9d487 20-45,51-52,60-65,70-82,138,171,173,176,178,180
+  s_2a68b6072e3ad9::t_6a0a418c89a013 131-135,140,160-169,189-190
+  s_2a68b6072e3ad9::t_031dcfe3ea0887 144,156,174,177,181
+  s_2a68b6072e3ad9::t_b461d78a614d08 83-88
+  s_2a68b6072e3ad9::t_742dc5a1221316 175
+  s_2a68b6072e3ad9::t_c5c9d265656917 47-49
+packages/core/src/token-context-manager.ts
+  s_2a68b6072e3ad9::t_987c913d18595e 177-179
+  s_2a68b6072e3ad9::t_86751624b936a4 181
+  s_2a68b6072e3ad9::t_a4c2d5a1f7c963 152-167,170-172,175-176,183
+  s_2a68b6072e3ad9::t_e77b0e70cac2c5 180
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "65dc2248a9af71730edbbf9917a4d6d023f5a073",
+  "prompts": {},
+  "sessions": {
+    "s_2a68b6072e3ad9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f65e-5ba4-7283-bc12-3fcf8838e767",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
