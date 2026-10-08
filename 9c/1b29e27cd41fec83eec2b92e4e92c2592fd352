@@ -1,0 +1,33 @@
+packages/core/package.json
+  s_2a68b6072e3ad9::t_db51bcb76bc037 3
+packages/core/src/token-context-manager.test.ts
+  s_2a68b6072e3ad9::t_243d895e64b2cf 186,192,194,205-206
+  s_2a68b6072e3ad9::t_495e608019528f 95-106,108-113,115-128
+  s_2a68b6072e3ad9::t_81f3a9cb7dae9f 181-185,187,189-191,193,196-204,207-212
+  s_2a68b6072e3ad9::t_a8770d2d0b7647 107,114
+  s_2a68b6072e3ad9::t_f729c0043f1b6f 188
+  s_2a68b6072e3ad9::t_bbed5c4130d8f1 195
+packages/core/src/index.ts
+  s_2a68b6072e3ad9::t_db51bcb76bc037 2
+packages/core/src/token-context-manager.ts
+  s_2a68b6072e3ad9::t_ed2c3868aa1f1b 142
+  s_2a68b6072e3ad9::t_857a13ad341b17 237-238,245-246,249,264,266-267,282
+  s_2a68b6072e3ad9::t_fe6d2710edea5a 137-138,140-141,146,151-152
+  s_2a68b6072e3ad9::t_851724e89a673d 176-177
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "9c1b29e27cd41fec83eec2b92e4e92c2592fd352",
+  "prompts": {},
+  "sessions": {
+    "s_2a68b6072e3ad9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f65e-5ba4-7283-bc12-3fcf8838e767",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
