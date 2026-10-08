@@ -70,6 +70,8 @@ export interface LlmTraceEvent {
   phase: 'request' | 'response' | 'error'
   /** 发给端点的 HTTP 请求体。request 阶段有值。 */
   body?: Record<string, unknown>
+  /** 应用显式传给 fetch 的请求头；可能包含凭证，日志消费者必须默认脱敏。 */
+  requestHeaders?: Record<string, string>
   /** 端点返回的原始响应。response 阶段有值。 */
   responseBody?: unknown
   durationMs: number
@@ -326,12 +328,14 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
         ...(config.reasoningEffort ? { reasoning_effort: config.reasoningEffort } : {}),
         ...(config.onDelta ? { stream: true } : {}),
       }
-      trace?.({ requestId, phase: 'request', body, durationMs: 0, ...(request.sessionId ? { sessionId: request.sessionId } : {}) })
+      const requestHeaders = buildRequestHeaders(config, request.sessionId)
+      // Trace 拿到独立快照，避免日志消费者改写实际发出的请求头。
+      trace?.({ requestId, phase: 'request', body, requestHeaders: { ...requestHeaders }, durationMs: 0, ...(request.sessionId ? { sessionId: request.sessionId } : {}) })
 
       if (config.onDelta) {
-        return completeStream(endpoint, config, body, requestId, trace, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
+        return completeStream(endpoint, config, body, requestId, trace, requestHeaders, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
       }
-      return completeJson(endpoint, config, body, requestId, trace, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
+      return completeJson(endpoint, config, body, requestId, trace, requestHeaders, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
     },
   }
 }
@@ -351,6 +355,7 @@ async function completeJson(
   body: Record<string, unknown>,
   requestId: string,
   trace: ((event: LlmTraceEvent) => void) | undefined,
+  requestHeaders: Record<string, string>,
   sessionId: string | undefined,
   signal: AbortSignal | undefined,
   timeoutMs: number,
@@ -389,7 +394,7 @@ async function completeJson(
       try {
         response = await fetch(endpoint, {
           method: 'POST',
-          headers: buildRequestHeaders(config, sessionId),
+          headers: requestHeaders,
           body: JSON.stringify(body),
           signal: controller.signal,
         })
@@ -468,6 +473,7 @@ async function completeStream(
   body: Record<string, unknown>,
   requestId: string,
   trace: ((event: LlmTraceEvent) => void) | undefined,
+  requestHeaders: Record<string, string>,
   request: LlmClientRequest,
   timeoutMs: number,
   maxRetries: number,
@@ -502,7 +508,7 @@ async function completeStream(
       try {
         response = await fetch(endpoint, {
           method: 'POST',
-          headers: buildRequestHeaders(config, sessionId),
+          headers: requestHeaders,
           body: JSON.stringify(body),
           signal: controller.signal,
         })

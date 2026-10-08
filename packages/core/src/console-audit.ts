@@ -72,14 +72,26 @@ export interface VerboseLogOptions {
   enabled?: boolean
   /** 日志前缀。 */
   prefix?: string
+  /** 原样打印请求头值；可能泄露凭证，默认仅输出脱敏后的敏感头。 */
+  rawRequestHeaders?: boolean
   sink?: { log(message: string): void }
+}
+
+/** 默认隐藏常见凭证类请求头的值，header 名称大小写不敏感。 */
+function redactLlmRequestHeaders(headers: Record<string, string>): Record<string, string> {
+  return Object.fromEntries(Object.entries(headers).map(([name, value]) => [
+    name,
+    /authorization|api[-_]?key|token|secret|credential|password|cookie|(?:^|[-_])key(?:$|[-_])/iu.test(name)
+      ? '[REDACTED]'
+      : value,
+  ]))
 }
 
 /**
  * 把一次 LLM 调用的完整输入输出打出来，供排障。
  *
- * 这是有意越界的调试模式：会输出 Prompt 正文与模型原文（含工具调用、会话历史），
- * 但**绝不会**输出 LLM API Key。生产环境不应开启 —— 需要 BFF 设置 LOG_LEVEL=verbose 才启用。
+ * 这是有意越界的调试模式：会输出 Prompt 正文与模型原文（含工具调用、会话历史）。
+ * 请求头默认脱敏；只有显式设置 rawRequestHeaders 才会原样输出凭证。生产环境不应开启。
  */
 export function createLlmVerboseLogger(options: VerboseLogOptions = {}): (event: LlmTraceEvent) => void {
   const enabled = options.enabled ?? true
@@ -96,9 +108,12 @@ export function createLlmVerboseLogger(options: VerboseLogOptions = {}): (event:
         roleCounts.set(message.role ?? '?', (roleCounts.get(message.role ?? '?') ?? 0) + 1)
       }
       const summary = [...roleCounts.entries()].map(([role, count]) => `${role}×${count}`).join(', ')
+      const requestHeaders = event.requestHeaders
+        ? `\nrequestHeaders=${JSON.stringify(options.rawRequestHeaders ? event.requestHeaders : redactLlmRequestHeaders(event.requestHeaders), null, 2)}`
+        : ''
       sink.log(
         `${prefix} ${head} → ${event.requestId} model=${String(body.model ?? '?')} tools=${Array.isArray(body.tools) ? body.tools.length : 0} messages(${summary})\n` +
-          `${JSON.stringify(body, null, 2)}`,
+          `${JSON.stringify(body, null, 2)}${requestHeaders}`,
       )
       return
     }
