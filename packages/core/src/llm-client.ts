@@ -1,3 +1,5 @@
+import { AsyncLocalStorage } from 'node:async_hooks'
+import { channel } from 'node:diagnostics_channel'
 import { AgentKitError } from './errors.js'
 import type { LlmResult, SessionMessage, ToolCall, ToolSchema } from './contracts.js'
 
@@ -9,6 +11,109 @@ const RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS = 2 * 60_000
 const RATE_LIMIT_MAX_RETRIES = 2
 const RATE_LIMIT_JITTER_MAX_MS = 10_000
 const RETRY_AFTER_JITTER_MAX_MS = 250
+
+interface UndiciRequestDiagnostic {
+  headers?: unknown
+  contentLength?: unknown
+}
+
+interface LlmRequestHeaderCapture {
+  request?: UndiciRequestDiagnostic
+  headers?: Record<string, string>
+  resolveHeaders?: (headers: Record<string, string>) => void
+}
+
+// 只在当前 LLM fetch 的异步上下文中关联 Undici 诊断事件，不观察其它请求。
+const llmRequestHeaderCapture = new AsyncLocalStorage<LlmRequestHeaderCapture>()
+
+/** 按 HTTP Header 名大小写不敏感的规则合并重复字段，并保留多值顺序。 */
+function appendHeader(headers: Record<string, string>, name: string, value: string): void {
+  const key = name.toLowerCase()
+  headers[key] = headers[key] === undefined ? value : `${headers[key]}, ${value}`
+}
+
+/** 读取 Undici 在构造请求时补齐的 Fetch 默认头，供未到达发送阶段时诊断网络失败。 */
+function headersFromUndiciList(value: unknown): Record<string, string> | undefined {
+  if (!Array.isArray(value)) return undefined
+  const headers: Record<string, string> = {}
+  for (let index = 0; index + 1 < value.length; index += 2) {
+    const name = value[index]
+    const headerValue = value[index + 1]
+    if (typeof name === 'string' && typeof headerValue === 'string') appendHeader(headers, name, headerValue)
+  }
+  return Object.keys(headers).length > 0 ? headers : undefined
+}
+
+/** 解析 Undici 即将写入 socket 的头，并补上其单独维护的 Content-Length。 */
+function headersFromUndiciSend(value: unknown, contentLength: unknown): Record<string, string> | undefined {
+  if (typeof value !== 'string') return undefined
+  const headers: Record<string, string> = {}
+  const lines = value.split(/\r?\n/u)
+  for (const line of lines.slice(1)) {
+    const separator = line.indexOf(':')
+    if (separator <= 0) continue
+    appendHeader(headers, line.slice(0, separator).trim(), line.slice(separator + 1).trim())
+  }
+  if (typeof contentLength === 'number' && Number.isFinite(contentLength) && contentLength > 0 && headers['content-length'] === undefined) {
+    headers['content-length'] = String(contentLength)
+  }
+  return Object.keys(headers).length > 0 ? headers : undefined
+}
+
+channel('undici:request:create').subscribe((message) => {
+  const capture = llmRequestHeaderCapture.getStore()
+  const request = (message as { request?: UndiciRequestDiagnostic }).request
+  if (!capture || !request || (capture.request && capture.request !== request)) return
+  capture.request = request
+  const headers = headersFromUndiciList(request.headers)
+  if (headers) capture.headers = headers
+})
+
+channel('undici:client:sendHeaders').subscribe((message) => {
+  const capture = llmRequestHeaderCapture.getStore()
+  const diagnostic = message as { request?: UndiciRequestDiagnostic; headers?: unknown }
+  if (!capture || !diagnostic.request || (capture.request && capture.request !== diagnostic.request)) return
+  capture.request = diagnostic.request
+  const headers = headersFromUndiciSend(diagnostic.headers, diagnostic.request.contentLength)
+  if (!headers) return
+  capture.headers = headers
+  capture.resolveHeaders?.(headers)
+})
+
+/** 等 Undici 暴露真实发送头后再生成 Trace；其它 fetch 实现则退回显式请求头快照。 */
+async function fetchWithLlmRequestHeaderTrace(
+  endpoint: string,
+  init: RequestInit,
+  explicitHeaders: Record<string, string>,
+  onRequestHeaders?: (headers: Record<string, string>) => void,
+): Promise<Response> {
+  if (!onRequestHeaders) return fetch(endpoint, init)
+
+  let resolveHeaders!: (headers: Record<string, string>) => void
+  const headersObserved = new Promise<Record<string, string>>((resolve) => { resolveHeaders = resolve })
+  const capture: LlmRequestHeaderCapture = { resolveHeaders }
+  let responsePromise: Promise<Response>
+  try {
+    responsePromise = llmRequestHeaderCapture.run(capture, () => fetch(endpoint, init))
+  } catch (error) {
+    onRequestHeaders(capture.headers ?? explicitHeaders)
+    throw error
+  }
+
+  let firstResult: { kind: 'headers'; headers: Record<string, string> } | { kind: 'response'; response: Response }
+  try {
+    firstResult = await Promise.race([
+      headersObserved.then((headers) => ({ kind: 'headers' as const, headers })),
+      responsePromise.then((response) => ({ kind: 'response' as const, response })),
+    ])
+  } catch (error) {
+    onRequestHeaders(capture.headers ?? explicitHeaders)
+    throw error
+  }
+
+  onRequestHeaders(firstResult.kind === 'headers' ? firstResult.headers : capture.headers ?? explicitHeaders)
+  return firstResult.kind === 'response' ? firstResult.response : responsePromise
+}
 
 interface RequestPacerState {
   nextRequestAt: number
@@ -70,7 +175,7 @@ export interface LlmTraceEvent {
   phase: 'request' | 'response' | 'error'
   /** 发给端点的 HTTP 请求体。request 阶段有值。 */
   body?: Record<string, unknown>
-  /** 应用显式传给 fetch 的请求头；可能包含凭证，日志消费者必须默认脱敏。 */
+  /** Node Fetch/Undici 即将发出的请求头；可能包含凭证，日志消费者必须默认脱敏。 */
   requestHeaders?: Record<string, string>
   /** 端点返回的原始响应。response 阶段有值。 */
   responseBody?: unknown
@@ -329,13 +434,20 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
         ...(config.onDelta ? { stream: true } : {}),
       }
       const requestHeaders = buildRequestHeaders(config, request.sessionId)
-      // Trace 拿到独立快照，避免日志消费者改写实际发出的请求头。
-      trace?.({ requestId, phase: 'request', body, requestHeaders: { ...requestHeaders }, durationMs: 0, ...(request.sessionId ? { sessionId: request.sessionId } : {}) })
+      let requestTraceEmitted = false
+      const onRequestHeadersCaptured = trace
+        ? (headers: Record<string, string>) => {
+            if (requestTraceEmitted) return
+            requestTraceEmitted = true
+            // Trace 拿到独立快照，避免日志消费者改写实际发出的请求头。
+            trace({ requestId, phase: 'request', body, requestHeaders: { ...headers }, durationMs: 0, ...(request.sessionId ? { sessionId: request.sessionId } : {}) })
+          }
+        : undefined
 
       if (config.onDelta) {
-        return completeStream(endpoint, config, body, requestId, trace, requestHeaders, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
+        return completeStream(endpoint, config, body, requestId, trace, requestHeaders, onRequestHeadersCaptured, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
       }
-      return completeJson(endpoint, config, body, requestId, trace, requestHeaders, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
+      return completeJson(endpoint, config, body, requestId, trace, requestHeaders, onRequestHeadersCaptured, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
     },
   }
 }
@@ -356,6 +468,7 @@ async function completeJson(
   requestId: string,
   trace: ((event: LlmTraceEvent) => void) | undefined,
   requestHeaders: Record<string, string>,
+  onRequestHeadersCaptured: ((headers: Record<string, string>) => void) | undefined,
   sessionId: string | undefined,
   signal: AbortSignal | undefined,
   timeoutMs: number,
@@ -392,12 +505,12 @@ async function completeJson(
         text(): Promise<string>
       }
       try {
-        response = await fetch(endpoint, {
+        response = await fetchWithLlmRequestHeaderTrace(endpoint, {
           method: 'POST',
           headers: requestHeaders,
           body: JSON.stringify(body),
           signal: controller.signal,
-        })
+        }, requestHeaders, onRequestHeadersCaptured)
       } catch (error) {
         if (signal?.aborted) throw error
         trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, error })
@@ -474,6 +587,7 @@ async function completeStream(
   requestId: string,
   trace: ((event: LlmTraceEvent) => void) | undefined,
   requestHeaders: Record<string, string>,
+  onRequestHeadersCaptured: ((headers: Record<string, string>) => void) | undefined,
   request: LlmClientRequest,
   timeoutMs: number,
   maxRetries: number,
@@ -506,12 +620,12 @@ async function completeStream(
     try {
       let response: Response
       try {
-        response = await fetch(endpoint, {
+        response = await fetchWithLlmRequestHeaderTrace(endpoint, {
           method: 'POST',
           headers: requestHeaders,
           body: JSON.stringify(body),
           signal: controller.signal,
-        })
+        }, requestHeaders, onRequestHeadersCaptured)
       } catch (error) {
         if (request.signal?.aborted) throw error
         trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, error })
