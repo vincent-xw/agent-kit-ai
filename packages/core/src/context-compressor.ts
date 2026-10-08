@@ -3,6 +3,8 @@ import { estimateMessages } from './token-counter.js'
 
 export interface CompressOptions {
   limit: number
+  /** 可用 Provider 实际 prompt usage 校准自动压缩门槛；消息保留预算仍按本地估算计算。 */
+  usedTokens?: number
   mode?: 'default' | 'fast'
   highWatermark?: number
   lowWatermark?: number
@@ -177,7 +179,7 @@ export async function compressMessages(
   const high = options.highWatermark ?? 0.9
   const low = options.lowWatermark ?? 0.5
 
-  const used = estimateMessages(messages)
+  const used = options.usedTokens ?? estimateMessages(messages)
   if (limit <= 0) return { messages, compressedCount: 0 }
   const ratio = used / limit
   if (mode === 'fast' && ratio >= 0.5 && ratio < Math.min(0.8, high)) {

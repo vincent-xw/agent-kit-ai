@@ -254,6 +254,8 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
     if (!deps.context) return history
     await deps.context.save(sessionId, history)
     const trimmed = await deps.context.load(sessionId)
+    // 投影不能把非空的持久会话历史全部清空，否则 continue 会把没有任务上下文的请求发给模型。
+    if (history.length > 0 && trimmed.length === 0) return history
     const summary = await deps.context.getSummary(sessionId)
     if (!summary) return trimmed
     // TokenContextManager 把摘要放进请求 projection；已存在时不再重复注入同一段摘要。

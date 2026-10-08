@@ -110,6 +110,40 @@ describe('createTokenContextManager', () => {
     expect(cm.getStatus('s1').used).toBe(1_000 + estimateMessages([assistantOutput]))
   })
 
+  it('Provider 校准用量达到水位时，即使本地估算偏低也会在下一次请求前摘要', async () => {
+    const summarizedInputs: SessionMessage[][] = []
+    const history: SessionMessage[] = Array.from({ length: 8 }, (_, index) => ({
+      role: index % 2 === 0 ? 'user' as const : 'assistant' as const,
+      content: `历史事实 ${index} ${'x'.repeat(3_900)}`,
+    }))
+    const nextUserMessage: SessionMessage = { role: 'user', content: '继续任务' }
+    const nextAssistantMessage: SessionMessage = { role: 'assistant', content: 'a'.repeat(400) }
+    const requestMessages = [...history, nextUserMessage]
+    const cm = createTokenContextManager({
+      model: 'm',
+      limit: 10_000,
+      highWatermark: 0.9,
+      lowWatermark: 0.5,
+      summarizer: async (messages) => {
+        summarizedInputs.push(messages)
+        return '保留了已完成步骤和当前进度。'
+      },
+    })
+    await cm.save('s1', history)
+    cm.onLlmTrace({
+      requestId: 'r1', phase: 'request', durationMs: 0, sessionId: 's1', body: { messages: requestMessages },
+    })
+    cm.onLlmTrace({ requestId: 'r1', phase: 'response', durationMs: 1, sessionId: 's1', promptTokens: 9_700 })
+    expect(cm.getStatus('s1').used).toBeGreaterThan(9_000)
+
+    await cm.save('s1', [...requestMessages, nextAssistantMessage])
+
+    expect(estimateMessages([...requestMessages, nextAssistantMessage])).toBeLessThan(9_000)
+    expect(summarizedInputs).toHaveLength(1)
+    expect(summarizedInputs[0]).toEqual([...requestMessages, nextAssistantMessage])
+    expect(await cm.getSummary('s1')).toBe('保留了已完成步骤和当前进度。')
+  })
+
   it('同一 Session 请求交错时按 requestId 使用对应的 prompt 估算基线', async () => {
     const cm = createTokenContextManager({ model: 'm', limit: 100_000 })
     const history: SessionMessage[] = [{ role: 'user', content: '已有历史' }]

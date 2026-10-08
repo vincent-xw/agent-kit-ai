@@ -1962,6 +1962,47 @@ describe('按名选择提示词', () => {
       expect(n).toBe(2)
     })
 
+    it('上下文 projection 返回空数组时 continue 仍把已保存的任务历史发给模型', async () => {
+      const tools = createToolRegistry()
+      tools.register({
+        name: 'observe',
+        execution: 'server',
+        input: z.object({}),
+        output: z.object({ title: z.string() }),
+        execute: async () => ({ title: '首页' }),
+      })
+      const sessions = createMemorySessionStore()
+      const requests: LlmRequest[] = []
+      let modelCalls = 0
+      const harness = createAgentHarness({
+        llm: { complete: async (request) => {
+          requests.push(request)
+          modelCalls += 1
+          return modelCalls === 1
+            ? callsOf({ callId: 'observe-1', toolName: 'observe', input: {} })
+            : { type: 'final', output: '已完成首页检查' }
+        } },
+        sessions,
+        tools,
+        maxSteps: 3,
+        // 空 projection 模拟状态丢失；非空 Session 历史仍是 Core 可恢复的事实来源。
+        context: {
+          load: () => [],
+          save: () => {},
+          append: () => {},
+          getSummary: () => undefined,
+        },
+      })
+
+      await harness.run({ sessionId: 's-empty-projection', input: '打开首页并核对标题', context: {}, stepMode: true })
+      await harness.continue({ sessionId: 's-empty-projection', context: {} })
+
+      expect(requests[1]?.messages).toEqual(expect.arrayContaining([
+        expect.objectContaining({ role: 'user', content: '打开首页并核对标题' }),
+        expect.objectContaining({ role: 'tool', callId: 'observe-1', content: { title: '首页' } }),
+      ]))
+    })
+
     it('continue 带 input 时作为中途注入消息发给模型并并入历史', async () => {
       const tools = createToolRegistry()
       tools.register({

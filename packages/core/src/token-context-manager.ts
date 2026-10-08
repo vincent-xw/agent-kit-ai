@@ -76,10 +76,15 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
   }
 
   function computeUsed(state: SessionState): number {
+    return computeUsedForMessages(state, state.trimmed)
+  }
+
+  /** 用 Provider 最近一次实际 usage 校准候选消息，并只叠加该请求之后新增的估算量。 */
+  function computeUsedForMessages(state: SessionState, messages: SessionMessage[]): number {
     if (state.lastPromptTokens === undefined || state.lastPromptEstimate === undefined) {
-      return estimateMessages(state.trimmed)
+      return estimateMessages(messages)
     }
-    const appendedEstimate = Math.max(0, estimateMessages(state.trimmed) - state.lastPromptEstimate)
+    const appendedEstimate = Math.max(0, estimateMessages(messages) - state.lastPromptEstimate)
     return state.lastPromptTokens + appendedEstimate
   }
 
@@ -101,11 +106,12 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
     return status
   }
 
-  async function runCompress(messages: SessionMessage[], sessionId?: string): Promise<CompressResult> {
+  async function runCompress(messages: SessionMessage[], sessionId?: string, usedTokens?: number): Promise<CompressResult> {
     return compressMessages(
       messages,
       {
         limit: currentLimit,
+        ...(usedTokens !== undefined ? { usedTokens } : {}),
         mode,
         highWatermark: high,
         lowWatermark: low,
@@ -132,10 +138,11 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
     const incremental = sessions.has(sessionId) && isAppendOf(messages, previous.raw)
     const appended = incremental ? messages.slice(previous.raw.length) : []
     const projection = incremental ? [...previous.trimmed, ...appended] : messages
+    const usedTokens = incremental ? computeUsedForMessages(previous, projection) : estimateMessages(projection)
     // 首次进入 Tier 3 时用完整原始历史摘要，避免 Tier 1/2 先裁掉的工具事实永远进不了交接摘要。
-    const summaryInputRequired = !previous.summary && estimateMessages(projection) / currentLimit >= high
+    const summaryInputRequired = !previous.summary && usedTokens / currentLimit >= high
     const compressionInput = incremental && summaryInputRequired ? messages : projection
-    const compressed = await runCompress(compressionInput, sessionId)
+    const compressed = await runCompress(compressionInput, sessionId, usedTokens)
     const changedProjection = compressed.compressedCount > 0
     const state: SessionState = {
       ...previous,
