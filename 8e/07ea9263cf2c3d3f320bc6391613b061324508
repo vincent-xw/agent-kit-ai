@@ -1,0 +1,25 @@
+packages/core/src/context-compressor.ts
+  s_2a68b6072e3ad9::t_9ced86caac8a62 196,200-201
+packages/core/src/index.ts
+  s_2a68b6072e3ad9::t_638c43e9fc1282 2
+packages/core/package.json
+  s_2a68b6072e3ad9::t_638c43e9fc1282 3
+examples/agent-runtime-bff
+  s_2a68b6072e3ad9::t_7a0839c5dc1a39 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "8e07ea9263cf2c3d3f320bc6391613b061324508",
+  "prompts": {},
+  "sessions": {
+    "s_2a68b6072e3ad9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f65e-5ba4-7283-bc12-3fcf8838e767",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
