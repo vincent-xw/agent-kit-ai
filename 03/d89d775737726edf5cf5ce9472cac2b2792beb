@@ -1,0 +1,22 @@
+packages/core/src/console-audit.ts
+  s_2a68b6072e3ad9::t_a4170dd7a07948 75-76,80-89,93-94,111-113,116
+packages/core/src/llm-client.ts
+  s_2a68b6072e3ad9::t_664ebb941c6d65 73-74,331,336,338,358,397,476,511
+  s_2a68b6072e3ad9::t_b86acf866e344b 332-333
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "03d89d775737726edf5cf5ce9472cac2b2792beb",
+  "prompts": {},
+  "sessions": {
+    "s_2a68b6072e3ad9": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0f65e-5ba4-7283-bc12-3fcf8838e767",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
