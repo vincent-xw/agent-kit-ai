@@ -92,6 +92,40 @@ describe('createTokenContextManager', () => {
     expect((await cm.load('s1')).length).toBeGreaterThanOrEqual(projection.length)
   })
 
+  it('sync 会保留恢复历史的快照，不受调用方后续追加影响', async () => {
+    const messages: SessionMessage[] = [{ role: 'user', content: '恢复历史' }]
+    const cm = createTokenContextManager({ model: 'm', limit: 100_000 })
+    cm.sync('s1', messages)
+
+    messages.push({ role: 'assistant', content: '后续新消息' })
+
+    expect(await cm.load('s1')).toEqual([{ role: 'user', content: '恢复历史' }])
+  })
+
+  it('load 返回的数组不能被调用方原地追加污染内部 projection', async () => {
+    const messages: SessionMessage[] = [{ role: 'user', content: '历史消息' }]
+    const original = [...messages]
+    const cm = createTokenContextManager({ model: 'm', limit: 100_000 })
+    cm.sync('s1', messages)
+
+    const loaded = await cm.load('s1')
+    loaded.push({ role: 'assistant', content: '只属于调用方的消息' })
+
+    expect(await cm.load('s1')).toEqual(original)
+  })
+
+  it('forceCompress 后调用方追加到原始历史仍会被后续 save 识别', async () => {
+    const messages = makeLongMessages(10)
+    const cm = createTokenContextManager({ model: 'm', limit: 1_000_000 })
+    await cm.forceCompress('s1', messages)
+
+    const nextMessage: SessionMessage = { role: 'user', content: '手动压缩后的新消息' }
+    messages.push(nextMessage)
+    await cm.save('s1', messages)
+
+    expect(await cm.load('s1')).toContainEqual(nextMessage)
+  })
+
   it('Provider prompt usage 校准后，新增消息按增量更新上下文用量', async () => {
     const cm = createTokenContextManager({ model: 'm', limit: 100_000 })
     const history: SessionMessage[] = [{ role: 'user', content: '已有历史' }]
@@ -142,6 +176,38 @@ describe('createTokenContextManager', () => {
     expect(summarizedInputs).toHaveLength(1)
     expect(summarizedInputs[0]).toEqual([...requestMessages, nextAssistantMessage])
     expect(await cm.getSummary('s1')).toBe('保留了已完成步骤和当前进度。')
+  })
+
+  it('高用量自动压缩后仍保留下一次工具调用与结果', async () => {
+    const history: SessionMessage[] = Array.from({ length: 8 }, (_, index) => ({
+      role: index % 2 === 0 ? 'user' as const : 'assistant' as const,
+      content: `历史消息 ${index} ${'x'.repeat(1_000)}`,
+    }))
+    const liveHistory = [...history]
+    const cm = createTokenContextManager({
+      model: 'm', limit: Math.floor(estimateMessages(history) / 2), highWatermark: 0.8, lowWatermark: 0.2,
+      preserveRecentTokens: 100,
+      summarizer: async () => '保留任务状态。',
+    })
+    await cm.save('s1', liveHistory)
+    const projection = await cm.load('s1')
+    expect(projection.some((message) => message.role === 'system' && String(message.content).includes('Earlier conversation summary:'))).toBe(true)
+    cm.onLlmTrace({ requestId: 'compressed-request', phase: 'request', durationMs: 0, sessionId: 's1', body: { messages: projection } })
+    cm.onLlmTrace({ requestId: 'compressed-request', phase: 'response', durationMs: 1, sessionId: 's1', promptTokens: 4_500 })
+
+    const assistant: SessionMessage = {
+      role: 'assistant', content: null,
+      toolCalls: [{ callId: 'new-after-compression', toolName: 'update_todo', input: { action: 'finish' } }],
+    }
+    const tool: SessionMessage = {
+      role: 'tool', callId: 'new-after-compression', toolName: 'update_todo', content: { ok: true, ended: 'completed' },
+    }
+    liveHistory.push({ role: 'user', content: '继续' }, assistant, tool)
+    await cm.save('s1', liveHistory)
+
+    const nextProjection = await cm.load('s1')
+    expect(nextProjection).toContainEqual(expect.objectContaining({ role: 'assistant', toolCalls: [expect.objectContaining({ callId: 'new-after-compression' })] }))
+    expect(nextProjection).toContainEqual(expect.objectContaining({ role: 'tool', callId: 'new-after-compression' }))
   })
 
   it('同一 Session 请求交错时按 requestId 使用对应的 prompt 估算基线', async () => {

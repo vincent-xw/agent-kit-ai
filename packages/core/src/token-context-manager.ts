@@ -134,20 +134,22 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
   }
 
   async function saveImpl(sessionId: string, messages: SessionMessage[]): Promise<void> {
+    // 调用方可能在本次保存后继续原地追加会话消息；内部基线必须拥有独立数组。
+    const snapshot = [...messages]
     const previous = getState(sessionId)
-    const incremental = sessions.has(sessionId) && isAppendOf(messages, previous.raw)
-    const appended = incremental ? messages.slice(previous.raw.length) : []
-    const projection = incremental ? [...previous.trimmed, ...appended] : messages
+    const incremental = sessions.has(sessionId) && isAppendOf(snapshot, previous.raw)
+    const appended = incremental ? snapshot.slice(previous.raw.length) : []
+    const projection = incremental ? [...previous.trimmed, ...appended] : snapshot
     const usedTokens = incremental ? computeUsedForMessages(previous, projection) : estimateMessages(projection)
     // 首次进入 Tier 3 时用完整原始历史摘要，避免 Tier 1/2 先裁掉的工具事实永远进不了交接摘要。
     const summaryInputRequired = !previous.summary && usedTokens / currentLimit >= high
-    const compressionInput = incremental && summaryInputRequired ? messages : projection
+    const compressionInput = incremental && summaryInputRequired ? snapshot : projection
     const compressed = await runCompress(compressionInput, sessionId, usedTokens)
     const changedProjection = compressed.compressedCount > 0
     const state: SessionState = {
       ...previous,
-      raw: messages,
-      trimmed: compressed.messages,
+      raw: snapshot,
+      trimmed: [...compressed.messages],
       compressedCount: previous.compressedCount + (changedProjection ? 1 : 0),
       lastUpdatedAt: new Date().toISOString(),
     }
@@ -171,7 +173,8 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
       await saveImpl(sessionId, messages)
     },
     async load(sessionId) {
-      return getState(sessionId).trimmed
+      // 不把内部 projection 数组交给调用方，避免原地追加污染后续压缩基线。
+      return [...getState(sessionId).trimmed]
     },
     async append(sessionId, message) {
       // 直接调用内部 saveImpl，避免依赖 this，方法被解构后仍可用。
@@ -231,18 +234,19 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
     sync(sessionId, messages) {
       const previous = getState(sessionId)
       const state: SessionState = {
-        raw: messages,
-        trimmed: messages,
+        raw: [...messages],
+        trimmed: [...messages],
         compressedCount: previous.compressedCount,
         lastUpdatedAt: new Date().toISOString(),
       }
       setState(sessionId, state)
     },
     async forceCompress(sessionId, messages) {
-      const originalUsage = estimateMessages(messages)
+      const snapshot = [...messages]
+      const originalUsage = estimateMessages(snapshot)
       // 手动压缩以当前估算用量为基准压到一半，不受模型自动压缩水位影响。
       const compressed = await compressMessages(
-        messages,
+        snapshot,
         {
           limit: Math.max(1, originalUsage),
           mode: 'default',
@@ -257,10 +261,10 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
       )
       const compressedUsage = estimateMessages(compressed.messages)
       const didCompress = compressed.compressedCount > 0 && compressedUsage < originalUsage
-      const nextMessages = didCompress ? compressed.messages : messages
+      const nextMessages = didCompress ? compressed.messages : snapshot
       const state: SessionState = {
-        raw: messages,
-        trimmed: nextMessages,
+        raw: snapshot,
+        trimmed: [...nextMessages],
         compressedCount: getState(sessionId).compressedCount + (didCompress ? 1 : 0),
         lastUpdatedAt: new Date().toISOString(),
       }
@@ -275,7 +279,7 @@ export function createTokenContextManager(options: TokenContextManagerOptions): 
         delete state.lastUsageMiss
       }
       setState(sessionId, state)
-      return nextMessages
+      return [...state.trimmed]
     },
     setSummarizer(summarizer) {
       options.summarizer = summarizer
