@@ -15,6 +15,8 @@
 ## 共享包变更
 
 - 只升级实际修改的共享包。验证阶段先用 Beta 版本；验证通过后按 SemVer 影响升级正式版本，并核对 workspace 依赖与构建产物。
+- 修改 `packages/core`、`packages/bff-hono` 或 `packages/adapter-sqlite` 时，同步审阅并更新 sibling 仓库 `../agent-doc/docs/packages/{core,bff-hono,adapter-sqlite}.md` 中对应的包文档；只改动受本次代码变化影响的文档，并确保示例与当前公开导出一致。
+- 在包文档新增 API 说明时，标注该 API 首次引入的包版本（例如“自 `@agentkit-ai/core` v1.3.2 起提供”）。通过 Git 首次引入提交中的 `package.json` 版本、Git tag 和 npm registry 交叉核对；没有发布证据时，明确写成“源码版本/计划版本，尚未发布”，不能让读者误以为该版本可安装。
 - 修改共享包后，检查 `browser-extension-bff` 和私有 `agent-runtime-bff` 的兼容性。只有 BFF submodule 已初始化且可访问时，才能完成后者的验证。
 - 全 workspace 验证命令为 `pnpm -r typecheck && pnpm -r test && pnpm -r build`。
 
