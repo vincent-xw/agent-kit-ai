@@ -193,9 +193,12 @@ export async function compressMessages(
   const units = toUnits(messages)
   const minimumRecentMessages = Math.max(options.minimumRecentMessages ?? 3, options.preserveRecentUnits ?? 0)
   const recentTokenBudget = options.preserveRecentTokens ?? Math.min(30_000, Math.floor(limit * low))
+  const firstUserUnit = units.find((unit) => unit.messages.some((message) => message.role === 'user'))
   const protectedUnits = new Set<MessageUnit>([
     ...units.filter((unit) => unit.messages.some((message) => message.role === 'system') && !unit.messages.some(isContextSummary)),
     ...units.filter((unit) => unit.pendingToolCall),
+    // 首条用户消息承载本轮原始目标、约束和输出格式；摘要遗漏时仍需完整保留。
+    ...(firstUserUnit ? [firstUserUnit] : []),
   ])
 
   // 从尾部保留完整的最近轮次，直到达到 token 预算和最少消息数；Tool Pair 不会被拆开。
