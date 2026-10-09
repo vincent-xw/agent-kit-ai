@@ -137,6 +137,8 @@ export function createSqliteAgentRuntime(options: {
   llmTimeoutMs?: number
   /** LLM 服务商协议；默认使用 OpenAI 兼容协议。 */
   llmProvider?: LlmProvider
+  /** LLM User-Agent 请求头；未配置时保留 Fetch 默认值。 */
+  llmUserAgent?: string
   /** 透传给 Core Harness 的默认 Control Flow Decision Provider。 */
   controlFlowDecisionProvider?: ControlFlowDecisionProvider
 }) {
@@ -161,6 +163,7 @@ export function createSqliteAgentRuntime(options: {
         return createLlmClient({
           ...secret,
           ...(provider ? { provider } : {}),
+          ...(options.llmUserAgent === undefined ? {} : { userAgent: options.llmUserAgent }),
           trace: clientTrace,
           ...(options.llmDelta
             ? {

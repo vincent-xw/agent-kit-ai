@@ -146,6 +146,8 @@ export interface LlmClientConfig {
   model: string
   /** 服务商协议；仅 opencode-go 会增加其专用会话请求头。 */
   provider?: LlmProvider
+  /** 可选的客户端身份头；未配置时保留 Fetch 的默认 User-Agent。 */
+  userAgent?: string
   /** 模型允许的思考强度；未配置时不向服务端发送该字段。 */
   reasoningEffort?: string
   /** 请求超时毫秒数，默认 30 秒。 */
@@ -457,6 +459,7 @@ function buildRequestHeaders(config: LlmClientConfig, sessionId: string | undefi
   return {
     'content-type': 'application/json',
     authorization: `Bearer ${config.apiKey}`,
+    ...(config.userAgent === undefined ? {} : { 'user-agent': config.userAgent }),
     ...(config.provider === 'opencode-go' && sessionId ? { 'x-opencode-session': sessionId } : {}),
   }
 }

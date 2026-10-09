@@ -128,6 +128,29 @@ describe('SQLite SecretProvider', () => {
     database.close()
   })
 
+  it('runtime 将可选 User-Agent 透传到 LLM 请求 Header', async () => {
+    const database = new DatabaseSync(':memory:')
+    const runtime = createSqliteAgentRuntime({
+      database,
+      masterKey: validMasterKey,
+      maxSteps: 3,
+      llmUserAgent: 'agent-runtime-bff/0.1.3',
+    })
+    await runtime.secrets.put({ apiKey: 'sk-test-value', baseUrl: 'https://llm.example.test/v1', model: 'test' })
+    const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => ({
+      ok: true,
+      status: 200,
+      json: async () => ({ choices: [{ message: { content: '你好' } }] }),
+    }))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await expect(runtime.harness.run({ sessionId: 's-user-agent', input: 'hi', context: {} })).resolves.toEqual({ type: 'final', output: '你好' })
+
+    const [, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit]
+    expect(init.headers).toMatchObject({ 'user-agent': 'agent-runtime-bff/0.1.3' })
+    database.close()
+  })
+
   it('档案级 provider 覆盖进程级 provider', async () => {
     const database = new DatabaseSync(':memory:')
     const runtime = createSqliteAgentRuntime({ database, masterKey: validMasterKey, maxSteps: 3, llmProvider: 'openai-compatible' })

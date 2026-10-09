@@ -28,6 +28,32 @@ describe('LlmClient', () => {
     await expect(client.complete({ input: 'hi', context: {}, messages: [] })).resolves.toEqual({ type: 'final', output: '你好' })
   })
 
+  it('显式配置 User-Agent 时将其加入发出的请求头', async () => {
+    const fetchMock = okFetch()
+    vi.stubGlobal('fetch', fetchMock)
+    const client = createLlmClient({ ...baseConfig, userAgent: 'agent-runtime-bff/0.1.3' })
+
+    await client.complete({ input: 'hi', context: {}, messages: [] })
+
+    const [, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit]
+    expect(init.headers).toMatchObject({
+      'content-type': 'application/json',
+      authorization: 'Bearer sk-test',
+      'user-agent': 'agent-runtime-bff/0.1.3',
+    })
+  })
+
+  it('未配置 User-Agent 时不覆盖 Fetch 默认行为', async () => {
+    const fetchMock = okFetch()
+    vi.stubGlobal('fetch', fetchMock)
+    const client = createLlmClient(baseConfig)
+
+    await client.complete({ input: 'hi', context: {}, messages: [] })
+
+    const [, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit]
+    expect(init.headers).not.toHaveProperty('user-agent')
+  })
+
   it('解析单个 tool_calls 为复数结果', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => ({
       ok: true,
