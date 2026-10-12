@@ -28,6 +28,9 @@ lingxi.apk
 .claude/worktrees/
 docs/shared/
 
+# Q4 任务规划与内部讨论交接文档，只保留在本地，不入库。
+planning/
+
 # 私有 Agent Runtime BFF 的设计记录留在私有历史仓库中。
 docs/acceptance/
 docs/investigations/
