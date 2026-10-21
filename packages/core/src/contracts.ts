@@ -89,9 +89,11 @@ export interface PendingCallStore {
   delete(callId: string): void | Promise<void>
 }
 
-/** 审计事件只含非敏感字段：requestId、模型、耗时、HTTP 状态、工具名与错误码。 */
+/** 审计事件只含非敏感字段：请求关联 ID、模型、耗时、HTTP 状态、工具名与错误码。 */
 export interface AuditEvent {
   requestId: string
+  /** 单次 LLM 调用所属的 Harness Run 请求 ID。 */
+  parentRequestId?: string
   /** 当前 Core Control Flow Decision 标识；与 Provider Event 使用同一值关联诊断。 */
   decisionId?: string
   sessionId?: string

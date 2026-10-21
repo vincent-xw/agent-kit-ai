@@ -177,6 +177,8 @@ export interface LlmClientConfig {
 /** 一次 LLM 调用的跟踪事件。 */
 export interface LlmTraceEvent {
   requestId: string
+  /** 单次 LLM 调用所属的 Harness Run 请求 ID。 */
+  parentRequestId?: string
   phase: 'request' | 'response' | 'error'
   /** 网络请求尝试序号，从 1 开始；同一逻辑请求的重试共享 requestId。 */
   attempt?: number
@@ -214,6 +216,10 @@ export interface LlmTraceEvent {
 export interface LlmClientRequest {
   input?: string
   context: Record<string, unknown>
+  /** 可选的单次 LLM 调用 ID；重试 Trace 沿用该值。 */
+  requestId?: string
+  /** 可选的上游请求 ID，用于将 LLM Trace 关联回 Harness Run。 */
+  parentRequestId?: string
   /** 发起本次补全的会话标识，由 harness 注入；运行时据此给流式回调标注会话。 */
   sessionId?: string
   /** 由宿主运行边界注入；停止会话时取消正在等待的 HTTP 请求。 */
@@ -577,7 +583,10 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
 
   return {
     async complete(request) {
-      const requestId = `llm-${Math.random().toString(36).slice(2, 9)}`
+      const requestId = request.requestId ?? `llm-${Math.random().toString(36).slice(2, 9)}`
+      const requestTrace = trace && request.parentRequestId
+        ? (event: LlmTraceEvent) => emitLlmTrace(trace, { ...event, parentRequestId: request.parentRequestId })
+        : trace
       const body: Record<string, unknown> = {
         model: config.model,
         messages: toOpenAiMessages(request),
@@ -601,9 +610,9 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
       const requestHeaders = buildRequestHeaders(config, request.sessionId)
 
       if (config.onDelta) {
-        return completeStream(endpoint, config, body, requestId, trace, requestHeaders, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
+        return completeStream(endpoint, config, body, requestId, requestTrace, requestHeaders, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
       }
-      return completeJson(endpoint, config, body, requestId, trace, requestHeaders, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
+      return completeJson(endpoint, config, body, requestId, requestTrace, requestHeaders, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
     },
   }
 }
@@ -1058,6 +1067,26 @@ async function completeStream(
             processStreamChunk(chunk as StreamChunk, acc, onDelta)
           }
         }
+      } catch (error) {
+        if (request.signal?.aborted) throw error
+        const streamError = error instanceof AgentKitError
+          ? error
+          : new AgentKitError('LLM_RESPONSE_INVALID', '读取 LLM 流式响应失败', { cause: error })
+        const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+        emitLlmTrace(trace, {
+          requestId,
+          ...(sessionId ? { sessionId } : {}),
+          phase: 'error',
+          attempt: attemptNumber,
+          httpStatus: response.status,
+          ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+          responseBody: { content_length: acc.content.length, tool_calls: acc.toolCalls.size, finish_reason: acc.finishReason },
+          responseBytes,
+          responseParseStatus: 'sse',
+          durationMs: Date.now() - startedAt,
+          error: streamError,
+        })
+        throw streamError
       } finally {
         reader.releaseLock()
       }

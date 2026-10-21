@@ -24,6 +24,7 @@ export interface ConsoleAuditOptions {
 /** 把审计事件格式化为单行文本。字段缺失时省略而不是打印 undefined。 */
 function formatEvent(event: AuditEvent): string {
   const parts = [`ts=${new Date().toISOString()}`, `req=${event.requestId}`]
+  if (event.parentRequestId) parts.push(`parentReq=${event.parentRequestId}`)
   if (event.decisionId) parts.push(`decision=${event.decisionId}`)
   if (event.sessionId) parts.push(`sid=${event.sessionId}`)
   if (event.model) parts.push(`model=${event.model}`)
@@ -99,7 +100,7 @@ export function createLlmVerboseLogger(options: VerboseLogOptions = {}): (event:
   const sink = options.sink ?? { log: (message: string) => console.log(message) }
   return (event) => {
     if (!enabled) return
-    const head = `ts=${new Date().toISOString()}${event.sessionId ? ` sid=${event.sessionId}` : ''}`
+    const head = `ts=${new Date().toISOString()}${event.sessionId ? ` sid=${event.sessionId}` : ''}${event.parentRequestId ? ` parentReq=${event.parentRequestId}` : ''}`
     if (event.phase === 'request') {
       const body = event.body ?? {}
       const messages = Array.isArray(body.messages) ? body.messages : []

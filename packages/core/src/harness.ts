@@ -542,13 +542,18 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
 
       async function completeWithAudit(request: LlmClientRequest): Promise<LlmResult> {
         const startedAt = Date.now()
+        // 每次实际 LLM 调用独立关联 Audit 与 Trace；缺省 ID 由 Core 生成，Run ID 作为父级保留。
+        const llmRequestId = request.requestId ?? `llm-${Math.random().toString(36).slice(2, 9)}`
+        const parentRequestId = request.parentRequestId ?? requestId
+        const traceableRequest = { ...request, requestId: llmRequestId, parentRequestId }
         try {
-          const completion = await deps.llm.complete(request)
-          await deps.audit?.log({ requestId, sessionId, durationMs: Date.now() - startedAt })
+          const completion = await deps.llm.complete(traceableRequest)
+          await deps.audit?.log({ requestId: llmRequestId, parentRequestId, sessionId, durationMs: Date.now() - startedAt })
           return completion
         } catch (error) {
           await deps.audit?.log({
-            requestId,
+            requestId: llmRequestId,
+            parentRequestId,
             sessionId,
             durationMs: Date.now() - startedAt,
             errorCode: error instanceof AgentKitError ? error.code : 'LLM_CALL_FAILED',
