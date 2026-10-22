@@ -972,6 +972,7 @@ describe('AgentHarness', () => {
         return executions === 1 ? { temperature: 'hot' } : { temperature: 26 }
       },
     })
+    const audits: Array<Record<string, unknown>> = []
     const requests: LlmRequest[] = []
     const harness = createAgentHarness({
       llm: {
@@ -982,11 +983,43 @@ describe('AgentHarness', () => {
         },
       },
       sessions: createMemorySessionStore(), tools, maxSteps: 4,
+      audit: { log: (event) => { audits.push({ ...event }) } },
     })
 
     await expect(harness.run({ sessionId: 's-5', input: '查询天气', context: {} })).resolves.toEqual({ type: 'final', output: '输出修正成功' })
     const feedback = requests[1]?.messages.find((message) => message.role === 'tool')
     expect(feedback?.content).toMatchObject({ code: 'TOOL_OUTPUT_INVALID', retryable: true, attempt: 1 })
+    expect(audits).toContainEqual(expect.objectContaining({
+      callId: 'call-output-1', validationPhase: 'output', validationStatus: 'failed',
+      validationIssues: [{ path: ['temperature'], code: 'invalid_type' }],
+    }))
+    expect(audits).toContainEqual(expect.objectContaining({
+      callId: 'call-output-2', validationPhase: 'output', validationStatus: 'passed',
+    }))
+    expect(JSON.stringify(audits)).not.toContain('hot')
+  })
+
+
+  it('Union 输出校验记录嵌套失败路径，不记录敏感值或校验器原始消息', async () => {
+    const audits: Array<Record<string, unknown>> = []
+    const tools = createToolRegistry()
+    tools.register({
+      name: 'union_output', execution: 'server', input: z.object({}),
+      output: z.union([
+        z.object({ ok: z.literal(true), count: z.number() }),
+        z.object({ ok: z.literal(false), diagnostics: z.record(z.union([z.string(), z.number(), z.boolean(), z.null()])) }),
+      ]),
+      execute: async () => ({ ok: false, diagnostics: { compatibilitySerial: undefined }, message: 'private-output-text' }),
+    })
+    const harness = createAgentHarness({
+      llm: { complete: async () => callsOf({ callId: 'union-call', toolName: 'union_output', input: {} }) },
+      sessions: createMemorySessionStore(), tools, maxSteps: 1,
+      audit: { log: (event) => { audits.push({ ...event }) } },
+    })
+    await harness.run({ sessionId: 'union-session', input: '检查', context: {}, stepMode: true })
+    const invalid = audits.find((event) => event.errorCode === 'TOOL_OUTPUT_INVALID')
+    expect(invalid?.validationIssues).toContainEqual({ path: ['diagnostics', 'compatibilitySerial'], code: 'invalid_type' })
+    expect(JSON.stringify(audits)).not.toContain('private-output-text')
   })
 
   it('达到最大步数返回 HARNESS_STEP_LIMIT', async () => {
@@ -1068,6 +1101,7 @@ describe('AgentHarness', () => {
   })
 
   it('resume 的工具输出不符合 Schema 时降级为工具错误，不硬崩会话', async () => {
+    const audits: Array<Record<string, unknown>> = []
     const tools = createToolRegistry()
     tools.register({ name: 'browser_read_page', execution: 'remote', input: z.object({}), output: z.object({ title: z.string() }) })
     const historyFromLlm: SessionMessage[][] = []
@@ -1081,6 +1115,7 @@ describe('AgentHarness', () => {
         },
       },
       sessions: createMemorySessionStore(), tools, maxSteps: 3,
+      audit: { log: (event) => { audits.push({ ...event }) } },
     })
 
     await harness.run({ sessionId: 's-9', input: '读取页面', context: {} })
@@ -1092,6 +1127,10 @@ describe('AgentHarness', () => {
     // 第二次发给模型的历史里应包含 ok:false 的工具错误结果。
     const secondCallMessages = historyFromLlm[1]
     const toolMsg = secondCallMessages.find((m) => m.role === 'tool' && (m as { callId?: string }).callId === 'call-9')
+    expect(audits).toContainEqual(expect.objectContaining({
+      callId: 'call-9', validationPhase: 'output', validationStatus: 'failed',
+      validationIssues: [{ path: ['title'], code: 'invalid_type' }],
+    }))
     expect(toolMsg).toBeDefined()
     expect((toolMsg as { content: { ok: boolean; code: string } }).content).toMatchObject({ ok: false, code: 'TOOL_OUTPUT_INVALID' })
   })
@@ -2099,6 +2138,7 @@ describe('工具失败收口补全', () => {
   it('连续两次失败后由模型写收口说明，且收口补全禁用工具', async () => {
     const tools = createToolRegistry()
     registerDeadTool(tools)
+    const audits: Array<Record<string, unknown>> = []
     const requests: LlmRequest[] = []
     let call = 0
     const harness = createAgentHarness({
@@ -2113,11 +2153,18 @@ describe('工具失败收口补全', () => {
       sessions: createMemorySessionStore(),
       tools,
       maxSteps: 5,
+      audit: { log: (event) => { audits.push({ ...event }) } },
     })
 
     const result = await harness.run({ sessionId: 'dead-session', input: '执行', context: {} })
 
     expect(result).toMatchObject({ type: 'final', output: expect.stringContaining('当前无法继续') })
+    expect(requests.at(-1)?.requestId).toMatch(/^llm-/u)
+    expect(audits).toContainEqual(expect.objectContaining({
+      requestId: requests.at(-1)?.requestId, parentRequestId: requests.at(-1)?.parentRequestId,
+      purpose: 'tool_failure_wrapup',
+    }))
+    expect(requests.at(-1)?.parentRequestId).toMatch(/^req-/u)
     expect(requests.at(-1)?.tools).toBeUndefined()
     expect(requests.at(-1)?.systemPrompt).toContain('不要调用任何工具')
   })
