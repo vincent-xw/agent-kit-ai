@@ -1,0 +1,31 @@
+examples/agent-runtime-bff
+  s_c47af493b32a68::t_9bd9e47e6c3129 1
+packages/core/package.json
+  s_c47af493b32a68::t_b858c4d534dd24 3
+packages/core/src/contracts.ts
+  s_c47af493b32a68::t_e27dd3a1ff5140 94-100
+packages/core/src/harness.test.ts
+  s_c47af493b32a68::t_dd27f497b539c3 975,986,992-1022,1104,1118,1130-1133,2141,2156,2162-2167
+packages/core/src/harness.ts
+  s_c47af493b32a68::t_5d6a0c537e81a6 144-171,175,388,398,421-444,473,479,618,700,719,750-754,776-779,828,862,900-904,923-926,1051-1054,1058-1063
+packages/core/src/llm-client.ts
+  s_c47af493b32a68::t_5d040f8c2e12d8 179-180,219-220,591-599
+pnpm-lock.yaml
+  s_c47af493b32a68::t_84f80b2bffb1b7 72-74,1202-1205,2740-2741
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "f34cd436fcece6bbb2eb59c1faf9f96ab5777120",
+  "prompts": {},
+  "sessions": {
+    "s_c47af493b32a68": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a16354-1ad0-7832-8af9-ea9149fc1f81",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
