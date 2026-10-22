@@ -176,6 +176,8 @@ export interface LlmClientConfig {
 
 /** 一次 LLM 调用的跟踪事件。 */
 export interface LlmTraceEvent {
+  /** 本次模型调用的宿主用途分类。 */
+  purpose?: string
   requestId: string
   /** 单次 LLM 调用所属的 Harness Run 请求 ID。 */
   parentRequestId?: string
@@ -214,6 +216,8 @@ export interface LlmTraceEvent {
 
 /** 一次补全请求：input 为最新用户输入，messages 为会话历史，tools 为可调用工具声明。 */
 export interface LlmClientRequest {
+  /** 本次模型调用的宿主用途分类，不进入模型请求正文。 */
+  purpose?: string
   input?: string
   context: Record<string, unknown>
   /** 可选的单次 LLM 调用 ID；重试 Trace 沿用该值。 */
@@ -584,9 +588,15 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
   return {
     async complete(request) {
       const requestId = request.requestId ?? `llm-${Math.random().toString(36).slice(2, 9)}`
-      const requestTrace = trace && request.parentRequestId
-        ? (event: LlmTraceEvent) => emitLlmTrace(trace, { ...event, parentRequestId: request.parentRequestId })
-        : trace
+      const parentRequestId = request.parentRequestId
+      const purpose = request.purpose
+      const requestTrace = trace
+        ? (event: LlmTraceEvent) => emitLlmTrace(trace, {
+            ...event,
+            ...(parentRequestId !== undefined ? { parentRequestId } : {}),
+            ...(purpose !== undefined ? { purpose } : {}),
+          })
+        : undefined
       const body: Record<string, unknown> = {
         model: config.model,
         messages: toOpenAiMessages(request),
