@@ -584,8 +584,10 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
   return {
     async complete(request) {
       const requestId = request.requestId ?? `llm-${Math.random().toString(36).slice(2, 9)}`
-      const requestTrace = trace && request.parentRequestId
-        ? (event: LlmTraceEvent) => emitLlmTrace(trace, { ...event, parentRequestId: request.parentRequestId })
+      // 固化可选关联 ID，供回调闭包捕获时保留 TypeScript 的非 undefined 窄化。
+      const parentRequestId = request.parentRequestId
+      const requestTrace = trace && parentRequestId
+        ? (event: LlmTraceEvent) => emitLlmTrace(trace, { ...event, parentRequestId })
         : trace
       const body: Record<string, unknown> = {
         model: config.model,
