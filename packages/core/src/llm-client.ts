@@ -11,6 +11,9 @@ const RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS = 2 * 60_000
 const RATE_LIMIT_MAX_RETRIES = 2
 const RATE_LIMIT_JITTER_MAX_MS = 10_000
 const RETRY_AFTER_JITTER_MAX_MS = 250
+const MAX_TRACE_RESPONSE_BYTES = 64 * 1024
+const MAX_TRACE_RESPONSE_HEADER_BYTES = 8 * 1024
+const MAX_TRACE_RESPONSE_DATA_BYTES = MAX_TRACE_RESPONSE_BYTES - MAX_TRACE_RESPONSE_HEADER_BYTES - 2 * 1024
 
 interface UndiciRequestDiagnostic {
   headers?: unknown
@@ -173,13 +176,30 @@ export interface LlmClientConfig {
 
 /** 一次 LLM 调用的跟踪事件。 */
 export interface LlmTraceEvent {
+  /** 本次模型调用的宿主用途分类。 */
+  purpose?: string
   requestId: string
+  /** 单次 LLM 调用所属的 Harness Run 请求 ID。 */
+  parentRequestId?: string
   phase: 'request' | 'response' | 'error'
+  /** 网络请求尝试序号，从 1 开始；同一逻辑请求的重试共享 requestId。 */
+  attempt?: number
+  /** 实际 HTTP 状态；网络连接失败时没有状态码。 */
+  httpStatus?: number
+  /** Fetch 解码后的响应头快照，不代表原始 wire bytes。 */
+  responseHeaders?: Record<string, string>
+  /** Fetch 解码后的响应正文预览，不代表原始 wire bytes。 */
+  responseText?: string
+  responseTextTruncated?: boolean
+  /** 响应正文 UTF-8 解码实体字节数；流式响应按实际读取字节计数。 */
+  responseBytes?: number
+  responseParseStatus?: 'json' | 'sse' | 'invalid_json'
+  retryReason?: string
   /** 发给端点的 HTTP 请求体。request 阶段有值。 */
   body?: Record<string, unknown>
   /** Node Fetch/Undici 即将发出的请求头；可能包含凭证，日志消费者必须默认脱敏。 */
   requestHeaders?: Record<string, string>
-  /** 端点返回的原始响应。response 阶段有值。 */
+  /** Core 创建的有界 JSON 响应投影；不会保存完整任意响应对象。 */
   responseBody?: unknown
   durationMs: number
   error?: unknown
@@ -196,8 +216,14 @@ export interface LlmTraceEvent {
 
 /** 一次补全请求：input 为最新用户输入，messages 为会话历史，tools 为可调用工具声明。 */
 export interface LlmClientRequest {
+  /** 本次模型调用的宿主用途分类，不进入模型请求正文。 */
+  purpose?: string
   input?: string
   context: Record<string, unknown>
+  /** 可选的单次 LLM 调用 ID；重试 Trace 沿用该值。 */
+  requestId?: string
+  /** 可选的上游请求 ID，用于将 LLM Trace 关联回 Harness Run。 */
+  parentRequestId?: string
   /** 发起本次补全的会话标识，由 harness 注入；运行时据此给流式回调标注会话。 */
   sessionId?: string
   /** 由宿主运行边界注入；停止会话时取消正在等待的 HTTP 请求。 */
@@ -359,6 +385,8 @@ interface ParsedLlmHttpError {
   code?: string
   type?: string
   retryableOpaque400: boolean
+  rawText?: string
+  parsedBody?: unknown
 }
 
 async function readErrorResponse(response: { status: number; text(): Promise<string> }): Promise<ParsedLlmHttpError> {
@@ -368,22 +396,23 @@ async function readErrorResponse(response: { status: number; text(): Promise<str
   } catch {
     return { detail: '', retryableOpaque400: false }
   }
-  if (!raw.trim()) return { detail: '', retryableOpaque400: false }
+  if (!raw.trim()) return { detail: '', retryableOpaque400: false, rawText: raw }
   try {
-    const payload = JSON.parse(raw) as {
+    const payload: unknown = JSON.parse(raw)
+    const record = typeof payload === 'object' && payload !== null ? payload as {
       error?: { message?: unknown; code?: unknown; type?: unknown }
       message?: unknown
       code?: unknown
       type?: unknown
-    }
-    const nested = payload.error ?? payload
+    } : {}
+    const nested = record.error ?? record
     const message = typeof nested.message === 'string' ? nested.message.trim() : ''
     const code = typeof nested.code === 'string' && nested.code.trim() ? nested.code.trim() : undefined
     const type = typeof nested.type === 'string' ? nested.type.trim() : ''
     const detail = message
       || (code ? `code=${code}` : '')
       || (typeof nested.type === 'string' && nested.type.trim() ? `type=${nested.type}` : '')
-      || (typeof payload.message === 'string' && payload.message.trim() ? payload.message.trim() : '')
+      || (typeof record.message === 'string' && record.message.trim() ? record.message.trim() : '')
     // 仅对服务端返回的无具体原因 trace_id 拒绝重试；其它 400 通常是稳定的请求参数错误。
     const retryableOpaque400 = response.status === 400
       && type === 'invalid_request_error'
@@ -393,11 +422,155 @@ async function readErrorResponse(response: { status: number; text(): Promise<str
       ...(code ? { code } : {}),
       ...(type ? { type } : {}),
       retryableOpaque400,
+      rawText: raw,
+      parsedBody: payload,
     }
   } catch {
     // 不是 JSON，退回原始文本。
   }
-  return { detail: raw.length > 300 ? `${raw.slice(0, 300)}…` : raw, retryableOpaque400: false }
+  return { detail: raw.length > 300 ? `${raw.slice(0, 300)}…` : raw, retryableOpaque400: false, rawText: raw }
+}
+
+/** 安全发出 Trace；诊断消费者异常不能改变模型请求结果。 */
+function emitLlmTrace(trace: ((event: LlmTraceEvent) => void) | undefined, event: LlmTraceEvent): void {
+  if (!trace) return
+  try {
+    trace(event)
+  } catch {
+    // Trace 是旁路诊断；下游写盘失败不能影响模型请求。
+  }
+}
+
+/** 计算 UTF-8 字节数，避免为大字符串创建额外编码缓冲区。 */
+function utf8ByteLength(value: string): number {
+  let length = 0
+  for (const character of value) {
+    const codePoint = character.codePointAt(0) ?? 0
+    length += codePoint <= 0x7f ? 1 : codePoint <= 0x7ff ? 2 : codePoint <= 0xffff ? 3 : 4
+  }
+  return length
+}
+
+/** 按 UTF-8 字节上限截断文本，不拆分 Unicode 码点。 */
+function truncateUtf8(value: string, maxBytes: number): { value: string; truncated: boolean } {
+  if (utf8ByteLength(value) <= maxBytes) return { value, truncated: false }
+  let result = ''
+  let used = 0
+  for (const character of value) {
+    const codePoint = character.codePointAt(0) ?? 0
+    const bytes = codePoint <= 0x7f ? 1 : codePoint <= 0x7ff ? 2 : codePoint <= 0xffff ? 3 : 4
+    if (used + bytes > maxBytes) break
+    result += character
+    used += bytes
+  }
+  return { value: result, truncated: true }
+}
+
+/**
+ * 将 Provider JSON 投影限制在固定字节预算内；遍历时同步停止，避免先复制完整响应再截断。
+ * 截断状态由事件字段单独表达，投影本身保持可序列化的 JSON 值。
+ */
+function boundedJsonProjection(value: unknown, maxBytes: number): { value: unknown; truncated: boolean } {
+  let truncated = false
+
+  const project = (current: unknown, budget: number, depth: number): unknown => {
+    if (current === null || typeof current === 'boolean' || typeof current === 'number') return current
+    if (typeof current === 'string') {
+      const fullBytes = utf8ByteLength(current) + 2
+      if (fullBytes <= budget) return current
+      truncated = true
+      return truncateUtf8(current, Math.max(0, budget - 2)).value
+    }
+    if (typeof current !== 'object' || budget < 2) {
+      truncated = true
+      return null
+    }
+    if (depth >= 24) {
+      truncated = true
+      return null
+    }
+
+    if (Array.isArray(current)) {
+      const result: unknown[] = []
+      let used = 2 // 左右括号
+      for (const item of current) {
+        const separatorBytes = result.length > 0 ? 1 : 0
+        const childBudget = budget - used - separatorBytes - 1 // 预留数组结束符
+        if (childBudget < 1) {
+          truncated = true
+          break
+        }
+        const child = project(item, childBudget, depth + 1)
+        const childBytes = utf8ByteLength(JSON.stringify(child) ?? 'null')
+        if (used + separatorBytes + childBytes + 1 > budget) {
+          truncated = true
+          break
+        }
+        result.push(child)
+        used += separatorBytes + childBytes
+      }
+      if (result.length < current.length) truncated = true
+      return result
+    }
+
+    const result: Record<string, unknown> = Object.create(null) as Record<string, unknown>
+    let used = 2 // 左右花括号
+    for (const key in current) {
+      if (!Object.prototype.hasOwnProperty.call(current, key)) continue
+      const keyJson = JSON.stringify(key)
+      const keyBytes = utf8ByteLength(keyJson)
+      const separatorBytes = Object.keys(result).length > 0 ? 1 : 0
+      const childBudget = budget - used - separatorBytes - keyBytes - 2 // 冒号和对象结束符
+      if (childBudget < 1) {
+        truncated = true
+        break
+      }
+      const child = project((current as Record<string, unknown>)[key], childBudget, depth + 1)
+      const childBytes = utf8ByteLength(JSON.stringify(child) ?? 'null')
+      const propertyBytes = separatorBytes + keyBytes + 1 + childBytes
+      if (used + propertyBytes + 1 > budget) {
+        truncated = true
+        break
+      }
+      Object.defineProperty(result, key, { value: child, enumerable: true, configurable: true, writable: true })
+      used += propertyBytes
+    }
+    return result
+  }
+
+  const projected = project(value, maxBytes, 0)
+  const serialized = JSON.stringify(projected) ?? 'null'
+  if (utf8ByteLength(serialized) <= maxBytes) return { value: projected, truncated }
+  truncated = true
+  return { value: null, truncated }
+}
+
+/** 复制响应头的有限快照；保留未知服务商 Header，同时限制总字节。 */
+function boundedResponseHeaders(headers: { forEach?: (callback: (value: string, key: string) => void) => void } | undefined): Record<string, string> | undefined {
+  if (!headers?.forEach) return undefined
+  const result: Record<string, string> = Object.create(null) as Record<string, string>
+  let used = 2
+  let truncated = false
+  headers.forEach((value, name) => {
+    if (truncated) return
+    const key = name.toLowerCase()
+    const keyBytes = utf8ByteLength(JSON.stringify(key))
+    const available = MAX_TRACE_RESPONSE_HEADER_BYTES - used - keyBytes - 3
+    if (available < 0) {
+      truncated = true
+      return
+    }
+    const limited = truncateUtf8(value, available)
+    const pairBytes = keyBytes + 1 + utf8ByteLength(JSON.stringify(limited.value)) + (Object.keys(result).length > 0 ? 1 : 0)
+    if (used + pairBytes > MAX_TRACE_RESPONSE_HEADER_BYTES) {
+      truncated = true
+      return
+    }
+    Object.defineProperty(result, key, { value: limited.value, enumerable: true, configurable: true, writable: true })
+    used += pairBytes
+    truncated ||= limited.truncated
+  })
+  return Object.keys(result).length > 0 ? result : undefined
 }
 
 /** 创建 OpenAI Chat Completions 兼容 HTTP 客户端，统一错误标准化为 AgentKitError。 */
@@ -414,7 +587,16 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
 
   return {
     async complete(request) {
-      const requestId = `llm-${Math.random().toString(36).slice(2, 9)}`
+      const requestId = request.requestId ?? `llm-${Math.random().toString(36).slice(2, 9)}`
+      const parentRequestId = request.parentRequestId
+      const purpose = request.purpose
+      const requestTrace = trace
+        ? (event: LlmTraceEvent) => emitLlmTrace(trace, {
+            ...event,
+            ...(parentRequestId !== undefined ? { parentRequestId } : {}),
+            ...(purpose !== undefined ? { purpose } : {}),
+          })
+        : undefined
       const body: Record<string, unknown> = {
         model: config.model,
         messages: toOpenAiMessages(request),
@@ -436,20 +618,11 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
         ...(config.onDelta ? { stream: true } : {}),
       }
       const requestHeaders = buildRequestHeaders(config, request.sessionId)
-      let requestTraceEmitted = false
-      const onRequestHeadersCaptured = trace
-        ? (headers: Record<string, string>) => {
-            if (requestTraceEmitted) return
-            requestTraceEmitted = true
-            // Trace 拿到独立快照，避免日志消费者改写实际发出的请求头。
-            trace({ requestId, phase: 'request', body, requestHeaders: { ...headers }, durationMs: 0, ...(request.sessionId ? { sessionId: request.sessionId } : {}) })
-          }
-        : undefined
 
       if (config.onDelta) {
-        return completeStream(endpoint, config, body, requestId, trace, requestHeaders, onRequestHeadersCaptured, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
+        return completeStream(endpoint, config, body, requestId, requestTrace, requestHeaders, request, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
       }
-      return completeJson(endpoint, config, body, requestId, trace, requestHeaders, onRequestHeadersCaptured, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
+      return completeJson(endpoint, config, body, requestId, requestTrace, requestHeaders, request.sessionId, request.signal, timeoutMs, maxRetries, minRequestIntervalMs, rateLimitKey)
     },
   }
 }
@@ -471,7 +644,6 @@ async function completeJson(
   requestId: string,
   trace: ((event: LlmTraceEvent) => void) | undefined,
   requestHeaders: Record<string, string>,
-  onRequestHeadersCaptured: ((headers: Record<string, string>) => void) | undefined,
   sessionId: string | undefined,
   signal: AbortSignal | undefined,
   timeoutMs: number,
@@ -482,7 +654,11 @@ async function completeJson(
   let lastError: AgentKitError | null = null
   let retryDelayBeforeAttemptMs = 0
   let rateLimitRetries = 0
+  let nextRetryReason: string | undefined
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
+    const attemptNumber = attempt + 1
+    const retryReason = nextRetryReason
+    nextRetryReason = undefined
     if (retryDelayBeforeAttemptMs > 0) {
       await waitForRetryDelay(retryDelayBeforeAttemptMs, signal)
       retryDelayBeforeAttemptMs = 0
@@ -499,11 +675,23 @@ async function completeJson(
     if (signal?.aborted) controller.abort()
     else signal?.addEventListener('abort', abort, { once: true })
     const timer = setTimeout(() => controller.abort(), timeoutMs)
+    const onRequestHeadersCaptured = trace
+      ? (headers: Record<string, string>) => emitLlmTrace(trace, {
+          requestId,
+          phase: 'request',
+          attempt: attemptNumber,
+          body,
+          requestHeaders: { ...headers },
+          durationMs: 0,
+          ...(retryReason ? { retryReason } : {}),
+          ...(sessionId ? { sessionId } : {}),
+        })
+      : undefined
     try {
       let response: {
         ok: boolean
         status: number
-        headers?: { get(name: string): string | null }
+        headers?: { get(name: string): string | null; forEach?: (callback: (value: string, key: string) => void) => void }
         json(): Promise<unknown>
         text(): Promise<string>
       }
@@ -516,9 +704,10 @@ async function completeJson(
         }, requestHeaders, onRequestHeadersCaptured)
       } catch (error) {
         if (signal?.aborted) throw error
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, error })
+        emitLlmTrace(trace, { requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', attempt: attemptNumber, durationMs: Date.now() - startedAt, error })
         lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 请求失败', { cause: error })
         if (attempt < maxRetries) {
+          nextRetryReason = 'network_error'
           retryDelayBeforeAttemptMs = transientRetryDelay(attempt)
           continue
         }
@@ -531,7 +720,28 @@ async function completeJson(
         const rateLimitCooldownMs = response.status === 429
           ? recordLlmRateLimit(endpoint, rateLimitKey, validRetryAfter)
           : undefined
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter, rateLimitCooldownMs) })
+        const boundedErrorBody = errorResponse.parsedBody === undefined
+          ? undefined
+          : boundedJsonProjection(errorResponse.parsedBody, MAX_TRACE_RESPONSE_DATA_BYTES)
+        const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+        const responseTextPreview = errorResponse.parsedBody === undefined && errorResponse.rawText !== undefined
+          ? truncateUtf8(errorResponse.rawText, MAX_TRACE_RESPONSE_DATA_BYTES)
+          : undefined
+        emitLlmTrace(trace, {
+          requestId,
+          ...(sessionId ? { sessionId } : {}),
+          phase: 'error',
+          attempt: attemptNumber,
+          httpStatus: response.status,
+          ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+          ...(boundedErrorBody ? { responseBody: boundedErrorBody.value } : { responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter, rateLimitCooldownMs) }),
+          ...(responseTextPreview ? { responseText: responseTextPreview.value } : {}),
+          ...(boundedErrorBody?.truncated || responseTextPreview?.truncated ? { responseTextTruncated: true } : {}),
+          ...(errorResponse.rawText !== undefined ? { responseBytes: utf8ByteLength(errorResponse.rawText) } : {}),
+          responseParseStatus: errorResponse.parsedBody === undefined ? 'invalid_json' : 'json',
+          durationMs: Date.now() - startedAt,
+          error: llmHttpErrorTrace(response.status, errorResponse, retryAfter, rateLimitCooldownMs),
+        })
         lastError = new AgentKitError(
           'LLM_RESPONSE_INVALID',
           formatLlmHttpErrorMessage(response.status, errorResponse, validRetryAfter, rateLimitCooldownMs),
@@ -541,28 +751,70 @@ async function completeJson(
           if (attempt >= maxRetries || rateLimitRetries >= RATE_LIMIT_MAX_RETRIES
             || rateLimitCooldownMs === undefined || rateLimitCooldownMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) throw lastError
           rateLimitRetries += 1
+          nextRetryReason = `http_${response.status}`
           retryDelayBeforeAttemptMs = rateLimitCooldownMs
           continue
         }
         if ((!isRetryableStatus(response.status) && !errorResponse.retryableOpaque400) || attempt >= maxRetries) throw lastError
+        nextRetryReason = `http_${response.status}`
         retryDelayBeforeAttemptMs = transientRetryDelay(attempt, validRetryAfter)
         if (retryDelayBeforeAttemptMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) throw lastError
         continue
       }
       markLlmRequestSuccess(endpoint, rateLimitKey, startedAt)
       let payload: unknown
+      let responseText: string | undefined
       try {
-        payload = await response.json()
+        if (typeof response.text === 'function') {
+          responseText = await response.text()
+          payload = JSON.parse(responseText)
+        } else {
+          payload = await response.json()
+        }
       } catch {
+        const invalidResponseText = responseText
+        const preview = invalidResponseText === undefined ? undefined : truncateUtf8(invalidResponseText, MAX_TRACE_RESPONSE_DATA_BYTES)
+        const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+        emitLlmTrace(trace, {
+          requestId,
+          ...(sessionId ? { sessionId } : {}),
+          phase: 'error',
+          attempt: attemptNumber,
+          httpStatus: response.status,
+          ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+          ...(preview ? { responseText: preview.value, responseTextTruncated: preview.truncated, responseBytes: utf8ByteLength(invalidResponseText!) } : {}),
+          responseParseStatus: 'invalid_json',
+          durationMs: Date.now() - startedAt,
+        })
         lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 响应不是有效 JSON')
-        if (attempt < maxRetries) continue
+        if (attempt < maxRetries) {
+          nextRetryReason = 'invalid_json'
+          continue
+        }
         throw lastError
       }
-      trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'response', responseBody: payload, durationMs: Date.now() - startedAt, ...parseUsage(payload) })
+      const boundedPayload = trace ? boundedJsonProjection(payload, MAX_TRACE_RESPONSE_DATA_BYTES) : undefined
+      const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+      emitLlmTrace(trace, {
+        requestId,
+        ...(sessionId ? { sessionId } : {}),
+        phase: 'response',
+        attempt: attemptNumber,
+        httpStatus: response.status,
+        ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+        ...(boundedPayload ? { responseBody: boundedPayload.value, responseTextTruncated: boundedPayload.truncated } : {}),
+        ...(responseText !== undefined ? { responseBytes: utf8ByteLength(responseText) } : {}),
+        responseParseStatus: 'json',
+        durationMs: Date.now() - startedAt,
+        ...parseUsage(payload),
+      })
       const result = extractResult(payload)
       if (!result) {
         lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 响应缺少合法 choices 或 tool_calls')
-        if (attempt < maxRetries) continue
+        if (attempt < maxRetries) {
+          nextRetryReason = 'invalid_response'
+          continue
+        }
         throw lastError
       }
       return result
@@ -590,7 +842,6 @@ async function completeStream(
   requestId: string,
   trace: ((event: LlmTraceEvent) => void) | undefined,
   requestHeaders: Record<string, string>,
-  onRequestHeadersCaptured: ((headers: Record<string, string>) => void) | undefined,
   request: LlmClientRequest,
   timeoutMs: number,
   maxRetries: number,
@@ -602,8 +853,12 @@ async function completeStream(
   let lastError: AgentKitError | null = null
   let retryDelayBeforeAttemptMs = 0
   let rateLimitRetries = 0
+  let nextRetryReason: string | undefined
 
   for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
+    const attemptNumber = attempt + 1
+    const retryReason = nextRetryReason
+    nextRetryReason = undefined
     if (retryDelayBeforeAttemptMs > 0) {
       await waitForRetryDelay(retryDelayBeforeAttemptMs, request.signal)
       retryDelayBeforeAttemptMs = 0
@@ -620,6 +875,18 @@ async function completeStream(
     if (request.signal?.aborted) controller.abort()
     else request.signal?.addEventListener('abort', abort, { once: true })
     const timer = setTimeout(() => controller.abort(), timeoutMs)
+    const onRequestHeadersCaptured = trace
+      ? (headers: Record<string, string>) => emitLlmTrace(trace, {
+          requestId,
+          phase: 'request',
+          attempt: attemptNumber,
+          body,
+          requestHeaders: { ...headers },
+          durationMs: 0,
+          ...(retryReason ? { retryReason } : {}),
+          ...(sessionId ? { sessionId } : {}),
+        })
+      : undefined
     try {
       let response: Response
       try {
@@ -631,9 +898,10 @@ async function completeStream(
         }, requestHeaders, onRequestHeadersCaptured)
       } catch (error) {
         if (request.signal?.aborted) throw error
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, error })
+        emitLlmTrace(trace, { requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', attempt: attemptNumber, durationMs: Date.now() - startedAt, error })
         lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 请求失败', { cause: error })
         if (attempt < maxRetries) {
+          nextRetryReason = 'network_error'
           retryDelayBeforeAttemptMs = transientRetryDelay(attempt)
           continue
         }
@@ -647,7 +915,28 @@ async function completeStream(
         const rateLimitCooldownMs = response.status === 429
           ? recordLlmRateLimit(endpoint, rateLimitKey, validRetryAfter)
           : undefined
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'error', durationMs: Date.now() - startedAt, responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter, rateLimitCooldownMs) })
+        const boundedErrorBody = errorResponse.parsedBody === undefined
+          ? undefined
+          : boundedJsonProjection(errorResponse.parsedBody, MAX_TRACE_RESPONSE_DATA_BYTES)
+        const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+        const responseTextPreview = errorResponse.parsedBody !== undefined || errorResponse.rawText === undefined
+          ? undefined
+          : truncateUtf8(errorResponse.rawText, MAX_TRACE_RESPONSE_DATA_BYTES)
+        emitLlmTrace(trace, {
+          requestId,
+          ...(sessionId ? { sessionId } : {}),
+          phase: 'error',
+          attempt: attemptNumber,
+          httpStatus: response.status,
+          ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+          ...(boundedErrorBody ? { responseBody: boundedErrorBody.value } : { responseBody: llmHttpErrorTrace(response.status, errorResponse, retryAfter, rateLimitCooldownMs) }),
+          ...(responseTextPreview ? { responseText: responseTextPreview.value } : {}),
+          ...(boundedErrorBody?.truncated || responseTextPreview?.truncated ? { responseTextTruncated: true } : {}),
+          ...(errorResponse.rawText !== undefined ? { responseBytes: utf8ByteLength(errorResponse.rawText) } : {}),
+          responseParseStatus: errorResponse.parsedBody === undefined ? 'invalid_json' : 'json',
+          durationMs: Date.now() - startedAt,
+          error: llmHttpErrorTrace(response.status, errorResponse, retryAfter, rateLimitCooldownMs),
+        })
         lastError = new AgentKitError(
           'LLM_RESPONSE_INVALID',
           formatLlmHttpErrorMessage(response.status, errorResponse, validRetryAfter, rateLimitCooldownMs),
@@ -657,10 +946,12 @@ async function completeStream(
           if (attempt >= maxRetries || rateLimitRetries >= RATE_LIMIT_MAX_RETRIES
             || rateLimitCooldownMs === undefined || rateLimitCooldownMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) throw lastError
           rateLimitRetries += 1
+          nextRetryReason = `http_${response.status}`
           retryDelayBeforeAttemptMs = rateLimitCooldownMs
           continue
         }
         if ((!isRetryableStatus(response.status) && !errorResponse.retryableOpaque400) || attempt >= maxRetries) throw lastError
+        nextRetryReason = `http_${response.status}`
         retryDelayBeforeAttemptMs = transientRetryDelay(attempt, validRetryAfter)
         if (retryDelayBeforeAttemptMs > RATE_LIMIT_MAX_IN_REQUEST_WAIT_MS) throw lastError
         continue
@@ -672,24 +963,57 @@ async function completeStream(
       const contentType = response.headers?.get?.('content-type') ?? ''
       if (!contentType.includes('text/event-stream')) {
         let payload: unknown
+        let responseText: string | undefined
         try {
-          payload = await response.json()
-        } catch {
-          // response.json() 不可用（例如 mock 没提供），尝试读 text 再解析。
-          try {
-            const text = await (response as { text(): Promise<string> }).text()
-            payload = JSON.parse(text)
-          } catch {
-            lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 响应不是有效 JSON 也不是 SSE 流')
-            if (attempt < maxRetries) continue
-            throw lastError
+          if (typeof response.text === 'function') {
+            responseText = await response.text()
+            payload = JSON.parse(responseText)
+          } else {
+            payload = await response.json()
           }
+        } catch {
+          const preview = responseText === undefined ? undefined : truncateUtf8(responseText, MAX_TRACE_RESPONSE_DATA_BYTES)
+          const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+          emitLlmTrace(trace, {
+            requestId,
+            ...(sessionId ? { sessionId } : {}),
+            phase: 'error',
+            attempt: attemptNumber,
+            httpStatus: response.status,
+            ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+            ...(preview ? { responseText: preview.value, responseTextTruncated: preview.truncated, responseBytes: utf8ByteLength(responseText!) } : {}),
+            responseParseStatus: 'invalid_json',
+            durationMs: Date.now() - startedAt,
+          })
+          lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 响应不是有效 JSON 也不是 SSE 流')
+          if (attempt < maxRetries) {
+            nextRetryReason = 'invalid_json'
+            continue
+          }
+          throw lastError
         }
-        trace?.({ requestId, ...(sessionId ? { sessionId } : {}), phase: 'response', responseBody: payload, durationMs: Date.now() - startedAt, ...parseUsage(payload) })
+        const boundedPayload = trace ? boundedJsonProjection(payload, MAX_TRACE_RESPONSE_DATA_BYTES) : undefined
+        const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+        emitLlmTrace(trace, {
+          requestId,
+          ...(sessionId ? { sessionId } : {}),
+          phase: 'response',
+          attempt: attemptNumber,
+          httpStatus: response.status,
+          ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+          ...(boundedPayload ? { responseBody: boundedPayload.value, responseTextTruncated: boundedPayload.truncated } : {}),
+          ...(responseText !== undefined ? { responseBytes: utf8ByteLength(responseText) } : {}),
+          responseParseStatus: 'json',
+          durationMs: Date.now() - startedAt,
+          ...parseUsage(payload),
+        })
         const result = extractResult(payload)
         if (!result) {
           lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 响应缺少合法 choices 或 tool_calls')
-          if (attempt < maxRetries) continue
+          if (attempt < maxRetries) {
+            nextRetryReason = 'invalid_response'
+            continue
+          }
           throw lastError
         }
         if (result.type === 'final' && typeof result.output === 'string') {
@@ -700,7 +1024,22 @@ async function completeStream(
 
       if (!response.body) {
         lastError = new AgentKitError('LLM_RESPONSE_INVALID', 'LLM 流式响应没有 body')
-        if (attempt < maxRetries) continue
+        const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+        emitLlmTrace(trace, {
+          requestId,
+          ...(sessionId ? { sessionId } : {}),
+          phase: 'error',
+          attempt: attemptNumber,
+          httpStatus: response.status,
+          ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+          responseParseStatus: 'sse',
+          durationMs: Date.now() - startedAt,
+          error: lastError,
+        })
+        if (attempt < maxRetries) {
+          nextRetryReason = 'missing_sse_body'
+          continue
+        }
         throw lastError
       }
 
@@ -709,11 +1048,13 @@ async function completeStream(
       const decoder = new TextDecoder()
       let buffer = ''
       let streamEnded = false
+      let responseBytes = 0
 
       try {
         while (!streamEnded) {
           const { done, value } = await reader.read()
           if (done) break
+          responseBytes += value.byteLength
           buffer += decoder.decode(value, { stream: true })
           const lines = buffer.split('\n')
           buffer = lines.pop() ?? ''
@@ -736,15 +1077,41 @@ async function completeStream(
             processStreamChunk(chunk as StreamChunk, acc, onDelta)
           }
         }
+      } catch (error) {
+        if (request.signal?.aborted) throw error
+        const streamError = error instanceof AgentKitError
+          ? error
+          : new AgentKitError('LLM_RESPONSE_INVALID', '读取 LLM 流式响应失败', { cause: error })
+        const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+        emitLlmTrace(trace, {
+          requestId,
+          ...(sessionId ? { sessionId } : {}),
+          phase: 'error',
+          attempt: attemptNumber,
+          httpStatus: response.status,
+          ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
+          responseBody: { content_length: acc.content.length, tool_calls: acc.toolCalls.size, finish_reason: acc.finishReason },
+          responseBytes,
+          responseParseStatus: 'sse',
+          durationMs: Date.now() - startedAt,
+          error: streamError,
+        })
+        throw streamError
       } finally {
         reader.releaseLock()
       }
 
-      trace?.({
+      const responseHeadersSnapshot = boundedResponseHeaders(response.headers)
+      emitLlmTrace(trace, {
         requestId,
         ...(sessionId ? { sessionId } : {}),
         phase: 'response',
+        attempt: attemptNumber,
+        httpStatus: response.status,
+        ...(responseHeadersSnapshot ? { responseHeaders: responseHeadersSnapshot } : {}),
         responseBody: { content_length: acc.content.length, tool_calls: acc.toolCalls.size, finish_reason: acc.finishReason },
+        responseBytes,
+        responseParseStatus: 'sse',
         durationMs: Date.now() - startedAt,
         // 流式路径的 usage 以末尾独立 chunk 到达，须单独解析并随 trace 上报。
         ...parseUsage({ usage: acc.usage }),

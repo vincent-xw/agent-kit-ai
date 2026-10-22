@@ -141,10 +141,38 @@ export interface AgentHarness {
   }): Promise<HarnessResult>
 }
 
+/** 仅保留有界字段路径与规则码，避免校验器将输入值或业务正文写入审计。 */
+class ToolValidationError extends AgentKitError {
+  readonly validationIssues: Array<{ path: Array<string | number>; code: string }>
+
+  constructor(code: 'TOOL_INPUT_INVALID' | 'TOOL_OUTPUT_INVALID', issues: z.ZodIssue[]) {
+    super(code, '工具数据校验失败')
+    this.validationIssues = []
+    // Union 的顶层 invalid_union 没有具体路径；展开分支叶子错误，但限制遍历量与输出数量。
+    const pending = [...issues]
+    let visited = 0
+    while (pending.length > 0 && this.validationIssues.length < 20 && visited < 100) {
+      const issue = pending.shift()!
+      visited += 1
+      if (issue.code === 'invalid_union') {
+        pending.unshift(...issue.unionErrors.flatMap((error) => error.issues).slice(0, 100 - visited))
+        continue
+      }
+      const entry = {
+        path: issue.path.slice(0, 12).map((part) => typeof part === 'number' ? part : String(part).slice(0, 100)),
+        code: issue.code,
+      }
+      if (!this.validationIssues.some((item) => item.code === entry.code && JSON.stringify(item.path) === JSON.stringify(entry.path))) {
+        this.validationIssues.push(entry)
+      }
+    }
+  }
+}
+
 /** 校验 Zod Schema，失败时统一抛出带稳定错误码的 AgentKitError。 */
 function parseWithCode(schema: z.ZodType, value: unknown, code: 'TOOL_INPUT_INVALID' | 'TOOL_OUTPUT_INVALID'): unknown {
   const parsed = schema.safeParse(value)
-  if (!parsed.success) throw new AgentKitError(code, '工具数据校验失败')
+  if (!parsed.success) throw new ToolValidationError(code, parsed.error.issues)
   return parsed.data
 }
 
@@ -357,7 +385,7 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         '',
         '请针对上面列出的问题修正，只输出符合该协议的完整 JSON：不要解释、不要输出 Markdown 代码围栏、不要复述原文、不要调用任何工具。',
       ].join('\n')
-      const repaired = await deps.llm.complete({
+      const repaired = await completeWithAudit({
         context: { ...options.context, outputProtocolRepair: true },
         sessionId: options.sessionId,
         ...(options.signal ? { signal: options.signal } : {}),
@@ -367,7 +395,7 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         // 主路径只在无工具时才开，补正原先漏了这一个开关，模型可能再吐一段带未转义引号的
         // 非法 JSON（真机样本：summary 里嵌了裸双引号），补正机会白白浪费。
         responseFormatJson: true,
-      })
+      }, options.requestId, 'output_protocol_repair')
       if (repaired.type !== 'final') throw error
       const repairedOutput = applyOutputProtocol(repaired.output, options.promptName)
       options.history.push({ role: 'assistant', content: repaired.output, createdAt: new Date().toISOString() })
@@ -388,6 +416,30 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
     })
     await deps.sessions.save(options.sessionId, options.history)
     return parsed
+  }
+
+  /** 所有 Harness 模型调用共用审计边界，辅助收口与协议补正同样可追溯。 */
+  async function completeWithAudit(request: LlmClientRequest, requestId: string, purpose = 'agent'): Promise<LlmResult> {
+    const startedAt = Date.now()
+    // 每次实际 LLM 调用独立关联 Audit 与 Trace；缺省 ID 由 Core 生成，Harness 请求 ID 作为父级保留。
+    const llmRequestId = request.requestId ?? `llm-${Math.random().toString(36).slice(2, 9)}`
+    const parentRequestId = request.parentRequestId ?? requestId
+    const traceableRequest = { ...request, requestId: llmRequestId, parentRequestId, purpose }
+    try {
+      const completion = await deps.llm.complete(traceableRequest)
+      await deps.audit?.log({ requestId: llmRequestId, parentRequestId, ...(request.sessionId !== undefined ? { sessionId: request.sessionId } : {}), purpose, durationMs: Date.now() - startedAt })
+      return completion
+    } catch (error) {
+      await deps.audit?.log({
+        requestId: llmRequestId,
+        parentRequestId,
+        ...(request.sessionId !== undefined ? { sessionId: request.sessionId } : {}),
+        purpose,
+        durationMs: Date.now() - startedAt,
+        errorCode: error instanceof AgentKitError ? error.code : 'LLM_CALL_FAILED',
+      })
+      throw error
+    }
   }
 
   /**
@@ -418,13 +470,13 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
       .filter((part): part is string => typeof part === 'string' && part.length > 0)
       .join('\n\n')
     try {
-      const result = await deps.llm.complete({
+      const result = await completeWithAudit({
         context: options.context,
         sessionId: options.sessionId,
         ...(options.signal ? { signal: options.signal } : {}),
         messages: await trimHistory(options.sessionId, options.history),
         systemPrompt,
-      })
+      }, options.requestId, 'tool_failure_wrapup')
       // 模型把工具调用当正文返回（无结构化 tool_calls）时不能当成收口说明：
       // 落到下面的兜底分支，给用户可行动的说明而不是原始标记。
       if (result.type === 'final' && !looksLikeToolCallMarkup(result.output)) {
@@ -540,23 +592,6 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         }
       }
 
-      async function completeWithAudit(request: LlmClientRequest): Promise<LlmResult> {
-        const startedAt = Date.now()
-        try {
-          const completion = await deps.llm.complete(request)
-          await deps.audit?.log({ requestId, sessionId, durationMs: Date.now() - startedAt })
-          return completion
-        } catch (error) {
-          await deps.audit?.log({
-            requestId,
-            sessionId,
-            durationMs: Date.now() - startedAt,
-            errorCode: error instanceof AgentKitError ? error.code : 'LLM_CALL_FAILED',
-          })
-          throw error
-        }
-      }
-
       // 每个有可见工具的决策轮次都有独立 ID；无工具轮次不进入 Provider 决策。
       const decisionId = toolSchemas.length > 0 ? `${requestId}-decision-${step + 1}` : undefined
       let decision: ControlFlowDecision | null = null
@@ -580,7 +615,7 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         if (signal?.aborted) throw new AgentKitError('TOOL_EXECUTION_ABORTED', '控制流决策期间任务已取消')
       }
 
-      let result = await completeWithAudit(buildLlmRequest(decision))
+      let result = await completeWithAudit(buildLlmRequest(decision), requestId)
       const generationMatchesDecision = decision === null
         || decision.type === 'finish' && result.type === 'final'
         || decision.type === 'call_tool'
@@ -662,7 +697,7 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
       const remoteCalls: Array<{ callId: string; toolName: string; input: unknown }> = []
       for (const call of result.calls) {
         if (allowedToolNames !== undefined && !visibleToolNames.includes(call.toolName)) {
-          await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, errorCode: 'TOOL_NOT_ALLOWED' })
+          await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, callId: call.callId, errorCode: 'TOOL_NOT_ALLOWED' })
           history.push({
             role: 'tool',
             content: {
@@ -681,7 +716,7 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         // 把可选工具列表回传让它自己纠正，比让整个任务猝死更有用。
         if (!tool) {
           const available = visibleToolNames.join(', ')
-          await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, errorCode: 'TOOL_NOT_REGISTERED' })
+          await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, callId: call.callId, errorCode: 'TOOL_NOT_REGISTERED' })
           history.push({
             role: 'tool',
             content: {
@@ -712,7 +747,11 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
             message: failureMessage,
           }
           notices.push(notice)
-          await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, errorCode: 'TOOL_INPUT_INVALID' })
+          await deps.audit?.log({
+            requestId, sessionId, durationMs: 0, toolName: call.toolName, callId: call.callId,
+            errorCode: 'TOOL_INPUT_INVALID', validationPhase: 'input', validationStatus: 'failed',
+            ...(error instanceof ToolValidationError ? { validationIssues: error.validationIssues } : {}),
+          })
           history.push({
             role: 'tool',
             content: { ok: false, ...notice },
@@ -734,6 +773,10 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
           }
           continue
         }
+        await deps.audit?.log({
+          requestId, sessionId, durationMs: 0, toolName: call.toolName, callId: call.callId,
+          validationPhase: 'input', validationStatus: 'passed',
+        })
         if (tool.execution === 'remote') {
           // promptName 随挂起状态保存：resume 要用同一个提示词继续。
           await pendingCalls.set(call.callId, {
@@ -782,7 +825,7 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
               createdAt: new Date().toISOString(),
             })
             await deps.sessions.save(sessionId, history)
-            await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, errorCode: 'TOOL_EXECUTION_UNCERTAIN' })
+            await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, callId: call.callId, errorCode: 'TOOL_EXECUTION_UNCERTAIN' })
             return wrapUpWithModel({
               requestId,
               sessionId,
@@ -816,7 +859,7 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
             message: failureMessage,
           }
           notices.push(notice)
-          await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, errorCode: code })
+          await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, callId: call.callId, errorCode: code })
           history.push({
             role: 'tool',
             content: { ok: false, ...notice },
@@ -854,7 +897,11 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
               : `工具 ${call.toolName} 的输出不符合 schema。请修正调用状态后重试一次。`,
           }
           notices.push(notice)
-          await deps.audit?.log({ requestId, sessionId, durationMs: 0, toolName: call.toolName, errorCode: 'TOOL_OUTPUT_INVALID' })
+          await deps.audit?.log({
+            requestId, sessionId, durationMs: 0, toolName: call.toolName, callId: call.callId,
+            errorCode: 'TOOL_OUTPUT_INVALID', validationPhase: 'output', validationStatus: 'failed',
+            ...(error instanceof ToolValidationError ? { validationIssues: error.validationIssues } : {}),
+          })
           history.push({
             role: 'tool', content: { ok: false, ...notice }, callId: call.callId,
             toolName: call.toolName, createdAt: new Date().toISOString(),
@@ -873,6 +920,10 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
           }
           continue
         }
+        await deps.audit?.log({
+          requestId, sessionId, durationMs: 0, toolName: call.toolName, callId: call.callId,
+          validationPhase: 'output', validationStatus: 'passed',
+        })
         history.push({ role: 'tool', content: parsedOutput, callId: call.callId, toolName: call.toolName, createdAt: new Date().toISOString() })
       }
 
@@ -997,10 +1048,19 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
       let parsedOutput: unknown
       try {
         parsedOutput = parseWithCode(tool.output, request.output, 'TOOL_OUTPUT_INVALID')
+        await deps.audit?.log({
+          requestId: request.callId, sessionId: request.sessionId, callId: request.callId,
+          durationMs: 0, toolName: pending.toolName, validationPhase: 'output', validationStatus: 'passed',
+        })
       } catch (error) {
         const code = error instanceof AgentKitError ? error.code : 'TOOL_OUTPUT_INVALID'
         const message = error instanceof Error ? error.message : '工具输出校验失败'
-        await deps.audit?.log({ requestId: request.callId, sessionId: request.sessionId, durationMs: 0, toolName: pending.toolName, errorCode: code })
+        await deps.audit?.log({
+          requestId: request.callId, sessionId: request.sessionId, callId: request.callId,
+          durationMs: 0, toolName: pending.toolName, errorCode: code,
+          validationPhase: 'output', validationStatus: 'failed',
+          ...(error instanceof ToolValidationError ? { validationIssues: error.validationIssues } : {}),
+        })
         parsedOutput = { ok: false, code, message }
       }
 

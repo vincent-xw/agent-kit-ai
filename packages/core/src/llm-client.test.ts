@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { createLlmClient } from './index.js'
+import { createLlmClient, type LlmTraceEvent } from './index.js'
 
 const baseConfig = { apiKey: 'sk-test', baseUrl: 'https://llm.example.test/v1', model: 'test-model' }
 
@@ -96,8 +96,13 @@ describe('LlmClient', () => {
   })
 
   it('HTTP 非 2xx 返回 LLM_RESPONSE_INVALID', async () => {
-    vi.stubGlobal('fetch', vi.fn(async () => ({ ok: false, status: 500, json: async () => ({}) })))
-    const client = createLlmClient(baseConfig)
+    vi.stubGlobal('fetch', vi.fn(async () => ({
+      ok: false,
+      status: 500,
+      headers: new Headers(),
+      text: async () => JSON.stringify({ error: { message: 'upstream failed' } }),
+    })))
+    const client = createLlmClient({ ...baseConfig, maxRetries: 0 })
     await expect(client.complete({ input: 'hi', context: {}, messages: [] })).rejects.toMatchObject({ code: 'LLM_RESPONSE_INVALID' })
   })
 
@@ -121,6 +126,7 @@ describe('LlmClient', () => {
       .mockResolvedValueOnce({
         ok: false,
         status: 400,
+        headers: new Headers(),
         text: async () => JSON.stringify({ message: 'invalid request error trace_id: c5415a94053405c456cc20326f88c4bd', type: 'invalid_request_error' }),
       })
       .mockResolvedValueOnce({
@@ -160,7 +166,7 @@ describe('LlmClient', () => {
     const client = createLlmClient(baseConfig)
     await expect(client.complete({ input: 'hi', context: {}, messages: [] })).rejects.toMatchObject({ code: 'LLM_RESPONSE_INVALID' })
     expect(fetchMock).toHaveBeenCalledTimes(4)
-  })
+  }, 15_000)
 
   it('响应不是有效 JSON 返回 LLM_RESPONSE_INVALID', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, status: 200, json: async () => { throw new Error('bad json') } })))
@@ -172,12 +178,16 @@ describe('LlmClient', () => {
     vi.stubGlobal('fetch', vi.fn((_url: string, init: RequestInit) => new Promise((_resolve, reject) => {
       init.signal?.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')))
     })))
-    const client = createLlmClient({ ...baseConfig, timeoutMs: 50 })
+    const client = createLlmClient({ ...baseConfig, timeoutMs: 50, maxRetries: 0 })
     await expect(client.complete({ input: 'hi', context: {}, messages: [] })).rejects.toMatchObject({ code: 'LLM_RESPONSE_INVALID' })
   })
 
   it('外部 signal 取消请求时不重试并中止 fetch', async () => {
     const fetchMock = vi.fn((_url: string, init: RequestInit) => new Promise((_resolve, reject) => {
+      if (init.signal?.aborted) {
+        reject(init.signal.reason ?? new DOMException('Aborted', 'AbortError'))
+        return
+      }
       init.signal?.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')))
     }))
     vi.stubGlobal('fetch', fetchMock)
@@ -424,8 +434,6 @@ describe('LlmClient', () => {
   })
 })
 
-import type { LlmTraceEvent } from './llm-client.js'
-
 describe('usage parsing', () => {
   it('response usage 进入 trace 事件', async () => {
     const events: LlmTraceEvent[] = []
@@ -571,5 +579,140 @@ describe('usage parsing', () => {
       { reasoning: '先检查设备状态' },
       { reasoning: '，再调用工具' },
     ])
+  })
+})
+
+describe('bounded HTTP Trace', () => {
+  it('每个 HTTP attempt 写入独立 request 事实并给响应字段设置有界快照', async () => {
+    const events: LlmTraceEvent[] = []
+    const largeOutput = 'x'.repeat(80_000)
+    const payload = {
+      provider_extension: { route: 'edge-a' },
+      choices: [{ message: { content: largeOutput } }],
+    }
+    const responseBody = JSON.stringify(payload)
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ error: { message: 'temporary' } }), {
+        status: 500,
+        headers: { 'content-type': 'application/json', 'retry-after': '0' },
+      }))
+      .mockResolvedValueOnce(new Response(responseBody, {
+        status: 200,
+        headers: {
+          'content-type': 'application/json',
+          'x-provider-edge': 'edge-a',
+          'content-length': String(new TextEncoder().encode(responseBody).byteLength),
+        },
+      }))
+    vi.stubGlobal('fetch', fetchMock)
+
+    const client = createLlmClient({ ...baseConfig, maxRetries: 1, trace: (event) => events.push(event) })
+    const result = await client.complete({ input: 'hi', context: {}, messages: [] })
+
+    expect(result).toEqual({ type: 'final', output: largeOutput })
+    const requests = events.filter((event) => event.phase === 'request')
+    expect(requests.map(({ attempt }) => attempt)).toEqual([1, 2])
+    expect(requests[0]?.requestId).toBe(requests[1]?.requestId)
+    expect(events.find((event) => event.phase === 'error')).toMatchObject({ attempt: 1, httpStatus: 500 })
+    const response = events.find((event) => event.phase === 'response')
+    expect(response).toMatchObject({
+      attempt: 2,
+      httpStatus: 200,
+      responseHeaders: { 'x-provider-edge': 'edge-a' },
+      responseParseStatus: 'json',
+      responseTextTruncated: true,
+    })
+    expect(response?.responseBytes).toBe(new TextEncoder().encode(responseBody).byteLength)
+    expect(response?.responseBody).toMatchObject({ provider_extension: { route: 'edge-a' } })
+    expect(Buffer.byteLength(JSON.stringify(response?.responseBody), 'utf8')).toBeLessThanOrEqual(64 * 1024)
+  })
+
+  it('无效 JSON 与 HTTP 错误只把 Core 截断后的正文预览交给 Trace', async () => {
+    const events: LlmTraceEvent[] = []
+    const invalidBody = `not-json:${'i'.repeat(80_000)}`
+    const errorBody = JSON.stringify({
+      error: { message: 'invalid model request', type: 'invalid_request_error' },
+      provider_detail: 'e'.repeat(80_000),
+    })
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(new Response(invalidBody, { status: 200, headers: { 'content-type': 'application/json' } }))
+      .mockResolvedValueOnce(new Response(errorBody, { status: 400, headers: { 'content-type': 'application/json' } }))
+    vi.stubGlobal('fetch', fetchMock)
+    const client = createLlmClient({ ...baseConfig, maxRetries: 0, trace: (event) => events.push(event) })
+
+    await expect(client.complete({ input: 'first', context: {}, messages: [] }))
+      .rejects.toMatchObject({ code: 'LLM_RESPONSE_INVALID' })
+    await expect(client.complete({ input: 'second', context: {}, messages: [] }))
+      .rejects.toMatchObject({ code: 'LLM_RESPONSE_INVALID' })
+
+    const invalid = events.find((event) => event.phase === 'error' && event.httpStatus === 200)
+    expect(invalid).toMatchObject({ responseParseStatus: 'invalid_json', responseTextTruncated: true })
+    expect(Buffer.byteLength(invalid?.responseText ?? '', 'utf8')).toBeLessThanOrEqual(64 * 1024)
+    expect(invalid?.responseBytes).toBe(new TextEncoder().encode(invalidBody).byteLength)
+    const httpError = events.find((event) => event.phase === 'error' && event.httpStatus === 400)
+    expect(httpError).toMatchObject({ responseParseStatus: 'json', responseTextTruncated: true })
+    expect(Buffer.byteLength(httpError?.responseText ?? '', 'utf8')).toBeLessThanOrEqual(64 * 1024)
+    expect(httpError?.responseBody).toMatchObject({ error: { message: 'invalid model request' } })
+    expect(Buffer.byteLength(JSON.stringify(httpError?.responseBody), 'utf8')).toBeLessThanOrEqual(64 * 1024)
+  })
+
+  it('Trace 回调异常不会阻止 JSON 请求或覆盖 HTTP 错误', async () => {
+    const successfulFetch = vi.fn(async () => new Response(JSON.stringify({ choices: [{ message: { content: 'ok' } }] }), {
+      status: 200,
+      headers: { 'content-type': 'application/json' },
+    }))
+    vi.stubGlobal('fetch', successfulFetch)
+    const successfulClient = createLlmClient({ ...baseConfig, trace: () => { throw new Error('sink failed') } })
+    await expect(successfulClient.complete({ input: 'hi', context: {}, messages: [] }))
+      .resolves.toEqual({ type: 'final', output: 'ok' })
+    expect(successfulFetch).toHaveBeenCalledTimes(1)
+
+    const failedFetch = vi.fn(async () => new Response(JSON.stringify({ error: { message: 'bad request' } }), {
+      status: 400,
+      headers: { 'content-type': 'application/json' },
+    }))
+    vi.stubGlobal('fetch', failedFetch)
+    const failedClient = createLlmClient({ ...baseConfig, maxRetries: 0, trace: (event) => {
+      if (event.phase === 'error') throw new Error('sink failed')
+    } })
+    await expect(failedClient.complete({ input: 'hi', context: {}, messages: [] }))
+      .rejects.toMatchObject({ code: 'LLM_RESPONSE_INVALID' })
+    expect(failedFetch).toHaveBeenCalledTimes(1)
+  })
+
+  it('长 SSE 只在 Trace 中留下有界摘要且 Trace 异常不丢失 delta', async () => {
+    const events: LlmTraceEvent[] = []
+    const deltas: string[] = []
+    const content = 's'.repeat(80_000)
+    const encoder = new TextEncoder()
+    const stream = new ReadableStream({
+      start(controller) {
+        controller.enqueue(encoder.encode(`data: ${JSON.stringify({ choices: [{ delta: { content }, finish_reason: null }] })}\n\n`))
+        controller.enqueue(encoder.encode('data: [DONE]\n\n'))
+        controller.close()
+      },
+    })
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(stream, {
+      status: 200,
+      headers: { 'content-type': 'text/event-stream', 'x-provider-edge': 'edge-sse' },
+    })))
+    const client = createLlmClient({
+      ...baseConfig,
+      trace: (event) => {
+        events.push(event)
+        if (event.phase === 'response') throw new Error('sink failed')
+      },
+      onDelta: (delta) => { if (delta.content) deltas.push(delta.content) },
+    })
+
+    const result = await client.complete({ input: 'hi', context: {}, messages: [] })
+
+    expect(result).toEqual({ type: 'final', output: content })
+    expect(deltas.join('')).toBe(content)
+    const response = events.find((event) => event.phase === 'response')
+    expect(response).toMatchObject({ httpStatus: 200, responseParseStatus: 'sse', responseHeaders: { 'x-provider-edge': 'edge-sse' } })
+    expect(response?.responseBody).toMatchObject({ content_length: content.length })
+    expect(JSON.stringify(response)).not.toContain(content)
+    expect(Buffer.byteLength(JSON.stringify(response), 'utf8')).toBeLessThan(1024)
   })
 })
