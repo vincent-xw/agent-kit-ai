@@ -1,0 +1,20 @@
+packages/core/src/context-compressor.test.ts
+  s_d0af7283a95c06::t_f0e54b18fc5d71 44,52,54-55,61,64-65,85,184-186
+  s_d0af7283a95c06::t_74ac73ccbb1638 191
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "dd5e228a843e8050ce62ecbc03fbf1ea7e6345e0",
+  "prompts": {},
+  "sessions": {
+    "s_d0af7283a95c06": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a16153-a241-72d0-befd-36f9638f6d31",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
