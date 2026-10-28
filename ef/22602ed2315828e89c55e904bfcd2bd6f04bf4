@@ -1,0 +1,23 @@
+packages/core/src/context-compressor.test.ts
+  s_d0af7283a95c06::t_e9127744009f1f 45,59,62,185-186
+packages/core/src/llm-client.ts
+  s_d0af7283a95c06::t_898e92dc83dc1b 591
+examples/agent-runtime-bff
+  s_d0af7283a95c06::t_9ec391a51ec2b9 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ef22602ed2315828e89c55e904bfcd2bd6f04bf4",
+  "prompts": {},
+  "sessions": {
+    "s_d0af7283a95c06": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a16153-a241-72d0-befd-36f9638f6d31",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
