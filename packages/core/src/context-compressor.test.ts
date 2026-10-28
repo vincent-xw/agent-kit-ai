@@ -41,25 +41,28 @@ describe('compressMessages', () => {
 
   it('摘要压缩时保留最近完整工具轮次和最近对话', async () => {
     const messages: SessionMessage[] = [
+      { role: 'user', content: '原始目标：核对订单金额。' },
       { role: 'user', content: 'old q' },
-      { role: 'assistant', content: '已结束的旧步骤，可以折叠进摘要。' },
       { role: 'assistant', content: 'old a', toolCalls: [{ callId: 'c1', toolName: 't', input: {} }] },
       { role: 'tool', content: 'tool out', callId: 'c1', toolName: 't' },
       { role: 'user', content: 'new q' },
       { role: 'assistant', content: 'new a' },
     ]
     const result = await compressMessages(messages, { limit: 40, highWatermark: 0.8, lowWatermark: 0.5, preserveRecentUnits: 2 })
-    // Tool Call 与 Result 按 callId 成对保留；旧目标会进入摘要，近期对话继续留在模型上下文。
+    // 工具调用与结果成对保留；首条目标保持原文，其余旧轮次进入摘要。
     expect(result.summary).toBeDefined()
+    expect(result.messages).toContainEqual(messages[0])
+    expect(result.messages).not.toContainEqual(messages[1])
     expect(result.messages.some((m) => m.role === 'tool' && m.callId === 'c1')).toBe(true)
     expect(result.messages.some((m) => m.role === 'assistant' && m.content === 'old a')).toBe(true)
     expect(result.messages.find((m) => m.role === 'assistant' && m.content === 'new a')).toBeDefined()
   })
 
-  it('折叠旧上下文时仍摘要首条目标和近期工具进度', async () => {
+  it('摘要压缩同时保留原始目标、近期工具对与执行进度', async () => {
     const messages: SessionMessage[] = [
       { role: 'user', content: `目标：完成收货地址填写后核对总价，不要重复提交。${'旧目标上下文 '.repeat(500)}` },
-      { role: 'assistant', content: '此前已打开订单页面，可折叠到摘要中。' },
+      // 首条目标始终保留；另设可压缩的旧轮次，避免所有消息都落入保护范围。
+      { role: 'assistant', content: '已完成初步检查，下一步填写收货地址。' },
       { role: 'assistant', content: null, toolCalls: [{ callId: 'fill-address', toolName: 'mobile_set_text', input: { field: '收货地址' } }] },
       { role: 'tool', callId: 'fill-address', toolName: 'mobile_set_text', content: `已填写收货地址，订单尚未提交。${'大页面快照 '.repeat(2_000)}` },
       { role: 'user', content: '继续核对订单，不要从头开始。' },
@@ -79,6 +82,7 @@ describe('compressMessages', () => {
     })
     expect(result.summary).toContain('不要重复提交')
     expect(result.summary).toContain('已填写收货地址，订单尚未提交')
+    expect(result.messages).toContainEqual(messages[0])
     expect(result.messages.some((message) => message.role === 'tool' && message.callId === 'fill-address')).toBe(true)
     expect(result.messages.some((message) => message.role === 'assistant' && message.toolCalls?.some((call) => call.callId === 'fill-address'))).toBe(true)
   })
@@ -177,13 +181,14 @@ describe('compressMessages', () => {
       content: `历史消息 ${index} ${'x'.repeat(3_900)}`,
     }))
     const result = await compressMessages(messages, { limit: limitAtRatio(messages, 0.95), mode: 'default' })
-    const retainedContext = result.messages.filter((message) => message.role !== 'system')
+    // 三万 token 约束针对近期上下文；完整保留的原始目标单独计算。
+    expect(result.messages).toContainEqual(messages[0])
+    const retainedContext = result.messages.filter((message) => message.role !== 'system' && message !== messages[0])
     const retainedTokens = estimateMessages(retainedContext)
 
     expect(result.summary).toBeDefined()
     expect(retainedTokens).toBeGreaterThanOrEqual(30_000)
-    // 工具/消息单元不能拆分，保留预算允许最多多保留一条完整消息。
-    expect(retainedTokens).toBeLessThan(32_000)
+    expect(retainedTokens).toBeLessThan(31_000)
   })
 
   it('摘要服务失败时本地摘要仍保留最初目标和近期进度', async () => {
