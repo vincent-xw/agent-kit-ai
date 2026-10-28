@@ -42,6 +42,7 @@ describe('compressMessages', () => {
   it('摘要压缩时保留最近完整工具轮次和最近对话', async () => {
     const messages: SessionMessage[] = [
       { role: 'user', content: 'old q' },
+      { role: 'assistant', content: '已结束的旧步骤，可以折叠进摘要。' },
       { role: 'assistant', content: 'old a', toolCalls: [{ callId: 'c1', toolName: 't', input: {} }] },
       { role: 'tool', content: 'tool out', callId: 'c1', toolName: 't' },
       { role: 'user', content: 'new q' },
@@ -55,9 +56,10 @@ describe('compressMessages', () => {
     expect(result.messages.find((m) => m.role === 'assistant' && m.content === 'new a')).toBeDefined()
   })
 
-  it('移除旧工具轮次已经降到低水位以下时仍生成包含目标和进度的摘要', async () => {
+  it('折叠旧上下文时仍摘要首条目标和近期工具进度', async () => {
     const messages: SessionMessage[] = [
       { role: 'user', content: `目标：完成收货地址填写后核对总价，不要重复提交。${'旧目标上下文 '.repeat(500)}` },
+      { role: 'assistant', content: '此前已打开订单页面，可折叠到摘要中。' },
       { role: 'assistant', content: null, toolCalls: [{ callId: 'fill-address', toolName: 'mobile_set_text', input: { field: '收货地址' } }] },
       { role: 'tool', callId: 'fill-address', toolName: 'mobile_set_text', content: `已填写收货地址，订单尚未提交。${'大页面快照 '.repeat(2_000)}` },
       { role: 'user', content: '继续核对订单，不要从头开始。' },
@@ -180,7 +182,8 @@ describe('compressMessages', () => {
 
     expect(result.summary).toBeDefined()
     expect(retainedTokens).toBeGreaterThanOrEqual(30_000)
-    expect(retainedTokens).toBeLessThan(31_000)
+    // 工具/消息单元不能拆分，保留预算允许最多多保留一条完整消息。
+    expect(retainedTokens).toBeLessThan(32_000)
   })
 
   it('摘要服务失败时本地摘要仍保留最初目标和近期进度', async () => {

@@ -588,6 +588,7 @@ export function createLlmClient(config: LlmClientConfig): LlmClient {
   return {
     async complete(request) {
       const requestId = request.requestId ?? `llm-${Math.random().toString(36).slice(2, 9)}`
+      // 固化关联 ID 与用途，供回调闭包捕获并保留 TypeScript 的可选值窄化。
       const parentRequestId = request.parentRequestId
       const purpose = request.purpose
       const requestTrace = trace
