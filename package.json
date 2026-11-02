@@ -10,6 +10,7 @@
     "dev:runtime": "pnpm --filter agent-runtime-bff dev",
     "start:browser": "pnpm --filter browser-extension-bff start",
     "start:runtime": "pnpm --filter agent-runtime-bff start",
+    "pilot:qmd": "pnpm --filter agent-runtime-bff run pilot:qmd",
     "build:companion": "./companion-android/gradlew -p companion-android clean assembleDebug",
     "pkg:runtime": "pnpm --filter agent-runtime-bff run pkg",
     "release:bump": "bumpp --no-commit --no-tag --no-push packages/core/package.json packages/adapter-sqlite/package.json packages/bff-hono/package.json && node scripts/sync-core-version.mjs",
