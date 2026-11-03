@@ -35,9 +35,15 @@ importers:
       '@hono/node-server':
         specifier: ^2.1.0
         version: 2.1.0(hono@4.13.2)
+      fflate:
+        specifier: 0.8.3
+        version: 0.8.3
       hono:
         specifier: ^4.8.0
         version: 4.13.2
+      parse5:
+        specifier: 8.0.1
+        version: 8.0.1
       sharp:
         specifier: ^0.35.3
         version: 0.35.3(@types/node@24.3.1)
@@ -1217,6 +1223,9 @@ packages:
 
   fecha@4.2.3:
     resolution: {integrity: sha512-OP2IUU6HeYKJi3i0z4A19kHMQoLVs4Hc+DPqqxI2h/DPZHTm/vjsfC6P0b4jCMy14XizLBqvndQ+UilD7707Jw==}
+
+  fflate@0.8.3:
+    resolution: {integrity: sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==}
 
   file-stream-rotator@0.6.1:
     resolution: {integrity: sha512-u+dBid4PvZw17PmDeRcNOtCP9CCK/9lRN2w+r1xIS7yOL9JFrIBKTvrYsxT4P0pGtThYTn++QS5ChHaUov3+zQ==}
@@ -2746,6 +2755,8 @@ snapshots:
       picomatch: 4.0.5
 
   fecha@4.2.3: {}
+
+  fflate@0.8.3: {}
 
   file-stream-rotator@0.6.1:
     dependencies:
