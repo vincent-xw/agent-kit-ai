@@ -716,7 +716,8 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
           })
           continue
         }
-        const tool = deps.tools.get(call.toolName)
+        // 使用模型看到的决策轮次快照解析定义；注册表更新从下一轮开始生效。
+        const tool = visibleTools.find((definition) => definition.name === call.toolName)
         // 未注册的工具名不中断整轮：模型偶发输出畸形函数名（上下文压力大时尤其常见），
         // 把可选工具列表回传让它自己纠正，比让整个任务猝死更有用。
         if (!tool) {

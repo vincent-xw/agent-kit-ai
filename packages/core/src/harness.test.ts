@@ -124,6 +124,68 @@ describe('AgentHarness', () => {
     }))
   })
 
+  it('模型等待期间替换工具时，本轮执行旧定义且其他会话可见新定义', async () => {
+    const tools = createToolRegistry()
+    const oldExecute = vi.fn(async () => ({ version: 'old' }))
+    const newExecute = vi.fn(async () => ({ version: 'new' }))
+    const output = z.object({ version: z.string() })
+    tools.register({
+      name: 'versioned_tool', execution: 'server',
+      input: z.object({ version: z.literal('old') }), output, execute: oldExecute,
+    })
+
+    let signalFirstRequest!: () => void
+    const firstRequestStarted = new Promise<void>((resolve) => { signalFirstRequest = resolve })
+    let resolveFirstResponse!: (result: LlmResult) => void
+    const firstResponse = new Promise<LlmResult>((resolve) => { resolveFirstResponse = resolve })
+    const sessionARequests: LlmRequest[] = []
+    const harnessA = createAgentHarness({
+      llm: { complete: async (request) => {
+        sessionARequests.push(request)
+        if (sessionARequests.length === 1) {
+          signalFirstRequest()
+          return firstResponse
+        }
+        return { type: 'final', output: '会话 A 完成' }
+      } },
+      sessions: createMemorySessionStore(), tools, maxSteps: 2,
+    })
+
+    const sessionARun = harnessA.run({ sessionId: 'snapshot-a', input: '调用旧版本', context: {} })
+    await firstRequestStarted
+    expect(sessionARequests[0]?.tools?.[0]?.parameters).toMatchObject({
+      properties: { version: { enum: ['old'] } },
+    })
+
+    tools.register({
+      name: 'versioned_tool', execution: 'server',
+      input: z.object({ version: z.literal('new') }), output, execute: newExecute,
+    })
+    const sessionBRequests: LlmRequest[] = []
+    const harnessB = createAgentHarness({
+      llm: { complete: async (request) => {
+        sessionBRequests.push(request)
+        return { type: 'final', output: '会话 B 完成' }
+      } },
+      sessions: createMemorySessionStore(), tools, maxSteps: 2,
+    })
+
+    await expect(harnessB.run({ sessionId: 'snapshot-b', input: '读取新版本', context: {} }))
+      .resolves.toMatchObject({ type: 'final', output: '会话 B 完成' })
+    expect(sessionBRequests[0]?.tools?.[0]?.parameters).toMatchObject({
+      properties: { version: { enum: ['new'] } },
+    })
+
+    resolveFirstResponse(callsOf({ callId: 'snapshot-a-call', toolName: 'versioned_tool', input: { version: 'old' } }))
+    await expect(sessionARun).resolves.toMatchObject({ type: 'final', output: '会话 A 完成' })
+
+    expect(oldExecute).toHaveBeenCalledTimes(1)
+    expect(newExecute).not.toHaveBeenCalled()
+    expect(sessionARequests[1]?.tools?.[0]?.parameters).toMatchObject({
+      properties: { version: { enum: ['new'] } },
+    })
+  })
+
   it('Default Control Flow Provider 收到的工具名与本轮实际暴露的工具完全一致', async () => {
     const tools = createToolRegistry()
     for (const name of ['visible_tool', 'filtered_tool']) {
