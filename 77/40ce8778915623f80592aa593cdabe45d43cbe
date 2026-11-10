@@ -1,0 +1,21 @@
+examples/agent-runtime-bff
+  s_cdb16a92830c0a::t_69c009bd4acc1b 1
+pnpm-lock.yaml
+  s_cdb16a92830c0a::t_462e45b0462624 38-40,78-80,769-772,777-780,785-788,1502-1509,1706-1708,1915-1918,2974-2983,2988-2991,2997-3001,3654-3659,3824-3825,4052-4053
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "7740ce8778915623f80592aa593cdabe45d43cbe",
+  "prompts": {},
+  "sessions": {
+    "s_cdb16a92830c0a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1c329-ae42-7662-9c28-6df5c4869d6e",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
