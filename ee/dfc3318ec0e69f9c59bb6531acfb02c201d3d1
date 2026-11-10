@@ -1,0 +1,28 @@
+packages/core/src/contracts.ts
+  s_cdb16a92830c0a::t_1ff553719547c3 157-172,178-179
+packages/core/src/json-schema.ts
+  s_cdb16a92830c0a::t_7b9a53b59ec18d 4,9-13,119-121
+packages/core/src/harness.test.ts
+  s_cdb16a92830c0a::t_c27bb5c15ad980 18,26,101,123
+  s_cdb16a92830c0a::t_46a343d8e91ccd 4-5,13,20-25,27-30,32-87,89-100,102-104,106-113,115-120,125-126
+  s_cdb16a92830c0a::t_7dbdfad182536b 105,114,121-122,124
+  s_cdb16a92830c0a::t_a52aa9f89c73c6 14-17,19,88
+packages/core/src/harness.ts
+  s_cdb16a92830c0a::t_cd2beb7c3fb91b 15,143-148,153,162,177-178
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "eedfc3318ec0e69f9c59bb6531acfb02c201d3d1",
+  "prompts": {},
+  "sessions": {
+    "s_cdb16a92830c0a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1c329-ae42-7662-9c28-6df5c4869d6e",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
