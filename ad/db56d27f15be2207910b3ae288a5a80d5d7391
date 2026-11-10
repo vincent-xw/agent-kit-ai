@@ -1,0 +1,21 @@
+packages/core/src/index.ts
+  s_cdb16a92830c0a::t_2c0d10a247c6ed 2
+packages/core/package.json
+  s_cdb16a92830c0a::t_2c0d10a247c6ed 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "addb56d27f15be2207910b3ae288a5a80d5d7391",
+  "prompts": {},
+  "sessions": {
+    "s_cdb16a92830c0a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1c329-ae42-7662-9c28-6df5c4869d6e",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
