@@ -1,0 +1,19 @@
+examples/agent-runtime-bff
+  s_cdb16a92830c0a::t_e54194576fe6ba 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "93c6563e632cbdf71b1de1535c74c74c3d187aba",
+  "prompts": {},
+  "sessions": {
+    "s_cdb16a92830c0a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1c329-ae42-7662-9c28-6df5c4869d6e",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
