@@ -154,14 +154,29 @@ export interface HarnessToolExecutionRequest {
   signal: AbortSignal
 }
 
-/** 工具定义：Zod 输入/输出 Schema 与执行方式（服务端或远端 Tool Host）。 */
+/** 协议无关的运行期 Schema 校验结果；问题只暴露路径和规则码，不携带原始值。 */
+export type RuntimeValueSchemaResult<T> =
+  | { success: true; data: T }
+  | { success: false; error: { issues: Array<{ path: Array<string | number>; code: string }> } }
+
+/** 可由宿主提供的运行期值校验器；Core 不依赖具体协议或校验库。 */
+export interface RuntimeValueSchema<T> {
+  readonly kind: 'json-schema'
+  readonly jsonSchema: Record<string, unknown>
+  safeParse(value: unknown): RuntimeValueSchemaResult<T>
+}
+
+/** 现有 Zod Schema 与协议无关的运行期 Schema 适配器。 */
+export type ToolValueSchema<T> = z.ZodType<T> | RuntimeValueSchema<T>
+
+/** 工具定义：Zod 或协议无关的输入/输出 Schema 与执行方式。 */
 export interface ToolDefinition<I = unknown, O = unknown> {
   name: string
   execution: 'server' | 'remote'
   /** 供模型理解用途的说明，会随 JSON Schema 一并发给模型。 */
   description?: string
-  input: z.ZodType<I>
-  output: z.ZodType<O>
+  input: ToolValueSchema<I>
+  output: ToolValueSchema<O>
   /** 单次执行超时毫秒数；未设置时使用 harness 的默认值。 */
   timeoutMs?: number
   execute?: (input: I, context: ToolExecutionContext) => Promise<O>

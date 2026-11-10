@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest'
 import { z } from 'zod'
 
-import { AgentKitError, createAgentHarness, createContextManager, createMemorySessionStore, createPromptRegistry, createToolRegistry } from './index.js'
-import type { HarnessToolExecutionRequest, LlmRequest, LlmResult, PendingCall, PendingCallStore, SessionMessage, ToolCall } from './index.js'
+import { AgentKitError, createAgentHarness, createContextManager, createMemorySessionStore, createPromptRegistry, createToolRegistry, toToolSchema } from './index.js'
+import type { HarnessToolExecutionRequest, LlmRequest, LlmResult, PendingCall, PendingCallStore, RuntimeValueSchema, SessionMessage, ToolCall, ToolDefinition } from './index.js'
 import { looksLikeToolCallMarkup } from './harness.js'
 
 /** 构造单个工具调用的模型响应，避免每处重复写复数壳。 */
@@ -10,7 +10,120 @@ function callsOf(...calls: ToolCall[]): LlmResult {
   return { type: 'tool_calls', calls }
 }
 
+/** 构造仅供 Core 契约测试使用的协议无关 JSON Schema 校验器。 */
+function createTestJsonSchema<T>(
+  jsonSchema: Record<string, unknown>,
+  isValid: (value: unknown) => value is T,
+  errorCode = 'invalid_type',
+  errorPath: Array<string | number> = ['text'],
+): RuntimeValueSchema<T> {
+  return {
+    kind: 'json-schema',
+    jsonSchema,
+    safeParse(value) {
+      return isValid(value)
+        ? { success: true, data: value }
+        : { success: false, error: { issues: [{ path: errorPath, code: errorCode }] } }
+    },
+  }
+}
+
 describe('AgentHarness', () => {
+  it('将协议无关的 JSON Schema 原样投影为模型工具参数', () => {
+    const inputSchema = {
+      type: 'object',
+      properties: { text: { type: 'string', minLength: 2 } },
+      required: ['text'],
+      additionalProperties: false,
+    }
+    const tool: ToolDefinition<{ text: string }, Record<string, never>> = {
+      name: 'json_schema_echo',
+      execution: 'server',
+      input: createTestJsonSchema(inputSchema, (value): value is { text: string } =>
+        typeof value === 'object' && value !== null && 'text' in value && typeof value.text === 'string'),
+      output: z.object({}),
+      execute: async () => ({}),
+    }
+
+    expect(toToolSchema(tool).parameters).toEqual(inputSchema)
+  })
+
+  it('JSON Schema 输入校验失败时保留 TOOL_INPUT_INVALID 且不执行工具', async () => {
+    const tools = createToolRegistry()
+    const inputSchema = {
+      type: 'object',
+      properties: { text: { type: 'string' } },
+      required: ['text'],
+      additionalProperties: false,
+    }
+    const execute = vi.fn(async () => ({ ok: true }))
+    tools.register({
+      name: 'json_schema_input',
+      execution: 'server',
+      input: createTestJsonSchema(inputSchema, (value): value is { text: string } =>
+        typeof value === 'object' && value !== null && 'text' in value && typeof value.text === 'string'),
+      output: z.object({ ok: z.boolean() }),
+      execute,
+    })
+    const requests: LlmRequest[] = []
+    const harness = createAgentHarness({
+      llm: { complete: async (request) => {
+        requests.push(request)
+        return requests.length === 1
+          ? callsOf({ callId: 'json-input-invalid', toolName: 'json_schema_input', input: { text: 123 } })
+          : { type: 'final', output: '已拒绝非法参数' }
+      } },
+      sessions: createMemorySessionStore(), tools, maxSteps: 2,
+    })
+
+    await expect(harness.run({ sessionId: 'json-schema-input', input: '调用', context: {} }))
+      .resolves.toMatchObject({ type: 'final', output: '已拒绝非法参数' })
+
+    expect(requests[0]?.tools?.[0]?.parameters).toEqual(inputSchema)
+    expect(requests[1]?.messages.find((message) => message.role === 'tool')?.content)
+      .toMatchObject({ code: 'TOOL_INPUT_INVALID' })
+    expect(execute).not.toHaveBeenCalled()
+  })
+
+  it('JSON Schema 输出错误与 Zod union 错误码同名时仍保留 TOOL_OUTPUT_INVALID', async () => {
+    const tools = createToolRegistry()
+    const outputSchema = {
+      type: 'object',
+      properties: { ok: { type: 'boolean' } },
+      required: ['ok'],
+      additionalProperties: false,
+    }
+    tools.register({
+      name: 'json_schema_output',
+      execution: 'server',
+      input: z.object({}),
+      output: createTestJsonSchema(outputSchema, (value): value is { ok: boolean } =>
+        typeof value === 'object' && value !== null && 'ok' in value && typeof value.ok === 'boolean', 'invalid_union', ['ok']),
+      execute: async () => ({ ok: 'wrong' }),
+    })
+    const requests: LlmRequest[] = []
+    const audits: Array<Record<string, unknown>> = []
+    const harness = createAgentHarness({
+      llm: { complete: async (request) => {
+        requests.push(request)
+        return requests.length === 1
+          ? callsOf({ callId: 'json-output-invalid', toolName: 'json_schema_output', input: {} })
+          : { type: 'final', output: '已报告输出校验失败' }
+      } },
+      sessions: createMemorySessionStore(), tools, maxSteps: 2,
+      audit: { log: (event) => { audits.push({ ...event }) } },
+    })
+
+    await expect(harness.run({ sessionId: 'json-schema-output', input: '调用', context: {} }))
+      .resolves.toMatchObject({ type: 'final', output: '已报告输出校验失败' })
+    expect(requests[1]?.messages.find((message) => message.role === 'tool')?.content)
+      .toMatchObject({ code: 'TOOL_OUTPUT_INVALID' })
+    expect(audits).toContainEqual(expect.objectContaining({
+      errorCode: 'TOOL_OUTPUT_INVALID',
+      validationIssues: [{ path: ['ok'], code: 'invalid_union' }],
+    }))
+  })
+
   it('Default Control Flow Provider 收到的工具名与本轮实际暴露的工具完全一致', async () => {
     const tools = createToolRegistry()
     for (const name of ['visible_tool', 'filtered_tool']) {

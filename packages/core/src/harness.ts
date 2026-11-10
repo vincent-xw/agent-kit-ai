@@ -1,5 +1,3 @@
-import type { z } from 'zod'
-
 import { AgentKitError } from './errors.js'
 import { toToolSchemas } from './json-schema.js'
 import type {
@@ -14,6 +12,7 @@ import type {
   SessionStore,
   ToolCall,
   ToolDefinition,
+  ToolValueSchema,
 } from './contracts.js'
 import type { ContextManager } from './context-manager.js'
 import type { LlmClient, LlmClientRequest } from './llm-client.js'
@@ -141,11 +140,17 @@ export interface AgentHarness {
   }): Promise<HarnessResult>
 }
 
+type ToolValidationIssue = {
+  path: Array<string | number>
+  code: string
+  unionErrors?: Array<{ issues: ToolValidationIssue[] }>
+}
+
 /** 仅保留有界字段路径与规则码，避免校验器将输入值或业务正文写入审计。 */
 class ToolValidationError extends AgentKitError {
   readonly validationIssues: Array<{ path: Array<string | number>; code: string }>
 
-  constructor(code: 'TOOL_INPUT_INVALID' | 'TOOL_OUTPUT_INVALID', issues: z.ZodIssue[]) {
+  constructor(code: 'TOOL_INPUT_INVALID' | 'TOOL_OUTPUT_INVALID', issues: ToolValidationIssue[]) {
     super(code, '工具数据校验失败')
     this.validationIssues = []
     // Union 的顶层 invalid_union 没有具体路径；展开分支叶子错误，但限制遍历量与输出数量。
@@ -154,7 +159,7 @@ class ToolValidationError extends AgentKitError {
     while (pending.length > 0 && this.validationIssues.length < 20 && visited < 100) {
       const issue = pending.shift()!
       visited += 1
-      if (issue.code === 'invalid_union') {
+      if (issue.code === 'invalid_union' && issue.unionErrors) {
         pending.unshift(...issue.unionErrors.flatMap((error) => error.issues).slice(0, 100 - visited))
         continue
       }
@@ -169,8 +174,8 @@ class ToolValidationError extends AgentKitError {
   }
 }
 
-/** 校验 Zod Schema，失败时统一抛出带稳定错误码的 AgentKitError。 */
-function parseWithCode(schema: z.ZodType, value: unknown, code: 'TOOL_INPUT_INVALID' | 'TOOL_OUTPUT_INVALID'): unknown {
+/** 校验 Tool Schema，失败时统一抛出带稳定错误码的 AgentKitError。 */
+function parseWithCode<T>(schema: ToolValueSchema<T>, value: unknown, code: 'TOOL_INPUT_INVALID' | 'TOOL_OUTPUT_INVALID'): T {
   const parsed = schema.safeParse(value)
   if (!parsed.success) throw new ToolValidationError(code, parsed.error.issues)
   return parsed.data
