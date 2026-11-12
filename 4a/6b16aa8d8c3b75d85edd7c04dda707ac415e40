@@ -1,0 +1,41 @@
+packages/core/src/contracts.ts
+  s_cdb16a92830c0a::t_fb6d5e515873b6 157-172,178-179
+packages/core/src/harness.test.ts
+  s_cdb16a92830c0a::t_fb6d5e515873b6 4-5,13-30,32-188
+packages/core/src/json-schema.ts
+  s_cdb16a92830c0a::t_fb6d5e515873b6 4,9-13,119-121
+packages/core/package.json
+  s_cdb16a92830c0a::t_fb6d5e515873b6 3
+packages/core/src/harness.ts
+  s_cdb16a92830c0a::t_fb6d5e515873b6 15,143-148,153,162,177-178,719-720
+packages/core/src/index.ts
+  s_cdb16a92830c0a::t_fb6d5e515873b6 2
+examples/agent-runtime-bff
+  s_79bf83d64bef58::t_64d884404545be 1
+pnpm-lock.yaml
+  s_cdb16a92830c0a::t_200c3b5aace837 38-40,44-49,84-86,775-778,783-786,791-794,1193-1203,1519-1526,1539-1541,1549-1551,1729-1731,1752-1754,1941-1944,3000-3009,3014-3017,3023-3027,3358-3368,3691-3696,3703-3704,3715-3716,3865-3866,3899-3900,4095-4096
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4a6b16aa8d8c3b75d85edd7c04dda707ac415e40",
+  "prompts": {},
+  "sessions": {
+    "s_79bf83d64bef58": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1afc5-0305-7a70-8d8c-cb155e5143c6",
+        "model": "auto/gpt-6-luna"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    },
+    "s_cdb16a92830c0a": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1c329-ae42-7662-9c28-6df5c4869d6e",
+        "model": "imported/gpt-6.1-sol"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
