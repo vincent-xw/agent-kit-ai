@@ -1,10 +1,15 @@
 import type { z } from 'zod'
 
 import { AgentKitError } from './errors.js'
-import type { ToolDefinition, ToolSchema } from './contracts.js'
+import type { RuntimeValueSchema, ToolDefinition, ToolSchema, ToolValueSchema } from './contracts.js'
 
 /** JSON Schema 片段。用宽松的记录类型，因为要发给模型而不是在本地做强校验。 */
 type JsonSchema = Record<string, unknown>
+
+/** 区分 Core 内建 Zod 与宿主提供的运行期 Schema。 */
+function isRuntimeValueSchema<T>(schema: ToolValueSchema<T>): schema is RuntimeValueSchema<T> {
+  return 'kind' in schema && schema.kind === 'json-schema'
+}
 
 /** 读取 zod 内部定义。zod 3 没有公开的 introspection API，只能走 _def。 */
 function defOf(schema: z.ZodTypeAny): { typeName: string; description?: string; [key: string]: unknown } {
@@ -111,7 +116,9 @@ export function toToolSchema(tool: ToolDefinition): ToolSchema {
       `工具名 ${tool.name} 不合法：OpenAI 兼容端点只接受字母、数字、下划线与连字符（^[a-zA-Z0-9_-]+$），不能含点号等字符。`,
     )
   }
-  const parameters = convert(tool.input as z.ZodTypeAny, tool.name, '')
+  const parameters = isRuntimeValueSchema(tool.input)
+    ? tool.input.jsonSchema
+    : convert(tool.input as z.ZodTypeAny, tool.name, '')
   // 顶层必须是 object：OpenAI 的 function parameters 只接受对象形态。
   if (parameters.type !== 'object') {
     throw new AgentKitError('TOOL_SCHEMA_UNSUPPORTED', `工具 ${tool.name} 的输入 Schema 顶层必须是对象`)

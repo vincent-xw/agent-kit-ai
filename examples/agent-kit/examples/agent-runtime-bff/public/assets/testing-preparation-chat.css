@@ -1,0 +1,104 @@
+.preparation-chat {
+  width: min(100%, 960px);
+  margin: 0 auto;
+  border: 1px solid var(--border-color, #d8dde6);
+  border-radius: 12px;
+  background: var(--surface-color, #fff);
+  color: var(--text-color, #1f2937);
+  overflow: hidden;
+}
+
+.preparation-chat-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-color, #d8dde6);
+}
+
+.preparation-chat-heading > button,
+.preparation-chat-card button {
+  min-height: 32px;
+  border: 1px solid var(--border-color, #d8dde6);
+  border-radius: 8px;
+  padding: 5px 10px;
+  background: var(--surface-color, #fff);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.preparation-chat-heading > button {
+  border: 0;
+  padding-inline: 0;
+  font-weight: 600;
+}
+
+.preparation-chat button:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.preparation-chat-status,
+.preparation-chat-card p {
+  margin: 0;
+  color: var(--muted-color, #667085);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.preparation-chat-cards {
+  display: grid;
+  gap: 8px;
+  max-height: min(36vh, 360px);
+  overflow: auto;
+  padding: 8px 12px;
+}
+
+.preparation-chat-card {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--border-color, #d8dde6);
+  border-radius: 10px;
+  background: var(--surface-subtle, #f8fafc);
+}
+
+.preparation-chat-card[aria-current="true"] {
+  border-color: var(--accent-color, #6b7cff);
+}
+
+.preparation-chat-card [data-action="collapse"] {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font-weight: 600;
+  background: transparent;
+}
+
+.preparation-chat-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.preparation-chat-empty {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.preparation-chat-empty h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.preparation-chat [data-action="load-earlier"] {
+  margin: 0 12px 10px;
+}
+
+.preparation-chat [hidden] {
+  display: none !important;
+}

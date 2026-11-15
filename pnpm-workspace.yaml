@@ -6,3 +6,11 @@ allowBuilds:
   # 之前这里是字面占位字符串 "set this to true or false"，会让每次
   # pnpm --filter 先触发 pnpm install 再失败。
   esbuild: true
+  # QMD 随 Runtime 安装：仅允许原生运行组件构建，不运行模型下载。
+  better-sqlite3: true
+  node-llama-cpp: false
+  tree-sitter-go: true
+  tree-sitter-python: true
+  tree-sitter-rust: true
+  tree-sitter-typescript: true
+  tree-sitter-javascript: true
