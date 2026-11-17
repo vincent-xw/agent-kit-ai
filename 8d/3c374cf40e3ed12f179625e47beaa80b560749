@@ -1,0 +1,23 @@
+docs/superpowers/plans/2026-11-17-two-worker-playwright-roulette.md
+  s_9aa657f93a7c5b::t_b9ecd3e3531202 58
+  s_9aa657f93a7c5b::t_7c807ea205a825 1-57,59-60
+docs/superpowers/specs/2026-11-17-two-worker-playwright-roulette-design.md
+  s_9aa657f93a7c5b::t_4ed12424af0773 1-14,16,18-623
+  s_9aa657f93a7c5b::t_892c352aa94819 15,17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "8d3c374cf40e3ed12f179625e47beaa80b560749",
+  "prompts": {},
+  "sessions": {
+    "s_9aa657f93a7c5b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e3cf-6f96-7023-9d17-61e5bd608903",
+        "model": "auto/deepseek-v4.1-flash"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
