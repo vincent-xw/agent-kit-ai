@@ -1,0 +1,31 @@
+examples/flutter-dev-bff/src/flutter-tools.ts
+  s_c4c52bb4032e3c::t_07ca8ec7b78939 758-775,777-779
+  s_c4c52bb4032e3c::t_d510e319aa1184 776
+examples/flutter-dev-bff/src/services/webview/cdp-client.ts
+  s_c4c52bb4032e3c::t_ae01e9fb18ee81 206-217
+  s_c4c52bb4032e3c::t_428d5cd03c99a3 168-170,172-181
+  s_c4c52bb4032e3c::t_a3c304b2156d1c 196-197,199-205,218-234
+examples/flutter-dev-bff/src/services/webview/cdp-client.test.ts
+  s_c4c52bb4032e3c::t_2779a3b01d8796 137,147-153,155-156
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "cbd3e9c408b69a478137f6ecf706ca2ff93e0f1b",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_c4c52bb4032e3c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a664701f-1b03-4213-a77b-c81dd4415ffc",
+        "model": "mimo-v2.5-pro"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

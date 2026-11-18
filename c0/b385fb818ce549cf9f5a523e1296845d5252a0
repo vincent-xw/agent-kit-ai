@@ -1,0 +1,49 @@
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_b6d1dfe778ddd7::t_d40ec53a1131ea 787-794
+companion-android/app/src/main/java/com/agentkit/companion/CompanionDeviceEnvironment.kt
+  s_b6d1dfe778ddd7::t_43c016b40c7d6e 1-58
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHealthState.kt
+  s_b6d1dfe778ddd7::t_c5d7e6583e20de 31-33,50-51,71-77,128-129,162-163
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_b6d1dfe778ddd7::t_5f6b5a133ff68d 429-430,445-446,467-468,477-490,520-521,523-524,534-535,543-545,863-883,907-908,939-940,988-989,999-1000,1036-1040
+companion-android/app/src/main/java/com/agentkit/companion/CompanionProtocol.kt
+  s_b6d1dfe778ddd7::t_b57104245ba77b 15-16,60-62,70-75,85-86,96-98,174-184
+companion-android/app/src/test/java/com/agentkit/companion/CompanionDeviceEnvironmentTest.kt
+  s_b6d1dfe778ddd7::t_45c422635a6c37 1-59
+companion-android/app/src/test/java/com/agentkit/companion/CompanionHealthStateTest.kt
+  s_b6d1dfe778ddd7::t_49c7206aca357f 85-86,106-122
+companion-android/app/src/test/java/com/agentkit/companion/CompanionProtocolTest.kt
+  s_b6d1dfe778ddd7::t_8d62b15764b893 92-145
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_94da4029302d71 868-870
+examples/agent-runtime-bff/src/services/companion-client.test.ts
+  s_b6d1dfe778ddd7::t_d1be7f52dfd566 115-168
+examples/agent-runtime-bff/src/services/companion-client.ts
+  s_b6d1dfe778ddd7::t_91102b501684e2 19-21,65-66,80-82,95-98
+examples/agent-runtime-bff/src/services/device-status-presentation.test.ts
+  s_b6d1dfe778ddd7::t_83c426c231b105 63-82
+examples/agent-runtime-bff/src/services/device-status-presentation.ts
+  s_b6d1dfe778ddd7::t_4f613e3413af01 16-19
+examples/agent-runtime-bff/src/services/device-supervisor-types.ts
+  s_b6d1dfe778ddd7::t_ab64fb22561543 80-82
+examples/agent-runtime-bff/src/services/device-supervisor.test.ts
+  s_b6d1dfe778ddd7::t_c2a995dd011d53 131-158
+examples/agent-runtime-bff/src/services/device-supervisor.ts
+  s_b6d1dfe778ddd7::t_001986b8aa792b 68,72-73,135-137,747-753,1182-1186,1313-1314
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "c0b385fb818ce549cf9f5a523e1296845d5252a0",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

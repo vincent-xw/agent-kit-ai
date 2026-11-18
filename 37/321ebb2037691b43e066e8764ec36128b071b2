@@ -1,0 +1,24 @@
+packages/core/src/context-compressor.test.ts
+  s_01951b81c4f90f::t_8c5608646fcac7 1-50
+packages/core/src/index.ts
+  s_01951b81c4f90f::t_c10b39a3c9b98d 16-17
+packages/core/src/context-compressor.ts
+  s_01951b81c4f90f::t_21a0f896811516 1-101,103
+  s_01951b81c4f90f::t_4f95186d593e96 102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "37321ebb2037691b43e066e8764ec36128b071b2",
+  "prompts": {},
+  "sessions": {
+    "s_01951b81c4f90f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b628ff55-77e4-451c-891e-49bbe6755864",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

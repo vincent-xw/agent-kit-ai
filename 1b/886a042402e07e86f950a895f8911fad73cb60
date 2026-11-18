@@ -1,0 +1,44 @@
+examples/flutter-dev-bff/public/index.html
+  s_0ba4c7a0e06f3b::t_c410906e9c78e4 205-209
+examples/flutter-dev-bff/public/companion.html
+  s_08fe834e3ad08f::t_b0670de459a61e 1-246
+examples/flutter-dev-bff/public/custom-tools.html
+  s_08fe834e3ad08f::t_9d6c5189a39452 1-444
+examples/flutter-dev-bff/public/guide.html
+  s_08fe834e3ad08f::t_f2f87ee92d1395 1-262
+examples/flutter-dev-bff/public/settings.html
+  s_08fe834e3ad08f::t_fb5070f6220cec 1-231
+examples/flutter-dev-bff/public/skills.html
+  s_08fe834e3ad08f::t_6ef6f333d402cd 1-249
+examples/flutter-dev-bff/public/tools.html
+  s_08fe834e3ad08f::t_50f9c74fe1d81d 1-329
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "1b886a042402e07e86f950a895f8911fad73cb60",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_08fe834e3ad08f": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a013f7-5a2e-7d02-948f-eb2e0021c772",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    },
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

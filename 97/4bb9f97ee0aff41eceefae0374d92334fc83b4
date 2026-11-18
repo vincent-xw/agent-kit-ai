@@ -1,0 +1,27 @@
+packages/core/src/harness.ts
+  s_88704e7afb3157::t_862ff97ced9d89 346
+  s_88704e7afb3157::t_5c70d8ae2b6b99 35-39
+  s_88704e7afb3157::t_20797390e97d7b 239
+  s_88704e7afb3157::t_47557565ab5045 368-374
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "974bb9f97ee0aff41eceefae0374d92334fc83b4",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_88704e7afb3157": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "af19520e-9d86-4d86-8809-4dc81e141b84",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

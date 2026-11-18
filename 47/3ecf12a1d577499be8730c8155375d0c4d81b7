@@ -1,0 +1,34 @@
+examples/flutter-dev-bff/src/services/skill-store.ts
+  s_0ba4c7a0e06f3b::t_26942ae179120e 100-106
+examples/flutter-dev-bff/public/index.html
+  s_0ba4c7a0e06f3b::t_414990c7d8d752 396-414
+  s_0ba4c7a0e06f3b::t_4e1aef8b6ff446 383
+examples/flutter-dev-bff/src/server.ts
+  s_0ba4c7a0e06f3b::t_e21900a81d66f4 47
+  s_0ba4c7a0e06f3b::t_618c46d852ff23 226-238
+  s_0ba4c7a0e06f3b::t_a00b1d6ff88da2 239-251
+examples/flutter-dev-bff/src/services/skill-generator.ts
+  s_0ba4c7a0e06f3b::t_e40c8d3ce443bc 26-39
+  s_0ba4c7a0e06f3b::t_ae599c4c6e7bda 90-133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "473ecf12a1d577499be8730c8155375d0c4d81b7",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

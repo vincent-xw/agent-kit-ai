@@ -1,0 +1,19 @@
+docs/superpowers/specs/2026-09-20-android-device-manager-emulator-design.md
+  s_b6d1dfe778ddd7::t_4f226c98b8391b 37-39,48-50,118-128,152-153,207-208,210-211,213-214,261-273,276-278,281-291,295-305,328,363,365,381-515,557,564-574,629-667,849-850,866-868,879-883,919-939,991,995-998,1000-1001,1035-1036,1043-1048,1071-1078
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "617b3bc1789f2767142a9c80bdefc004e461caaf",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

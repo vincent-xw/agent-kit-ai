@@ -1,0 +1,38 @@
+companion-android/app/src/main/AndroidManifest.xml
+  s_2fa81fbe47bbb6::t_69fea04800a4ed 4-5
+companion-android/settings.gradle.kts
+  s_2fa81fbe47bbb6::t_a43e3d2c45da1c 8
+companion-android/app/src/main/java/com/agentkit/companion/MainActivity.kt
+  s_2fa81fbe47bbb6::t_54093004b7d0e8 13-14,31,35-39
+  s_2fa81fbe47bbb6::t_3cda13055fb81b 40
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_2fa81fbe47bbb6::t_f081b6fc5ed4d7 31-33
+companion-android/app/src/main/java/com/agentkit/companion/NodeTreeDumper.kt
+  s_2fa81fbe47bbb6::t_205ad73594f05d 24-30,32-35,37-52,54,58
+companion-android/app/src/main/java/com/agentkit/companion/HttpServerHolder.kt
+  s_2fa81fbe47bbb6::t_a74ea3e0a50029 1-31
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_2fa81fbe47bbb6::t_c69c4c077354c5 66-68
+  s_2fa81fbe47bbb6::t_cd3e4c2d43567a 102-109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "aa82b9e982fcc447d3e0375709b443def2d7abe4",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_2fa81fbe47bbb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ea47a537-61ec-41ab-b0c5-2ec07c5e1557",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

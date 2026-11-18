@@ -1,0 +1,26 @@
+examples/browser-extension-bff/src/server.ts
+  s_a05627423297e0::t_2d045b3829bad8 4-6
+  s_a05627423297e0::t_e742b5001f9e7e 154
+  s_a05627423297e0::t_1b22d8ad0293cc 114-153,155-198,202-203,207,210-211,219,221-222,224,226
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "5e44d77d24be4ccc0da5024ac6130fab5da6e496",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a05627423297e0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ef888fdd-3960-4dd1-a9e4-276b31912f28",
+        "model": "glm-5.2"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

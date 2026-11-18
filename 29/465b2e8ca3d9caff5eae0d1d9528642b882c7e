@@ -1,0 +1,52 @@
+examples/flutter-dev-bff/src/webui-visual-system.test.ts
+  s_16621256c6b5d1::t_29202f64e0a10b 61
+examples/flutter-dev-bff/src/services/workflow-agent-task.test.ts
+  s_16621256c6b5d1::t_29202f64e0a10b 171,174-175,178-187,191-193
+  s_16621256c6b5d1::t_f31c318ddbca39 172-173,176-177,188-190
+examples/flutter-dev-bff/src/services/workflow-agent-task.ts
+  s_16621256c6b5d1::t_a26c1620d29d38 25-26
+  s_16621256c6b5d1::t_24459a6334cb7c 385
+examples/flutter-dev-bff/public/assets/app.js
+  s_16621256c6b5d1::t_4c214440417c71 3476-3479,3482-3483,3489,3816-3819,3822-3823,3827
+  s_16621256c6b5d1::t_25370bbe740324 53-54,327,349-350,555-557
+  s_16621256c6b5d1::t_aa7b24d7b5385b 2977-2989
+  s_16621256c6b5d1::t_ec2a9ba68bafab 256-325
+  s_16621256c6b5d1::t_9954aee84f6fdc 1619-1621,1776
+examples/flutter-dev-bff/public/assets/app.css
+  s_16621256c6b5d1::t_a2319ec0b44387 1410-1411
+examples/flutter-dev-bff/src/services/workflow-runner.ts
+  s_16621256c6b5d1::t_88155821295d0d 90-95
+  s_16621256c6b5d1::t_a2b183713a5d77 39,831,836-840,846-850,852-857
+  s_16621256c6b5d1::t_f871617a5b8b5c 841-845,851
+  s_16621256c6b5d1::t_f4aafd6969de00 739-740
+  s_16621256c6b5d1::t_20ea9467b04de8 101,111-117,581-583,625,630-631
+examples/flutter-dev-bff/src/server.ts
+  s_16621256c6b5d1::t_ae485178bf95b7 1094,1676-1680
+examples/flutter-dev-bff/src/prompts.ts
+  s_16621256c6b5d1::t_8fc7ba0a0abb8a 131
+examples/flutter-dev-bff/src/services/workflow-knowledge-types.ts
+  s_16621256c6b5d1::t_a26c1620d29d38 144-148
+examples/flutter-dev-bff/src/services/workflow-runner.test.ts
+  s_16621256c6b5d1::t_29202f64e0a10b 363-392
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_16621256c6b5d1::t_ffc0c90a54643f 436,451-452
+  s_16621256c6b5d1::t_d21afac13d234f 1205,1219-1220
+  s_16621256c6b5d1::t_31ab41e1668d26 458-486
+  s_16621256c6b5d1::t_0ff49a565348a8 43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "29465b2e8ca3d9caff5eae0d1d9528642b882c7e",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

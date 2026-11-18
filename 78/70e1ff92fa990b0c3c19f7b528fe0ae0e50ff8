@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/src/services/workflow-hooks.test.ts
+  s_099e6e2ecd6699::t_f1b1cd8c004fa1 1-27
+examples/flutter-dev-bff/src/services/workflow-hooks.ts
+  s_099e6e2ecd6699::t_c4cb47c636b537 1-38
+examples/flutter-dev-bff/src/services/workflow-scheduler.test.ts
+  s_099e6e2ecd6699::t_c38d7e4f03a404 1-79
+examples/flutter-dev-bff/src/services/workflow-scheduler.ts
+  s_099e6e2ecd6699::t_44e1c8c6fb18df 1-127
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "7870e1ff92fa990b0c3c19f7b528fe0ae0e50ff8",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

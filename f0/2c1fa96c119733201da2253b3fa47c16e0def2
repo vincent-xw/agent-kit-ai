@@ -1,0 +1,46 @@
+packages/core/src/console-audit.ts
+  s_3a7e3f0262fa25::t_a943bbbb313850 2
+  s_3a7e3f0262fa25::t_aea7db2fa8eb63 64-107
+examples/browser-extension-bff/src/server.ts
+  s_3a7e3f0262fa25::t_7a3951c0f22215 7-8
+  s_3a7e3f0262fa25::t_c491b190edc566 27-28,45-51
+  s_3a7e3f0262fa25::t_6919da32d4982b 122-129
+  s_3a7e3f0262fa25::t_12ead8f598d83d 130-134
+  s_3a7e3f0262fa25::t_10a6206dc386f8 72
+packages/adapter-sqlite/src/index.ts
+  s_3a7e3f0262fa25::t_64757df2d2ac32 5
+  s_3a7e3f0262fa25::t_d1cde903bdf2ac 123-124,132-137
+packages/core/src/harness.test.ts
+  s_3a7e3f0262fa25::t_85374d472b5bcc 553-563,565-605,607-638
+  s_3a7e3f0262fa25::t_1f5a215ba3a091 564,606
+packages/core/src/harness.ts
+  s_3a7e3f0262fa25::t_460944dee4b7f6 258-259,263-265,268-269
+  s_3a7e3f0262fa25::t_4d017d54149e6e 246-257,260-262,266-267,270-275,278-284
+packages/core/src/console-audit.test.ts
+  s_3a7e3f0262fa25::t_d5a4ed7bb0bd0c 1-26,29-65
+  s_3a7e3f0262fa25::t_8528363e7394ea 27-28
+packages/core/src/llm-client.ts
+  s_3a7e3f0262fa25::t_f85a866f4eac2a 170,173-184,196,200,208,220
+  s_3a7e3f0262fa25::t_93282c9a4ba9ae 11-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "f02c1fa96c119733201da2253b3fa47c16e0def2",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

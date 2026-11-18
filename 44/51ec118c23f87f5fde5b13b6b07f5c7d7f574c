@@ -1,0 +1,19 @@
+docs/superpowers/specs/2026-08-13-flutter-bff-unicode-input-design.md
+  s_0ba4c7a0e06f3b::t_ea07fb9365f9d9 7,44-57,82,88,92,105,119,124,127-129,132,134,136-141,143,145,147,149,153-154,163,169,175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "4451ec118c23f87f5fde5b13b6b07f5c7d7f574c",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+packages/core/src/index.ts
+  s_3a7e3f0262fa25::t_282e0d4b627edd 7
+packages/core/src/llm-client.ts
+  s_3a7e3f0262fa25::t_60944804ad3f84 118-147
+  s_3a7e3f0262fa25::t_cdbc30cb6d26f6 157
+  s_3a7e3f0262fa25::t_84bf06df31266a 181-187
+packages/adapter-sqlite/src/index.ts
+  s_3a7e3f0262fa25::t_34744e3121b15c 5
+  s_3a7e3f0262fa25::t_7b923ad355edb7 122,136
+packages/core/src/llm-client.test.ts
+  s_3a7e3f0262fa25::t_87e6a0d7fbf630 113,116
+packages/adapter-sqlite/src/index.test.ts
+  s_3a7e3f0262fa25::t_2fe61f9c48465f 62,64,73,76,85,91,98
+examples/browser-extension-bff/src/server.ts
+  s_3a7e3f0262fa25::t_187f2bdaae329a 43,52
+  s_3a7e3f0262fa25::t_1837e20c448a79 30-31
+  s_3a7e3f0262fa25::t_f84a4440806116 7-8
+  s_3a7e3f0262fa25::t_7f668c6825423a 25-26
+packages/bff-hono/src/index.test.ts
+  s_3a7e3f0262fa25::t_2fe61f9c48465f 27,97
+packages/core/src/console-audit.ts
+  s_3a7e3f0262fa25::t_9a3369599f3f9f 1-62
+packages/core/src/context-manager.test.ts
+  s_3a7e3f0262fa25::t_87e6a0d7fbf630 9
+packages/core/src/json-schema.ts
+  s_3a7e3f0262fa25::t_6cf4ccf36a0834 88-95,98-103
+examples/browser-extension-bff/src/server.test.ts
+  s_3a7e3f0262fa25::t_2fe61f9c48465f 113,117,122,137,150,208-216,226,230,243,281
+packages/core/src/json-schema.test.ts
+  s_3a7e3f0262fa25::t_76faa8a3d02c6e 9
+  s_3a7e3f0262fa25::t_3cafb31e7e20a6 114-138
+packages/core/src/harness.ts
+  s_3a7e3f0262fa25::t_e5b5e80a28c1b6 155-173
+  s_3a7e3f0262fa25::t_935d86cd1d0e01 8
+packages/bff-hono/src/index.ts
+  s_3a7e3f0262fa25::t_7baf7cbd63f12e 2,9-13,17-26,29,32-35,38,42,53,56-61,67,70-73,76,86,89-92
+packages/core/src/harness.test.ts
+  s_3a7e3f0262fa25::t_2db549edeeec6b 268,294,339,348
+  s_3a7e3f0262fa25::t_cf574bcfcde223 17,28,67,74,84,91,101,108,215,226,235,242,255,286,300,307,323,372,389
+  s_3a7e3f0262fa25::t_2fe61f9c48465f 43,45,51,118,124,132,139,141,151,153,164,184,413,415,420,432,435,640,647
+examples/browser-extension-bff/src/browser-tools.ts
+  s_3a7e3f0262fa25::t_2fe61f9c48465f 15,57,84,86,100,108,114,123,142,155,157,166,169,192,239-240,242-243,264-265
+examples/browser-extension-bff/README.md
+  s_3a7e3f0262fa25::t_ffffe43a616779 81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "7b6ee9b62922991eb0194cad2d3ef3fe1da85238",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

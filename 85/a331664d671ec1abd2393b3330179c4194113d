@@ -1,0 +1,30 @@
+.codex/config.toml
+  h_c3a612a540ca0b 1-2
+.claude/skills/gitnexus/gitnexus-cli/SKILL.md
+  h_c3a612a540ca0b 1-85
+.claude/skills/gitnexus/gitnexus-debugging/SKILL.md
+  h_c3a612a540ca0b 1-89
+.claude/skills/gitnexus/gitnexus-exploring/SKILL.md
+  h_c3a612a540ca0b 1-78
+.claude/skills/gitnexus/gitnexus-guide/SKILL.md
+  h_c3a612a540ca0b 1-64
+.claude/skills/gitnexus/gitnexus-impact-analysis/SKILL.md
+  h_c3a612a540ca0b 1-97
+.claude/skills/gitnexus/gitnexus-refactoring/SKILL.md
+  h_c3a612a540ca0b 1-121
+AGENTS.md
+  h_c3a612a540ca0b 5-14,59-102
+CLAUDE.md
+  h_c3a612a540ca0b 1-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "85a331664d671ec1abd2393b3330179c4194113d",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

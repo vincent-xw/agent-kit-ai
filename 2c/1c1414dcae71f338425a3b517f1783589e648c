@@ -1,0 +1,25 @@
+.gitignore
+  s_0ba4c7a0e06f3b::t_e7017ce05a1fc3 15-16
+examples/flutter-dev-bff/scripts/ime-setup.sh
+  s_0ba4c7a0e06f3b::t_3c93b03ab12e7e 1-61
+examples/flutter-dev-bff/package.json
+  s_0ba4c7a0e06f3b::t_7d7b00537af965 23-24
+examples/flutter-dev-bff/scripts/ime-restore.sh
+  s_0ba4c7a0e06f3b::t_e7665ccf916294 1-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "2c1c1414dcae71f338425a3b517f1783589e648c",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

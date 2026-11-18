@@ -1,0 +1,24 @@
+packages/core/src/llm-client.ts
+  s_01951b81c4f90f::t_e192b423b5c408 286,370
+  s_01951b81c4f90f::t_33362d3a13ad16 46-51
+  s_01951b81c4f90f::t_b4614a2233ef1c 165-167,169-173
+  s_01951b81c4f90f::t_01aeb4f74c685a 168,174-175
+packages/core/src/llm-client.test.ts
+  s_01951b81c4f90f::t_21ead61a100557 168-190
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "20fb3ef0e4cca94af6d4a1935047b5f40f3cb9a7",
+  "prompts": {},
+  "sessions": {
+    "s_01951b81c4f90f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b628ff55-77e4-451c-891e-49bbe6755864",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

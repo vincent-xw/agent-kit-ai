@@ -1,0 +1,41 @@
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_2fa81fbe47bbb6::t_de7cf54ef3fc65 58
+  s_2fa81fbe47bbb6::t_72f01185274430 30
+examples/flutter-dev-bff/public/index.html
+  s_2fa81fbe47bbb6::t_ea49fa1b98b642 632,635
+  s_2fa81fbe47bbb6::t_be9791ea133bbf 27-28
+  s_2fa81fbe47bbb6::t_1d925a51a87ebb 546-554,557,561
+examples/flutter-dev-bff/src/services/uiautomator-provider.ts
+  s_2fa81fbe47bbb6::t_3a6b6bfde31220 176
+examples/flutter-dev-bff/src/flutter-tools.ts
+  s_2fa81fbe47bbb6::t_4f2656e8ca5bae 360
+  s_2fa81fbe47bbb6::t_01298cbb30e4fa 181,190
+examples/flutter-dev-bff/src/services/companion-provider.ts
+  s_2fa81fbe47bbb6::t_868f3b45b91f8e 61
+examples/flutter-dev-bff/src/services/webview/cdp-client.ts
+  s_2fa81fbe47bbb6::t_eb847f5eee9c8e 146
+examples/flutter-dev-bff/src/types.ts
+  s_2fa81fbe47bbb6::t_830dc21056329d 34
+  s_2fa81fbe47bbb6::t_bb597cb39201db 35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "2b563790777e8ce218640722b436ffe7ffcc5305",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_2fa81fbe47bbb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ea47a537-61ec-41ab-b0c5-2ec07c5e1557",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

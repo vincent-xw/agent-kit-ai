@@ -1,0 +1,32 @@
+examples/agent-runtime-bff/public/assets/app.css
+  s_16621256c6b5d1::t_a52b4b01bf870f 209-221
+examples/agent-runtime-bff/public/guide.html
+  s_16621256c6b5d1::t_f0fab7ec0a73a7 168,189-227
+examples/agent-runtime-bff/public/index.html
+  s_16621256c6b5d1::t_282d96ee392549 341,345,365,371,373
+examples/agent-runtime-bff/public/packaged-user-guide.html
+  s_16621256c6b5d1::t_09e65a43a64bf9 35,53,61
+examples/agent-runtime-bff/public/settings.html
+  s_16621256c6b5d1::t_365722f922e0b1 157-158,160
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "d8a3f7b800a8b0049ebdf19db7b362c163a2a37c",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

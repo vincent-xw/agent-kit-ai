@@ -1,0 +1,33 @@
+packages/core/src/harness.ts
+  s_8155d9b03dcd9a::t_f6b906d45fcf44 85-91,100
+  s_8155d9b03dcd9a::t_d740a7b7f9ebc1 183
+  s_8155d9b03dcd9a::t_78b7c74efc0ca1 248
+packages/core/src/llm-client.ts
+  s_8155d9b03dcd9a::t_955adf88ac6ae5 52-53
+  s_8155d9b03dcd9a::t_7468376f1886ea 8-11
+packages/core/src/harness.test.ts
+  s_8155d9b03dcd9a::t_5ef576caa2d913 41-86
+packages/core/src/contracts.ts
+  s_8155d9b03dcd9a::t_6a76dceb355e01 89-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "e0a113b9c9431bb9f84a1a8d1dbcbdfb600ff6fb",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "glm-5.3"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

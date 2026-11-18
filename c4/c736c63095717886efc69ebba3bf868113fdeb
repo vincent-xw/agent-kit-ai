@@ -1,0 +1,26 @@
+examples/browser-extension-bff/public/index.html
+  s_04825501b8227d::t_cf59445ba8f763 366
+  s_04825501b8227d::t_555a73bd0b68e7 824-825,827-831
+  s_04825501b8227d::t_0b7f507cb31344 823,826
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "c4c736c63095717886efc69ebba3bf868113fdeb",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_04825501b8227d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b5655fb1-3d98-4554-89d3-4509741b4be6",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

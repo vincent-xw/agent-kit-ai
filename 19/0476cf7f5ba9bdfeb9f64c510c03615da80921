@@ -1,0 +1,31 @@
+examples/flutter-dev-bff/src/server.ts
+  s_0ba4c7a0e06f3b::t_448d45747262cc 174-177
+examples/flutter-dev-bff/src/services/skill-store.ts
+  s_0ba4c7a0e06f3b::t_3c304e9daf03d0 100-111
+examples/flutter-dev-bff/public/index.html
+  s_0ba4c7a0e06f3b::t_ceee34b8535907 337-356
+  s_0ba4c7a0e06f3b::t_29fcc9b27dbf43 76-78
+  s_0ba4c7a0e06f3b::t_8ca6c43bdf422c 128
+  s_0ba4c7a0e06f3b::t_b01d97ab0ca67e 213-223
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "190476cf7f5ba9bdfeb9f64c510c03615da80921",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

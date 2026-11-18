@@ -1,0 +1,19 @@
+docs/superpowers/specs/2026-08-21-bff-file-logging-design.md
+  s_4658ec95608c8c::t_1b3ed92e908f29 1-105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "1573844848209fcb35323936160c0983a71d1ae8",
+  "prompts": {},
+  "sessions": {
+    "s_4658ec95608c8c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "22dfbef7-d51d-4f01-afa2-15a1db6501bf",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

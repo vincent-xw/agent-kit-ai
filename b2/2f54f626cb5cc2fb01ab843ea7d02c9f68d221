@@ -1,0 +1,31 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_099e6e2ecd6699::t_20ec3dcb5cf6ad 367-380,403-405,414
+examples/flutter-dev-bff/public/assets/app.js
+  s_099e6e2ecd6699::t_e60e418ac06dd2 43,47-50,1126,1129,1131-1132,1138-1142,1169,1215-1233,2300,2308-2310,2312,2314-2334,2336-2337,2340-2341,2343-2344,2346-2347,2349-2356,2376,2389,2393,2408,2417-2418,2425-2451,2454-2457,2461,2463,2465,2468,2470,2473-2476,2480-2484,2488-2491,2493,2496-2497,2502-2539,2551,2559,2563-2566,2568-2569,2571,2575-2584,2586,2589,2591-2597,2601-2626,2634,2644,2664-2666
+examples/flutter-dev-bff/public/index.html
+  s_099e6e2ecd6699::t_a32c363ed80120 52,62,119,124-126,128,136-137,144,150-151,155-164,167,173-174,178-181,186,189-190,193,195-196
+examples/flutter-dev-bff/src/server.test.ts
+  s_099e6e2ecd6699::t_26d5361d369ed5 432,437-442,454,464-465,467-470,539-586
+examples/flutter-dev-bff/src/server.ts
+  s_099e6e2ecd6699::t_a3d13ab0f2f87d 1174-1178,1181,1184-1196,1424-1431,1509-1512,1522,1539,1544-1545
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_099e6e2ecd6699::t_13f48fd605d807 256,741-744
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_099e6e2ecd6699::t_448650686ee052 11-12,23-24,49,86,159-199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "b22f54f626cb5cc2fb01ab843ea7d02c9f68d221",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

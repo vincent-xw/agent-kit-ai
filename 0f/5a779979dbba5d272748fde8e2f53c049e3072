@@ -1,0 +1,41 @@
+packages/core/src/harness.ts
+  s_7398a7c5c32312::t_8e7cf725c74ce2 264
+  s_7398a7c5c32312::t_c6537db1c95da0 200
+  s_7398a7c5c32312::t_86127c9b76b0f2 212
+  s_7398a7c5c32312::t_f92096a48f5e75 206
+  s_7398a7c5c32312::t_6db50f40b56246 231
+  s_7398a7c5c32312::t_6e2839676c3f30 259
+  s_7398a7c5c32312::t_8bb6adf4490343 376
+packages/core/src/contracts.ts
+  s_7398a7c5c32312::t_f0c91376d4527c 25-27
+examples/flutter-dev-bff/public/assets/app.css
+  s_7398a7c5c32312::t_e6b18ab9faab63 310
+examples/flutter-dev-bff/public/assets/app.js
+  s_7398a7c5c32312::t_d8f9b42489c608 377-380,387-390
+  s_7398a7c5c32312::t_5e668df2948656 521,525-529
+  s_7398a7c5c32312::t_86614f32b5f502 111-120
+  s_7398a7c5c32312::t_879edf5543b65d 342,346-348
+examples/flutter-dev-bff/public/index.html
+  s_7398a7c5c32312::t_885fee11cb03ed 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "0f5a779979dbba5d272748fde8e2f53c049e3072",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_7398a7c5c32312": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2368450d-4980-44ab-85cb-a29a22c8e8aa",
+        "model": "mimo-v2.5-pro"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

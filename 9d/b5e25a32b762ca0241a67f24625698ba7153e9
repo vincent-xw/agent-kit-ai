@@ -1,0 +1,57 @@
+AGENTS.md
+  s_099e6e2ecd6699::t_4520cf6cf1d7ea 68
+CLAUDE.md
+  s_099e6e2ecd6699::t_00b3704f555084 4
+docs/acceptance/2026-09-07-local-inspection-workflow.md
+  s_099e6e2ecd6699::t_07af5283689ff2 1-547
+docs/superpowers/plans/2026-09-07-chat-workflow-projection-implementation.md
+  s_099e6e2ecd6699::t_66dcb8a0aecd83 1-95
+examples/flutter-dev-bff/public/assets/app.css
+  s_099e6e2ecd6699::t_5a323c6c47bc25 597-618
+examples/flutter-dev-bff/public/assets/app.js
+  s_099e6e2ecd6699::t_a4876a003f529f 346-347,981,994-998,1054-1193,1221-1222,1225-1228,2310-2316,2355
+examples/flutter-dev-bff/src/server.test.ts
+  s_099e6e2ecd6699::t_fff6b25d16320c 361-376,400-471
+examples/flutter-dev-bff/src/server.ts
+  s_099e6e2ecd6699::t_043ce52fe86a22 85,108,392-393,511-539,743-761,775,779,792-808,810,931-952,957-965,1648
+examples/flutter-dev-bff/src/services/workflow-hooks.test.ts
+  s_099e6e2ecd6699::t_8506051959d774 27-41
+examples/flutter-dev-bff/src/services/workflow-hooks.ts
+  s_099e6e2ecd6699::t_2b7dc5556af31f 8,21-24,26-31,34-40,43,48,50
+examples/flutter-dev-bff/src/services/workflow-skill-executor.test.ts
+  s_099e6e2ecd6699::t_c81056a7db4b8e 1-53
+examples/flutter-dev-bff/src/services/workflow-skill-executor.ts
+  s_099e6e2ecd6699::t_a7ce5a66cc7f67 1-102
+examples/flutter-dev-bff/src/services/workflow-store.test.ts
+  s_099e6e2ecd6699::t_3ee6efd48a32d2 63-75
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_099e6e2ecd6699::t_6ae6baa518eb0f 124,330-332
+examples/flutter-dev-bff/src/services/workflow-tool-events.test.ts
+  s_099e6e2ecd6699::t_6e1a72afa39fb8 1-45
+examples/flutter-dev-bff/src/sse.test.ts
+  s_099e6e2ecd6699::t_6f98305aa890ee 112-123
+examples/flutter-dev-bff/src/tool-events.ts
+  s_099e6e2ecd6699::t_2bb7faebf0a1f3 79-129
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_099e6e2ecd6699::t_f9ca8ba6e3832b 78,448,506,734-790
+packages/core/src/llm-client.test.ts
+  s_099e6e2ecd6699::t_1da11433d5d5cd 342-375
+packages/core/src/llm-client.ts
+  s_099e6e2ecd6699::t_8a826af4a95a23 496-497,531-534
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "9db5e25a32b762ca0241a67f24625698ba7153e9",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

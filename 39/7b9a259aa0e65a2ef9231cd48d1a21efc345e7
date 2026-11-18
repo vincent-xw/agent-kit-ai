@@ -1,0 +1,28 @@
+CLAUDE.md
+  s_b6d1dfe778ddd7::t_0236cb1ac53d58 4
+AGENTS.md
+  s_b6d1dfe778ddd7::t_0236cb1ac53d58 73
+.gitignore
+  h_959ffaaf5065b8 30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "397b9a259aa0e65a2ef9231cd48d1a21efc345e7",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+examples/agent-runtime-bff/src/services/device-supervisor.test.ts
+  s_b6d1dfe778ddd7::t_ddaf5e682ccf5a 305-311,314-352
+  s_b6d1dfe778ddd7::t_761d391af691e1 312-313
+  s_b6d1dfe778ddd7::t_4bf5a9ec13c09e 1004
+  s_b6d1dfe778ddd7::t_3dd1a353a7f9b9 991-999,1001-1003,1005-1011
+  s_b6d1dfe778ddd7::t_9aee1bc104e360 1000
+  s_b6d1dfe778ddd7::t_b7296d13e678ad 123-137
+  s_b6d1dfe778ddd7::t_46715d37862c6d 219,251,286,569,598,628,645,670,695,739,786,808,824
+examples/agent-runtime-bff/src/services/device-supervisor.ts
+  s_b6d1dfe778ddd7::t_c0e590dc874d0b 749
+  s_b6d1dfe778ddd7::t_04b8323e070427 741,826,845
+  s_b6d1dfe778ddd7::t_f47ea9ff73cabf 548
+  s_b6d1dfe778ddd7::t_09b39d9e251ae8 51-58,101-102,430,464,474-495,549,559,771,1413
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_7399d677bd91c6 984,986
+  s_b6d1dfe778ddd7::t_c0e590dc874d0b 924
+  s_b6d1dfe778ddd7::t_04b8323e070427 833,848,926-927,934-935
+examples/agent-runtime-bff/src/prompts.ts
+  s_b6d1dfe778ddd7::t_2e54e706318a96 15
+  s_b6d1dfe778ddd7::t_c0e590dc874d0b 23
+examples/agent-runtime-bff/src/prompts.test.ts
+  s_b6d1dfe778ddd7::t_2e54e706318a96 32-38
+examples/agent-runtime-bff/src/server.ts
+  s_b6d1dfe778ddd7::t_2e54e706318a96 1035
+  s_b6d1dfe778ddd7::t_a719f85e577075 1038
+companion-android/app/build.gradle.kts
+  s_b6d1dfe778ddd7::t_dc088c006f66c4 13-14
+companion-android/app/src/test/java/com/agentkit/companion/CompanionCaptureModeTest.kt
+  s_b6d1dfe778ddd7::t_25be7c1eff7907 18-19,23
+  s_b6d1dfe778ddd7::t_62549ce829ea42 16
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_b6d1dfe778ddd7::t_72fa47dc20a461 411,416,429,445,811-812,821-835,837-842,853-861,881-885,910,918,925,941,960,971,989,1020,1023,1031,1046-1048,1053,1061,1072,1074,1082,1085,1092-1093,1118,1124-1125
+  s_b6d1dfe778ddd7::t_62549ce829ea42 807,852
+  s_b6d1dfe778ddd7::t_468918f8f90851 434,437,461,991
+examples/agent-runtime-bff/docs/tools.md
+  s_b6d1dfe778ddd7::t_dc088c006f66c4 56
+examples/agent-runtime-bff/src/flutter-tools.test.ts
+  s_b6d1dfe778ddd7::t_25be7c1eff7907 868
+  s_b6d1dfe778ddd7::t_3dd1a353a7f9b9 874-889,893-901
+  s_b6d1dfe778ddd7::t_e5ed1cfdb2ab73 890-892
+examples/agent-runtime-bff/src/services/companion-client.test.ts
+  s_b6d1dfe778ddd7::t_9aee1bc104e360 327
+  s_b6d1dfe778ddd7::t_3dd1a353a7f9b9 315-326,328-336
+examples/agent-runtime-bff/src/services/device-supervisor-types.ts
+  s_b6d1dfe778ddd7::t_04b8323e070427 109-110
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_b6d1dfe778ddd7::t_d6c50638c3bdc7 371,373,375,377-379,382,386,402-403,411-412,450,454,487-491,496,513,703,791,797,799,805,808
+examples/agent-runtime-bff/src/services/companion-client.ts
+  s_b6d1dfe778ddd7::t_04b8323e070427 13,231,370
+companion-android/app/src/main/java/com/agentkit/companion/CompanionCaptureMode.kt
+  s_b6d1dfe778ddd7::t_62549ce829ea42 36-37
+  s_b6d1dfe778ddd7::t_d6c50638c3bdc7 3,7,9-10,23-29,32-34,38-56
+  s_b6d1dfe778ddd7::t_ba812585312a1c 30-31,35
+  s_b6d1dfe778ddd7::t_22cdef5c418dee 57-59
+companion-android/app/src/test/java/com/agentkit/companion/CompanionCaptureLevelTest.kt
+  s_b6d1dfe778ddd7::t_c4360d15051f2e 26-30
+  s_b6d1dfe778ddd7::t_62549ce829ea42 20,22
+  s_b6d1dfe778ddd7::t_3dd1a353a7f9b9 1-19,21,23-25,31
+examples/agent-runtime-bff/public/tools.html
+  s_b6d1dfe778ddd7::t_dc088c006f66c4 190
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4fb4695713946e92f232762c234383d4c242f401",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

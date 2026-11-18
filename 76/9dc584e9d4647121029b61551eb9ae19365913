@@ -1,0 +1,51 @@
+examples/flutter-dev-bff/src/tools/host-tools.test.ts
+  s_8155d9b03dcd9a::t_4ebe13097a0f0b 17
+examples/flutter-dev-bff/src/tools/host-tools.ts
+  s_8155d9b03dcd9a::t_084d6580dfea15 18,72,98,119,151,159
+  s_8155d9b03dcd9a::t_6ec5c72fc30be1 162,190,192,238,247
+examples/flutter-dev-bff/src/server.ts
+  s_8155d9b03dcd9a::t_cdda9c8da1ac5e 53
+  s_8155d9b03dcd9a::t_f5c8b9c00065f2 135-136,140-141,143
+  s_8155d9b03dcd9a::t_58bd8bbdd52ed0 138
+  s_8155d9b03dcd9a::t_1f8f54feae80fe 50
+  s_8155d9b03dcd9a::t_8f01d3571c065c 137,139
+  s_8155d9b03dcd9a::t_edb74883b9d835 370-387
+examples/flutter-dev-bff/src/services/workspace-store.test.ts
+  s_8155d9b03dcd9a::t_a68e5a003a328b 1
+  s_8155d9b03dcd9a::t_504406a3df7b33 2-3,5-12,17-20,22-28,30-31,33-35
+  s_8155d9b03dcd9a::t_c19c1d9d8e14a5 4,13-16,21,29,32,36
+examples/flutter-dev-bff/src/services/workspace-store.ts
+  s_8155d9b03dcd9a::t_414329e9362589 1-35
+examples/flutter-dev-bff/public/index.html
+  s_8155d9b03dcd9a::t_7457ee9f914b06 85-93
+  s_8ebd4941076293::t_5f3df863790bf8 84
+examples/flutter-dev-bff/public/assets/app.js
+  s_8155d9b03dcd9a::t_fa1470e5990fad 934
+  s_8155d9b03dcd9a::t_e9fe883ef09c27 589-602
+examples/flutter-dev-bff/src/server.test.ts
+  s_8155d9b03dcd9a::t_3684d474d6156b 264-277
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "769dc584e9d4647121029b61551eb9ae19365913",
+  "prompts": {},
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    },
+    "s_8ebd4941076293": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fd51a-55f5-7560-9112-d03c33457538",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

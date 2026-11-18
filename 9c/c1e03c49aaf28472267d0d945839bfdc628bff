@@ -1,0 +1,27 @@
+examples/flutter-dev-bff/src/server.ts
+  s_8155d9b03dcd9a::t_ab81915b8387b3 130-137
+  s_8155d9b03dcd9a::t_55214fa0fcdb9d 223-272
+examples/flutter-dev-bff/src/server.test.ts
+  s_8155d9b03dcd9a::t_5bc890ad2b32e0 120-172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "9cc1e03c49aaf28472267d0d945839bfdc628bff",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "glm-5.3"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

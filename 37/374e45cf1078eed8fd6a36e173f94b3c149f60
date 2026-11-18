@@ -1,0 +1,21 @@
+docs/superpowers/plans/2026-08-24-snapshot-fallback-verify-code.md
+  s_a16184b10dbec2::t_79b94e17e2f858 1-114,116,119-120,122-171,173-581
+  s_a16184b10dbec2::t_cea823bc501e3c 115,117-118,121
+  s_a16184b10dbec2::t_137db447afeaae 172
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "37374e45cf1078eed8fd6a36e173f94b3c149f60",
+  "prompts": {},
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

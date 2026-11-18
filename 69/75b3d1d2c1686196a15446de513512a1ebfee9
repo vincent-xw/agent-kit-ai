@@ -1,0 +1,24 @@
+examples/browser-extension-bff/deploy/pack.sh
+  s_7dd4dc0c0f0ec3::t_2fc00e46a2662d 1-133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "6975b3d1d2c1686196a15446de513512a1ebfee9",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_7dd4dc0c0f0ec3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b24353eb-ca9b-4cd2-98aa-62c9159d41f6",
+        "model": "glm-5.2"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+docs/superpowers/specs/2026-08-22-snapshot-source-alias-design.md
+  s_b3400902f55d4f::t_226f769a267de4 1-104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "68ac156bc7bd7923a0c332fbe79f94a042207c04",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_b3400902f55d4f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e1d2e38c-e711-47ee-806d-9f2a9a39e3d5",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

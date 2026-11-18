@@ -1,0 +1,59 @@
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_6de11e4bd575e9 140
+examples/agent-runtime-bff/src/server.test.ts
+  s_b6d1dfe778ddd7::t_7b101cc45c00dc 13,42-43,52-64,67,84,88,261,263,270,273,275,281,292-293
+examples/agent-runtime-bff/src/server.ts
+  s_b6d1dfe778ddd7::t_3d768d9c8abcaa 101-102,321,329-330,381-383,478,589,592,599-604,615,760-764,2373-2377,3291,3294-3300
+examples/agent-runtime-bff/src/services/adb-device-tracker.test.ts
+  s_b6d1dfe778ddd7::t_b3ae42052ca349 12,18-21,27-32
+examples/agent-runtime-bff/src/services/adb-device-tracker.ts
+  s_b6d1dfe778ddd7::t_1e613ac4c2ab22 17-21,72
+examples/agent-runtime-bff/src/services/device-manager.test.ts
+  s_b6d1dfe778ddd7::t_4a06e5fbe02618 1-101
+examples/agent-runtime-bff/src/services/device-manager.ts
+  s_b6d1dfe778ddd7::t_0d4ce324cf6b31 1-261
+examples/agent-runtime-bff/src/services/device-status-presentation.test.ts
+  s_b6d1dfe778ddd7::t_fad5c95e162f0a 38-56
+examples/agent-runtime-bff/src/services/device-status-presentation.ts
+  s_b6d1dfe778ddd7::t_c13e067fd45715 10-11,14,32,57,61-68
+examples/agent-runtime-bff/src/services/device-supervisor-types.ts
+  s_b6d1dfe778ddd7::t_998d95d817f399 2,78-79
+examples/agent-runtime-bff/src/services/device-supervisor.ts
+  s_b6d1dfe778ddd7::t_209e814231d0ac 1,58,61,118-157,875,912,917,923,927,932,940,943,1045,1048,1050,1054-1058,1101
+examples/agent-runtime-bff/src/services/device-target-resolver.test.ts
+  s_b6d1dfe778ddd7::t_4decbf06e20330 1-106
+examples/agent-runtime-bff/src/services/device-target-resolver.ts
+  s_b6d1dfe778ddd7::t_6d18003142fefb 1-170
+examples/agent-runtime-bff/src/services/webui-run-store.test.ts
+  s_b6d1dfe778ddd7::t_c3bc3d93633876 34-84
+examples/agent-runtime-bff/src/services/webui-run-store.ts
+  s_b6d1dfe778ddd7::t_a70aa916d3c52b 2,18-26,55-56,72-73,99,102-103,107,118-119,129-142,145-164,166-185
+examples/agent-runtime-bff/src/services/workflow-store-migrations.test.ts
+  s_b6d1dfe778ddd7::t_5b9bc6aac5d1b1 77-79
+examples/agent-runtime-bff/src/services/workflow-store-migrations.ts
+  s_b6d1dfe778ddd7::t_8b12c421dfc54d 140
+examples/agent-runtime-bff/src/services/workflow-store.test.ts
+  s_b6d1dfe778ddd7::t_26305539fc8c58 105-121
+examples/agent-runtime-bff/src/services/workflow-store.ts
+  s_b6d1dfe778ddd7::t_00d906dfc18ca2 51-52,318,443-445,593,982-996
+examples/agent-runtime-bff/src/sse.test.ts
+  s_b6d1dfe778ddd7::t_15f8b24f0466a8 4,28-32,39
+examples/agent-runtime-bff/src/types.ts
+  s_b6d1dfe778ddd7::t_3ed58a61542e7e 1,6,10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "42a3c96439653ab096b0f091ce077cb6aba5d9b3",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

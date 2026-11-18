@@ -1,0 +1,29 @@
+docs/superpowers/specs/2026-08-20-user-tools-design.md
+  s_8155d9b03dcd9a::t_abd9493f8f8251 90,98-109
+  s_8155d9b03dcd9a::t_ee529cbd8cf6bd 17
+  s_8155d9b03dcd9a::t_a4b6ff0409d272 39-40
+  s_8155d9b03dcd9a::t_7e40993e1f8157 65,67,70-71,78-81
+  s_8155d9b03dcd9a::t_d2b28325d876b3 58-59
+  s_8155d9b03dcd9a::t_82e840e07a11a6 124-125
+  s_8155d9b03dcd9a::t_4eea7fa6c4372e 133-134
+  s_8155d9b03dcd9a::t_60ba2e3e710baa 136
+  s_8155d9b03dcd9a::t_0d1ad93c521ed1 142,145-149
+  s_8155d9b03dcd9a::t_f39a0d5b639a21 166-167
+  s_8155d9b03dcd9a::t_18373e92186710 110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "695f8f8e37382f892a9432ceaa471090448cfaaf",
+  "prompts": {},
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "glm-5.3"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

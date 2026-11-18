@@ -1,0 +1,34 @@
+packages/core/src/harness.test.ts
+  s_37e1731660abd0::t_9a9345f3870329 174,177,179-186,191-200
+packages/core/src/harness.ts
+  s_37e1731660abd0::t_10c8739706e4f9 346-359
+examples/browser-extension-bff/src/browser-tools.ts
+  s_37e1731660abd0::t_26af497586b7bc 237,240
+  s_37e1731660abd0::t_05c00b7e8ab164 13
+.claude/launch.json
+  s_0ba4c7a0e06f3b::t_9a10a41c302039 9-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "45eb21437c51436a89b66ec4114c5a808c03b3a2",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    },
+    "s_37e1731660abd0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8480a82f-2438-478d-9b03-0d0dae77377c",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+packages/core/src/llm-client.ts
+  s_01951b81c4f90f::t_cff8e247995724 427-428
+  s_01951b81c4f90f::t_342e0c3b4212dd 306-307
+  s_01951b81c4f90f::t_da1450fd4c8097 453-454,462-465
+packages/core/src/token-context-manager.ts
+  s_01951b81c4f90f::t_dd16fa035e980e 114-115
+  s_01951b81c4f90f::t_ab7db9499b0a5f 85-97,100,106-107
+packages/core/src/llm-client.test.ts
+  s_01951b81c4f90f::t_b97e0dcd2eb73e 190-221
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "c19df295c2092db3cb6efc6fb53a22511cea612b",
+  "prompts": {},
+  "sessions": {
+    "s_01951b81c4f90f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b628ff55-77e4-451c-891e-49bbe6755864",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

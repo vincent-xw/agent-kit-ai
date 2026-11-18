@@ -1,0 +1,19 @@
+docs/superpowers/plans/2026-09-11-prism-ui-refresh.md
+  s_ea360efe3b2ad8::t_ad086cd0134fe5 1-563
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "10d04b89c8458f97dbd9861f7e12a67d71ed9eeb",
+  "prompts": {},
+  "sessions": {
+    "s_ea360efe3b2ad8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08f6a-d363-7412-ba8a-093b3f574c3d",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

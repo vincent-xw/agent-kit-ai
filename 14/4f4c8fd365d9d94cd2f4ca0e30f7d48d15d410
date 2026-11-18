@@ -1,0 +1,14 @@
+.gitignore
+  h_c3a612a540ca0b 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "144f4c8fd365d9d94cd2f4ca0e30f7d48d15d410",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

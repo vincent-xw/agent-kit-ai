@@ -1,0 +1,60 @@
+companion-android/app/src/test/java/com/agentkit/companion/PreparedTreeObservationCacheTest.kt
+  s_b6d1dfe778ddd7::t_08fcd69453307d 107
+  s_b6d1dfe778ddd7::t_2c857d65b29638 43-54,62-70
+  s_b6d1dfe778ddd7::t_35435d5c0b03c8 29
+  s_b6d1dfe778ddd7::t_0078df2ff13830 1-28,30-42,95-98,100-106,108-115,117-119
+  s_b6d1dfe778ddd7::t_c6597dfe7a4af4 55-61
+  s_b6d1dfe778ddd7::t_a869c6030ead45 71-94
+  s_b6d1dfe778ddd7::t_da924f6561f280 99,116
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_b6d1dfe778ddd7::t_9da5028ddd60da 832,856-879
+  s_b6d1dfe778ddd7::t_6ed0544909d2d7 830-831,833-854,880,888,914
+companion-android/app/src/main/java/com/agentkit/companion/PreparedTreeObservation.kt
+  s_b6d1dfe778ddd7::t_a80c3861bee7e6 46-61
+  s_b6d1dfe778ddd7::t_6116239bc9a255 1-41,43-45,62-70,72-76,88-110
+  s_b6d1dfe778ddd7::t_8368b84edc2e7e 77-87
+  s_b6d1dfe778ddd7::t_da924f6561f280 42,71
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_b6d1dfe778ddd7::t_9e05804accf307 534
+  s_b6d1dfe778ddd7::t_5e51863a52cf03 372,374,378,397,481
+  s_b6d1dfe778ddd7::t_6023401773be43 545-546
+  s_b6d1dfe778ddd7::t_e1bdcb02433037 569,585,587,593-615,620,636-646,649,686,730
+  s_b6d1dfe778ddd7::t_11816c5e59feff 92,103-104,126,157,556-561
+  s_b6d1dfe778ddd7::t_ba5ba29aa35099 28
+  s_b6d1dfe778ddd7::t_9bcb4d67b529b6 542-544
+  s_b6d1dfe778ddd7::t_0b621334aa1de0 724
+  s_b6d1dfe778ddd7::t_45ba80e4e1e53e 165-166,293
+  s_b6d1dfe778ddd7::t_6320cf90aba43b 692-693
+  s_b6d1dfe778ddd7::t_f189f0c65a5ccd 533,535-541,547-555,562-568,570-573,575,583-584,586,588-592,616-619,621-635,647-648,650-683,685,687-688,691,694-705,707-709,712-723,725-728,735-737,739-761,769-771,773-780
+  s_b6d1dfe778ddd7::t_b317153bb55734 17,29-31,35-37,89-91,93-100,105-108,110
+  s_b6d1dfe778ddd7::t_2c60674fd48445 295-296
+  s_b6d1dfe778ddd7::t_bc7b3d83f49b03 690
+  s_b6d1dfe778ddd7::t_126d380d38655b 32,76,87-88,101-102,109
+  s_b6d1dfe778ddd7::t_4a95daa0f95e76 574,576-582
+  s_b6d1dfe778ddd7::t_4315b94aee610a 689,729,731-734,762-768,772,1041-1044
+  s_b6d1dfe778ddd7::t_3a72afacc2f0a8 75,684,706,710-711,738
+  s_b6d1dfe778ddd7::t_5e373cfe895a1a 294
+companion-android/app/build.gradle.kts
+  s_b6d1dfe778ddd7::t_ecd48843e79c01 13-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "6bda3142a324070e5ae648f8d532cf4a442c67a0",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+examples/agent-runtime-bff/src/workflows/capability-schema.test.ts
+  s_1a5b5e7571c223::t_b92bc63dd1415b 14-32,37-55
+  s_1a5b5e7571c223::t_9a599d4524535e 56
+examples/agent-runtime-bff/src/workflows/capability-schema.ts
+  s_1a5b5e7571c223::t_d29d3a37cdcc2b 9-10,37,39-44,46-48,50-52,54-56,59-72,74-82,85-102,104-106
+examples/agent-runtime-bff/src/services/skill-chat-session.test.ts
+  s_1a5b5e7571c223::t_5434de4473eeef 85-178
+  s_1a5b5e7571c223::t_8b82b44bd1573b 84
+  s_1a5b5e7571c223::t_7b6225bc47ca25 2-7,57-60,62-63,65-72,75-82
+  s_1a5b5e7571c223::t_79cb648f921340 61,64,73-74,83
+examples/agent-runtime-bff/src/services/skill-chat-session.ts
+  s_1a5b5e7571c223::t_432e542020d4c0 35-51,53,55
+examples/agent-runtime-bff/src/services/skill-package-format.ts
+  s_1a5b5e7571c223::t_2300870fc4aa82 151-156,163,170-182
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "f3953065c4062452895bfb235e084f5319e62256",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

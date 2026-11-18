@@ -1,0 +1,31 @@
+companion-android/app/src/test/java/com/agentkit/companion/AccessibilityEventTrackerTest.kt
+  s_1064e302912824::t_3853710b06e41e 1-40
+companion-android/app/src/test/java/com/agentkit/companion/AccessibilityRootReadinessTest.kt
+  s_1064e302912824::t_04a62566382ab8 1-95
+companion-android/app/src/test/java/com/agentkit/companion/CompanionProtocolTest.kt
+  s_1064e302912824::t_996d0025e20fc2 77,88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "2985116598d6c7e4f4259a35d9d336bcbefa67fc",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    },
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_1064e302912824": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06642-2577-7f21-941c-5b96cdf31a3d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

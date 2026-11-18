@@ -1,0 +1,23 @@
+examples/flutter-dev-bff/src/server.test.ts
+  s_099e6e2ecd6699::t_b9d4cbb34227b5 366-426
+examples/flutter-dev-bff/src/server.ts
+  s_099e6e2ecd6699::t_ab96e1c4264de2 80,101-115,436-437,497-498,560-563,578,695-762,783-902,1477,1591,1594
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_099e6e2ecd6699::t_bfbb88c50ec938 131,383-385
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "fac0b0f56a1d7d7a3e9aceca87a4eb4263b7beb8",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

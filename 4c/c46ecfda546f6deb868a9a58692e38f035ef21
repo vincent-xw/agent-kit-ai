@@ -1,0 +1,25 @@
+examples/agent-runtime-bff/public/assets/app.js
+  s_b6d1dfe778ddd7::t_bab04d3d6d95ea 44,47,121-125,128-131,268-271,274-277,2542-2543,2549
+examples/agent-runtime-bff/src/device-webui.test.ts
+  s_b6d1dfe778ddd7::t_bd90ff40d24fb1 136-175
+examples/agent-runtime-bff/src/server.test.ts
+  s_b6d1dfe778ddd7::t_ac25605f47eb61 347-348
+examples/agent-runtime-bff/src/server.ts
+  s_b6d1dfe778ddd7::t_c9fd99c77be2f9 2460-2461,2466-2470
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4cc46ecfda546f6deb868a9a58692e38f035ef21",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

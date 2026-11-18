@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/public/assets/app.js
+  s_eb0a3b11658915::t_241f268b914934 754-755,761,765
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_eb0a3b11658915::t_1f2093e8011a69 429-455
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "41d481f946c6418365f3cf7bf9aa51f8bf7e68ea",
+  "prompts": {},
+  "sessions": {
+    "s_eb0a3b11658915": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a064f4-0799-7b00-b483-bfe012ffaad5",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

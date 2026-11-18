@@ -1,0 +1,27 @@
+pnpm-workspace.yaml
+  s_3a7e3f0262fa25::t_6bd1d33122ed4f 5-8
+examples/browser-extension-bff/.env.example
+  s_3a7e3f0262fa25::t_a958b3c6472bfd 1-18
+.gitignore
+  s_3a7e3f0262fa25::t_bce5d481d8dc45 6-9,13
+examples/browser-extension-bff/package.json
+  s_3a7e3f0262fa25::t_ea546ca16dd703 17-20
+examples/browser-extension-bff/README.md
+  s_3a7e3f0262fa25::t_a48be76e48e749 19-26,28,31-32,34,37-44,47-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "7e60c68968c41d80d53622422fdade06846d0e02",
+  "prompts": {},
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

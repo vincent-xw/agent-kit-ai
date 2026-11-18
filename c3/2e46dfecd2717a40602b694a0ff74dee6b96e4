@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/src/services/webui-run-store.test.ts
+  s_0487f3740ff95d::t_3c1f2d85494a35 53,55,58,61,73-85
+examples/flutter-dev-bff/src/services/webui-run-store.ts
+  s_0487f3740ff95d::t_e868db24cf3c83 35,42,47-51,55,58,63,82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "c32e46dfecd2717a40602b694a0ff74dee6b96e4",
+  "prompts": {},
+  "sessions": {
+    "s_0487f3740ff95d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a061c4-8df3-7370-b9f9-00ad92e38a2e",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

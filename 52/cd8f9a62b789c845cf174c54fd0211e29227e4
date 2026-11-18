@@ -1,0 +1,21 @@
+examples/agent-runtime-bff/src/services/adb-client.test.ts
+  s_b6d1dfe778ddd7::t_c37457c4f29241 159-191
+examples/agent-runtime-bff/src/services/adb-client.ts
+  s_b6d1dfe778ddd7::t_d17911c9e0bdd0 231-245
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "52cd8f9a62b789c845cf174c54fd0211e29227e4",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

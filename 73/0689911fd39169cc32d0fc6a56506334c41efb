@@ -1,0 +1,21 @@
+examples/agent-runtime-bff/src/flutter-tools.test.ts
+  s_b6d1dfe778ddd7::t_184e1032fc836c 901-930
+examples/agent-runtime-bff/src/services/device-target-resolver.test.ts
+  s_b6d1dfe778ddd7::t_54b47e261c046c 106-185
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "730689911fd39169cc32d0fc6a56506334c41efb",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

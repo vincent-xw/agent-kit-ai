@@ -1,0 +1,31 @@
+examples/browser-extension-bff/src/server.ts
+  s_a2f33b9b07a0c8::t_dca6cb16d36956 1-2,33,45-48,50,72-76,82-85,89,98-207,211-214,216,219-239,309,346-363,365
+examples/browser-extension-bff/src/sse.test.ts
+  s_a2f33b9b07a0c8::t_60c586ab4b70f7 23-38,51,89-95,97,115-121,142-144,148-150,152-158
+  s_a2f33b9b07a0c8::t_9f6df77d71311f 1-22,39-50,52-88,96,98-114,122-141,145-147,151,159-182
+examples/browser-extension-bff/package.json
+  s_a2f33b9b07a0c8::t_2e9856ff7c753c 33-34
+pnpm-lock.yaml
+  s_a2f33b9b07a0c8::t_3ff27c8e6dea74 35-40,65,68,895-898,1502-1505,1921-1922
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "15bf547df37438efc3af58d89bed08cc81e291c8",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a2f33b9b07a0c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5bdf4851-8b2c-4903-b93c-23b83b5edc1a",
+        "model": "auto"
+      },
+      "human_author": null
+    }
+  }
+}

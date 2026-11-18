@@ -1,0 +1,99 @@
+examples/flutter-dev-bff/src/services/xlsx-service.test.ts
+  s_f348ba62fb2a1d::t_912155b0a3dacb 75-103,138
+  s_f348ba62fb2a1d::t_64f83c2cd5120a 2,6-7,74,104-110
+  s_f348ba62fb2a1d::t_5d013ceb11d80a 111-137
+examples/flutter-dev-bff/public/assets/app.js
+  s_f348ba62fb2a1d::t_d996f28809f584 2373
+  s_f348ba62fb2a1d::t_43a655b416ff6b 3530-3539,3541-3545,3568-3569,3575-3576,3580-3584,3586-3598,3899-3900,3921-3922,3928-3929,4024-4026
+  s_f348ba62fb2a1d::t_5a5ee5aba32d18 2483-2486
+packages/core/src/llm-client.test.ts
+  s_f348ba62fb2a1d::t_c279f979130e53 164-192
+examples/flutter-dev-bff/src/prompts.test.ts
+  s_f348ba62fb2a1d::t_537bf20c606b7c 77,84-88
+  s_f348ba62fb2a1d::t_d7bad0454f02ec 78-83
+examples/flutter-dev-bff/public/assets/theme.css
+  s_f348ba62fb2a1d::t_a1dd825cb6edd4 1,3-86,99-136
+examples/flutter-dev-bff/src/services/workflow-chat-session.test.ts
+  s_f348ba62fb2a1d::t_78a859d9586580 382-385,387-428
+  s_f348ba62fb2a1d::t_4c1db4f04f3012 37
+  s_f348ba62fb2a1d::t_a6d7593340c6f3 74-87
+  s_f348ba62fb2a1d::t_a16785b0d1d0ae 429-490
+  s_f348ba62fb2a1d::t_6a7c9629109646 4-10,386
+  s_f348ba62fb2a1d::t_da2888795cd33a 39-46
+  s_f348ba62fb2a1d::t_cdafa4daa9858c 38,491-548
+packages/core/src/llm-client.ts
+  s_f348ba62fb2a1d::t_732005a227ef45 445,448,459-463
+examples/flutter-dev-bff/public/index.html
+  s_f348ba62fb2a1d::t_f67e8aea72bcf9 32,115-117,215-217
+examples/flutter-dev-bff/src/services/xlsx-service.ts
+  s_f348ba62fb2a1d::t_3265f7c812a15a 113-179,183-185,187,216-220,222-227,230,233-234
+  s_f348ba62fb2a1d::t_9a684e100e9550 1-2
+docs/acceptance/2026-09-08-agent-runtime-workflow.md
+  s_f348ba62fb2a1d::t_f5797e04eba741 28,69
+  s_f348ba62fb2a1d::t_8d52eeaa4476d3 204,209-210,234
+examples/flutter-dev-bff/src/webui-visual-system.test.ts
+  s_f348ba62fb2a1d::t_2c4aeb51416450 1-105
+AGENTS.md
+  s_f348ba62fb2a1d::t_b3df9ba45e5939 68
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_da2888795cd33a 2109-2129
+  s_f348ba62fb2a1d::t_247fe80d11fa18 2427-2453,2455-2462,2465-2467,2471-2480,2486-2491,2495-2501
+  s_f348ba62fb2a1d::t_ef8309cb06aae2 2454,2482,2484,2492-2494
+  s_f348ba62fb2a1d::t_083129c20e709c 2629-2631
+  s_f348ba62fb2a1d::t_32ac7a75d37c04 537,2130-2131,2635-2707
+  s_f348ba62fb2a1d::t_4c1db4f04f3012 526-533
+  s_f348ba62fb2a1d::t_f864ff70638d27 2421-2423
+  s_f348ba62fb2a1d::t_fe9a92b3f245ca 2502-2628,2632-2634
+  s_f348ba62fb2a1d::t_7393a88419ccee 313-323
+  s_f348ba62fb2a1d::t_feddd4657f93c9 2463-2464,2468-2470,2481,2483,2485
+  s_f348ba62fb2a1d::t_8e165c37050e7e 2378-2381
+  s_f348ba62fb2a1d::t_b6fbf55eb978e1 534-536
+  s_f348ba62fb2a1d::t_57bee35c76585d 2358-2377,2382-2420,2424-2426
+  s_f348ba62fb2a1d::t_18aee7922528c3 538
+  s_f348ba62fb2a1d::t_9e21fd2c11be24 2132
+examples/flutter-dev-bff/src/services/workflow-chat-session.ts
+  s_f348ba62fb2a1d::t_c5b6df0f016137 110,119-123,132-133,135
+  s_f348ba62fb2a1d::t_19faf95b90f721 627,659,736,764,772
+  s_f348ba62fb2a1d::t_c3f438a34294e1 117-118,747
+  s_f348ba62fb2a1d::t_228e5cb2e4bc5e 109,447-452,458-459,469-482,563-564,607,728-731,739-741,749-750,773-774
+  s_f348ba62fb2a1d::t_494f831ce68b00 754-755
+  s_f348ba62fb2a1d::t_f88cdcb723095a 54,56-60,64-65,74-75,80
+  s_f348ba62fb2a1d::t_da24a12288c439 453-457,483-489,558-562,579-583,608,742-746,748,751-753,756-760
+  s_f348ba62fb2a1d::t_857719f4306823 490-557
+  s_f348ba62fb2a1d::t_744f162e3dd4c5 636,771
+  s_f348ba62fb2a1d::t_5a5ee5aba32d18 21-22,241-249,252-255
+  s_f348ba62fb2a1d::t_0ffad118172a46 589-590,595,605,617-626,628-635,637-658,660-673,732-735,737-738,761-763,765-770
+  s_f348ba62fb2a1d::t_b24c036875da03 460-468
+  s_f348ba62fb2a1d::t_354d1254141a96 4,55,61-63,66-73,111-116,124-131,134
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_5a5ee5aba32d18 1606-1612
+  s_f348ba62fb2a1d::t_85b076d2a18d37 129-135,891-908,1408-1413,1415
+  s_f348ba62fb2a1d::t_d4b88d7bfc1cb9 873-890,1414
+  s_f348ba62fb2a1d::t_c3f438a34294e1 783-800,1416
+CLAUDE.md
+  s_f348ba62fb2a1d::t_b3df9ba45e5939 4
+examples/flutter-dev-bff/public/assets/app.css
+  s_f348ba62fb2a1d::t_d8dc5e1bf4c6b8 707-3062
+examples/flutter-dev-bff/src/prompts.ts
+  s_f348ba62fb2a1d::t_83bf15b7c58f6b 90,93
+  s_f348ba62fb2a1d::t_20926523b9235c 102
+  s_f348ba62fb2a1d::t_5156e614408d41 95-96
+  s_f348ba62fb2a1d::t_da24a12288c439 94
+  s_f348ba62fb2a1d::t_1f1fe514171065 98
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "cb116c792fc5329af6caecda5fd8662a78d57bf3",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+examples/flutter-dev-bff/src/services/adb-client.ts
+  s_8155d9b03dcd9a::t_ae9130b18092eb 168-189,191-192
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "0e7d3d64d9db262f3ad78b763d0d22504b4bcfa3",
+  "prompts": {},
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

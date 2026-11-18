@@ -1,0 +1,19 @@
+docs/superpowers/specs/2026-09-08-agent-runtime-workflow-chat-first-design.md
+  s_099e6e2ecd6699::t_73a9d8b5b22907 35-36,48,54-55,96,102-104,109-119,200-203,206-212,336-345,349,356-363,401-403,441,472-481,485-486,489,491,514,561,563,565-566,581,583-584,586,588-589,603,606-607
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "f432460157d1ef7bbe9ff4d4db06472e6d76f874",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

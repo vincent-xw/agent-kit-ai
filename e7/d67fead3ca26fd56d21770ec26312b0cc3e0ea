@@ -1,0 +1,30 @@
+companion-android/app/src/main/AndroidManifest.xml
+  s_2fa81fbe47bbb6::t_8688cfbe9f092d 8
+  s_2fa81fbe47bbb6::t_6dfb1b2d31f308 6-7,9
+  s_2fa81fbe47bbb6::t_eacdb66e9f376e 28
+  s_2fa81fbe47bbb6::t_f0e1129bc53c45 36-38
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_2fa81fbe47bbb6::t_782581a498ef12 4-7,35-36,42-59
+  s_2fa81fbe47bbb6::t_82a08cfc1fc9c2 60-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "e7d67fead3ca26fd56d21770ec26312b0cc3e0ea",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_2fa81fbe47bbb6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ea47a537-61ec-41ab-b0c5-2ec07c5e1557",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

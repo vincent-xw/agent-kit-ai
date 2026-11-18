@@ -1,0 +1,21 @@
+.npmrc
+  s_0ba4c7a0e06f3b::t_2cf327434f9cd7 2
+AGENTS.md
+  s_0ba4c7a0e06f3b::t_ba98ad877276e6 1-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "e06c35e45bfd18f5d6a01ec1295eb3d9bf8b570a",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

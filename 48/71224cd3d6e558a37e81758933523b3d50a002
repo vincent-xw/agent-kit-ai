@@ -1,0 +1,57 @@
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_0ba4c7a0e06f3b::t_f6da8286b2430a 1-140
+companion-android/app/src/main/res/values/themes.xml
+  s_0ba4c7a0e06f3b::t_067cd1f96cb87b 1-4
+companion-android/build.gradle.kts
+  s_0ba4c7a0e06f3b::t_0f79b4d621e359 1-4
+companion-android/app/src/main/res/layout/activity_main.xml
+  s_0ba4c7a0e06f3b::t_5a2935e9d296cb 1-26
+examples/flutter-dev-bff/src/server.ts
+  s_0ba4c7a0e06f3b::t_5dd02ba72ffad9 78
+  s_0ba4c7a0e06f3b::t_cf510f7391cfeb 39
+  s_0ba4c7a0e06f3b::t_d2badc971b8db1 40
+  s_0ba4c7a0e06f3b::t_ac3fbde473e1c4 76-77
+companion-android/app/src/main/java/com/agentkit/companion/NodeTreeDumper.kt
+  s_0ba4c7a0e06f3b::t_65d03105040a28 1-74
+companion-android/.gitignore
+  s_0ba4c7a0e06f3b::t_8a14e109324028 1-4
+companion-android/app/src/main/AndroidManifest.xml
+  s_0ba4c7a0e06f3b::t_a230a4e9a61d6c 1-31
+companion-android/app/src/main/res/xml/accessibility_service_config.xml
+  s_0ba4c7a0e06f3b::t_067cd1f96cb87b 1-9
+examples/flutter-dev-bff/src/services/companion-provider.ts
+  s_0ba4c7a0e06f3b::t_a0ec8b93e22c4c 1-102
+companion-android/app/src/main/java/com/agentkit/companion/MainActivity.kt
+  s_0ba4c7a0e06f3b::t_8095ff176e155d 1-63
+companion-android/app/build.gradle.kts
+  s_0ba4c7a0e06f3b::t_c4f70c584a734e 1-35
+companion-android/gradle.properties
+  s_0ba4c7a0e06f3b::t_51389cb481b30c 1-4
+companion-android/settings.gradle.kts
+  s_0ba4c7a0e06f3b::t_f3fd953172e968 1-15
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_0ba4c7a0e06f3b::t_08fa13e494f338 1-66
+companion-android/gradle/wrapper/gradle-wrapper.properties
+  s_0ba4c7a0e06f3b::t_60d369caa72d55 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "4871224cd3d6e558a37e81758933523b3d50a002",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

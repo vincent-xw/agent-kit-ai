@@ -1,0 +1,19 @@
+examples/flutter-dev-bff/src/workflows/types.ts
+  s_099e6e2ecd6699::t_4a3d0193ec45ae 15-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "29c6eee3563a61616963c1c18ad4caa36029db81",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

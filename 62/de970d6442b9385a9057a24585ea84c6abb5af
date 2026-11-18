@@ -1,0 +1,71 @@
+packages/core/src/harness.test.ts
+  s_1a5b5e7571c223::t_a955c758666af5 14-112,114-151,153-188,190-212
+  s_1a5b5e7571c223::t_b2f99e9b313221 113,152,189
+packages/core/src/harness.ts
+  s_1a5b5e7571c223::t_f30b71d3bba24b 892
+  s_1a5b5e7571c223::t_5939b6e6d4ee60 19,57-63,438,457-474,476-477,480-540
+  s_1a5b5e7571c223::t_5ad2548c1dc0f2 90-91
+examples/agent-runtime-bff/src/services/jev-active-control-flow.test.ts
+  s_1a5b5e7571c223::t_3dba966bfad85b 1-4,6-50,52-58,60-190
+  s_1a5b5e7571c223::t_776e22d68844f1 51
+  s_1a5b5e7571c223::t_9fb894142c700a 5,59
+docs/superpowers/specs/2026-09-29-jev-active-harness-control-flow-design-v1.md
+  s_1a5b5e7571c223::t_c3e5954978a958 1-225
+examples/agent-runtime-bff/src/services/jev-shadow-state.ts
+  s_1a5b5e7571c223::t_01ca031e0ff310 128-129
+  s_1a5b5e7571c223::t_2c71c5666f58e4 116-117,150-161,194
+examples/agent-runtime-bff/src/services/jev-shadow-model-config-store.ts
+  s_1a5b5e7571c223::t_2719e64e881a20 8,63-80
+  s_1a5b5e7571c223::t_0a8c2a5c6785a8 137
+examples/agent-runtime-bff/src/server.test.ts
+  s_1a5b5e7571c223::t_a360272c592b5a 705-706,743,781-782,791-797,802-805
+examples/agent-runtime-bff/src/services/jev-active-control-flow.ts
+  s_1a5b5e7571c223::t_63fccdfdbf3b74 1-208,214-256,261-342
+  s_1a5b5e7571c223::t_1f836fefa829c6 209-213,257-260
+examples/agent-runtime-bff/public/assets/app.js
+  s_1a5b5e7571c223::t_ef777088977d53 5547,5559-5561,5564,5578
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_1a5b5e7571c223::t_b2d3aa45813aea 6,69-70,87,95,102-113,120-124,126-129,133,142-154,158-193
+examples/agent-runtime-bff/src/server.ts
+  s_1a5b5e7571c223::t_c6cc4778e1e11b 1464,3213,3690
+  s_1a5b5e7571c223::t_5b2e7ab2acd3d3 149,786-790
+examples/agent-runtime-bff/src/services/workflow-agent-task.ts
+  s_1a5b5e7571c223::t_2bc6fd7c9ea496 2,460
+  s_1a5b5e7571c223::t_de7477206dde7b 421-429,431-433,440-443
+  s_1a5b5e7571c223::t_a908712e6cddb4 3,16-17,51-53
+  s_1a5b5e7571c223::t_99beac0e7f6848 459,461-492,506
+  s_1a5b5e7571c223::t_58fecad6cbf2ac 288-289
+docs/superpowers/specs/2026-09-29-jev-active-harness-control-flow-design-v2.md
+  s_1a5b5e7571c223::t_aedf6cd00e6c72 164-165,167,169,171-172,175,177-188,191-192,194,196,198,202-207,211,216-228,233-237,243-244,247-249,253-256
+  s_1a5b5e7571c223::t_b769cf502a6da3 2-9,11-25,28-57,66,68,73-76,78-88,90,92,95-102,105-109,111-112,114,117-120,126,130,133-134,137,141-146,148,154-155,158,160-162,166,168,170,173-174,176,189-190,193,195,197,199-201,208-210,212-214,229-231,238-242,245-246,250-252,257-259
+  s_1a5b5e7571c223::t_0de2d8d60f0028 103,215,232
+  s_1a5b5e7571c223::t_b7194aa2ec2946 91,115,260
+  s_1a5b5e7571c223::t_2c0519b30384d6 163
+  s_1a5b5e7571c223::t_be06ad9c1fede0 1,10,26-27,58-65,67,69-72,77,89,93-94,104,110,113,116,121-125,127-129,131-132,135-136,138-140,147,149-153,156-157,159
+examples/agent-runtime-bff/src/services/jev-shadow-state.test.ts
+  s_1a5b5e7571c223::t_99db1fef3aad92 48-71
+examples/agent-runtime-bff/public/index.html
+  s_1a5b5e7571c223::t_1441835c377c67 361,384-385,388
+docs/superpowers/plans/2026-09-29-jev-active-harness-control-flow-implementation-plan-v1.md
+  s_1a5b5e7571c223::t_81001e14c2ab2b 88,192,208,224,332
+  s_1a5b5e7571c223::t_02d62d68df004b 1-87,89-186,188-191,193-207,209-223,225-331
+  s_1a5b5e7571c223::t_26794c257a0b9d 187
+examples/agent-runtime-bff/src/services/jev-shadow-model-config-store.test.ts
+  s_1a5b5e7571c223::t_56160cf5b7dc5c 1-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "62de970d6442b9385a9057a24585ea84c6abb5af",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

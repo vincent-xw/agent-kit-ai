@@ -1,0 +1,19 @@
+examples/flutter-dev-bff/src/prompts.ts
+  s_8155d9b03dcd9a::t_c03d3c3670fd9c 34-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "1cc6be71a28d4d943f5763e3a9882181968c2a1c",
+  "prompts": {},
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.gitignore
+  h_c3a612a540ca0b 15
+examples/browser-extension-bff/deploy/start.bat
+  s_7dd4dc0c0f0ec3::t_f625a7619eb148 1-24
+examples/browser-extension-bff/deploy/start.ps1
+  s_7dd4dc0c0f0ec3::t_60ef18bbf4e70d 2,8-38,41-42,50-52,56,58-59,61,67-71,74-80,85-86,88,91,95-99,103-107,109-110,118-120,124-125,130-131,134,141-142,150-152,156-157,162,164-166,168-169,171-172,177-178,182,184-186,189-201,203,205-207
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "662e2fd8b757dd5c2af688b26565acfc01fa831b",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_7dd4dc0c0f0ec3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b24353eb-ca9b-4cd2-98aa-62c9159d41f6",
+        "model": "glm-5.2"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

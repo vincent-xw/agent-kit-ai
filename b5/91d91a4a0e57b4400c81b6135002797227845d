@@ -1,0 +1,32 @@
+examples/flutter-dev-bff/src/services/webview/cdp-client.ts
+  s_0ba4c7a0e06f3b::t_4ad88c1b902953 41
+examples/flutter-dev-bff/src/prompts.ts
+  s_0ba4c7a0e06f3b::t_c2c503d3dbc68c 21,27-31
+  s_0ba4c7a0e06f3b::t_d5306dfe21c7c0 32
+examples/flutter-dev-bff/src/services/webview/dom-to-nodes.test.ts
+  s_0ba4c7a0e06f3b::t_7b50aa3a36debb 61-76
+examples/flutter-dev-bff/src/services/uiautomator-provider.ts
+  s_0ba4c7a0e06f3b::t_642ce58aecb360 61
+  s_0ba4c7a0e06f3b::t_9955824101a259 131
+  s_0ba4c7a0e06f3b::t_c28e2a78cb01c3 10
+examples/flutter-dev-bff/src/services/webview/dom-to-nodes.ts
+  s_0ba4c7a0e06f3b::t_b7dd13b9e75fb6 7,41-43
+examples/flutter-dev-bff/src/types.ts
+  s_0ba4c7a0e06f3b::t_919b12b61d701b 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "b591d91a4a0e57b4400c81b6135002797227845d",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

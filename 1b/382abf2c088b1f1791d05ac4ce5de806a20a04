@@ -1,0 +1,95 @@
+examples/agent-runtime-bff/src/prompts.ts
+  s_b6d1dfe778ddd7::t_08a79a0d9ef7b6 15,23,36,43-44
+examples/agent-runtime-bff/src/server.ts
+  s_b6d1dfe778ddd7::t_039279bb0e3d26 318,336-345,352,362,368
+  s_b6d1dfe778ddd7::t_08a79a0d9ef7b6 1050
+  s_b6d1dfe778ddd7::t_f1eb14ce42cad2 2176
+  s_b6d1dfe778ddd7::t_80ee5816af7011 1053
+  s_b6d1dfe778ddd7::t_0842c347bb0b4d 1389
+  s_b6d1dfe778ddd7::t_f39c7b020b7932 371-373
+  s_b6d1dfe778ddd7::t_1a0e7714cee904 1345,1354
+examples/agent-runtime-bff/src/prompts.test.ts
+  s_b6d1dfe778ddd7::t_173ad94a16dea2 12-18
+examples/agent-runtime-bff/src/services/device-status-presentation.ts
+  s_b6d1dfe778ddd7::t_846ab70c297da0 16,23-30
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_a256c807155072 848,853
+  s_b6d1dfe778ddd7::t_be7e75f344a5ca 957
+  s_b6d1dfe778ddd7::t_9c39e1cda978ad 693,702
+  s_b6d1dfe778ddd7::t_433fbe7fdfe940 176,183-186,199-205
+  s_b6d1dfe778ddd7::t_b28d8a4f79d934 359,373,395,423,466
+  s_b6d1dfe778ddd7::t_b210ba6b719782 263-265,594,685,699
+  s_b6d1dfe778ddd7::t_54b1eb3f66958c 918,1195,1214,1216-1220,1228,1231
+  s_b6d1dfe778ddd7::t_681ed6ec0dfe12 206-208
+examples/agent-runtime-bff/src/services/workflow-runner.ts
+  s_b6d1dfe778ddd7::t_cb21bf32c89b63 26-27,373-382,872-874,930-931,937,941-943,949,953-955,1011,1015-1016
+  s_b6d1dfe778ddd7::t_188f2b2d564323 877-889,932-936,944-948
+examples/agent-runtime-bff/src/services/device-supervisor.test.ts
+  s_b6d1dfe778ddd7::t_173ad94a16dea2 149,157-158,187-198
+  s_b6d1dfe778ddd7::t_46c280fea80176 961-998
+  s_b6d1dfe778ddd7::t_39bf1c526f35d2 130
+  s_b6d1dfe778ddd7::t_d7f7521b297075 206-212,224-225
+  s_b6d1dfe778ddd7::t_3f9005b7a89c57 1101-1120,1122
+  s_b6d1dfe778ddd7::t_24188ac53457f6 127-129,131-134,154-156,179
+  s_b6d1dfe778ddd7::t_943c8fdc1dca7b 98-116,118-126,135-148,150-153,199-200
+  s_b6d1dfe778ddd7::t_0fe1696efdbc71 159-178,180-186
+  s_b6d1dfe778ddd7::t_b1322861298034 117
+  s_b6d1dfe778ddd7::t_a256c807155072 1121
+  s_b6d1dfe778ddd7::t_fb31e23fb976f5 1123-1124
+examples/agent-runtime-bff/src/server.test.ts
+  s_b6d1dfe778ddd7::t_6b48866efd5d15 47-48
+  s_b6d1dfe778ddd7::t_7fda6ba8bf5bec 1793-1819
+examples/agent-runtime-bff/src/flutter-tools.test.ts
+  s_b6d1dfe778ddd7::t_8b8a3c2204f973 448
+  s_b6d1dfe778ddd7::t_1e6953821fd45e 96-97,257,551,584,604,639,673,712,746,810,838,950,981,1005,1026,1135,1273
+  s_b6d1dfe778ddd7::t_b620b0cd54ae6f 453,455-482
+  s_b6d1dfe778ddd7::t_b4915696ed8091 452
+  s_b6d1dfe778ddd7::t_3812e3e755e6f9 928
+  s_b6d1dfe778ddd7::t_944d43691283fa 780
+  s_b6d1dfe778ddd7::t_173ad94a16dea2 414,419,425-447,449-451
+  s_b6d1dfe778ddd7::t_1228611639240e 454
+examples/agent-runtime-bff/src/services/device-supervisor.ts
+  s_b6d1dfe778ddd7::t_46f70600813387 449,1127,1129
+  s_b6d1dfe778ddd7::t_b4915696ed8091 102-103,690,701,1128,1392
+  s_b6d1dfe778ddd7::t_c13fbfc26dca1c 135-136,175-176,1281-1283
+  s_b6d1dfe778ddd7::t_1d167807d2213a 1490,1492-1507
+  s_b6d1dfe778ddd7::t_a256c807155072 713-714,717-718,726-727
+  s_b6d1dfe778ddd7::t_cd5292028dc725 53-57,98-99,158,395-448,1389-1390,1401,1448
+  s_b6d1dfe778ddd7::t_8b7dbd978d62bd 58-60,668,676,709,716,730,733-753,755-756
+  s_b6d1dfe778ddd7::t_3d61486df23868 1478
+  s_b6d1dfe778ddd7::t_90fac9babf265e 450,702,1477,1479-1489
+  s_b6d1dfe778ddd7::t_f8128a6025f3a9 712,715,719-725,728-729,731-732,754,757-760
+  s_b6d1dfe778ddd7::t_e81dbaee3d4347 42,685,696-700
+  s_b6d1dfe778ddd7::t_23d87fd45b5d38 451
+  s_b6d1dfe778ddd7::t_6e0d6e86327a40 703
+  s_b6d1dfe778ddd7::t_930b73f6b0dec7 1491
+  s_b6d1dfe778ddd7::t_abcf737a5d5151 1508
+examples/agent-runtime-bff/src/services/device-supervisor-types.ts
+  s_b6d1dfe778ddd7::t_f8128a6025f3a9 161-162
+  s_b6d1dfe778ddd7::t_cd5292028dc725 25,77-78,211
+examples/agent-runtime-bff/src/services/workflow-runner.test.ts
+  s_b6d1dfe778ddd7::t_d0bcd250943396 96,121-122,138-156
+examples/agent-runtime-bff/src/services/device-status-presentation.test.ts
+  s_b6d1dfe778ddd7::t_46c280fea80176 83-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "1b382abf2c088b1f1791d05ac4ce5de806a20a04",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

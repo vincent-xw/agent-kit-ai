@@ -1,0 +1,18 @@
+examples/agent-runtime-bff/docs/guide.md
+  h_959ffaaf5065b8 78-86
+examples/agent-runtime-bff/public/assets/app.js
+  h_959ffaaf5065b8 571-572,847-848,865,1409-1410,1441-1442,3048-3153,3167-3168,3417-3418
+examples/agent-runtime-bff/src/webui-input-history.test.ts
+  h_959ffaaf5065b8 1-230
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "42393b6c3e6b5b04c85c58c2c0e3a9d730c8c70e",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+README.md
+  s_f385f7e3a6044c::t_5c421f59fcb171 21-39
+docs/integrations/browser-extension-bff.md
+  s_f385f7e3a6044c::t_6c9c6bdd195015 1-75
+docs/integrations/cloudflare-worker.md
+  s_f385f7e3a6044c::t_5a7e8d1aac6ca3 1-74
+docs/security.md
+  s_f385f7e3a6044c::t_5567b0029cf916 1-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "0776ed1d3b9ccbd81a7686a0dbe1f84b4c66ab8a",
+  "prompts": {},
+  "sessions": {
+    "s_f385f7e3a6044c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fcba7-2727-7ff1-992c-71ff144c919e",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

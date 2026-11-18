@@ -1,0 +1,29 @@
+examples/agent-runtime-bff/src/prompts.test.ts
+  s_16621256c6b5d1::t_ee5a386833f7ac 129-141
+examples/agent-runtime-bff/src/prompts.ts
+  s_16621256c6b5d1::t_4a38274e4bcf5a 85-94
+examples/agent-runtime-bff/src/server.ts
+  s_16621256c6b5d1::t_96bbfae6db86a3 634-645
+examples/agent-runtime-bff/src/services/workflow-runtime-adapter.ts
+  s_16621256c6b5d1::t_ccd3a9a0c837b8 264-265
+examples/agent-runtime-bff/src/tools/user-interaction-tools.test.ts
+  s_16621256c6b5d1::t_f64659a760f236 139-185
+examples/agent-runtime-bff/src/tools/user-interaction-tools.ts
+  s_16621256c6b5d1::t_3c559897409e78 5-13,16-17,178-213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "d625d26339e68941281b4211890991807b03ebc5",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

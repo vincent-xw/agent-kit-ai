@@ -1,0 +1,48 @@
+packages/adapter-sqlite/src/index.ts
+  s_b3400902f55d4f::t_56cad7f6871d73 130-131
+  s_b3400902f55d4f::t_46a1ec753edeb6 159
+examples/flutter-dev-bff/src/services/vision-client.test.ts
+  s_b3400902f55d4f::t_1c92272b91c10d 28
+examples/flutter-dev-bff/src/server.ts
+  s_b3400902f55d4f::t_1100b23ed9ec6d 196-197
+examples/flutter-dev-bff/.env.example
+  s_b3400902f55d4f::t_6049bf438192da 26-27
+examples/flutter-dev-bff/public/assets/app.css
+  s_b3400902f55d4f::t_dd752b828101b0 163-175
+examples/flutter-dev-bff/src/services/vision-client.ts
+  s_b3400902f55d4f::t_e0fbe6de2d1fd0 27
+  s_b3400902f55d4f::t_516e11aad8ab3b 36
+examples/flutter-dev-bff/public/assets/app.js
+  s_b3400902f55d4f::t_1d25305256f604 476-477
+  s_b3400902f55d4f::t_1fb9ba768a5211 356
+  s_b3400902f55d4f::t_3b0065a0a64e66 340
+  s_b3400902f55d4f::t_9df8fe2ef288d1 19-41
+  s_b3400902f55d4f::t_c5df656ca2f504 339,355
+  s_b3400902f55d4f::t_f8e707e7ddd5b3 501
+  s_b3400902f55d4f::t_e70ec76deacdaf 540-541
+  s_b3400902f55d4f::t_114fa9d9afc704 587,589-594,603-604
+  s_b3400902f55d4f::t_24da5c7ac6be40 384,387-390
+examples/flutter-dev-bff/public/index.html
+  s_b3400902f55d4f::t_22e54838503925 38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "75258e58f1eba0ada40b0d678a241cb7b42634f5",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_b3400902f55d4f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e1d2e38c-e711-47ee-806d-9f2a9a39e3d5",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

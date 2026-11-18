@@ -1,0 +1,19 @@
+vitest.workspace.ts
+  s_f385f7e3a6044c::t_8e5b1d04e97572 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "7c9abcc5d7151395be11d3f144822c5958a7be06",
+  "prompts": {},
+  "sessions": {
+    "s_f385f7e3a6044c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fcba7-2727-7ff1-992c-71ff144c919e",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+examples/agent-runtime-bff/.env.example
+  s_b6d1dfe778ddd7::t_e9830d04c3f929 38-39
+examples/agent-runtime-bff/deploy/pack-binary.sh
+  s_b6d1dfe778ddd7::t_5d9d603399b14a 14-15,31-32,34-38,43-49,81-82
+examples/agent-runtime-bff/scripts/ime-setup.sh
+  s_b6d1dfe778ddd7::t_9e911a761e3941 12,19,28,34
+examples/agent-runtime-bff/src/flutter-tools.test.ts
+  s_b6d1dfe778ddd7::t_579498d128dcba 559,564,567,590-591,599-600,603,622-628,632,636-638,660-732
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_d9e8cc69a9a09b 14-17,136-137,236-248,948,955-956,992-994,1001-1005,1007-1019,1041-1045,1048-1052,1054,1063,1065-1069
+examples/agent-runtime-bff/src/package-delivery.test.ts
+  s_b6d1dfe778ddd7::t_0c89dbf6b99860 13-16,20,30-34,41-42,51-52,90,95-104
+examples/agent-runtime-bff/src/prompts.ts
+  s_b6d1dfe778ddd7::t_06592c75dd9a63 38
+examples/agent-runtime-bff/src/server.ts
+  s_b6d1dfe778ddd7::t_107010d141a79e 100,598-599,612-619,622-631,727
+examples/agent-runtime-bff/src/services/adb-keyboard-bootstrap.test.ts
+  s_b6d1dfe778ddd7::t_c14040e56f7134 1-120
+examples/agent-runtime-bff/src/services/adb-keyboard-bootstrap.ts
+  s_b6d1dfe778ddd7::t_cd3b6ad3e089fb 1-124
+examples/agent-runtime-bff/src/services/workflow-runtime-adapter.ts
+  s_b6d1dfe778ddd7::t_0d79996819aec3 240-241
+resources/README.md
+  s_b6d1dfe778ddd7::t_6bef3071408395 1-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "a8ad921f1f39e7ddeafe52e21fdacdd9145b5032",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

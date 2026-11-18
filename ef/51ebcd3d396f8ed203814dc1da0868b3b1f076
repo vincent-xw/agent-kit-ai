@@ -1,0 +1,20 @@
+docs/superpowers/plans/2026-09-09-workflow-creation-ux.md
+  s_f348ba62fb2a1d::t_468e21c373355f 63-65,173-175,288-291,391-393,498-500
+  s_f348ba62fb2a1d::t_90ed2b9b9c2a81 1-62,66-172,176-287,292-390,394-497,501-658
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ef51ebcd3d396f8ed203814dc1da0868b3b1f076",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

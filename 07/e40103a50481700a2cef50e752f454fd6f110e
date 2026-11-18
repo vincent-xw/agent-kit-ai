@@ -1,0 +1,21 @@
+examples/agent-runtime-bff/src/tools/user-interaction-tools.test.ts
+  s_16621256c6b5d1::t_80c435f915f65f 185-204
+examples/agent-runtime-bff/src/tools/user-interaction-tools.ts
+  s_16621256c6b5d1::t_fbe723dc7e7b73 4,198-208
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "07e40103a50481700a2cef50e752f454fd6f110e",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

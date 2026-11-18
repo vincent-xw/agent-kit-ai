@@ -1,0 +1,20 @@
+docs/superpowers/specs/2026-09-11-workflow-editor-file-context-discovery-design.md
+  s_f348ba62fb2a1d::t_055a611694f3b5 72,135,141-143,148
+  s_f348ba62fb2a1d::t_f18a67936105ee 1-71,73-134,136-140,144-147,149-264
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "51a7e25542a9d52278a5b6938d346ac9f4d714f4",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

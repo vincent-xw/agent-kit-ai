@@ -1,0 +1,41 @@
+examples/browser-extension-bff/src/server.ts
+  s_3a7e3f0262fa25::t_a71f1a2e29b78e 16-17
+  s_3a7e3f0262fa25::t_5490ef9d011f57 40
+packages/core/src/harness.ts
+  s_3a7e3f0262fa25::t_63a7e44d5524dd 45-46
+  s_3a7e3f0262fa25::t_3159c4f7d9648b 149,157,187,288
+packages/bff-hono/src/index.ts
+  s_3a7e3f0262fa25::t_94a7a9cdb4f11b 36,45-48,56
+examples/browser-extension-bff/src/server.test.ts
+  s_3a7e3f0262fa25::t_8dde873e182442 206,217
+examples/browser-extension-bff/src/browser-tools.ts
+  s_3a7e3f0262fa25::t_fd4dc79857fefc 204-222
+  s_3a7e3f0262fa25::t_a87e29303d19c7 260,264-269,276
+  s_3a7e3f0262fa25::t_7e6f22c18e7847 282-343
+  s_3a7e3f0262fa25::t_0ab852528f0553 281
+packages/core/src/contracts.ts
+  s_3a7e3f0262fa25::t_a7a41f9409da05 10-12,16
+packages/core/src/llm-client.ts
+  s_3a7e3f0262fa25::t_343718473b4d52 121,123-126,135,137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "3f3b0f7ace9773a29283311e45137b4eee888b45",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

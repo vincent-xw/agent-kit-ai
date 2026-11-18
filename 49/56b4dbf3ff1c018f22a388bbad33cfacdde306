@@ -1,0 +1,31 @@
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_96d4834653edd5::t_afd380f65c7b51 204-209
+  s_96d4834653edd5::t_9c98846d445070 174-175
+examples/flutter-dev-bff/src/services/todo-store.ts
+  s_96d4834653edd5::t_8bc2222925b492 61-64
+examples/flutter-dev-bff/src/services/todo-store.test.ts
+  s_96d4834653edd5::t_cb24478487b9b9 60-80
+examples/flutter-dev-bff/src/prompts.ts
+  s_96d4834653edd5::t_516ad7745b9c08 19-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "4956b4dbf3ff1c018f22a388bbad33cfacdde306",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_96d4834653edd5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e1c98f0c-0b9d-422b-b71c-0b05f9efa455",
+        "model": "mimo-v2.5-pro"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

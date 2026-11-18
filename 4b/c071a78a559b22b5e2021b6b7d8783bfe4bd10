@@ -1,0 +1,46 @@
+examples/flutter-dev-bff/.env.example
+  s_f0d24fa799f9cf::t_0acd058f14490d 4,45
+examples/flutter-dev-bff/README.md
+  s_f0d24fa799f9cf::t_be7ac67bef1a04 13-14,60
+examples/flutter-dev-bff/docs/guide.md
+  s_f0d24fa799f9cf::t_dc647548a061a3 26,92
+examples/flutter-dev-bff/docs/settings.md
+  s_f0d24fa799f9cf::t_9643b60452fb7e 9,11,67-70,106
+examples/flutter-dev-bff/public/guide.html
+  s_f0d24fa799f9cf::t_dc55614e885f4d 165-166,264
+examples/flutter-dev-bff/public/settings.html
+  s_f0d24fa799f9cf::t_e2012f44aa3bc8 150-151,185-186,235
+examples/flutter-dev-bff/src/server.ts
+  s_f0d24fa799f9cf::t_6586677fd1b851 76,899-924,932-933,983,986-987
+packages/core/src/contracts.ts
+  s_f0d24fa799f9cf::t_0f242a8a8156d9 12-13
+packages/core/src/harness.test.ts
+  s_f0d24fa799f9cf::t_df61cbf1d00370 343,353
+packages/core/src/harness.ts
+  s_f0d24fa799f9cf::t_7b5bf210857013 221-222
+packages/core/src/llm-client.test.ts
+  s_f0d24fa799f9cf::t_a1f34dff8d5ed1 35,41,223-254
+packages/core/src/llm-client.ts
+  s_f0d24fa799f9cf::t_7ac2dc5f323d42 163-169,540-541
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "4bc071a78a559b22b5e2021b6b7d8783bfe4bd10",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_f0d24fa799f9cf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04e25-625b-7e10-9fc9-15ba466cd3b1",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

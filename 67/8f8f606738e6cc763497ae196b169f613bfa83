@@ -1,0 +1,26 @@
+examples/flutter-dev-bff/src/bridge.test.ts
+  s_0ba4c7a0e06f3b::t_e73db6b067edba 63-81
+examples/flutter-dev-bff/src/server.ts
+  s_0ba4c7a0e06f3b::t_1b425bfe125f2c 151
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "678f8f606738e6cc763497ae196b169f613bfa83",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

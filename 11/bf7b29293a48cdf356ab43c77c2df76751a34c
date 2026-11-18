@@ -1,0 +1,30 @@
+examples/flutter-dev-bff/src/services/workflow-chat-session.test.ts
+  s_f348ba62fb2a1d::t_817a733c46e67d 117,124-141,143-146,148-149,151,153-154
+  s_f348ba62fb2a1d::t_09989eda58659c 142,147,150,152
+  s_f348ba62fb2a1d::t_d666b34702cf8e 155
+examples/flutter-dev-bff/src/services/workflow-store-migrations.ts
+  s_f348ba62fb2a1d::t_f39e0e9e8a87ea 115-123
+examples/flutter-dev-bff/src/services/workflow-chat-session.ts
+  s_f348ba62fb2a1d::t_f39e0e9e8a87ea 13,43-46,118-122,198-200,204,287-288,290-293,296-306,323-324,331-332,355
+examples/flutter-dev-bff/src/services/workflow-store-migrations.test.ts
+  s_f348ba62fb2a1d::t_209c7beffd578f 4,45-62
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_f348ba62fb2a1d::t_75940c5cff779e 247,689-705
+  s_f348ba62fb2a1d::t_2cbb3de86f14e8 706
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "11bf7b29293a48cdf356ab43c77c2df76751a34c",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

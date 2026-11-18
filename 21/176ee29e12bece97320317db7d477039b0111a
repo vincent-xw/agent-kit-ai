@@ -1,0 +1,19 @@
+docs/superpowers/specs/2026-09-08-agent-runtime-workflow-chat-first-design.md
+  s_099e6e2ecd6699::t_13906481134aae 1-406
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "21176ee29e12bece97320317db7d477039b0111a",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

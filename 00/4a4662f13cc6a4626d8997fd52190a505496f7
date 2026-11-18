@@ -1,0 +1,21 @@
+packages/core/src/harness.test.ts
+  s_f348ba62fb2a1d::t_9f4e188564dd8b 13-101
+packages/core/src/harness.ts
+  s_f348ba62fb2a1d::t_2fed494e36aa40 50-51,66-67,89-95,210,220-222,278-292,297,495,509,545
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "004a4662f13cc6a4626d8997fd52190a505496f7",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

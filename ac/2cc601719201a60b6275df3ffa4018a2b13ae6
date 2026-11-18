@@ -1,0 +1,19 @@
+docs/superpowers/plans/2026-07-30-agent-kit-foundation.md
+  s_f385f7e3a6044c::t_065aee2763d6a9 38,51,57,71,77,101,117,123,138,144,168,181,187,193,199,222,236,242,246,252,272,275-278,281,287,291,297
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "ac2cc601719201a60b6275df3ffa4018a2b13ae6",
+  "prompts": {},
+  "sessions": {
+    "s_f385f7e3a6044c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fcba7-2727-7ff1-992c-71ff144c919e",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

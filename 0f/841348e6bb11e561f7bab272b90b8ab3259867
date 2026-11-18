@@ -1,0 +1,84 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_879a41707a4d7f::t_979a4a25d0497f 360-363
+examples/flutter-dev-bff/src/services/todo-store.ts
+  s_879a41707a4d7f::t_7540e33c6e15ed 16
+  s_879a41707a4d7f::t_f6d1f3897cfeaf 68
+  s_879a41707a4d7f::t_e4a8af8a03124b 42-43
+  s_879a41707a4d7f::t_324491637c7fb2 55
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_879a41707a4d7f::t_3cf92daaba31af 358
+  s_879a41707a4d7f::t_fd63d1c919a99a 223
+  s_879a41707a4d7f::t_2cb339722da265 268-321
+  s_879a41707a4d7f::t_9c550809ed13ec 337-357,359-374
+  s_879a41707a4d7f::t_52f203b2b712aa 224
+  s_879a41707a4d7f::t_0afd3355340f17 227,229-232
+packages/core/src/harness.ts
+  s_879a41707a4d7f::t_639c403ccca545 258
+  s_879a41707a4d7f::t_e870e4570cc67a 259
+  s_879a41707a4d7f::t_ccd27d49f955c8 7
+  s_879a41707a4d7f::t_54cdc33089ffb4 142,144-145,147-152,154-158
+  s_879a41707a4d7f::t_84d99e3a80e759 191
+  s_879a41707a4d7f::t_59fee0afd0b337 260-270,274
+  s_879a41707a4d7f::t_8c5774d1c2eeca 380
+  s_879a41707a4d7f::t_250597843198b2 305-306,326-332
+  s_879a41707a4d7f::t_d1cc5a685a9839 254-257,271-273,275-287,333-334
+  s_879a41707a4d7f::t_8b08b31007bf6c 307-317,321
+  s_879a41707a4d7f::t_5fee3a4ddcb04a 143,146,153
+  s_879a41707a4d7f::t_cd29453c03bcea 335-362
+examples/flutter-dev-bff/src/flutter-tools.ts
+  s_879a41707a4d7f::t_d802b36721eba3 646,648-651
+  s_879a41707a4d7f::t_9e334832f2d226 430-434,439-440,443-444,448-449,454-455,459-460
+  s_879a41707a4d7f::t_e7ffd8a641faab 98-99
+  s_879a41707a4d7f::t_bd998f6c562b4e 507-518,520,523-525
+  s_879a41707a4d7f::t_7cd18755d56bc3 528,530-537,539,541-551,553-565
+examples/flutter-dev-bff/src/server.test.ts
+  s_879a41707a4d7f::t_0e43ff5c43dd1b 100-109
+examples/flutter-dev-bff/src/services/todo-store.test.ts
+  s_879a41707a4d7f::t_0938d6f0e9bc52 1
+  s_879a41707a4d7f::t_624292396696e1 54-69
+examples/flutter-dev-bff/public/assets/app.js
+  s_879a41707a4d7f::t_3cfa3df7136018 877-879
+  s_879a41707a4d7f::t_8235f5db154833 1063-1072
+examples/flutter-dev-bff/src/server.ts
+  s_879a41707a4d7f::t_51a0f2470b1b11 71,75,83,85-91
+  s_879a41707a4d7f::t_e12b7298d7333d 675-682
+examples/flutter-dev-bff/src/services/fallback-provider.ts
+  s_879a41707a4d7f::t_344633bf6df65c 46-50
+examples/flutter-dev-bff/src/prompts.ts
+  s_879a41707a4d7f::t_a9ea3ca57e62a7 80
+  s_879a41707a4d7f::t_37809191984ae4 29-32
+  s_879a41707a4d7f::t_c1c4b116ba49c6 154
+  s_879a41707a4d7f::t_84e625a0b4cc24 76
+  s_879a41707a4d7f::t_b599025928716d 77
+  s_879a41707a4d7f::t_1160179c30564d 155
+packages/core/src/contracts.ts
+  s_879a41707a4d7f::t_7a4562f2d9fe70 16
+  s_879a41707a4d7f::t_483466e82c6195 14-15,17-21,26
+packages/core/src/harness.test.ts
+  s_879a41707a4d7f::t_51004f58d3ae71 135,144,146-185
+  s_879a41707a4d7f::t_a81128d750cfc5 188-204,207-212
+  s_879a41707a4d7f::t_721516f85a1f20 186,215,217-234
+  s_879a41707a4d7f::t_54bd4621c80bbb 235-237,243-246,248,250-257,260-262
+  s_879a41707a4d7f::t_e2f52cb3b73046 187
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "0f841348e6bb11e561f7bab272b90b8ab3259867",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_879a41707a4d7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a38a1457-5318-451a-9559-fee9a6cad3cf",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

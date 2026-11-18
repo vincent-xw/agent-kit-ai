@@ -1,0 +1,24 @@
+examples/agent-runtime-bff/public/assets/app.js
+  s_f3e456795ac7d4::t_52a8435f4f6928 1368,2762,2783,2800
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "a241206496cfdd75a850529203e5f79348f1d0a1",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_f3e456795ac7d4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0d8cb-19f1-7192-969f-1d51d3e80cab",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

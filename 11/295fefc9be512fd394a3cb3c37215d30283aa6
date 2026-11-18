@@ -1,0 +1,20 @@
+docs/superpowers/specs/2026-08-20-user-tools-design.md
+  s_8155d9b03dcd9a::t_4c00a392ce450b 17
+  s_8155d9b03dcd9a::t_a525d19f1bd81a 1-16,18-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "11295fefc9be512fd394a3cb3c37215d30283aa6",
+  "prompts": {},
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

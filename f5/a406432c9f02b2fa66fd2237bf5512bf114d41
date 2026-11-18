@@ -1,0 +1,31 @@
+examples/browser-extension-bff/README.md
+  s_3a7e3f0262fa25::t_14294097c476ec 19,22,25,28,33-34,41-42,45
+package.json
+  h_c3a612a540ca0b 9
+  s_3a7e3f0262fa25::t_5a7d40f86adce2 10
+examples/browser-extension-bff/package.json
+  s_3a7e3f0262fa25::t_8180fe8357ce52 18,20
+examples/browser-extension-bff/.env.example
+  s_3a7e3f0262fa25::t_78a2c67c4a4c7e 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "f5a406432c9f02b2fa66fd2237bf5512bf114d41",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_16621256c6b5d1::t_0c3d2c66141415 328,333,335-348,351,362-367
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "7bee662bfaa0ab5270ff144167483d175666e44a",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

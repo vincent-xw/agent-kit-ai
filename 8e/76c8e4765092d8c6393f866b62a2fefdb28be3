@@ -1,0 +1,30 @@
+docs/superpowers/specs/2026-09-12-agent-task-workflow-design.md
+  s_f348ba62fb2a1d::t_8703b0f7efd4a7 1216-1224,1226-1232,1235
+  s_f348ba62fb2a1d::t_bdee6fa2e59af4 680
+  s_f348ba62fb2a1d::t_b8a7e085cde0c5 478
+  s_f348ba62fb2a1d::t_bbb4bd8bc06db3 490-491,495-496
+  s_f348ba62fb2a1d::t_2e188ce525690b 527
+  s_f348ba62fb2a1d::t_0683f2fd871e22 1-477,479-489,492-494,497-520,522-526,528-535,537-679,681-843,846-931,933-960,964-973,975-1091,1093-1094,1096-1097,1100-1122,1124-1215,1225,1233-1234,1236-1544
+  s_f348ba62fb2a1d::t_137a534387ad2c 932
+  s_f348ba62fb2a1d::t_47390f04becb86 961-963,974
+  s_f348ba62fb2a1d::t_dbaba27ba1af7c 1092,1095,1098-1099
+  s_f348ba62fb2a1d::t_cb0be4d7cfcd32 1123
+  s_f348ba62fb2a1d::t_9c04b0475fe1ea 521,536
+  s_f348ba62fb2a1d::t_cd48e56022fba1 844-845
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "8e76c8e4765092d8c6393f866b62a2fefdb28be3",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

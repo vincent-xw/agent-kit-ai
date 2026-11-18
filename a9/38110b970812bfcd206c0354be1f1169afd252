@@ -1,0 +1,29 @@
+examples/flutter-dev-bff/package.json
+  s_099e6e2ecd6699::t_b7e548d068ff6c 47
+examples/flutter-dev-bff/src/services/xlsx-service.test.ts
+  s_099e6e2ecd6699::t_60adcf6d133e5a 1-40
+examples/flutter-dev-bff/src/services/xlsx-service.ts
+  s_099e6e2ecd6699::t_b7c9a0553bfd9d 1-105
+examples/flutter-dev-bff/src/tools/host-tools.test.ts
+  s_099e6e2ecd6699::t_292af2d0b06a15 80-94
+examples/flutter-dev-bff/src/tools/host-tools.ts
+  s_099e6e2ecd6699::t_e06e220439bb85 8-9,20-21,42-45,120-151,269
+pnpm-lock.yaml
+  s_099e6e2ecd6699::t_b6eafcd168bc93 78-80,956-959,1039-1042,1061-1064,1095-1099,1208-1211,1524-1527,1788-1795,1803-1807,2431-2432,2495-2499,2520-2521,2547-2548,2683-2684,3027-3030,3333-3336,3345-3354
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "a938110b970812bfcd206c0354be1f1169afd252",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+examples/flutter-dev-bff/src/services/webview/cdp-client.test.ts
+  s_0ba4c7a0e06f3b::t_0dd741e1a46f71 164-165,167-168
+  s_0ba4c7a0e06f3b::t_f60c47dd967f6c 87,89,91,93
+  s_0ba4c7a0e06f3b::t_37097f8ffa5490 147-151
+  s_0ba4c7a0e06f3b::t_6e3c73cebbe77d 166
+examples/flutter-dev-bff/src/services/webview/cdp-client.ts
+  s_0ba4c7a0e06f3b::t_a829b3198e0f44 161-164
+  s_0ba4c7a0e06f3b::t_40fead5ac63c26 151-154
+  s_0ba4c7a0e06f3b::t_c236ea45c16fe0 126,129
+  s_0ba4c7a0e06f3b::t_dea1f7bef86532 189-190
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "df3abe317d7673fcc03b365df8c16d20ce6938a1",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

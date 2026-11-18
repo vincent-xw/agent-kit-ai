@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/src/services/event-bus.test.ts
+  s_0ba4c7a0e06f3b::t_820f533864a906 1-78
+examples/flutter-dev-bff/src/services/event-bus.ts
+  s_0ba4c7a0e06f3b::t_ebf6bce684a940 1-38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "dd506d875b65251b670bca39515903c363b5601b",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

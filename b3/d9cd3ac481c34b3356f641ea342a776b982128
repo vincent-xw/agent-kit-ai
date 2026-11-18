@@ -1,0 +1,73 @@
+packages/adapter-sqlite/package.json
+  s_3a7e3f0262fa25::t_a3e435c461f5c5 4-13,21-23,31-33
+packages/core/src/llm-client.ts
+  s_3a7e3f0262fa25::t_f66d02918174cd 2,13,19-22,30-43,49-70,76-94,103-107,109,134-138
+packages/adapter-sqlite/src/index.ts
+  s_3a7e3f0262fa25::t_2cbecccba1b929 77-111,114,121,123-124,126
+  s_3a7e3f0262fa25::t_e1186bee3d182c 5
+docs/integrations/browser-extension-bff.md
+  s_3a7e3f0262fa25::t_2d3d3a63d05365 49,55,61-69,79-81
+packages/core/src/json-schema.ts
+  s_3a7e3f0262fa25::t_4f9a58fbef6609 1-105
+packages/core/src/context-manager.test.ts
+  s_3a7e3f0262fa25::t_1a6b30135d67fa 9
+packages/adapter-cloudflare/tsconfig.json
+  s_3a7e3f0262fa25::t_a3e435c461f5c5 6-8,10-15
+packages/core/src/tool-registry.ts
+  s_3a7e3f0262fa25::t_fbe7bec83d42e6 7-8,21-22
+  s_3a7e3f0262fa25::t_213b313b2f5ed0 23
+packages/core/package.json
+  s_3a7e3f0262fa25::t_a3e435c461f5c5 4-13,21-23
+packages/bff-hono/package.json
+  s_3a7e3f0262fa25::t_a3e435c461f5c5 4-13,21-23
+packages/core/src/llm-client.test.ts
+  s_3a7e3f0262fa25::t_03b2a62d7cb075 7-19,31,38-68,92,96,104-166
+packages/adapter-sqlite/src/index.test.ts
+  s_3a7e3f0262fa25::t_d5287ade632ea0 59-90
+  s_3a7e3f0262fa25::t_461324391c54aa 3,5
+packages/bff-hono/src/index.test.ts
+  s_3a7e3f0262fa25::t_68aee36a07b2d3 37-38
+  s_3a7e3f0262fa25::t_932c53c713423c 97
+  s_3a7e3f0262fa25::t_83042d7990bc1c 27
+packages/core/src/harness.test.ts
+  s_3a7e3f0262fa25::t_10d810ccb3d213 1,4-10,28,45,49-52,57,74,91,108,124,132,141,153,160-504
+packages/core/src/index.ts
+  s_3a7e3f0262fa25::t_7f07c0c9ed37b7 6
+packages/core/src/errors.ts
+  s_3a7e3f0262fa25::t_fd25fc69aab4e9 9-11,13
+packages/bff-hono/tsconfig.json
+  s_3a7e3f0262fa25::t_a3e435c461f5c5 7-12
+packages/core/tsconfig.json
+  s_3a7e3f0262fa25::t_a3e435c461f5c5 7-12
+packages/core/src/contracts.ts
+  s_3a7e3f0262fa25::t_c18b5c6ffe5c9a 3-4,6-10,12,14-15,17-24,44-59,75-79,84-85,88-97
+packages/adapter-cloudflare/package.json
+  s_3a7e3f0262fa25::t_a3e435c461f5c5 4-13,21-23
+packages/adapter-sqlite/tsconfig.json
+  s_3a7e3f0262fa25::t_a3e435c461f5c5 6-8,10-15
+README.md
+  s_3a7e3f0262fa25::t_23d828b4758753 9,12-19,28-30
+packages/core/src/harness.ts
+  s_3a7e3f0262fa25::t_0233c45d74ae8f 167-169,171,181,183-184
+  s_3a7e3f0262fa25::t_f68a7680716505 4-15,20,28-33,50-83,86-98,100-117,127-128,131-140,142-146,148-166,170,172-180,182,186-190,196-207,214,221-230,235-247
+packages/core/src/json-schema.test.ts
+  s_3a7e3f0262fa25::t_d774a6c8e7a20d 1-129
+pnpm-lock.yaml
+  s_3a7e3f0262fa25::t_8a318329501e62 44-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "b3d9cd3ac481c34b3356f641ea342a776b982128",
+  "prompts": {},
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

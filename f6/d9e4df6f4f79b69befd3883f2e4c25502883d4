@@ -1,0 +1,33 @@
+companion-android/app/build.gradle.kts
+  s_f0d24fa799f9cf::t_eff4c0845b7d9a 21-22,33
+companion-android/app/src/main/java/com/agentkit/companion/CompanionAccessibilityService.kt
+  s_f0d24fa799f9cf::t_49270894d04e65 4,9,21-43,51-52,69,71-76,101,110-117,121-122,124-140,147,149-155,159,161-196,198-230
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_f0d24fa799f9cf::t_c6b8319fdae63c 5,8-23,29,31-271,274,276,284-431,546
+companion-android/app/src/main/java/com/agentkit/companion/HttpServerHolder.kt
+  s_f0d24fa799f9cf::t_1dd76552f39d52 3-4,13,18,20-23,25-31,35,41,43,47
+companion-android/app/src/main/java/com/agentkit/companion/RawAccessibilityTreeDumper.kt
+  s_f0d24fa799f9cf::t_149767b3b366fe 1-140
+companion-android/app/src/main/res/xml/accessibility_service_config.xml
+  s_f0d24fa799f9cf::t_ce1d4352dd098d 2,7,9
+docs/investigations/2026-08-29-wechat-accessibility-investigation.md
+  s_f0d24fa799f9cf::t_75a91ea11e1c3b 1-584
+examples/flutter-dev-bff/.env.example
+  s_f0d24fa799f9cf::t_61f8425f168b8c 19-21,24-25,27-28,32,34,39,41,44,47-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "f6d9e4df6f4f79b69befd3883f2e4c25502883d4",
+  "prompts": {},
+  "sessions": {
+    "s_f0d24fa799f9cf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a04e25-625b-7e10-9fc9-15ba466cd3b1",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+examples/flutter-dev-bff/src/services/event-bus.test.ts
+  s_099e6e2ecd6699::t_b0bd21cb47ab9c 78-90
+examples/flutter-dev-bff/src/services/event-bus.ts
+  s_099e6e2ecd6699::t_f25143574e1f91 18,23-27
+examples/flutter-dev-bff/src/services/workflow-outbox-dispatcher.test.ts
+  s_099e6e2ecd6699::t_c36ed6b18b48d0 1-47
+examples/flutter-dev-bff/src/services/workflow-outbox-dispatcher.ts
+  s_099e6e2ecd6699::t_7129e3a5bd0914 1-58
+examples/flutter-dev-bff/src/services/workflow-scheduler.test.ts
+  s_099e6e2ecd6699::t_8fd329fdff6a4f 79-104
+examples/flutter-dev-bff/src/services/workflow-scheduler.ts
+  s_099e6e2ecd6699::t_ed6194aa4c3b46 17,26,56,60-69,81,83-85,87,105,119-120,146
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "ace16255c7c5ca1ac2066641016f9180b9d0af96",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+examples/flutter-dev-bff/src/workflows/validator.ts
+  s_f348ba62fb2a1d::t_b582fa925757a7 1,383,385
+  s_f348ba62fb2a1d::t_f873156ae6e34c 10,35
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_f348ba62fb2a1d::t_32b1ad390ba818 620,626-627
+  s_f348ba62fb2a1d::t_cf0348861cd830 297
+  s_f348ba62fb2a1d::t_c3f07b6b4f2553 879-880,888,900
+  s_f348ba62fb2a1d::t_e8c0166a295651 934,937,941
+  s_f348ba62fb2a1d::t_81ac7cf3bc1287 541-545,874,901
+  s_f348ba62fb2a1d::t_7b214085e80036 917,922-924
+  s_f348ba62fb2a1d::t_1727fd9354e2c8 398-399,403,408-409
+  s_f348ba62fb2a1d::t_775d148dc3ae02 614,848
+examples/flutter-dev-bff/src/services/workflow-skill-result.ts
+  s_f348ba62fb2a1d::t_a1e34df451f49c 3-4,22
+examples/flutter-dev-bff/src/services/workflow-store-migrations.test.ts
+  s_f348ba62fb2a1d::t_e31164f9a735ea 84,88-89,91-92
+examples/flutter-dev-bff/src/services/workflow-chat-session.ts
+  s_f348ba62fb2a1d::t_e2d2ab4b97bcd8 100,338,340
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_4ff684ed05f88d 120,125,131
+  s_f348ba62fb2a1d::t_28595af30792ba 1438-1445,1522
+  s_f348ba62fb2a1d::t_8c2dabd45957d5 95,882,892
+  s_f348ba62fb2a1d::t_9ef2779fb6a8be 1914
+  s_f348ba62fb2a1d::t_635098df574e1d 1647-1648,1651-1655,1657-1661,1663,1666
+  s_f348ba62fb2a1d::t_7e5af322bdc159 968,973
+  s_f348ba62fb2a1d::t_3ef36f05d0976d 143,1656
+  s_f348ba62fb2a1d::t_9d92ca1dc90de7 1241
+  s_f348ba62fb2a1d::t_3646be1776758d 1849-1852,1854-1855
+  s_f348ba62fb2a1d::t_a0fa68eb3964c4 1270,1325
+examples/flutter-dev-bff/src/services/workflow-store-migrations.ts
+  s_f348ba62fb2a1d::t_3001dfccd4001f 5,135,143
+examples/flutter-dev-bff/src/services/workflow-scheduler.ts
+  s_f348ba62fb2a1d::t_758fce85256b70 46-50
+docs/acceptance/2026-09-08-agent-runtime-workflow.md
+  s_f348ba62fb2a1d::t_a98839001bd58d 3,15
+examples/flutter-dev-bff/src/services/workflow-runner.test.ts
+  s_f348ba62fb2a1d::t_2cd28fd1fd3094 4
+examples/flutter-dev-bff/src/services/workflow-store.test.ts
+  s_f348ba62fb2a1d::t_7ce84971d7a9e7 4,30,55,67,71-77,79,236,254-257,270-276
+examples/flutter-dev-bff/src/workflows/types.ts
+  s_f348ba62fb2a1d::t_09c5272df9ba9a 27,161,176,195-196,198-200,203-204
+docs/superpowers/specs/2026-09-12-agent-task-workflow-design.md
+  s_f348ba62fb2a1d::t_a98839001bd58d 44
+  s_f348ba62fb2a1d::t_5fe00f56948903 4-5
+examples/flutter-dev-bff/src/services/workflow-runner.ts
+  s_f348ba62fb2a1d::t_6bc9c9acb2d219 2-3,227-228,678
+  s_f348ba62fb2a1d::t_ae8e3fa972bf44 536-537
+  s_f348ba62fb2a1d::t_cbc35ff433f093 1,28
+examples/flutter-dev-bff/src/services/workflow-runtime-adapter.ts
+  s_f348ba62fb2a1d::t_177ba4c8aa26a5 9,51,65,67,81,458
+examples/flutter-dev-bff/src/services/workflow-command-gateway.test.ts
+  s_f348ba62fb2a1d::t_2f95791723f4f3 5,31-42
+examples/flutter-dev-bff/src/workflows/validator.test.ts
+  s_f348ba62fb2a1d::t_2f2d8a9459ec62 3,6,8-23,37,41,43,46,48-50,52,56
+  s_f348ba62fb2a1d::t_1d167fc7585c47 2,29-36
+  s_f348ba62fb2a1d::t_0fbf7fd70c38dc 119,135,152,170
+examples/flutter-dev-bff/src/services/workflow-scheduler.test.ts
+  s_f348ba62fb2a1d::t_758fce85256b70 80-98
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_ba6e04251eab9a 916-918,935-936,939-940,959-960,963-964
+  s_f348ba62fb2a1d::t_f6777bb4a7bcdc 783-787,797-800
+  s_f348ba62fb2a1d::t_71ee5b25f6a303 976
+  s_f348ba62fb2a1d::t_f45284f0956e62 860,865-866,874,880,886
+  s_f348ba62fb2a1d::t_3bf38584b7afde 828-831,845,855,862-864
+  s_f348ba62fb2a1d::t_2303a335af8bce 827
+  s_f348ba62fb2a1d::t_93923f7ab56600 2260
+  s_f348ba62fb2a1d::t_758fce85256b70 832-834,875-878
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4ba20bc9461af058f5819859a40b018b3c090d7d",
+  "prompts": {},
+  "sessions": {
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+docs/superpowers/specs/2026-09-19-rag-b-memory-quality-design.md
+  s_16621256c6b5d1::t_bfee56025b322d 95-116
+examples/agent-runtime-bff/src/services/memory-candidate-extractor.test.ts
+  s_16621256c6b5d1::t_22e3694717dd9d 63-87
+examples/agent-runtime-bff/src/services/memory-candidate-extractor.ts
+  s_16621256c6b5d1::t_b310290e42fa87 2,38-41,51-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "2d70e11223282dfd16c5104dd85a113852bdbd93",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

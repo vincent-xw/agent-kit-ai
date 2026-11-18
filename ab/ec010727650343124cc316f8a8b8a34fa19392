@@ -1,0 +1,27 @@
+packages/core/src/llm-client.ts
+  s_a2f33b9b07a0c8::t_d7dfb0bf3405a9 330-331,337-345,358-359
+  s_a2f33b9b07a0c8::t_d1c9881a86a4e6 329,332-336,346-357
+examples/browser-extension-bff/src/server.ts
+  s_a2f33b9b07a0c8::t_9504a0c6703219 86-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "abec010727650343124cc316f8a8b8a34fa19392",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a2f33b9b07a0c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5bdf4851-8b2c-4903-b93c-23b83b5edc1a",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

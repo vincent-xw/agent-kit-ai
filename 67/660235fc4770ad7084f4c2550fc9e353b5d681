@@ -1,0 +1,25 @@
+packages/bff-hono/src/index.test.ts
+  s_0ba4c7a0e06f3b::t_5cd1803513ee85 86-150
+  s_0ba4c7a0e06f3b::t_c186a1c961eef7 3
+packages/bff-hono/src/index.ts
+  s_0ba4c7a0e06f3b::t_dc5f58a8066468 36,49-52,61
+  s_0ba4c7a0e06f3b::t_e07067b05a96eb 75-109
+  s_0ba4c7a0e06f3b::t_ff7bf62d1b9252 72-74
+  s_0ba4c7a0e06f3b::t_23996e8f1facc5 71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "67660235fc4770ad7084f4c2550fc9e353b5d681",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+examples/agent-runtime-bff/public/assets/app.css
+  s_d1356a974525d7::t_02eedcae89cc5f 3552-3638
+examples/agent-runtime-bff/tests/device-panel.spec.ts
+  s_d1356a974525d7::t_cb1aa5f97d80de 40-42,74-80,119-168
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "c71a306ebba26824e19279be1d9abcf309f9bfdb",
+  "prompts": {},
+  "sessions": {
+    "s_d1356a974525d7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bc34-1b3e-75a0-a088-bcbe7b23a028",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

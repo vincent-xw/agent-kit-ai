@@ -1,0 +1,33 @@
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_7398a7c5c32312::t_d1bb7e9204abef 217-223
+  s_7398a7c5c32312::t_adc1ab9c613e39 5
+examples/flutter-dev-bff/src/services/skill-store.ts
+  s_7398a7c5c32312::t_4aef2391c10771 15-20
+  s_7398a7c5c32312::t_96c409651c960b 154-157
+  s_7398a7c5c32312::t_f47ad79bd7bc9e 177
+examples/flutter-dev-bff/src/prompts.ts
+  s_7398a7c5c32312::t_4b69ac7030edd9 63-112
+examples/flutter-dev-bff/src/services/skill-store.test.ts
+  s_7398a7c5c32312::t_05f085c98c6a61 65-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "870bbb6074e375fe3bc8230f7efab899115dedcd",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_7398a7c5c32312": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2368450d-4980-44ab-85cb-a29a22c8e8aa",
+        "model": "mimo-v2.5-pro"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

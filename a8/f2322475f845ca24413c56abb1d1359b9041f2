@@ -1,0 +1,28 @@
+packages/core/src/harness.ts
+  s_0ba4c7a0e06f3b::t_3210d04fba945a 162
+  s_0ba4c7a0e06f3b::t_d052b0c7e323c6 47-48,52-61
+  s_0ba4c7a0e06f3b::t_52a75c966e8553 262-267
+  s_0ba4c7a0e06f3b::t_050fbf6bfed243 323-337
+packages/core/src/harness.test.ts
+  s_0ba4c7a0e06f3b::t_c49f6a30c429e1 905,914,919-920
+  s_0ba4c7a0e06f3b::t_66dd644bac7a2f 769-865,948
+  s_0ba4c7a0e06f3b::t_866bb4b9240e13 866-904,906-913,915-918,921-947
+packages/core/src/contracts.ts
+  s_0ba4c7a0e06f3b::t_a4fee9c9879ff5 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "a8f2322475f845ca24413c56abb1d1359b9041f2",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

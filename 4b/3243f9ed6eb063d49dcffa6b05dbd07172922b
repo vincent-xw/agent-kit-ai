@@ -1,0 +1,19 @@
+examples/flutter-dev-bff/src/tools/host-tools.ts
+  s_8155d9b03dcd9a::t_1c2b8cd9e68084 156-166
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "4b3243f9ed6eb063d49dcffa6b05dbd07172922b",
+  "prompts": {},
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

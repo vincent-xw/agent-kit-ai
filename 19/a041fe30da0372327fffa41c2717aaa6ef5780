@@ -1,0 +1,19 @@
+docs/superpowers/specs/2026-09-19-tool-execution-error-flow-design.md
+  s_16621256c6b5d1::t_ac9d6be8929d94 247-250,272-273,282-284,465
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "19a041fe30da0372327fffa41c2717aaa6ef5780",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

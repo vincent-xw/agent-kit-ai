@@ -1,0 +1,28 @@
+examples/browser-extension-bff/src/server.test.ts
+  s_3a7e3f0262fa25::t_7c3a9d3a38a5fc 3-4
+  s_3a7e3f0262fa25::t_d4492b8d22fdd3 206,208,223-308
+examples/browser-extension-bff/src/server.ts
+  s_3a7e3f0262fa25::t_805e497edbe1a1 29-31
+  s_3a7e3f0262fa25::t_0f7084990665e8 10-16
+examples/browser-extension-bff/src/browser-tools.ts
+  s_3a7e3f0262fa25::t_497e6c47b94e3b 230-257
+  s_3a7e3f0262fa25::t_064d1ddac76d84 13,15,18-21
+  s_3a7e3f0262fa25::t_9b7da9d2e116b3 57-82,86,88,103,111-119,126-135,157,169,194
+  s_3a7e3f0262fa25::t_c2672c87a2e5c9 56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "cbc916b03400f6857e7dedadd70f7e7d6ff1ea5d",
+  "prompts": {},
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

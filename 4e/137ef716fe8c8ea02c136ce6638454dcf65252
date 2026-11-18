@@ -1,0 +1,27 @@
+packages/adapter-sqlite/src/index.test.ts
+  s_01951b81c4f90f::t_b4dc2c4d42b416 1
+  s_01951b81c4f90f::t_749040c519a6d6 106-136
+  s_01951b81c4f90f::t_687dd9d595437c 137
+packages/adapter-sqlite/src/index.ts
+  s_01951b81c4f90f::t_84989901fcd3c4 142,144-146,149
+  s_01951b81c4f90f::t_d155cdc0b09bec 5
+  s_01951b81c4f90f::t_8442838777ff26 143
+  s_01951b81c4f90f::t_9f4ecab6a390f0 166
+  s_01951b81c4f90f::t_6f61bab609a604 123
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "4e137ef716fe8c8ea02c136ce6638454dcf65252",
+  "prompts": {},
+  "sessions": {
+    "s_01951b81c4f90f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b628ff55-77e4-451c-891e-49bbe6755864",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

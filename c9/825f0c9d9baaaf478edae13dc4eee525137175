@@ -1,0 +1,31 @@
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_b3400902f55d4f::t_d88a705232e592 163,165
+  s_b3400902f55d4f::t_424d82c5c624d8 82-83
+  s_b3400902f55d4f::t_c39bd6d901240f 213
+  s_b3400902f55d4f::t_cf59ad836f4750 189,195-197,199
+  s_b3400902f55d4f::t_797408947822e1 225
+examples/flutter-dev-bff/src/server.test.ts
+  s_b3400902f55d4f::t_302cd502abf022 93
+  s_b3400902f55d4f::t_ba74abb266c702 345-349,353-367,370-393
+  s_b3400902f55d4f::t_73b7274897d9fd 368-369
+  s_b3400902f55d4f::t_f9838b641da39e 5-6
+  s_b3400902f55d4f::t_a70815cd65c9fc 11
+  s_b3400902f55d4f::t_66763e25265072 350-352
+  s_b3400902f55d4f::t_0b93ad5b337c7a 17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "c9825f0c9d9baaaf478edae13dc4eee525137175",
+  "prompts": {},
+  "sessions": {
+    "s_b3400902f55d4f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e1d2e38c-e711-47ee-806d-9f2a9a39e3d5",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

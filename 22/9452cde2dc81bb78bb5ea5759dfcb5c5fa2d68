@@ -1,0 +1,25 @@
+examples/agent-runtime-bff/src/services/memory-provider.ts
+  s_16621256c6b5d1::t_cdf26cc4ec2d9f 321-331,333-354,356-374,376-379
+examples/agent-runtime-bff/src/services/workflow-knowledge-context-builder.test.ts
+  s_16621256c6b5d1::t_6767c376f2155f 271-315
+examples/agent-runtime-bff/src/services/workflow-knowledge-query.test.ts
+  s_16621256c6b5d1::t_6db0cfe679e805 14-16,23-46
+examples/agent-runtime-bff/src/services/workflow-knowledge-query.ts
+  s_16621256c6b5d1::t_30a7333fabc17c 21-46,60-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "229452cde2dc81bb78bb5ea5759dfcb5c5fa2d68",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

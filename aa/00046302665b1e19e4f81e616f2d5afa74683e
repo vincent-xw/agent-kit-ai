@@ -1,0 +1,32 @@
+packages/core/src/llm-client.ts
+  s_a2f33b9b07a0c8::t_83a2277cdd1367 29
+  s_a2f33b9b07a0c8::t_c9721f8b67f155 25-28
+  s_a2f33b9b07a0c8::t_76d949591cd15d 4-9
+  s_a2f33b9b07a0c8::t_7bd99e2f6c0285 201,205-359,362-363,365-411,413-457
+packages/adapter-sqlite/src/index.ts
+  s_a2f33b9b07a0c8::t_a89d88963a0f1f 139-144
+  s_a2f33b9b07a0c8::t_1af072f2ec630e 126
+  s_a2f33b9b07a0c8::t_6b162c05e848f6 5
+  s_a2f33b9b07a0c8::t_d4b9da2d4fe094 125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "aa00046302665b1e19e4f81e616f2d5afa74683e",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a2f33b9b07a0c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5bdf4851-8b2c-4903-b93c-23b83b5edc1a",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

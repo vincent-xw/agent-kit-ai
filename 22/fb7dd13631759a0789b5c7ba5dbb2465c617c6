@@ -1,0 +1,41 @@
+examples/browser-extension-bff/src/ws-executor.ts
+  s_88704e7afb3157::t_b01cea44b7a0c6 35
+  s_88704e7afb3157::t_c1fbd3dbceb83b 12
+examples/browser-extension-bff/src/session-store.ts
+  s_88704e7afb3157::t_ff7b7964548acd 1-74
+examples/browser-extension-bff/src/file-storage.ts
+  s_88704e7afb3157::t_cdb24e9e26924b 1-209
+examples/browser-extension-bff/src/skill-store.ts
+  s_88704e7afb3157::t_c6212c23728818 1-48
+examples/browser-extension-bff/src/browser-tools.ts
+  s_88704e7afb3157::t_31ddd7f183016e 7-10,19,21,26-29,35-41,47-54,60-68,74-79,81,87-93,95,100,102-103,105,110,113-114,116,122,124-125,127-136,138-141,143,148,153,156,163,165,169,181,189-195,199-202,209-214,220-222
+examples/browser-extension-bff/src/server.ts
+  s_88704e7afb3157::t_1acdf6f2074bbe 63-65,85-87,104-106
+  s_88704e7afb3157::t_23acdfc2e6f08a 3,7,20,27,41-62,66-84,88-103,107-111,122,128,132-134,142,146-147,149-150,159,163,173-182,187,190-191,195-203,207,224-231,236-237,246-253,264,266,280,286,291,293-295,297-372,374,376,378-400,435,439-459,461,469,513,523,538,544,548,551,555,557,566
+  s_88704e7afb3157::t_6038d19cbff479 158
+  s_88704e7afb3157::t_487d00feba1aff 375
+  s_88704e7afb3157::t_4d79c46bf94cf0 292,296,373,377
+examples/browser-extension-bff/public/index.html
+  s_88704e7afb3157::t_4f181eb5d12c1d 5-6,10-11,13-77,82-122,124-134,137-154,156,158-162,164-218,223-224,226,230-239,241-243,247-248,250-272,275-281,284-293,296,300,304,311-314,319-326,329-369,372-385,387-393,395-397,400-401,404-443,451,454,456,458-462,466-485,487,489,493,497-502
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "22fb7dd13631759a0789b5c7ba5dbb2465c617c6",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_88704e7afb3157": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "af19520e-9d86-4d86-8809-4dc81e141b84",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+examples/flutter-dev-bff/src/services/adb-client.ts
+  s_a16184b10dbec2::t_17491e71bd9445 7-11
+  s_a16184b10dbec2::t_4d3eef52bd5b8c 226-231
+examples/flutter-dev-bff/src/services/adb-client.test.ts
+  s_a16184b10dbec2::t_23b5edc1f8c45c 90-114
+  s_a16184b10dbec2::t_626572e0648908 2
+  s_a16184b10dbec2::t_4b76ca6c38d3db 115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "44072e39b91816cf6f09f5b11700372129ee5028",
+  "prompts": {},
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

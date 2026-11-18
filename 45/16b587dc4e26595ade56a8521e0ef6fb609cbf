@@ -1,0 +1,29 @@
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_652f89877168cf 295-302,308-319,1501,1507
+examples/agent-runtime-bff/src/prompts.ts
+  s_b6d1dfe778ddd7::t_45108e2cbabfd2 15,43
+examples/agent-runtime-bff/src/services/adb-client.ts
+  s_b6d1dfe778ddd7::t_e7ec4a9f46e140 30-36,183-204,389-410
+examples/agent-runtime-bff/src/services/todo-store.test.ts
+  s_b6d1dfe778ddd7::t_9de1f16e9f3196 97-115
+examples/agent-runtime-bff/src/services/todo-store.ts
+  s_b6d1dfe778ddd7::t_5afa4c77cf01bb 48-53,56-60,85
+examples/agent-runtime-bff/src/tools/host-tools.ts
+  s_b6d1dfe778ddd7::t_85ebd90122fb20 176-182
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4516b587dc4e26595ade56a8521e0ef6fb609cbf",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

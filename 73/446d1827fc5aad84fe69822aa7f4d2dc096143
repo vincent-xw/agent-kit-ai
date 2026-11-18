@@ -1,0 +1,28 @@
+docs/superpowers/plans/2026-08-12-flutter-bff-bridge-fix.md
+  s_0ba4c7a0e06f3b::t_0b84fc9c5c0d8e 1-37,39-79,81-160,162-164,166-168,170-221,223-283
+  s_0ba4c7a0e06f3b::t_188efd8b835bcd 38
+  s_0ba4c7a0e06f3b::t_2c439dfd1667af 80
+  s_0ba4c7a0e06f3b::t_36843d4852101f 161,165,169
+  s_0ba4c7a0e06f3b::t_e1d4871dd8feb7 222
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "73446d1827fc5aad84fe69822aa7f4d2dc096143",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

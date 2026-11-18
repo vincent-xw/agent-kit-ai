@@ -1,0 +1,19 @@
+examples/flutter-dev-bff/tools/get_verification_code.mjs
+  s_6511cca4935412::t_b11224626bb366 4-5,8-10,12-18,22,25,32-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "c3aff1dd32b8045dd3d2455553b8dc58a34c2ebc",
+  "prompts": {},
+  "sessions": {
+    "s_6511cca4935412": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0f01e29f-b115-4c91-8462-a73a28f1bd85",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

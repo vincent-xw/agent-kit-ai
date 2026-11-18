@@ -1,0 +1,53 @@
+docs/superpowers/specs/2026-09-20-rag-a-c-memory-quality-design.md
+  s_d1356a974525d7::t_3221719f018d5c 1-65
+examples/agent-runtime-bff/public/assets/app.css
+  s_d1356a974525d7::t_74926fb58d8b4f 341
+examples/agent-runtime-bff/public/assets/app.js
+  s_d1356a974525d7::t_721f94909dbf7d 4643-4646
+examples/agent-runtime-bff/public/rag.html
+  s_d1356a974525d7::t_fb46c1884d8243 62,64,80,101,118,128
+examples/agent-runtime-bff/src/prompts.ts
+  s_d1356a974525d7::t_c3c979a543c508 88
+examples/agent-runtime-bff/src/server.test.ts
+  s_d1356a974525d7::t_15d954eb1eed08 405-475
+examples/agent-runtime-bff/src/server.ts
+  s_d1356a974525d7::t_0e45964c9a4819 116,123-124,635-651,656-666,1054-1060,1063-1069,2716
+examples/agent-runtime-bff/src/services/memory-candidate-extractor.test.ts
+  s_d1356a974525d7::t_68f842469378a0 2,9-41,118
+examples/agent-runtime-bff/src/services/memory-candidate-extractor.ts
+  s_d1356a974525d7::t_47cdbe05a2f0cd 10-11,18-39,73-74,78-79
+examples/agent-runtime-bff/src/services/memory-curator.test.ts
+  s_d1356a974525d7::t_43e9f1c88bd834 1-51
+examples/agent-runtime-bff/src/services/memory-curator.ts
+  s_d1356a974525d7::t_890cd39f2cbbd6 1-59
+examples/agent-runtime-bff/src/services/memory-provider.test.ts
+  s_d1356a974525d7::t_c9477d9fd0a038 10,13,31,45,63
+examples/agent-runtime-bff/src/services/memory-provider.ts
+  s_d1356a974525d7::t_b9ab00240eed61 28-29,581
+examples/agent-runtime-bff/src/services/workflow-memory-provider.test.ts
+  s_d1356a974525d7::t_3a16bb9f037071 47
+examples/agent-runtime-bff/src/services/workspace-indexer.test.ts
+  s_d1356a974525d7::t_82f234ebfb8d2e 40-70
+examples/agent-runtime-bff/src/services/workspace-indexer.ts
+  s_d1356a974525d7::t_6b3ee5b7416dcf 56-132,160-169
+examples/agent-runtime-bff/src/tools/user-interaction-tools.test.ts
+  s_d1356a974525d7::t_a9f634343b7352 176-191
+examples/agent-runtime-bff/src/tools/user-interaction-tools.ts
+  s_d1356a974525d7::t_8592a080dc1ca3 18-21,187,194-199,201,226-228,230-231
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ed6baaa5ee86cb8f029630c2322d56dee079fd4c",
+  "prompts": {},
+  "sessions": {
+    "s_d1356a974525d7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bc34-1b3e-75a0-a088-bcbe7b23a028",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+examples/flutter-dev-bff/src/flutter-tools.test.ts
+  s_a16184b10dbec2::t_e9cad49ce973fb 79
+  s_a16184b10dbec2::t_403d7a77034431 135-165
+  s_a16184b10dbec2::t_1f327e07bc64f9 10
+examples/flutter-dev-bff/src/flutter-tools.ts
+  s_a16184b10dbec2::t_17719ee8ef29b2 880-934,942
+  s_a16184b10dbec2::t_52e252f11e2448 93-94
+  s_a16184b10dbec2::t_97650ee555892f 15
+examples/flutter-dev-bff/src/server.test.ts
+  s_a16184b10dbec2::t_f3879c4d599bd5 99
+examples/flutter-dev-bff/src/server.ts
+  s_a16184b10dbec2::t_5e32aee22a93b8 49
+  s_a16184b10dbec2::t_f2201171daa49e 306
+  s_a16184b10dbec2::t_5a284d5a55c0f1 68-88
+  s_a16184b10dbec2::t_bcbb274635ada3 137,161
+examples/flutter-dev-bff/src/services/todo-store.test.ts
+  s_a16184b10dbec2::t_28b1b3aee9e865 6-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "5966ac454b918774bd05cd065462cccb902ed61c",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

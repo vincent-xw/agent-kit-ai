@@ -1,0 +1,27 @@
+examples/flutter-dev-bff/src/services/vision-client.test.ts
+  s_0ba4c7a0e06f3b::t_3982f47bb5fa28 1-9,11-55
+  s_0ba4c7a0e06f3b::t_85d20a3613ada5 10
+examples/flutter-dev-bff/src/services/vision-client.ts
+  s_0ba4c7a0e06f3b::t_f6a8b78156b1bd 1-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "8bfb9c83b4d10eded9670ededdedd83561da1e72",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

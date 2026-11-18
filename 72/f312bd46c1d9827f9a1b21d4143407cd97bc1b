@@ -1,0 +1,225 @@
+examples/flutter-dev-bff/src/tool-events.test.ts
+  s_f348ba62fb2a1d::t_d7c91df1c50fc5 208,217,227,231
+examples/flutter-dev-bff/src/services/workflow-agent-task.ts
+  s_f348ba62fb2a1d::t_3cf1db971baba4 338,346,348
+  s_f348ba62fb2a1d::t_0a9c3d9fe6f53a 259-260
+examples/flutter-dev-bff/src/server.ts
+  s_f348ba62fb2a1d::t_e7a9552bef4571 1224-1226
+  s_f348ba62fb2a1d::t_a7bba13944fb50 2015,2344-2350,2357-2361,2770
+  s_f348ba62fb2a1d::t_1d2a4e2d2dfc99 2837
+  s_f348ba62fb2a1d::t_f758b2fc64cac9 2351-2355
+  s_f348ba62fb2a1d::t_f59a5cada4b15a 1395-1400,1755,1800,1826
+  s_f348ba62fb2a1d::t_272d39dc8a1bd7 166-250
+  s_f348ba62fb2a1d::t_20eaa3c872f006 120
+  s_f348ba62fb2a1d::t_8b626f17963855 2356
+examples/flutter-dev-bff/src/services/workflow-row-agent-template.test.ts
+  s_f348ba62fb2a1d::t_f5db6c7f45d7b0 1-25,28-31,37-42
+  s_f348ba62fb2a1d::t_2f37d70cf7e43b 32-34
+  s_f348ba62fb2a1d::t_bb21b117f845fa 26-27,35-36
+examples/flutter-dev-bff/src/services/workflow-store.test.ts
+  s_f348ba62fb2a1d::t_0b3468fee3edb2 83-96
+examples/flutter-dev-bff/src/sse.test.ts
+  s_f348ba62fb2a1d::t_e9e2f44416df4e 124-148
+examples/flutter-dev-bff/src/services/workflow-command-gateway.ts
+  s_f348ba62fb2a1d::t_f59a5cada4b15a 10
+examples/flutter-dev-bff/src/webui-session-recovery.test.ts
+  s_f348ba62fb2a1d::t_77330d36982f6f 902-952
+  s_f348ba62fb2a1d::t_3b5ac689b79255 1930,1950
+  s_f348ba62fb2a1d::t_c30ce9b6e8e1c3 33,1030-1050,2040-2058
+  s_f348ba62fb2a1d::t_c06a88c460026a 1907-1929,1931-1949,1951-1953
+  s_f348ba62fb2a1d::t_76f74f8fe55372 649,656,659
+  s_f348ba62fb2a1d::t_1d161993661d06 1355-1362,1382
+  s_f348ba62fb2a1d::t_0c17722bce15c2 503-507
+  s_f348ba62fb2a1d::t_d3ed533aad8a38 34,67,107
+  s_f348ba62fb2a1d::t_9ed64d325220dc 264,284,614-616
+  s_f348ba62fb2a1d::t_9073568db3eac8 37-38,560-577,647-648,650-652,660-663,666-668,693-710,821-823,843-879,1385-1414
+  s_f348ba62fb2a1d::t_65fe57240096a2 508,510,518-522,526,528-534
+  s_f348ba62fb2a1d::t_0803d53d04d13d 740-742,744-748,750-752,754-764
+  s_f348ba62fb2a1d::t_8aa63da55822bb 32,880-901,953-968,1051-1065
+  s_f348ba62fb2a1d::t_7380cbca4179f9 2059-2060,2062-2078
+  s_f348ba62fb2a1d::t_5530e209aa31db 969-986,1027-1029
+  s_f348ba62fb2a1d::t_c871b61e0a225d 509,511-517,523-525,527,535-559,669-680,682-692,1066-1068,1070,1072,1074-1077
+  s_f348ba62fb2a1d::t_ae04ec061d41ed 655,658
+  s_f348ba62fb2a1d::t_d4942532eba834 653-654,664-665
+  s_f348ba62fb2a1d::t_43aaffcaa72fc9 578-596,795-799,801-810,812-820
+  s_f348ba62fb2a1d::t_59f77f231e63aa 715-739,987-1026
+  s_f348ba62fb2a1d::t_96b8a3373d0502 657
+  s_f348ba62fb2a1d::t_7c4fa60a15c02b 824-842
+  s_f348ba62fb2a1d::t_686b2d4fbd8415 1954-1970
+  s_f348ba62fb2a1d::t_8176b49558cf89 681
+  s_f348ba62fb2a1d::t_d2d0c31310731c 289-346,597,617-618,711-714,765-794,1384
+  s_f348ba62fb2a1d::t_84b48d8ee2e112 598-613,619-621
+  s_f348ba62fb2a1d::t_d0b287f6a98f82 749,753
+  s_f348ba62fb2a1d::t_8a28809e9d4575 622-646
+  s_f348ba62fb2a1d::t_f2512c44df6f23 800,811
+  s_f348ba62fb2a1d::t_978611c174a5c5 1069,1071,1073
+  s_f348ba62fb2a1d::t_4ce2410d11e182 743
+  s_f348ba62fb2a1d::t_ad1fefd477de88 2061
+examples/flutter-dev-bff/src/workflows/agent-task-workflow-fixture.ts
+  s_f348ba62fb2a1d::t_ac35303efb1465 31,34,39,139,144,165
+AGENTS.md
+  s_f348ba62fb2a1d::t_d6274aa664d85c 68
+CLAUDE.md
+  s_f348ba62fb2a1d::t_d6274aa664d85c 4
+examples/flutter-dev-bff/public/index.html
+  s_f348ba62fb2a1d::t_997dc2eda6f1d4 180,190
+  s_f348ba62fb2a1d::t_d99573b62caaf7 127-128,158
+  s_f348ba62fb2a1d::t_9079d2ec79eb2e 136-141,154,207,211,221
+  s_f348ba62fb2a1d::t_f17913de6e897f 163-173,175
+examples/flutter-dev-bff/src/services/workflow-row-agent-template.ts
+  s_f348ba62fb2a1d::t_b833226f2a81d6 36,89,187,211,214,219,254,258
+  s_f348ba62fb2a1d::t_07001436013f4a 181
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_f348ba62fb2a1d::t_f59a5cada4b15a 283,743-752
+  s_9fc95c8a097056::t_e1713d32ffd6c1 753
+examples/flutter-dev-bff/src/tool-events.ts
+  s_f348ba62fb2a1d::t_2f9ab592d48264 151,166,176
+examples/flutter-dev-bff/src/server.test.ts
+  s_f348ba62fb2a1d::t_7ff40f7cd49904 1878,1882
+  s_f348ba62fb2a1d::t_f58db20c7708a1 1870-1877,1879-1881,1883-1891,1915-1938,2388-2389
+  s_f348ba62fb2a1d::t_385d4b0af3a446 87,95,2375
+  s_f348ba62fb2a1d::t_0b3468fee3edb2 2357,2371-2374,2376-2387
+  s_f348ba62fb2a1d::t_8429f7ec5fe3bd 1892-1914
+  s_f348ba62fb2a1d::t_b89f1bfa8e2531 2575-2576
+  s_f348ba62fb2a1d::t_3db88632366618 2390
+examples/flutter-dev-bff/src/services/workflow-chat-session.ts
+  s_f348ba62fb2a1d::t_f59a5cada4b15a 119,449-450
+examples/flutter-dev-bff/public/assets/app.css
+  s_f348ba62fb2a1d::t_8160f42a251fd9 2889-2898,2900-2912
+  s_f348ba62fb2a1d::t_bb0cb05e983407 2569,2581,3229,3328-3332
+  s_f348ba62fb2a1d::t_94fdc3dca706e0 2918-2939,3028
+  s_f348ba62fb2a1d::t_097dfb9a262a26 360
+  s_f348ba62fb2a1d::t_12c94da4ed616d 2803
+  s_f348ba62fb2a1d::t_5fd925b091d82e 2857-2858
+  s_f348ba62fb2a1d::t_997dc2eda6f1d4 384-386,391-394,431-442
+  s_f348ba62fb2a1d::t_5de14634783293 2582
+  s_f348ba62fb2a1d::t_2d67332be82fd8 2574
+  s_f348ba62fb2a1d::t_0194ccd7b0b309 2913,2915-2917,2940-2974
+  s_f348ba62fb2a1d::t_70cffb868ec38b 2914
+  s_f348ba62fb2a1d::t_b24da653e28f9d 2828-2856,2859-2888,2899
+  s_f348ba62fb2a1d::t_f935c5d9914bbc 2571,2986-2989,2992-3007
+  s_f348ba62fb2a1d::t_0fdc4b096c3712 2573,2578-2580,2583,2585-2597,2599-2611,2804-2827
+  s_f348ba62fb2a1d::t_ea9a673c3ceb92 443
+  s_f348ba62fb2a1d::t_276d061e4954c4 1650-1661
+  s_f348ba62fb2a1d::t_70c5a2455a4de4 2575-2577,2598
+  s_f348ba62fb2a1d::t_9de8ed93ccd907 351-352,354-356,362,2686-2689,2699,3217,3223-3228
+  s_f348ba62fb2a1d::t_59763b1a066da9 2570
+  s_f348ba62fb2a1d::t_bf3bb53503aeea 2572
+  s_f348ba62fb2a1d::t_6c4130612f9b91 3230
+examples/flutter-dev-bff/src/services/ask-service.ts
+  s_f348ba62fb2a1d::t_8b626f17963855 49,145,148,150
+  s_f348ba62fb2a1d::t_9ed64d325220dc 147,151
+  s_f348ba62fb2a1d::t_3d4d9b5a550c8a 45-48,146,152-158
+  s_f348ba62fb2a1d::t_ef2c1110b537a6 149
+examples/flutter-dev-bff/src/services/workflow-chat-session.test.ts
+  s_f348ba62fb2a1d::t_5e35c8b5d59e5c 172-175
+examples/flutter-dev-bff/src/prompts.ts
+  s_f348ba62fb2a1d::t_097dfb9a262a26 126
+  s_f348ba62fb2a1d::t_997dc2eda6f1d4 120-121
+  s_f348ba62fb2a1d::t_3cf1db971baba4 124
+examples/flutter-dev-bff/src/tools/host-tools.ts
+  s_f348ba62fb2a1d::t_2ade8948c491d8 8,44-45,160,166
+examples/flutter-dev-bff/src/services/xlsx-service.test.ts
+  s_f348ba62fb2a1d::t_66db980536ad07 116
+  s_f348ba62fb2a1d::t_6663cc055c5045 8,105-115,117-134,137-158
+  s_f348ba62fb2a1d::t_71450448269d8f 135-136
+  s_f348ba62fb2a1d::t_8cf8ed932fdf4f 159
+packages/core/src/harness.test.ts
+  s_f348ba62fb2a1d::t_99f8dfd5fcdfe7 1129-1143
+  s_f348ba62fb2a1d::t_d3ed533aad8a38 41-62,64-65
+  s_f348ba62fb2a1d::t_f002cb268d4e21 63
+examples/flutter-dev-bff/src/prompts.test.ts
+  s_f348ba62fb2a1d::t_f002cb268d4e21 107-108
+  s_f348ba62fb2a1d::t_0b3468fee3edb2 110-115
+  s_f348ba62fb2a1d::t_639d229431b1d2 109
+examples/flutter-dev-bff/src/services/xlsx-service.ts
+  s_f348ba62fb2a1d::t_c9f05ddf5be261 8-10,117,125-126,129-130,132-133,136
+  s_f348ba62fb2a1d::t_0cd9beb39de60f 2,78-80,102-116,118-124,127-128,131,134-135,137-157
+  s_f348ba62fb2a1d::t_66db980536ad07 387
+  s_f348ba62fb2a1d::t_4dc95c638c88a1 314,316-317,321,325-327,334,338-384
+  s_f348ba62fb2a1d::t_3a05b6c446fc76 158
+examples/flutter-dev-bff/src/services/workflow-agent-task.test.ts
+  s_f348ba62fb2a1d::t_d3ed533aad8a38 168-195
+  s_f348ba62fb2a1d::t_21bd91738b6b82 113-114,117
+examples/flutter-dev-bff/src/services/ask-service.test.ts
+  s_f348ba62fb2a1d::t_f0058c9ecb5ba0 46,48-49,52-54,57-58
+  s_f348ba62fb2a1d::t_7ff40f7cd49904 47,50-51,55-56
+packages/core/src/harness.ts
+  s_f348ba62fb2a1d::t_997dc2eda6f1d4 274-276
+  s_f348ba62fb2a1d::t_3cf1db971baba4 221-223,228-233
+examples/flutter-dev-bff/public/assets/app.js
+  s_f348ba62fb2a1d::t_a6b069fa700cc6 1376-1377,1379-1380
+  s_f348ba62fb2a1d::t_6784db4dfdb846 2182
+  s_f348ba62fb2a1d::t_610598fde238f6 1549-1550
+  s_f348ba62fb2a1d::t_94fdc3dca706e0 51-53,3404,3410-3412,3417-3418,3431-3437
+  s_f348ba62fb2a1d::t_25bd2983d875e1 752-756,773-775,1160,1184,1227
+  s_f348ba62fb2a1d::t_30aac0ac308de9 407,746-747,757-772,776-777
+  s_f348ba62fb2a1d::t_8b529bb8839adb 1163-1164,1240-1251
+  s_f348ba62fb2a1d::t_1603dad2f92bd3 1206,1209,1215,1224,1236-1237
+  s_f348ba62fb2a1d::t_d99573b62caaf7 1794-1798,1800,3097,3107,3115,3121
+  s_f348ba62fb2a1d::t_a53f59a08c8452 2151-2152,2154,2162,2164,2171-2173,2177,2185,2224-2229,2233-2242
+  s_f348ba62fb2a1d::t_fc2d0f318026cb 778,1469,3152-3157,3238,3720,3722
+  s_f348ba62fb2a1d::t_0ab9211554ac93 1799,3710,3714,3717
+  s_f348ba62fb2a1d::t_323ad0b86357b4 1085,1087-1091
+  s_f348ba62fb2a1d::t_097dfb9a262a26 1735,1765,1793
+  s_f348ba62fb2a1d::t_8bc19175167ddb 334-344
+  s_f348ba62fb2a1d::t_bdc81e169134c2 1323-1334,3502
+  s_f348ba62fb2a1d::t_40286e1d84031f 1286,1295
+  s_f348ba62fb2a1d::t_1d3e997a917a6f 1431-1432
+  s_f348ba62fb2a1d::t_ff7808e3f4a3de 1949,2010,2012,2043-2052,2094
+  s_f348ba62fb2a1d::t_8260aab2284e9d 730,741
+  s_f348ba62fb2a1d::t_0e164b6c3913b9 1223
+  s_f348ba62fb2a1d::t_43f2c7556f8403 748-751
+  s_f348ba62fb2a1d::t_2b36be2cf147ec 1340,1343
+  s_f348ba62fb2a1d::t_7fb2fd13c94b76 1111,1235,1238-1239,1252-1253,1561,1563,1567-1569,1596-1599,1601-1603,1607,1615,1617-1622,1625-1634,1637-1638,1646-1655
+  s_f348ba62fb2a1d::t_ab388b00cfa53c 2986-3001
+  s_f348ba62fb2a1d::t_b361608e2c98b7 3188-3189,3209-3215,3226-3237
+  s_f348ba62fb2a1d::t_f935c5d9914bbc 1565-1566,3415
+  s_f348ba62fb2a1d::t_f8ad9ef433f900 1930,3775-3776
+  s_f348ba62fb2a1d::t_997dc2eda6f1d4 47-50,2243,3387-3388,3395,3401-3403,3405-3409,3413-3414,3416,3419-3422,3424-3430,3438-3445,3449-3463,3483,3492-3493,3503-3512,3529-3541,3554
+  s_f348ba62fb2a1d::t_b38310b171b4d3 1600,1605-1606,1608-1614,1616,1623-1624,2024-2025,2035-2041
+  s_f348ba62fb2a1d::t_6877f5e5664c42 1508
+  s_f348ba62fb2a1d::t_276d061e4954c4 1451-1452,1635-1636,1718-1720,1737,1816
+  s_f348ba62fb2a1d::t_3b328e7f822803 1945-1948
+  s_f348ba62fb2a1d::t_83db8f23db5352 405,1394-1428,1433-1435,1572-1581
+  s_f348ba62fb2a1d::t_73555397791c6c 1449
+  s_f348ba62fb2a1d::t_aa068357c6c493 1881,1886
+  s_f348ba62fb2a1d::t_519e66a2c157a1 1345-1347,1375,1378,1381-1393,1429-1430,1436-1448,1450,1453-1468
+  s_f348ba62fb2a1d::t_39c27a2e3831a2 923,934
+  s_f348ba62fb2a1d::t_77659c846c71e7 1214,1217
+  s_f348ba62fb2a1d::t_a9929775961dfb 1086,1092
+  s_f348ba62fb2a1d::t_4dd6490f2a1991 3031,3037,3042,3066,3068,3070,3076,3085,3109,3111,3113
+  s_f348ba62fb2a1d::t_e0177d4d7d68ba 2042,3560,3562-3605
+  s_f348ba62fb2a1d::t_53b64298450d9c 1570-1571,1582-1595,1604
+  s_f348ba62fb2a1d::t_acb1cbfc714b73 3267,3271,3295,3298,3305,3314-3315,3322,3326,3329,3348
+  s_f348ba62fb2a1d::t_72f0972452e8ca 2023
+  s_f348ba62fb2a1d::t_d39340951159c8 779
+  s_f348ba62fb2a1d::t_c1ed03e8e1f16b 1470
+  s_f348ba62fb2a1d::t_9056684b0259f1 3239
+examples/flutter-dev-bff/src/services/workflow-command-gateway.test.ts
+  s_f348ba62fb2a1d::t_0b3468fee3edb2 92-103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "72f312bd46c1d9827f9a1b21d4143407cd97bc1b",
+  "prompts": {},
+  "sessions": {
+    "s_9fc95c8a097056": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08521-b93e-7803-96bd-b7397f4a0369",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    },
+    "s_f348ba62fb2a1d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a08520-8944-7543-8ffc-ba59da48922b",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

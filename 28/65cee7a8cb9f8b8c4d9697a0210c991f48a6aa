@@ -1,0 +1,34 @@
+examples/agent-runtime-bff/src/services/workflow-agent-task.ts
+  s_1a5b5e7571c223::t_87be5c7f7ba168 459-460,464-466
+examples/agent-runtime-bff/src/services/jev-active-control-flow.ts
+  s_1a5b5e7571c223::t_70934f26fa3c6a 121,150,157-159
+examples/agent-runtime-bff/src/server.ts
+  s_1a5b5e7571c223::t_70934f26fa3c6a 1186
+examples/agent-runtime-bff/src/services/workflow-agent-task.test.ts
+  s_1a5b5e7571c223::t_9fb113da1aef5a 114,126-129,147
+examples/agent-runtime-bff/src/services/jev-active-control-flow.test.ts
+  s_1a5b5e7571c223::t_dbf836a059424b 115-118,140-150
+  s_1a5b5e7571c223::t_cf21b825da3cd0 151-152
+examples/agent-runtime-bff/src/server.test.ts
+  s_1a5b5e7571c223::t_e79351d1365fee 755-759,834
+  s_1a5b5e7571c223::t_c64bd654b65f2c 444-472
+  s_1a5b5e7571c223::t_0a5cc0d065af9d 863
+  s_1a5b5e7571c223::t_d2c55b74e343fd 764-768,827,836,843-862,864-866
+  s_1a5b5e7571c223::t_2bbb88b794a74c 745-746
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "2865cee7a8cb9f8b8c4d9697a0210c991f48a6aa",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

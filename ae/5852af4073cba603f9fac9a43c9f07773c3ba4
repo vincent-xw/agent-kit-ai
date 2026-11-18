@@ -1,0 +1,19 @@
+examples/agent-runtime-bff/public/assets/app.css
+  s_1a5b5e7571c223::t_14c3833ce5d6ee 3670-3676
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ae5852af4073cba603f9fac9a43c9f07773c3ba4",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

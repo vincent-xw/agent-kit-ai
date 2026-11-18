@@ -1,0 +1,27 @@
+examples/flutter-dev-bff/src/services/todo-store.ts
+  s_a16184b10dbec2::t_7ae7d9d48334c5 38
+examples/flutter-dev-bff/src/services/todo-store.test.ts
+  s_a16184b10dbec2::t_5c96b44af76770 34,39-40,45-51
+  s_a16184b10dbec2::t_43a48183986f34 35,41-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "95df0c3d5ea8eb00968418d4636e03126eaeea9e",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+examples/flutter-dev-bff/public/assets/app.css
+  s_099e6e2ecd6699::t_05e7c0d94a6374 619-643
+examples/flutter-dev-bff/src/prompts.ts
+  s_099e6e2ecd6699::t_f8469452d9112e 1-2,78-91
+examples/flutter-dev-bff/src/server.test.ts
+  s_099e6e2ecd6699::t_975ded2171f96d 1902-2033
+examples/flutter-dev-bff/src/services/workflow-command-gateway.ts
+  s_099e6e2ecd6699::t_59393d575378d2 6-7
+examples/flutter-dev-bff/src/services/workflow-diff.test.ts
+  s_099e6e2ecd6699::t_cd05853a245dc6 1-20
+examples/flutter-dev-bff/src/services/workflow-diff.ts
+  s_099e6e2ecd6699::t_54741b2f21675c 1-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "02bbdead4ab547c07711f2fe2c46b44ad98bc405",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+packages/core/src/harness.ts
+  s_879a41707a4d7f::t_5c9e49d38f86c3 225-230
+  s_879a41707a4d7f::t_cba5d8878be4bd 236-242
+examples/flutter-dev-bff/src/session-history.ts
+  s_879a41707a4d7f::t_d36957143e70dd 1-44,46-51,53-58
+  s_879a41707a4d7f::t_081bfed913c605 45,52
+examples/flutter-dev-bff/src/server.test.ts
+  s_879a41707a4d7f::t_d874515414bbe6 56-78
+examples/flutter-dev-bff/public/assets/app.js
+  s_879a41707a4d7f::t_2e197495da888b 832-836
+  s_879a41707a4d7f::t_77826ecc87c0a5 532-533,538,545-555,559-566,572-573
+  s_879a41707a4d7f::t_88286d4879fb97 841-856
+packages/core/src/harness.test.ts
+  s_879a41707a4d7f::t_022f1abf2f9c88 395-420
+examples/flutter-dev-bff/src/session-history.test.ts
+  s_879a41707a4d7f::t_bd00e02903b36b 1-41
+examples/flutter-dev-bff/src/server.ts
+  s_879a41707a4d7f::t_6c9eb04ac9466a 468,470-471
+  s_879a41707a4d7f::t_7c376b5c53f88d 64
+packages/core/src/contracts.ts
+  s_879a41707a4d7f::t_8f0d93f5e145a3 34
+examples/flutter-dev-bff/public/assets/app.css
+  s_879a41707a4d7f::t_3c2ec2bf78a6bc 195-199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "e8372514f8f0b4ae779bad80c431bba508b57435",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_879a41707a4d7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a38a1457-5318-451a-9559-fee9a6cad3cf",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

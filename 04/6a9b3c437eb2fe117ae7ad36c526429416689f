@@ -1,0 +1,37 @@
+examples/agent-runtime-bff/src/server.ts
+  s_1a5b5e7571c223::t_a1074546192323 748-750,3585-3587
+  s_1a5b5e7571c223::t_3309a23ca6677e 85-92
+  s_1a5b5e7571c223::t_e3860d49df6757 3837
+  s_1a5b5e7571c223::t_b3ca83d01b1d6f 3784-3786,3794,3804,3808,3811,3830-3832,3857
+  s_1a5b5e7571c223::t_9fb88c688ad4ce 3723-3724
+  s_1a5b5e7571c223::t_d8c6eabfb7d0ec 3833
+examples/agent-runtime-bff/src/services/log-format.ts
+  s_1a5b5e7571c223::t_e8dce07fd1870a 2,61-137
+examples/agent-runtime-bff/src/services/vision-client.ts
+  s_1a5b5e7571c223::t_c2ce9e2ae7d1ac 171,179
+  s_1a5b5e7571c223::t_1024a7701db28b 2-5,17-21,61,77,100-121,124-149,151-157,162,169-170,172-178,180,188-200,207,211,215-229
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_1a5b5e7571c223::t_a1074546192323 698-701,711
+  s_1a5b5e7571c223::t_a269b226f50367 710,712-713
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "046a9b3c437eb2fe117ae7ad36c526429416689f",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

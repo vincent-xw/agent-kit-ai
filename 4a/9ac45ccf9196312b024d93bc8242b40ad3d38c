@@ -1,0 +1,25 @@
+docs/superpowers/plans/2026-08-20-webui-multi-session.md
+  s_8155d9b03dcd9a::t_5fff1c2821fdb0 1-821
+  s_8155d9b03dcd9a::t_bf4fbc764a99d1 822-2163
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "4a9ac45ccf9196312b024d93bc8242b40ad3d38c",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_8155d9b03dcd9a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccaaae0f-77f1-4087-a59d-823a600cac96",
+        "model": "glm-5.3"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

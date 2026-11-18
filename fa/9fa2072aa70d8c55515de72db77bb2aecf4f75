@@ -1,0 +1,24 @@
+examples/browser-extension-bff/public/index.html
+  s_88704e7afb3157::t_81092d10f56283 7,10-30,35-39,41-67,69-91,94-96,98,100-110,112,114-116,118-121,123-131,133-173,175-179,181-188,190-192,194-214,218-221,223-233,235-237,239-244
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "fa9fa2072aa70d8c55515de72db77bb2aecf4f75",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_88704e7afb3157": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "af19520e-9d86-4d86-8809-4dc81e141b84",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

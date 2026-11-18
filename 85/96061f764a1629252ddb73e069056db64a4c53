@@ -1,0 +1,25 @@
+docs/superpowers/specs/2026-08-16-dual-llm-vision-design.md
+  s_0ba4c7a0e06f3b::t_94902fb71b41be 86
+  s_0ba4c7a0e06f3b::t_2b38714a9fb6ac 1-85,87-114
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "8596061f764a1629252ddb73e069056db64a4c53",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

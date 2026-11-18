@@ -1,0 +1,43 @@
+examples/browser-extension-bff/README.md
+  s_1c222083983777::t_ec3cc67ecff6f0 76
+examples/browser-extension-bff/src/server.ts
+  s_1c222083983777::t_3b5705be784ddb 9,11-12,15-18,21
+examples/browser-extension-bff/src/server.test.ts
+  s_1c222083983777::t_f8d05399fa8191 212-213,221-222
+packages/core/src/harness.ts
+  s_1c222083983777::t_076d125d415739 196-198,200-212
+  s_1c222083983777::t_2d524ceb9261ee 199
+packages/core/src/harness.test.ts
+  s_1c222083983777::t_77b535a11fc7f7 55-66,68-76,79-86
+  s_1c222083983777::t_0317f31c91131a 5
+examples/browser-extension-bff/src/browser-tools.ts
+  s_1c222083983777::t_5fc803f60473fa 397-402
+  s_1c222083983777::t_f07fd3982faf05 60
+  s_1c222083983777::t_bd8ece7c91d102 234,238-239,241,244
+  s_1c222083983777::t_2d5cdd9986caf8 78-81
+  s_1c222083983777::t_a3420dc3b61519 382-389
+  s_1c222083983777::t_b3369045bb07ad 372,377-381
+  s_1c222083983777::t_581cf03ba553de 373-376
+  s_1c222083983777::t_0c0d16292045c0 126-161
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "e01bdc2d17de1c768565e722f8ac9d64be7a4478",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_1c222083983777": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5dbd2c55-111a-4712-880c-86342120d99d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

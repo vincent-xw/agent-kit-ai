@@ -1,0 +1,22 @@
+docs/superpowers/plans/2026-08-21-context-window.md
+  s_01951b81c4f90f::t_7e06a5184cdc5f 520
+  s_01951b81c4f90f::t_299b106a94fde1 1-519,521-659,661-767,771-1121
+  s_01951b81c4f90f::t_8df2308ab89402 768-770
+  s_01951b81c4f90f::t_659d6316861b56 660
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "d5a89b7b131bde06b65dcd40649117b2b7175354",
+  "prompts": {},
+  "sessions": {
+    "s_01951b81c4f90f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b628ff55-77e4-451c-891e-49bbe6755864",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

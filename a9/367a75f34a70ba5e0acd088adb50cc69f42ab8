@@ -1,0 +1,43 @@
+packages/core/src/context-manager.test.ts
+  s_f385f7e3a6044c::t_00f7219c09b4a7 1-32
+packages/core/src/context-manager.ts
+  s_f385f7e3a6044c::t_d74ce5dd81baa2 1-42
+packages/core/src/contracts.ts
+  s_f385f7e3a6044c::t_53f5f0f67cfac8 1-57
+packages/core/src/errors.ts
+  s_f385f7e3a6044c::t_3ba36f9777f87b 1-23
+packages/core/src/harness.test.ts
+  s_f385f7e3a6044c::t_a98f9b084694f2 18-25,54-150
+packages/core/src/harness.ts
+  s_f385f7e3a6044c::t_0b2a7eacdb2d78 1-98
+packages/core/src/index.ts
+  s_f385f7e3a6044c::t_56913a2eee4adf 4-11
+packages/core/src/llm-client.test.ts
+  s_f385f7e3a6044c::t_911348eaca514a 1-63
+packages/core/src/llm-client.ts
+  s_f385f7e3a6044c::t_f9e0b8497990f9 1-113
+packages/core/src/memory-session-store.ts
+  s_f385f7e3a6044c::t_994ab7e9ce551e 1-14
+packages/core/src/prompt-registry.test.ts
+  s_f385f7e3a6044c::t_f561f90a3e46ef 1-26
+packages/core/src/prompt-registry.ts
+  s_f385f7e3a6044c::t_ca45cd78b2701c 1-43
+packages/core/src/tool-registry.ts
+  s_f385f7e3a6044c::t_4ba5ce2ef8ba0b 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "a9367a75f34a70ba5e0acd088adb50cc69f42ab8",
+  "prompts": {},
+  "sessions": {
+    "s_f385f7e3a6044c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fcba7-2727-7ff1-992c-71ff144c919e",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+packages/core/src/harness.ts
+  s_3a7e3f0262fa25::t_8240e98a2c7b2f 184-189
+  s_3a7e3f0262fa25::t_fff619d0682fff 145,152
+  s_3a7e3f0262fa25::t_6806e3cbbdb135 38-44
+  s_3a7e3f0262fa25::t_65e62c895e4b3f 237,257-258
+  s_3a7e3f0262fa25::t_c107828ae0a044 169
+  s_3a7e3f0262fa25::t_6b660f0624ee03 95-104,107-110,114-117,121-122
+packages/core/src/llm-client.ts
+  s_3a7e3f0262fa25::t_336d1abdcd5404 49-52
+packages/core/src/errors.ts
+  s_3a7e3f0262fa25::t_670e574e0e61fb 16
+packages/core/src/context-manager.ts
+  s_3a7e3f0262fa25::t_bad0ee08570dd8 13-48,57-80
+packages/core/src/contracts.ts
+  s_3a7e3f0262fa25::t_c177686692bab7 50-55
+  s_3a7e3f0262fa25::t_f22fa7c49881df 25-26
+packages/bff-hono/src/index.ts
+  s_3a7e3f0262fa25::t_72bd447c9b9b7e 17,21-23,30
+packages/core/src/context-manager.test.ts
+  s_3a7e3f0262fa25::t_89940d4ecd10d1 4-29,59-121
+  s_3a7e3f0262fa25::t_596e7d46df11f9 122
+packages/adapter-sqlite/src/index.ts
+  s_3a7e3f0262fa25::t_b6e41b6b18b2b4 83,86-91,94-95,98-102,106-107
+packages/core/src/prompt-registry.ts
+  s_3a7e3f0262fa25::t_3aa896feae5016 18-19,26,36,43-44
+  s_3a7e3f0262fa25::t_c842c775c64e3c 45
+packages/core/src/harness.test.ts
+  s_3a7e3f0262fa25::t_096e2c0ff35764 466-514
+  s_3a7e3f0262fa25::t_400c3b3aec1175 554-658
+packages/adapter-sqlite/src/index.test.ts
+  s_3a7e3f0262fa25::t_acbae7dd4d789e 69-80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "b06c448302a7218ea69565edcdcfa4595f129a35",
+  "prompts": {},
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

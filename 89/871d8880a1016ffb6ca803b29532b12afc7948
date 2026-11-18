@@ -1,0 +1,29 @@
+examples/flutter-dev-bff/public/index.html
+  s_1064e302912824::t_a2b41bf267bce4 48,96,99
+examples/flutter-dev-bff/src/prompts.test.ts
+  s_1064e302912824::t_f09a36b9c1c424 2,17-35
+examples/flutter-dev-bff/src/prompts.ts
+  s_1064e302912824::t_ec7d1df9ff52b6 66-103
+examples/flutter-dev-bff/src/server.ts
+  s_1064e302912824::t_dbc6f7def55b98 58,94,100-111,298-299,311,356,433-434,439-440,485-498,501-512,958-1070
+examples/flutter-dev-bff/src/services/skill-store.test.ts
+  s_1064e302912824::t_446589cfe08ed3 46-62
+examples/flutter-dev-bff/src/services/skill-store.ts
+  s_1064e302912824::t_5dded5a734fdc4 31-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "89871d8880a1016ffb6ca803b29532b12afc7948",
+  "prompts": {},
+  "sessions": {
+    "s_1064e302912824": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a06642-2577-7f21-941c-5b96cdf31a3d",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

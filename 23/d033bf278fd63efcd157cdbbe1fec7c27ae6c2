@@ -1,0 +1,41 @@
+examples/browser-extension-bff/public/index.html
+  s_88704e7afb3157::t_c8cc7f31fdbb3a 1-274
+examples/browser-extension-bff/package.json
+  s_88704e7afb3157::t_8287d59bc1dc44 34,38
+  s_88704e7afb3157::t_4bad461e79a464 33
+examples/browser-extension-bff/src/event-bus.ts
+  s_88704e7afb3157::t_7f739188ab554a 1-29
+examples/browser-extension-bff/src/server.ts
+  s_88704e7afb3157::t_51114eb51a2cc7 95-105
+  s_88704e7afb3157::t_1fbcf626947152 6
+  s_88704e7afb3157::t_cc2bf4a7fa01ee 300
+  s_88704e7afb3157::t_420eea59d4188c 33,35,46-49,77-83,89,94,106,115-233,242,244-252,254,256-274,289-299,301
+examples/flutter-dev-bff/package.json
+  s_88704e7afb3157::t_492fc909fad59c 32
+examples/browser-extension-bff/src/ws-executor.ts
+  s_88704e7afb3157::t_1b4cdd44637e77 1-13,15-18,20,22-24,27-28,31-47,50-57,59-64,67-73,75-82,84-88
+  s_88704e7afb3157::t_636dbc1dfa37b0 14,19,21,25-26,29-30,48-49,58,65-66,74,83
+pnpm-lock.yaml
+  s_88704e7afb3157::t_17c3e26b9320ec 35-40,45-47,70,642-647,1182-1184,1284-1295,1634-1641,2266-2267,2369-2370
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "23d033bf278fd63efcd157cdbbe1fec7c27ae6c2",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_88704e7afb3157": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "af19520e-9d86-4d86-8809-4dc81e141b84",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

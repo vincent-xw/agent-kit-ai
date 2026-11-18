@@ -1,0 +1,20 @@
+docs/superpowers/specs/2026-08-24-snapshot-fallback-verify-code-design.md
+  s_a16184b10dbec2::t_a3976d2627371e 80-86,88-92
+  s_a16184b10dbec2::t_9f8c308aea66e8 121-125
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "3c4994ed2b062ca237de3fc62bcaea4ceee8171a",
+  "prompts": {},
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

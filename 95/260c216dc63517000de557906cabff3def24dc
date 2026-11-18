@@ -1,0 +1,30 @@
+examples/agent-runtime-bff/src/server.test.ts
+  s_16621256c6b5d1::t_86f0e7bce5d450 3398-3500
+examples/agent-runtime-bff/src/server.ts
+  s_16621256c6b5d1::t_bdab4b99edb800 117,119,2750-2857
+examples/agent-runtime-bff/src/services/model-profile-probe.test.ts
+  s_16621256c6b5d1::t_74748606d4df46 1-59
+examples/agent-runtime-bff/src/services/model-profile-probe.ts
+  s_16621256c6b5d1::t_298e2039b2b6d3 1-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "95260c216dc63517000de557906cabff3def24dc",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+examples/browser-extension-bff/src/execute-loop.test.ts
+  s_a2f33b9b07a0c8::t_5d6ecb9ca8fb36 1-62
+examples/browser-extension-bff/src/execute-loop.ts
+  s_a2f33b9b07a0c8::t_18acb5e5981d4a 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "dbda52a05e8a4236df6dd3a052f3ce83387067e6",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a2f33b9b07a0c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5bdf4851-8b2c-4903-b93c-23b83b5edc1a",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

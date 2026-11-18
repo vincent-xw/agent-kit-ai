@@ -1,0 +1,23 @@
+examples/flutter-dev-bff/src/services/workflow-resource-lease.test.ts
+  s_099e6e2ecd6699::t_1cb413be28909b 1-73
+examples/flutter-dev-bff/src/services/workflow-resource-lease.ts
+  s_099e6e2ecd6699::t_1aec3680b38624 1-130
+examples/flutter-dev-bff/src/services/workflow-store.ts
+  s_099e6e2ecd6699::t_7f4ee93c725393 200-208,275-276,594-648,926,928
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "3d4cc25967063511e628d8a49413f00ed70ebe94",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

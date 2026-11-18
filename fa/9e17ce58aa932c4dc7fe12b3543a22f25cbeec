@@ -1,0 +1,27 @@
+companion-android/app/src/main/java/com/agentkit/companion/CompanionHttpServer.kt
+  s_a16184b10dbec2::t_445f63c5a2cac9 104-105
+companion-android/app/src/main/java/com/agentkit/companion/NodeTreeDumper.kt
+  s_a16184b10dbec2::t_7e8a331868406f 8-20,40
+  s_a16184b10dbec2::t_5e3261304230ec 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "fa9e17ce58aa932c4dc7fe12b3543a22f25cbeec",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a16184b10dbec2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1df8d8ca-2bf7-46a2-b922-4173f1057502",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

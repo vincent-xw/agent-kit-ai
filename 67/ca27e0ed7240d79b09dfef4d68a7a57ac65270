@@ -1,0 +1,19 @@
+docs/superpowers/plans/2026-08-13-flutter-bff-unicode-input.md
+  s_0ba4c7a0e06f3b::t_743497261d7486 1-653
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "67ca27e0ed7240d79b09dfef4d68a7a57ac65270",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

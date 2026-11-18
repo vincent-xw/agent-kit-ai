@@ -1,0 +1,25 @@
+examples/flutter-dev-bff/package.json
+  s_4658ec95608c8c::t_8a18a0999cf782 37-38
+examples/flutter-dev-bff/src/services/log-format.ts
+  s_4658ec95608c8c::t_c4c43d065fca02 1-52
+examples/flutter-dev-bff/src/services/log-format.test.ts
+  s_4658ec95608c8c::t_d2a0f6381860c3 1-40
+pnpm-lock.yaml
+  s_4658ec95608c8c::t_ef615407ee0f8c 37,40,69-74,156-162,640-642,655-657,711-713,797-800,804-815,854-856,907-915,949-952,978-981,999-1005,1030-1032,1054-1057,1061-1063,1141-1144,1163-1165,1226-1228,1251-1254,1358-1371,1449-1456,1617,1619,1716-1720,1734-1735,1830-1831,1904-1907,1910-1920,1945-1946,2035-2042,2068-2069,2086-2087,2102-2112,2131-2132,2150-2151,2156-2159,2273-2274,2289-2290,2393-2394,2410-2411,2513-2540
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "ff257c128a864003d67637bf28adf0aa90e8f326",
+  "prompts": {},
+  "sessions": {
+    "s_4658ec95608c8c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "22dfbef7-d51d-4f01-afa2-15a1db6501bf",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

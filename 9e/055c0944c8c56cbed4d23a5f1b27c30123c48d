@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/src/services/adb-client.test.ts
+  s_0ba4c7a0e06f3b::t_9f96f93d1e5178 1-88
+examples/flutter-dev-bff/src/services/adb-client.ts
+  s_0ba4c7a0e06f3b::t_aaa3ebab1f7517 159-181
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "9e055c0944c8c56cbed4d23a5f1b27c30123c48d",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

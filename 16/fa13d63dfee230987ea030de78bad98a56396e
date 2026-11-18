@@ -1,0 +1,30 @@
+examples/agent-runtime-bff/public/assets/app.css
+  s_16621256c6b5d1::t_133db78167036b 244-270
+examples/agent-runtime-bff/public/assets/app.js
+  s_16621256c6b5d1::t_5440bcdd1ecbab 4753,4927-4947,4964,5019
+examples/agent-runtime-bff/public/index.html
+  s_16621256c6b5d1::t_2b2251b766f18f 387-392
+examples/agent-runtime-bff/src/webui-model-management.test.ts
+  s_16621256c6b5d1::t_105abad79b87fa 68-75,253-278
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "16fa13d63dfee230987ea030de78bad98a56396e",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

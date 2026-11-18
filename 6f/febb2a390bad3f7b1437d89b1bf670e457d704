@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/src/services/webview/dom-to-nodes.ts
+  s_0ba4c7a0e06f3b::t_5dc2285ab33dd3 1-43
+examples/flutter-dev-bff/src/services/webview/dom-to-nodes.test.ts
+  s_0ba4c7a0e06f3b::t_eb5df9cd4590d5 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "6ffebb2a390bad3f7b1437d89b1bf670e457d704",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

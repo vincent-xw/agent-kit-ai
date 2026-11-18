@@ -1,0 +1,24 @@
+examples/browser-extension-bff/src/browser-tools.ts
+  s_a5ccc70c31b60a::t_2209f55c61c508 385
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "81c64db1e7422eb50140e0dbeacbd3d1613bc800",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a5ccc70c31b60a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fdd4e454-ebf8-4ca8-bbd0-3dcdb7420f73",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

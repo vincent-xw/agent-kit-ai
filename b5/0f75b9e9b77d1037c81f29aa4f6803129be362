@@ -1,0 +1,24 @@
+docs/superpowers/plans/2026-08-16-real-app-integration-webview.md
+  s_0ba4c7a0e06f3b::t_3d3bf4775f6d1b 328-329,331-332
+  s_0ba4c7a0e06f3b::t_0bbfedd54f0f53 315-317
+  s_0ba4c7a0e06f3b::t_d0e192ad119491 192-194
+  s_0ba4c7a0e06f3b::t_76bd25046d1a8d 1-191,195-200,202,204-314,318-327,330,333-635
+  s_0ba4c7a0e06f3b::t_99dd54feff5625 201
+  s_0ba4c7a0e06f3b::t_e8b86a025ce600 203
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "b50f75b9e9b77d1037c81f29aa4f6803129be362",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+docs/superpowers/specs/2026-08-12-flutter-bff-sse-design.md
+  s_1caab38b92b1b4::t_0a3082a1a11b19 1-122,124,129-171
+  s_1caab38b92b1b4::t_83dadb7c4643e4 123,125-128
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "ae3f678ee992c462c8f676c18cc8fd47bf5994b6",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_1caab38b92b1b4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6bcadc9e-a216-428b-8e4c-23ee3ab1f627",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+examples/agent-runtime-bff/public/assets/app.js
+  s_1a5b5e7571c223::t_a30a9ce3ce5451 6154-6157,6159-6160,6191,6213,6217
+  s_1a5b5e7571c223::t_f3173d35c04c2f 6158,6192-6212,6214-6216,6218-6223
+examples/agent-runtime-bff/public/assets/app.css
+  s_1a5b5e7571c223::t_ae94e2682cf023 812,814,836
+  s_1a5b5e7571c223::t_7a5435e68c8ae5 472-473
+  s_1a5b5e7571c223::t_5cc41c2a1e134c 459,461,469-471,474-475,477-486
+  s_1a5b5e7571c223::t_9bec9e326c83b1 476,1012-1015
+  s_1a5b5e7571c223::t_cc262a6d2d6604 1016-1017
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "0dab63ef82cf19751fccc12342725b23412d6f0b",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

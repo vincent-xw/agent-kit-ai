@@ -1,0 +1,32 @@
+examples/browser-extension-bff/README.md
+  s_3a7e3f0262fa25::t_30a3d106147265 3,5-21,24,27-29,33-53,59-60
+examples/browser-extension-bff/src/browser-tools.ts
+  s_3a7e3f0262fa25::t_f9b05da32bc69c 1-208
+vitest.workspace.ts
+  s_3a7e3f0262fa25::t_89024cf3f73bff 3-6,9
+examples/browser-extension-bff/src/server.ts
+  s_3a7e3f0262fa25::t_0429c079022818 7-10,13-19,22-32,41-47,51-52,54-55,93-101
+examples/browser-extension-bff/package.json
+  s_3a7e3f0262fa25::t_afd55185a15662 12-14,22-24
+examples/browser-extension-bff/src/server.test.ts
+  s_3a7e3f0262fa25::t_cb09d1ae9f2b3d 39-51
+  s_3a7e3f0262fa25::t_21918c57fb0877 1,4,6-38,52-62,69-115,119-128,130-184,188,190-193,197-220
+pnpm-lock.yaml
+  s_3a7e3f0262fa25::t_14afa6d0cf181b 32-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "741a58d45baba4c5e9480c28a0bef44968c8473d",
+  "prompts": {},
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

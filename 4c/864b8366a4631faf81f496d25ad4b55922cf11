@@ -1,0 +1,21 @@
+examples/flutter-dev-bff/src/tool-events.ts
+  s_0ba4c7a0e06f3b::t_83b6948d1e2266 1-50
+examples/flutter-dev-bff/src/tool-events.test.ts
+  s_0ba4c7a0e06f3b::t_096c82f240dbe7 1-110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "4c864b8366a4631faf81f496d25ad4b55922cf11",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

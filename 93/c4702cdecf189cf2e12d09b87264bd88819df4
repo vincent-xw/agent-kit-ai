@@ -1,0 +1,30 @@
+examples/agent-runtime-bff/src/services/adb-device-tracker.ts
+  s_b6d1dfe778ddd7::t_87c35de492457f 6-10,79-82,90-92,94,102-131,133-145
+examples/agent-runtime-bff/src/services/adb-device-tracker.test.ts
+  s_b6d1dfe778ddd7::t_243893d94333fc 92-116
+examples/agent-runtime-bff/src/services/device-manager.ts
+  s_b6d1dfe778ddd7::t_87c35de492457f 2,23,86-87
+examples/agent-runtime-bff/src/services/device-manager.test.ts
+  s_b6d1dfe778ddd7::t_243893d94333fc 26-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "93c4702cdecf189cf2e12d09b87264bd88819df4",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

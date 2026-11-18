@@ -1,0 +1,25 @@
+examples/agent-runtime-bff/src/flutter-tools.test.ts
+  s_b6d1dfe778ddd7::t_814be33241c088 1142-1166
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_b6d1dfe778ddd7::t_2d9fe5779ed7c4 489,495-498,505-528,531
+examples/agent-runtime-bff/src/services/adb-client.test.ts
+  s_b6d1dfe778ddd7::t_c067edffa903d6 170-218
+examples/agent-runtime-bff/src/services/adb-client.ts
+  s_b6d1dfe778ddd7::t_f6cf633765bc1a 129-135,139-150,152
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "912e60df735cb96a459d017d19cf67e0cf302f2e",
+  "prompts": {},
+  "sessions": {
+    "s_b6d1dfe778ddd7": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0bdca-6be9-7520-ba01-c8027f4ba99f",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

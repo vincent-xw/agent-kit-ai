@@ -1,0 +1,26 @@
+packages/adapter-sqlite/src/index.ts
+  s_88704e7afb3157::t_dc5888a6238d61 149
+  s_88704e7afb3157::t_4ddeef3d358f03 5
+  s_88704e7afb3157::t_46c1c84678f9e7 123-124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "6bdcd5be207c04d894ce1c0049ad0aa61088baec",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_88704e7afb3157": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "af19520e-9d86-4d86-8809-4dc81e141b84",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

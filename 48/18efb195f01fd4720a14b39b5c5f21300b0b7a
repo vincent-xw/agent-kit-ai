@@ -1,0 +1,23 @@
+examples/agent-runtime-bff/src/flutter-tools.test.ts
+  s_16621256c6b5d1::t_3257f29882b327 17,149,778-811
+examples/agent-runtime-bff/src/flutter-tools.ts
+  s_16621256c6b5d1::t_c3662d5a01fce7 152-174
+examples/agent-runtime-bff/src/services/workflow-runtime-adapter.ts
+  s_16621256c6b5d1::t_33211e4c3a5fa0 224
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "4818efb195f01fd4720a14b39b5c5f21300b0b7a",
+  "prompts": {},
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

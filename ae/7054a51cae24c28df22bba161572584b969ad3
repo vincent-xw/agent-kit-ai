@@ -1,0 +1,29 @@
+examples/browser-extension-bff/src/server.ts
+  s_3a7e3f0262fa25::t_5df325750a87a4 31,55,77,135,137,139
+packages/core/src/llm-client.ts
+  s_3a7e3f0262fa25::t_027bfaf9926b7c 11-12
+  s_3a7e3f0262fa25::t_bf8f57815037ba 175,178-183,197-202,204-249,252
+packages/adapter-sqlite/src/index.ts
+  s_3a7e3f0262fa25::t_242af0b573e7ad 125-126,137
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "ae7054a51cae24c28df22bba161572584b969ad3",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_3a7e3f0262fa25": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "514fcb97-bb93-4c67-b3b5-9be9dfa76848",
+        "model": "glm-5.2"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+packages/core/src/model-context-limits.ts
+  s_01951b81c4f90f::t_3f77a7d266253d 1-18
+packages/core/src/index.ts
+  s_01951b81c4f90f::t_ac021d9baf8017 14-15
+packages/core/src/token-counter.ts
+  s_01951b81c4f90f::t_f529c864b5a324 1-20
+packages/core/src/model-context-limits.test.ts
+  s_01951b81c4f90f::t_94867dc51095ad 1-15
+packages/core/src/token-counter.test.ts
+  s_01951b81c4f90f::t_83593cf4e7bbe2 1-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "c731ccf89b81067942b83184b95d9f05fcc677ba",
+  "prompts": {},
+  "sessions": {
+    "s_01951b81c4f90f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b628ff55-77e4-451c-891e-49bbe6755864",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

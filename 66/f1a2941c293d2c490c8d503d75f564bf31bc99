@@ -1,0 +1,27 @@
+packages/adapter-cloudflare/src/index.test.ts
+  s_f385f7e3a6044c::t_e034e2ffeafb2f 3,29-45
+packages/adapter-cloudflare/src/index.ts
+  s_f385f7e3a6044c::t_882e0c9671f6ca 1,24,28-31,40-67
+packages/adapter-sqlite/src/index.test.ts
+  s_f385f7e3a6044c::t_88f43a909d618a 2,4-11,32-57
+packages/adapter-sqlite/src/index.ts
+  s_f385f7e3a6044c::t_b17788ca6bb368 1,4-5,7-10,12,16-24,31-33,36-44,58-62,65-67,76-90
+packages/adapter-sqlite/src/schema.sql
+  s_f385f7e3a6044c::t_7bacfe09e5a173 1-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "66f1a2941c293d2c490c8d503d75f564bf31bc99",
+  "prompts": {},
+  "sessions": {
+    "s_f385f7e3a6044c": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019fcba7-2727-7ff1-992c-71ff144c919e",
+        "model": "unknown"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

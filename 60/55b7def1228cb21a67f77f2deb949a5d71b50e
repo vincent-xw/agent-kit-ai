@@ -1,0 +1,25 @@
+packages/core/package.json
+  s_1a5b5e7571c223::t_3b0be99cb805ab 3
+packages/bff-hono/package.json
+  s_1a5b5e7571c223::t_3b0be99cb805ab 3
+packages/adapter-sqlite/package.json
+  s_1a5b5e7571c223::t_3b0be99cb805ab 3
+packages/core/src/index.ts
+  s_1a5b5e7571c223::t_3b0be99cb805ab 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "6055b7def1228cb21a67f77f2deb949a5d71b50e",
+  "prompts": {},
+  "sessions": {
+    "s_1a5b5e7571c223": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0de6a-aa4f-7bb0-af0f-c9650965f934",
+        "model": "gpt-6-luna"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

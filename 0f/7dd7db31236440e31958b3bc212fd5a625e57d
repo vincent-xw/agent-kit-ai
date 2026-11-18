@@ -1,0 +1,26 @@
+examples/browser-extension-bff/src/tool-events.test.ts
+  s_a2f33b9b07a0c8::t_1b0664a05a8ee2 1-71
+examples/browser-extension-bff/src/tool-events.ts
+  s_a2f33b9b07a0c8::t_7627ffdca30560 1-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "0f7dd7db31236440e31958b3bc212fd5a625e57d",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a2f33b9b07a0c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5bdf4851-8b2c-4903-b93c-23b83b5edc1a",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

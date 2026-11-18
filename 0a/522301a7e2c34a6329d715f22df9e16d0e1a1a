@@ -1,0 +1,57 @@
+examples/flutter-dev-bff/public/assets/app.js
+  s_879a41707a4d7f::t_df17a87f4c4b7d 920
+  s_879a41707a4d7f::t_24d4a1cb6dbccb 940
+  s_879a41707a4d7f::t_28d7b6ed97f1d5 921-925
+  s_879a41707a4d7f::t_225c36f9b49a0f 947
+  s_879a41707a4d7f::t_64b69f00be6633 857
+  s_879a41707a4d7f::t_804af878a63e88 836
+  s_879a41707a4d7f::t_9cf3ad99bb7868 1672-1677
+  s_879a41707a4d7f::t_ff7817b171cdc8 936
+  s_879a41707a4d7f::t_77a5fc102630c6 968
+  s_879a41707a4d7f::t_c15d9373ffab7a 952
+  s_879a41707a4d7f::t_d01f22ee54dd41 1473,1475
+  s_879a41707a4d7f::t_e81ceb414e2f54 858
+  s_879a41707a4d7f::t_62a518662981ca 1623
+  s_879a41707a4d7f::t_7693a9f6b9b5ca 1678-1702
+  s_879a41707a4d7f::t_f8646b6c1d276e 953-959
+  s_879a41707a4d7f::t_72e81d117996d5 843
+examples/flutter-dev-bff/src/server.ts
+  s_879a41707a4d7f::t_e011600500c242 36
+  s_879a41707a4d7f::t_fef1aceb9e1fc1 123-124
+  s_879a41707a4d7f::t_fb0a5558707bb5 751-758,760-761,766
+  s_879a41707a4d7f::t_6a8b357d5c4a1e 454
+  s_879a41707a4d7f::t_6947b5c92ab464 441
+  s_879a41707a4d7f::t_2be651655a790d 726-728,733
+  s_879a41707a4d7f::t_ab93d3499faceb 135
+  s_879a41707a4d7f::t_9bc0b5608c8ad2 439
+  s_879a41707a4d7f::t_b84b6e44da21a4 451-453,455
+  s_879a41707a4d7f::t_1127f6f95c1e19 764-765
+examples/flutter-dev-bff/src/server.test.ts
+  s_879a41707a4d7f::t_1a73976d532ebb 13,15-17
+  s_879a41707a4d7f::t_388a69e6ea42b0 23
+  s_879a41707a4d7f::t_90a9dcb42850f5 145-183
+  s_879a41707a4d7f::t_72c42e1580f08b 47-50
+  s_879a41707a4d7f::t_9e96bb6ae23d0c 2-4
+  s_879a41707a4d7f::t_87f2f1617b2700 122-144
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "0a522301a7e2c34a6329d715f22df9e16d0e1a1a",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_879a41707a4d7f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a38a1457-5318-451a-9559-fee9a6cad3cf",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

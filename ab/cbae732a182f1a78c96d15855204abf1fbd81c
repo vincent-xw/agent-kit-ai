@@ -1,0 +1,19 @@
+docs/superpowers/plans/2026-09-07-local-inspection-workflow-implementation.md
+  s_099e6e2ecd6699::t_9145ac973342db 1-509
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "abcbae732a182f1a78c96d15855204abf1fbd81c",
+  "prompts": {},
+  "sessions": {
+    "s_099e6e2ecd6699": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a07b1d-7f9d-7890-a2b7-defd06e1133d",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

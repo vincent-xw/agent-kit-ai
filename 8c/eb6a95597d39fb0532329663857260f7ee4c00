@@ -1,0 +1,50 @@
+examples/flutter-dev-bff/src/services/webview/cdp-client.test.ts
+  s_0ba4c7a0e06f3b::t_f367b405571a46 20
+  s_0ba4c7a0e06f3b::t_0248ba2925d430 172
+  s_0ba4c7a0e06f3b::t_089ead70da6cd4 189-190
+  s_0ba4c7a0e06f3b::t_51944d2a735bfc 183,185
+  s_0ba4c7a0e06f3b::t_37b099028fd37b 146
+  s_0ba4c7a0e06f3b::t_bf5aa2a93a87ea 86,88,90,92
+  s_0ba4c7a0e06f3b::t_14e9ed45530de4 2-19,21-57,104-114,120-124,126,129,131-133,135-138,140,143-145,147-154,156,159-161,163-168,176-180,186-188
+  s_0ba4c7a0e06f3b::t_d813f5012caacc 59-61,68-72,97,99,102-103
+  s_0ba4c7a0e06f3b::t_31e4ee631297e1 128,130
+  s_0ba4c7a0e06f3b::t_2f1fe834e4704b 162
+  s_0ba4c7a0e06f3b::t_24396ee6237fa2 117,119
+  s_0ba4c7a0e06f3b::t_9b39844fc4415f 169-170,174
+  s_0ba4c7a0e06f3b::t_2e79203d5ff12a 73,79,81,98,101
+  s_0ba4c7a0e06f3b::t_5bac1c96b6da4b 127,134,141,157,171,173
+  s_0ba4c7a0e06f3b::t_c48c46ca3aa651 125,139,155
+  s_0ba4c7a0e06f3b::t_35686738efe32f 74-78,80,82-85,94-96,100
+  s_0ba4c7a0e06f3b::t_f57e5ea99bfe2b 1
+  s_0ba4c7a0e06f3b::t_37df2d7e84a27c 58,62-67
+  s_0ba4c7a0e06f3b::t_6a346205c9cc0a 87,89,91,93
+  s_0ba4c7a0e06f3b::t_5cc3f7ce58ef9d 142
+  s_0ba4c7a0e06f3b::t_15929e2c31e18a 158
+  s_0ba4c7a0e06f3b::t_a86ce3558d76b8 175
+  s_0ba4c7a0e06f3b::t_1330ccc75073fd 115-116,118
+  s_0ba4c7a0e06f3b::t_554bb471db2e56 181-182,184
+examples/flutter-dev-bff/src/services/webview/cdp-client.ts
+  s_0ba4c7a0e06f3b::t_1140489bca7bb6 88
+  s_0ba4c7a0e06f3b::t_d6430e0abdc9a4 65
+  s_0ba4c7a0e06f3b::t_8102a04cec8df9 1-61,70-87,89-93,96-252,254,256-279
+  s_0ba4c7a0e06f3b::t_282d9ba23efe1f 253,255
+  s_0ba4c7a0e06f3b::t_a6650cebeb42f3 94-95
+  s_0ba4c7a0e06f3b::t_d240cd92837d40 64
+  s_0ba4c7a0e06f3b::t_d1835e66ee2119 62-63,66-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "8ceb6a95597d39fb0532329663857260f7ee4c00",
+  "prompts": {},
+  "sessions": {
+    "s_0ba4c7a0e06f3b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3077871b-72a8-4736-a214-15d6335a847d",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}

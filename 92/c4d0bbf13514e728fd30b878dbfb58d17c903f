@@ -1,0 +1,30 @@
+examples/agent-runtime-bff/public/assets/app.css
+  s_16621256c6b5d1::t_ee88fe6141a8ac 192-196,198-207,2201,2209-2210,2220-2221,2231-2232,2244-2245,2257-2258,2262-2266,2270-2271,2283-2284,2293-2294,3379-3380
+examples/agent-runtime-bff/public/assets/app.js
+  s_16621256c6b5d1::t_4f721ee72d6599 4737-4937,5016-5017
+examples/agent-runtime-bff/public/index.html
+  s_16621256c6b5d1::t_12578e6afe457a 52-53,65,343-398
+examples/agent-runtime-bff/src/webui-model-management.test.ts
+  s_16621256c6b5d1::t_508d68df88e648 1-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "92c4d0bbf13514e728fd30b878dbfb58d17c903f",
+  "prompts": {},
+  "humans": {
+    "h_959ffaaf5065b8": {
+      "author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  },
+  "sessions": {
+    "s_16621256c6b5d1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0a564-1585-7822-a8ea-ebfa21af9e51",
+        "model": "unknown"
+      },
+      "human_author": "vincent-xw <jiaxuewen2006@163.com>"
+    }
+  }
+}

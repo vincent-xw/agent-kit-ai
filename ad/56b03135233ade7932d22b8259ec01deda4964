@@ -1,0 +1,27 @@
+examples/browser-extension-bff/src/event-bus.ts
+  s_a2f33b9b07a0c8::t_e8d07be98e1596 1-39
+examples/browser-extension-bff/src/event-bus.test.ts
+  s_a2f33b9b07a0c8::t_2ef776880a0e6a 7-8
+  s_a2f33b9b07a0c8::t_aa66a919bf23e0 1-6,9-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.18",
+  "base_commit_sha": "ad56b03135233ade7932d22b8259ec01deda4964",
+  "prompts": {},
+  "humans": {
+    "h_c3a612a540ca0b": {
+      "author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  },
+  "sessions": {
+    "s_a2f33b9b07a0c8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5bdf4851-8b2c-4903-b93c-23b83b5edc1a",
+        "model": "auto"
+      },
+      "human_author": "xuewen.jia <xuewen.jia@ly.com>"
+    }
+  }
+}
