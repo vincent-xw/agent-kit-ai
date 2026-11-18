@@ -1,0 +1,19 @@
+examples/agent-runtime-bff
+  s_79bf83d64bef58::t_178d2c3c1ffdb4 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "ca752b4b44e45998bd93c7e8bade62bed1677632",
+  "prompts": {},
+  "sessions": {
+    "s_79bf83d64bef58": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1afc5-0305-7a70-8d8c-cb155e5143c6",
+        "model": "auto/deepseek-v4.1-flash"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
