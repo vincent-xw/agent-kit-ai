@@ -1,0 +1,19 @@
+pnpm-lock.yaml
+  s_79bf83d64bef58::t_c47a40e01a56bc 53-55,1641-1644,3792-3793
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "2a3f00a1f3bcf23bb936346daa18d0dbeebfeea6",
+  "prompts": {},
+  "sessions": {
+    "s_79bf83d64bef58": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1afc5-0305-7a70-8d8c-cb155e5143c6",
+        "model": "auto/gpt-6.1-sol"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
