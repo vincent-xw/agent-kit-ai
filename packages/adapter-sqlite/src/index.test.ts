@@ -197,6 +197,151 @@ describe('SQLite SecretProvider', () => {
     })
   })
 
+  it('pending_migration_preserves_legacy_rows', () => {
+    const database = new DatabaseSync(':memory:')
+    database.exec(`CREATE TABLE agent_pending_calls (
+      call_id TEXT PRIMARY KEY,
+      session_id TEXT NOT NULL,
+      tool_name TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+    )`)
+    database.prepare('INSERT INTO agent_pending_calls (call_id, session_id, tool_name) VALUES (?, ?, ?)')
+      .run('legacy-call', 'legacy-session', 'browser_click')
+
+    const store = createSqlitePendingCallStore(database)
+
+    expect(store.get('legacy-call')).toEqual({ sessionId: 'legacy-session', toolName: 'browser_click' })
+    expect(database.prepare('PRAGMA user_version').get()).toEqual({ user_version: 2 })
+    expect(database.prepare('SELECT policy_version FROM agent_pending_calls WHERE call_id = ?').get('legacy-call'))
+      .toEqual({ policy_version: 1 })
+    const columns = database.prepare('PRAGMA table_info(agent_pending_calls)').all() as Array<{ name: string }>
+    expect(columns.map((column) => column.name)).toEqual(expect.arrayContaining([
+      'prompt_name',
+      'run_instance_id',
+      'execution_scope_id',
+      'policy_digest',
+      'input_digest',
+      'policy_version',
+    ]))
+  })
+
+  it('pending_result_and_delete_commit_atomically', async () => {
+    const database = new DatabaseSync(':memory:')
+    const sessions = createSqliteSessionStore(database)
+    await sessions.save('atomic-session', [{ role: 'user', content: '调用远端' }])
+    const store = createSqlitePendingCallStore(database)
+    store.set('atomic-call', {
+      sessionId: 'atomic-session',
+      toolName: 'remote_tool',
+      promptName: 'policy-task',
+      runInstanceId: 'run-atomic',
+      executionPolicy: {
+        executionScopeId: 'execution-scope-atomic',
+        policyDigest: 'sha256:policy-atomic',
+      },
+      inputDigest: 'sha256:input-atomic',
+    })
+    const expected = store.get('atomic-call')!
+    const toolMessage = {
+      role: 'tool' as const,
+      content: { ok: true },
+      callId: 'atomic-call',
+      toolName: 'remote_tool',
+      createdAt: '2026-11-19T00:00:00.000Z',
+    }
+
+    expect(store.complete({ callId: 'atomic-call', expected, toolMessage })).toEqual({ state: 'committed' })
+    expect(store.get('atomic-call')).toBeUndefined()
+    const row = database.prepare('SELECT messages FROM agent_sessions WHERE session_id = ?').get('atomic-session') as { messages: string }
+    expect(JSON.parse(row.messages)).toEqual([
+      { role: 'user', content: '调用远端' },
+      toolMessage,
+    ])
+  })
+
+  it('double_resume_returns_existing_result', async () => {
+    const database = new DatabaseSync(':memory:')
+    const sessions = createSqliteSessionStore(database)
+    await sessions.save('double-session', [{ role: 'user', content: '调用远端' }])
+    const store = createSqlitePendingCallStore(database)
+    store.set('double-call', { sessionId: 'double-session', toolName: 'remote_tool' })
+    const expected = store.get('double-call')!
+    const toolMessage = {
+      role: 'tool' as const,
+      content: { ok: true },
+      callId: 'double-call',
+      toolName: 'remote_tool',
+      createdAt: '2026-11-19T00:00:00.000Z',
+    }
+
+    expect(store.complete({ callId: 'double-call', expected, toolMessage })).toEqual({ state: 'committed' })
+    expect(store.complete({ callId: 'double-call', expected, toolMessage })).toEqual({ state: 'already_committed' })
+    const row = database.prepare('SELECT messages FROM agent_sessions WHERE session_id = ?').get('double-session') as { messages: string }
+    expect(JSON.parse(row.messages).filter((message: { role: string }) => message.role === 'tool')).toHaveLength(1)
+  })
+
+  it('conflicting_result_keeps_pending', async () => {
+    const database = new DatabaseSync(':memory:')
+    const sessions = createSqliteSessionStore(database)
+    await sessions.save('conflict-session', [
+      { role: 'user', content: '调用远端' },
+      {
+        role: 'tool',
+        content: { ok: false },
+        callId: 'conflict-call',
+        toolName: 'remote_tool',
+        createdAt: '2026-11-19T00:00:00.000Z',
+      },
+    ])
+    const store = createSqlitePendingCallStore(database)
+    store.set('conflict-call', { sessionId: 'conflict-session', toolName: 'remote_tool' })
+    const expected = store.get('conflict-call')!
+
+    expect(() => store.complete({
+      callId: 'conflict-call',
+      expected,
+      toolMessage: {
+        role: 'tool',
+        content: { ok: true },
+        callId: 'conflict-call',
+        toolName: 'remote_tool',
+        createdAt: '2026-11-19T00:00:01.000Z',
+      },
+    })).toThrowError(expect.objectContaining({ code: 'TOOL_RESULT_CONFLICT' }))
+    expect(store.get('conflict-call')).toEqual(expected)
+    const row = database.prepare('SELECT messages FROM agent_sessions WHERE session_id = ?').get('conflict-session') as { messages: string }
+    expect(JSON.parse(row.messages)).toHaveLength(2)
+  })
+
+  it('pending_commit_rolls_back_on_session_write_failure', async () => {
+    const database = new DatabaseSync(':memory:')
+    const sessions = createSqliteSessionStore(database)
+    await sessions.save('rollback-session', [{ role: 'user', content: '调用远端' }])
+    const store = createSqlitePendingCallStore(database)
+    store.set('rollback-call', { sessionId: 'rollback-session', toolName: 'remote_tool' })
+    const expected = store.get('rollback-call')!
+    database.exec(`CREATE TRIGGER fail_pending_session_write
+      BEFORE UPDATE ON agent_sessions
+      BEGIN
+        SELECT RAISE(ABORT, 'forced session failure');
+      END`)
+
+    expect(() => store.complete({
+      callId: 'rollback-call',
+      expected,
+      toolMessage: {
+        role: 'tool',
+        content: { ok: true },
+        callId: 'rollback-call',
+        toolName: 'remote_tool',
+        createdAt: '2026-11-19T00:00:00.000Z',
+      },
+    })).toThrowError(/forced session failure/)
+    expect(store.get('rollback-call')).toEqual(expected)
+    const row = database.prepare('SELECT messages FROM agent_sessions WHERE session_id = ?').get('rollback-session') as { messages: string }
+    expect(JSON.parse(row.messages)).toHaveLength(1)
+  })
+
   it('远端工具挂起后新 runtime 实例仍能回填', async () => {
     const database = new DatabaseSync(':memory:')
     const first = createSqliteAgentRuntime({ database, masterKey: validMasterKey, maxSteps: 3 })
