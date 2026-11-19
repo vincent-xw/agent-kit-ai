@@ -77,6 +77,12 @@ export interface PendingCall {
    * 前后两半会用不同提示词（甚至不同输出协议），行为将不可预测。
    */
   promptName?: string
+  /** 新执行模式下必须随 Pending 持久化；旧数据允许为空。 */
+  runInstanceId?: string
+  /** 完整策略由 Runtime 持久化；这里仅保存不可伪造范围引用。 */
+  executionPolicy?: HarnessExecutionPolicyRef
+  /** 拒绝同 callId 但输入已被替换的迟到结果。 */
+  inputDigest?: `sha256:${string}`
 }
 
 /**
@@ -88,6 +94,19 @@ export interface PendingCallStore {
   set(callId: string, call: PendingCall): void | Promise<void>
   delete(callId: string): void | Promise<void>
 }
+
+/** 原子完成 Pending Call 的可选扩展；第三方 Store 可以继续只实现旧接口。 */
+export interface PendingCallResultCommitter {
+  complete(input: {
+    callId: string
+    expected: PendingCall
+    toolMessage: Extract<SessionMessage, { role: 'tool' }>
+  }): PendingCallCompletion | Promise<PendingCallCompletion>
+}
+
+export type PendingCallCompletion =
+  | { state: 'committed' }
+  | { state: 'already_committed' }
 
 /** 审计事件只含非敏感字段：请求关联 ID、模型、耗时、HTTP 状态、工具名与错误码。 */
 export interface AuditEvent {
@@ -152,6 +171,29 @@ export interface HarnessToolExecutionRequest {
   sessionId: string
   callId: string
   signal: AbortSignal
+  runInstanceId?: string
+  executionPolicy?: HarnessExecutionPolicyRef
+}
+
+/** Runtime 生成的不可伪造执行范围；Core 只比较，不解释业务含义。 */
+export interface HarnessExecutionPolicyRef {
+  executionScopeId: string
+  policyDigest: `sha256:${string}`
+}
+
+/** Runtime Policy Store 冻结的本次执行策略快照。 */
+export interface HarnessExecutionPolicySnapshot extends HarnessExecutionPolicyRef {
+  /** 本执行链可见 Tool；调用方只能用同一集合，不能在执行中扩大。 */
+  allowedToolNames: readonly string[]
+  /** 0 继续表示显式无限步骤，其他值只能收紧 Harness 宿主上限。 */
+  maxSteps: number
+  /** Runtime Policy Store 的稳定引用；任意后备值不会进入 Pending Call。 */
+  failureFallbackRef: string | null
+}
+
+/** 宿主执行桥；创建策略时与 executionScopeId/policyDigest 绑定。 */
+export interface HarnessToolExecutionBridge {
+  execute(request: HarnessToolExecutionRequest): Promise<unknown>
 }
 
 /** 协议无关的运行期 Schema 校验结果；问题只暴露路径和规则码，不携带原始值。 */
