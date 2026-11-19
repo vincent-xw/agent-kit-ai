@@ -1,0 +1,44 @@
+packages/core/src/errors.ts
+  s_9aa657f93a7c5b::t_a7955976224c96 18-19
+packages/core/src/harness.test.ts
+  s_9aa657f93a7c5b::t_50f2328129c145 2420-2498,2501-2506,2514-2517,2521-2525,2527-2556,2558,2561-2608,2644-2751
+  s_9aa657f93a7c5b::t_2412c5d6b9d48b 5,13-24
+  s_9aa657f93a7c5b::t_1420bb1ade3de0 2609-2643
+  s_9aa657f93a7c5b::t_eb128ebad19d08 2499-2500,2507-2513,2518-2520,2526,2557,2559-2560
+  s_9aa657f93a7c5b::t_aae6aed6169d8c 25-26
+packages/core/src/index.ts
+  s_9aa657f93a7c5b::t_7f8c3ad9a0e393 2
+packages/core/package.json
+  s_9aa657f93a7c5b::t_7f8c3ad9a0e393 3
+packages/core/src/harness.ts
+  s_9aa657f93a7c5b::t_5f2f49fd883d29 972-975
+  s_9aa657f93a7c5b::t_7f3b70ac87c4e8 127-134
+  s_9aa657f93a7c5b::t_f10bdc73c3e536 220,226-318,320,324-330
+  s_9aa657f93a7c5b::t_903403b9c8f6e1 5-7,13
+  s_9aa657f93a7c5b::t_313596ce99ad5c 102-103,105,151-156
+  s_9aa657f93a7c5b::t_18ede228fa9eed 1163-1168,1177,1179,1182,1184,1191-1196,1205,1207-1208,1210,1212
+  s_9aa657f93a7c5b::t_1203f06c04f1d3 647,650,654
+  s_9aa657f93a7c5b::t_297cd69fbf89ec 319,321-323
+  s_9aa657f93a7c5b::t_a139ac3e4dbc91 915,920-929
+  s_9aa657f93a7c5b::t_a378252e503a2f 952-960,962-969
+  s_9aa657f93a7c5b::t_735bc30b9f176e 1220-1271,1297-1315,1329,1331-1332,1334,1336
+  s_9aa657f93a7c5b::t_1efc53c2761c83 331
+packages/core/src/contracts.ts
+  s_9aa657f93a7c5b::t_18d30d282c3085 80-85,98-110,174-196
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "bf1162a8846abf94e4501b53deedddaeeeaa7eae",
+  "prompts": {},
+  "sessions": {
+    "s_9aa657f93a7c5b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e3cf-6f96-7023-9d17-61e5bd608903",
+        "model": "auto/deepseek-v4.1-flash"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
