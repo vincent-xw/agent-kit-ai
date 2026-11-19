@@ -1,0 +1,27 @@
+packages/adapter-sqlite/src/index.test.ts
+  s_9aa657f93a7c5b::t_f971cce4d65cd4 200-344
+packages/adapter-sqlite/src/index.ts
+  s_9aa657f93a7c5b::t_001324bc48a234 83-107,109-183,185-233,236,239,241-254,259-293
+  s_9aa657f93a7c5b::t_1344a3e5d3f148 5
+  s_9aa657f93a7c5b::t_3fe7ae41c8bbcb 294
+packages/adapter-sqlite/package.json
+  s_9aa657f93a7c5b::t_f6f9bfed6d6bc7 3
+packages/adapter-sqlite/src/schema.sql
+  s_9aa657f93a7c5b::t_8d2b4df95fcfc2 18-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "17374404be9ad4b791c7f4f3883bb22365923f72",
+  "prompts": {},
+  "sessions": {
+    "s_9aa657f93a7c5b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1e3cf-6f96-7023-9d17-61e5bd608903",
+        "model": "auto/deepseek-v4.1-flash"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
