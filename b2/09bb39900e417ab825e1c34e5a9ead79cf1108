@@ -1,0 +1,42 @@
+packages/adapter-sqlite/src/index.test.ts
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 200-344
+packages/core/src/contracts.ts
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 80-85,98-110,174-196
+packages/core/src/errors.ts
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 18-19
+packages/core/src/harness.test.ts
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 5,13-26,2420-2751
+packages/core/src/harness.ts
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 5-7,13,102-103,105,127-134,151-156,220,226-331,647,650,654,915,920-929,952-960,962-969,972-975,1163-1168,1177,1179,1182,1184,1191-1196,1205,1207-1208,1210,1212,1220-1271,1297-1315,1329,1331-1332,1334,1336
+packages/adapter-sqlite/src/index.ts
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 5,83-107,109-183,185-233,236,239,241-254,259-293
+  s_4c6fd21fda9ac8::t_0fff78e922428a 294
+packages/core/src/index.ts
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 2
+packages/adapter-sqlite/package.json
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 3
+packages/core/package.json
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 3
+packages/adapter-sqlite/src/schema.sql
+  s_4c6fd21fda9ac8::t_ce7128c8bf45aa 18-34
+examples/agent-runtime-bff
+  s_4c6fd21fda9ac8::t_3b209cabbb92f4 1
+pnpm-lock.yaml
+  s_4c6fd21fda9ac8::t_2e0000ea19bbe8 212-213,2666,3884
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "b209bb39900e417ab825e1c34e5a9ead79cf1108",
+  "prompts": {},
+  "sessions": {
+    "s_4c6fd21fda9ac8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a208e4-9eb4-7922-a365-de436a52ee6f",
+        "model": "auto/deepseek-v4.1-flash"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
