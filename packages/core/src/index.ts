@@ -1,5 +1,5 @@
 /** Agent Kit 当前源码包版本。 */
-export const AGENT_KIT_VERSION = '1.8.0'
+export const AGENT_KIT_VERSION = '1.9.0-beta.0'
 
 export * from './errors.js'
 export * from './contracts.js'

@@ -2,11 +2,15 @@ import { AgentKitError } from './errors.js'
 import { toToolSchemas } from './json-schema.js'
 import type {
   AuditLogger,
+  HarnessExecutionPolicyRef,
+  HarnessExecutionPolicySnapshot,
+  HarnessToolExecutionBridge,
   HarnessToolExecutionRequest,
   HarnessNotice,
   HarnessResult,
   LlmResult,
   PendingCall,
+  PendingCallResultCommitter,
   PendingCallStore,
   SessionMessage,
   SessionStore,
@@ -95,8 +99,10 @@ export interface AgentHarness {
     allowedToolNames?: string[]
     /** 请求级步数预算；正整数收紧宿主上限，0 表示不设步数上限（仍受超时和取消控制）。 */
     maxSteps?: number
+    /** Runtime 冻结的完整执行策略；存在时执行桥和工具范围不可在后续步骤扩大。 */
+    executionPolicy?: HarnessExecutionPolicySnapshot
     /** 可选的宿主执行桥；用于 Workflow Agent Task 接管本地 Tool 的能力边界。 */
-    toolExecution?: { execute(request: HarnessToolExecutionRequest): Promise<unknown> }
+    toolExecution?: HarnessToolExecutionBridge
     /** 分步模式：每执行完一轮 server 工具即返回 step_done，由调用方推进。 */
     stepMode?: boolean
     /**
@@ -118,6 +124,14 @@ export interface AgentHarness {
     signal?: AbortSignal
     /** 同 run：收口补全失败时的兜底输出。 */
     failureFallback?: unknown
+    /** 与首轮 run 保持一致的请求级工具白名单，只能与 Policy 相同。 */
+    allowedToolNames?: string[]
+    /** 与 Pending Call 绑定的不可伪造执行范围。 */
+    executionPolicy?: HarnessExecutionPolicySnapshot
+    /** Runtime 从 Policy Store 重建的执行桥。 */
+    toolExecution?: HarnessToolExecutionBridge
+    /** 只能收紧 Snapshot 的步数预算。 */
+    maxSteps?: number
   }): Promise<HarnessResult>
   /**
    * 分步模式下推进下一步。不要求 callId（区别于 resume）。
@@ -134,6 +148,12 @@ export interface AgentHarness {
     promptName?: string
     /** 与首轮 run 保持一致的请求级工具白名单。 */
     allowedToolNames?: string[]
+    /** 与首轮 run 相同的不可伪造执行范围。 */
+    executionPolicy?: HarnessExecutionPolicySnapshot
+    /** 恢复策略时重新从 Runtime 解析出的执行桥。 */
+    toolExecution?: HarnessToolExecutionBridge
+    /** 只能收紧 Snapshot 的步数预算。 */
+    maxSteps?: number
     signal?: AbortSignal
     /** 同 run：收口补全失败时的兜底输出。 */
     failureFallback?: unknown
@@ -197,10 +217,116 @@ function createMemoryPendingCallStore(): PendingCallStore {
 }
 
 /** 只在当前 Harness 请求内过滤可见工具，不改动全局注册表或其他并发会话。 */
-function toolsAllowedForRequest(tools: ToolDefinition[], allowedToolNames?: string[]): ToolDefinition[] {
+function toolsAllowedForRequest(tools: ToolDefinition[], allowedToolNames?: readonly string[]): ToolDefinition[] {
   if (allowedToolNames === undefined) return tools
   const allowed = new Set(allowedToolNames)
   return tools.filter((tool) => allowed.has(tool.name))
+}
+
+/** 仅比较 Tool 名集合；顺序不构成权限，重复项按无效策略处理。 */
+function sameToolNames(left: readonly string[], right: readonly string[]): boolean {
+  if (new Set(left).size !== left.length || new Set(right).size !== right.length) return false
+  if (left.length !== right.length) return false
+  const normalizedLeft = [...left].sort()
+  const normalizedRight = [...right].sort()
+  return normalizedLeft.every((name, index) => name === normalizedRight[index])
+}
+
+/**
+ * 请求只能收紧策略步数。
+ * Runtime 的 0 表示显式无限预算；有限的 continue/resume 请求可以收紧它，反向则拒绝。
+ */
+function stepLimitWithinPolicy(policyLimit: number, requestedLimit: number | undefined): boolean {
+  if (!Number.isInteger(policyLimit) || policyLimit < 0) return false
+  if (requestedLimit === undefined) return true
+  if (!Number.isInteger(requestedLimit) || requestedLimit < 0) return false
+  if (policyLimit === 0) return true
+  return requestedLimit > 0 && requestedLimit <= policyLimit
+}
+
+interface ResolvedExecutionPolicy {
+  allowedToolNames?: readonly string[]
+  requestedMaxSteps?: number
+  executionPolicy?: HarnessExecutionPolicySnapshot
+  runInstanceId?: string
+}
+
+/**
+ * 校验请求与 Runtime 冻结快照的一致性。
+ * Core 不计算业务 digest；它只保证同一 Run 的桥、工具集合和步数预算不能借 continue/resume 放宽。
+ */
+function resolveExecutionPolicy(input: {
+  executionPolicy?: HarnessExecutionPolicySnapshot
+  allowedToolNames?: string[]
+  maxSteps?: number
+  runInstanceId?: string
+}): ResolvedExecutionPolicy {
+  const policy = input.executionPolicy
+  if (!policy) {
+    return {
+      ...(input.allowedToolNames ? { allowedToolNames: input.allowedToolNames } : {}),
+      ...(input.maxSteps !== undefined ? { requestedMaxSteps: input.maxSteps } : {}),
+      ...(input.runInstanceId !== undefined ? { runInstanceId: input.runInstanceId } : {}),
+    }
+  }
+  if (!input.runInstanceId || policy.executionScopeId.length === 0 || !policy.policyDigest.startsWith('sha256:')) {
+    throw new AgentKitError('EXECUTION_POLICY_MISMATCH', '执行策略缺少不可伪造 Run Scope 或合法 policyDigest')
+  }
+  if (input.allowedToolNames !== undefined && !sameToolNames(policy.allowedToolNames, input.allowedToolNames)) {
+    throw new AgentKitError('EXECUTION_POLICY_MISMATCH', '请求工具白名单与 Execution Policy 不一致')
+  }
+  if (!stepLimitWithinPolicy(policy.maxSteps, input.maxSteps)) {
+    throw new AgentKitError('EXECUTION_POLICY_MISMATCH', '请求步数预算扩大了 Execution Policy')
+  }
+  return {
+    allowedToolNames: [...policy.allowedToolNames],
+    requestedMaxSteps: input.maxSteps ?? policy.maxSteps,
+    executionPolicy: policy,
+    runInstanceId: input.runInstanceId,
+  }
+}
+
+/** 按 JSON 对象键排序生成稳定文本，避免属性插入顺序改变迟到结果身份。 */
+function canonicalJson(value: unknown): string {
+  const seen = new WeakSet<object>()
+  function normalize(current: unknown, inArray: boolean): unknown {
+    if (current === undefined) return inArray ? null : undefined
+    if (current === null || typeof current === 'string' || typeof current === 'boolean') return current
+    if (typeof current === 'number') return Number.isFinite(current) ? current : null
+    if (typeof current !== 'object') throw new Error('Tool input is not JSON serializable')
+    if (seen.has(current)) throw new Error('Tool input contains a cycle')
+    seen.add(current)
+    try {
+      if (Array.isArray(current)) return current.map((item) => normalize(item, true))
+      const normalized: Record<string, unknown> = {}
+      for (const key of Object.keys(current).sort()) {
+        const item = normalize((current as Record<string, unknown>)[key], false)
+        if (item !== undefined) normalized[key] = item
+      }
+      return normalized
+    } finally {
+      seen.delete(current)
+    }
+  }
+  return JSON.stringify(normalize(value, false))
+}
+
+/** 生成 Tool 输入摘要；使用 Web Crypto 保持浏览器与 Node 宿主一致。 */
+async function digestToolInput(input: unknown): Promise<`sha256:${string}`> {
+  if (!globalThis.crypto?.subtle) {
+    throw new AgentKitError('EXECUTION_POLICY_UNAVAILABLE', '当前运行时缺少 Web Crypto，无法建立 Tool 输入身份')
+  }
+  let bytes: Uint8Array<ArrayBuffer>
+  try {
+    const encoded = new TextEncoder().encode(canonicalJson(input))
+    bytes = new Uint8Array(new ArrayBuffer(encoded.byteLength))
+    bytes.set(encoded)
+  } catch (error) {
+    throw new AgentKitError('EXECUTION_POLICY_MISMATCH', 'Tool 输入无法生成稳定摘要', { cause: error })
+  }
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', bytes)
+  const hex = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('')
+  return `sha256:${hex}`
 }
 
 /**
@@ -518,13 +644,14 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
     promptName?: string,
     skipTools?: boolean,
     stepMode?: boolean,
-    allowedToolNames?: string[],
+    allowedToolNames?: readonly string[],
     signal?: AbortSignal,
     requestedMaxSteps?: number,
-    toolExecution?: { execute(request: HarnessToolExecutionRequest): Promise<unknown> },
+    toolExecution?: HarnessToolExecutionBridge,
     failureFallback?: unknown,
     runInstanceId?: string,
     controlFlowDecisionProvider?: ControlFlowDecisionProvider | null,
+    executionPolicy?: HarnessExecutionPolicySnapshot,
   ): Promise<HarnessResult> {
     const requestId = `req-${Math.random().toString(36).slice(2)}`
     // 请求级 maxSteps=0 是 Workflow Agent 的显式无限预算；循环仍受 Task timeoutMs 和 AbortSignal 控制。
@@ -785,10 +912,21 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         })
         if (tool.execution === 'remote') {
           // promptName 随挂起状态保存：resume 要用同一个提示词继续。
+          const inputDigest = executionPolicy ? await digestToolInput(parsedInput) : undefined
           await pendingCalls.set(call.callId, {
             sessionId,
             toolName: call.toolName,
             ...(promptName ? { promptName } : {}),
+            ...(runInstanceId !== undefined ? { runInstanceId } : {}),
+            ...(executionPolicy
+              ? {
+                  executionPolicy: {
+                    executionScopeId: executionPolicy.executionScopeId,
+                    policyDigest: executionPolicy.policyDigest,
+                  },
+                }
+              : {}),
+            ...(inputDigest ? { inputDigest } : {}),
           })
           remoteCalls.push({ callId: call.callId, toolName: call.toolName, input: parsedInput })
           continue
@@ -811,10 +949,30 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
                   sessionId,
                   callId: call.callId,
                   signal: toolSignal,
+                  ...(runInstanceId !== undefined ? { runInstanceId } : {}),
+                  ...(executionPolicy
+                    ? {
+                        executionPolicy: {
+                          executionScopeId: executionPolicy.executionScopeId,
+                          policyDigest: executionPolicy.policyDigest,
+                        },
+                      }
+                    : {}),
                 })
-              : undefined,
+              : executionPolicy
+                ? async () => {
+                    throw new AgentKitError(
+                      'EXECUTION_POLICY_UNAVAILABLE',
+                      `Execution Policy 缺少可恢复 Tool Bridge：${call.toolName}`,
+                    )
+                  }
+                : undefined,
           )
         } catch (error) {
+          // Execution Policy 是恢复与能力边界错误；不能伪装成可重试 Tool Result 再交给模型自纠。
+          if (hasErrorCode(error, 'EXECUTION_POLICY_UNAVAILABLE') || hasErrorCode(error, 'EXECUTION_POLICY_MISMATCH')) {
+            throw error
+          }
           // 结果不确定：不重试、不继续循环，把事实写进历史后交给模型收口。
           // 直接抛回给调用方会让用户只看到「执行失败」，也拿不到一句解释。
           if (hasErrorCode(error, 'TOOL_EXECUTION_UNCERTAIN') || hasErrorCode(error, 'UNCERTAIN')) {
@@ -1002,6 +1160,12 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         await deps.sessions.save(request.sessionId, sanitized)
         history = sanitized
       }
+      const execution = resolveExecutionPolicy({
+        ...(request.executionPolicy ? { executionPolicy: request.executionPolicy } : {}),
+        ...(request.allowedToolNames ? { allowedToolNames: request.allowedToolNames } : {}),
+        ...(request.maxSteps !== undefined ? { maxSteps: request.maxSteps } : {}),
+        ...(request.runInstanceId !== undefined ? { runInstanceId: request.runInstanceId } : {}),
+      })
       return runLoop(
         request.sessionId,
         request.input,
@@ -1010,19 +1174,26 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         request.promptName,
         request.skipTools,
         request.stepMode,
-        request.allowedToolNames,
+        execution.allowedToolNames,
         request.signal,
-        request.maxSteps,
+        execution.requestedMaxSteps,
         request.toolExecution,
         request.failureFallback,
-        request.runInstanceId,
+        execution.runInstanceId,
         request.controlFlowDecisionProvider === undefined ? deps.controlFlowDecisionProvider : request.controlFlowDecisionProvider,
+        execution.executionPolicy,
       )
     },
     async continue(request) {
       const history: SessionMessage[] = [...(await deps.sessions.load(request.sessionId))]
       // 不调用 sanitizeIncompleteRounds：stepMode 落库的是完整 server 工具轮次，
       // 不存在残破 assistant 消息；裁剪反而会误删上一步的工具结果。
+      const execution = resolveExecutionPolicy({
+        ...(request.executionPolicy ? { executionPolicy: request.executionPolicy } : {}),
+        ...(request.allowedToolNames ? { allowedToolNames: request.allowedToolNames } : {}),
+        ...(request.maxSteps !== undefined ? { maxSteps: request.maxSteps } : {}),
+        ...(request.runInstanceId !== undefined ? { runInstanceId: request.runInstanceId } : {}),
+      })
       return runLoop(
         request.sessionId,
         request.input ?? '',
@@ -1031,19 +1202,72 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         request.promptName,
         undefined,
         true,
-        request.allowedToolNames,
+        execution.allowedToolNames,
         request.signal,
-        undefined,
-        undefined,
+        execution.requestedMaxSteps,
+        request.toolExecution,
         request.failureFallback,
-        request.runInstanceId,
+        execution.runInstanceId,
         request.controlFlowDecisionProvider === undefined ? deps.controlFlowDecisionProvider : request.controlFlowDecisionProvider,
+        execution.executionPolicy,
       )
     },
     async resume(request) {
       const pending = await pendingCalls.get(request.callId)
       if (!pending || pending.sessionId !== request.sessionId) {
         throw new AgentKitError('PENDING_CALL_NOT_FOUND', `未找到可回填的工具调用：${request.callId}`)
+      }
+      const historyBeforeCommit: SessionMessage[] = [...(await deps.sessions.load(request.sessionId))]
+      const originalCall = historyBeforeCommit
+        .filter((message): message is Extract<SessionMessage, { role: 'assistant' }> =>
+          message.role === 'assistant' && Boolean(message.toolCalls))
+        .flatMap((message) => message.toolCalls ?? [])
+        .find((call) => call.callId === request.callId)
+
+      let execution: ResolvedExecutionPolicy
+      if (pending.executionPolicy) {
+        if (!request.executionPolicy) {
+          throw new AgentKitError(
+            'EXECUTION_POLICY_UNAVAILABLE',
+            `Pending Call ${request.callId} 需要完整 Execution Policy 才能恢复`,
+          )
+        }
+        if (
+          request.executionPolicy.executionScopeId !== pending.executionPolicy.executionScopeId
+          || request.executionPolicy.policyDigest !== pending.executionPolicy.policyDigest
+        ) {
+          throw new AgentKitError(
+            'EXECUTION_POLICY_UNAVAILABLE',
+            `Pending Call ${request.callId} 的 Execution Policy 与请求不一致`,
+          )
+        }
+        if (!pending.runInstanceId || pending.runInstanceId !== request.runInstanceId) {
+          throw new AgentKitError('EXECUTION_POLICY_MISMATCH', `Pending Call ${request.callId} 不属于当前 Run`)
+        }
+        execution = resolveExecutionPolicy({
+          executionPolicy: request.executionPolicy,
+          ...(request.allowedToolNames ? { allowedToolNames: request.allowedToolNames } : {}),
+          ...(request.maxSteps !== undefined ? { maxSteps: request.maxSteps } : {}),
+          runInstanceId: request.runInstanceId,
+        })
+        if (!pending.inputDigest || !originalCall) {
+          throw new AgentKitError('EXECUTION_POLICY_UNAVAILABLE', `Pending Call ${request.callId} 缺少原始输入身份`)
+        }
+        if (await digestToolInput(originalCall.input) !== pending.inputDigest) {
+          throw new AgentKitError('EXECUTION_POLICY_MISMATCH', `Pending Call ${request.callId} 的输入已被替换`)
+        }
+      } else {
+        if (request.executionPolicy) {
+          throw new AgentKitError(
+            'EXECUTION_POLICY_UNAVAILABLE',
+            `Legacy Pending Call ${request.callId} 不能切换为 Policy 模式`,
+          )
+        }
+        execution = resolveExecutionPolicy({
+          ...(request.allowedToolNames ? { allowedToolNames: request.allowedToolNames } : {}),
+          ...(request.maxSteps !== undefined ? { maxSteps: request.maxSteps } : {}),
+          ...(request.runInstanceId !== undefined ? { runInstanceId: request.runInstanceId } : {}),
+        })
       }
       const tool = deps.tools.get(pending.toolName)
       if (!tool) throw new AgentKitError('TOOL_NOT_REGISTERED', `工具未注册：${pending.toolName}`)
@@ -1070,14 +1294,27 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         parsedOutput = { ok: false, code, message }
       }
 
-      await pendingCalls.delete(request.callId)
-      const history: SessionMessage[] = [
-        ...(await deps.sessions.load(request.sessionId)),
-        { role: 'tool', content: parsedOutput, callId: request.callId, toolName: pending.toolName, createdAt: new Date().toISOString() },
-      ]
+      const toolMessage: Extract<SessionMessage, { role: 'tool' }> = {
+        role: 'tool',
+        content: parsedOutput,
+        callId: request.callId,
+        toolName: pending.toolName,
+        createdAt: new Date().toISOString(),
+      }
+      const committer = pendingCalls as PendingCallStore & Partial<PendingCallResultCommitter>
+      if (typeof committer.complete === 'function') {
+        await committer.complete({ callId: request.callId, expected: pending, toolMessage })
+      } else {
+        // Pending 必须在 Tool Result 持久化成功后才能删除；否则崩溃会丢结果或诱导重复副作用。
+        if (!historyBeforeCommit.some((message) => message.role === 'tool' && message.callId === request.callId)) {
+          historyBeforeCommit.push(toolMessage)
+          await deps.sessions.save(request.sessionId, historyBeforeCommit)
+        }
+        await pendingCalls.delete(request.callId)
+      }
+      const history: SessionMessage[] = [...(await deps.sessions.load(request.sessionId))]
       // 同轮还有未回填的调用时不推进模型，只落库并回报剩余待办。
       if (hasUnfilledCalls(history)) {
-        await deps.sessions.save(request.sessionId, history)
         return { type: 'pending_tool_calls', calls: await remainingCalls(history) }
       }
       // 回填后继续模型循环，沿用发起调用时的提示词，无需再附加新的用户输入。
@@ -1089,13 +1326,14 @@ export function createAgentHarness(deps: AgentHarnessDependencies): AgentHarness
         pending.promptName,
         undefined,
         undefined,
-        undefined,
+        execution.allowedToolNames,
         request.signal,
-        undefined,
-        undefined,
+        execution.requestedMaxSteps,
+        request.toolExecution,
         request.failureFallback,
-        request.runInstanceId,
+        execution.runInstanceId,
         request.controlFlowDecisionProvider === undefined ? deps.controlFlowDecisionProvider : request.controlFlowDecisionProvider,
+        execution.executionPolicy,
       )
     },
   }

@@ -2,12 +2,26 @@ import { describe, expect, it, vi } from 'vitest'
 import { z } from 'zod'
 
 import { AgentKitError, createAgentHarness, createContextManager, createMemorySessionStore, createPromptRegistry, createToolRegistry, toToolSchema } from './index.js'
-import type { HarnessToolExecutionRequest, LlmRequest, LlmResult, PendingCall, PendingCallStore, RuntimeValueSchema, SessionMessage, ToolCall, ToolDefinition } from './index.js'
+import type { HarnessExecutionPolicySnapshot, HarnessToolExecutionRequest, LlmRequest, LlmResult, PendingCall, PendingCallStore, RuntimeValueSchema, SessionMessage, ToolCall, ToolDefinition } from './index.js'
 import { looksLikeToolCallMarkup } from './harness.js'
 
 /** 构造单个工具调用的模型响应，避免每处重复写复数壳。 */
 function callsOf(...calls: ToolCall[]): LlmResult {
   return { type: 'tool_calls', calls }
+}
+
+/** 构造仅供测试的不可伪造执行范围；业务摘要由 Runtime 生成，Core 只做一致性比较。 */
+function executionPolicy(
+  overrides: Partial<HarnessExecutionPolicySnapshot> = {},
+): HarnessExecutionPolicySnapshot {
+  return {
+    executionScopeId: 'execution-scope-1',
+    policyDigest: 'sha256:policy-1',
+    allowedToolNames: ['server_tool'],
+    maxSteps: 1,
+    failureFallbackRef: 'fallback/policy-1',
+    ...overrides,
+  }
 }
 
 /** 构造仅供 Core 契约测试使用的协议无关 JSON Schema 校验器。 */
@@ -2402,6 +2416,338 @@ describe('工具失败收口补全', () => {
       type: 'final',
       output: { status: 'failed', summary: expect.stringContaining('工具连续失败') },
     })
+  })
+
+  it('continue_restores_execution_policy_bridge_steps_and_fallback', async () => {
+    const tools = createToolRegistry()
+    const registryExecute = vi.fn(async () => ({ ok: true }))
+    tools.register({
+      name: 'server_tool',
+      execution: 'server',
+      input: z.object({ value: z.string() }),
+      output: z.object({ ok: z.boolean() }),
+      execute: registryExecute,
+    })
+    const prompts = createPromptRegistry()
+    prompts.register({
+      name: 'policy-task',
+      version: '1',
+      prompt: '执行受控任务',
+      protocol: z.object({ ok: z.boolean() }),
+    })
+    const bridgeCalls = vi.fn(async () => ({ ok: true }))
+    const failingBridgeCalls = vi.fn(async () => { throw new Error('bridge failed') })
+    let modelCalls = 0
+    const harness = createAgentHarness({
+      llm: {
+        complete: async () => {
+          modelCalls += 1
+          if (modelCalls <= 3) {
+            return callsOf({ callId: `policy-${modelCalls}`, toolName: 'server_tool', input: { value: 'x' } })
+          }
+          return { type: 'final', output: 'not-json' }
+        },
+      },
+      sessions: createMemorySessionStore(),
+      tools,
+      maxSteps: 4,
+      prompts,
+    })
+    const policy = executionPolicy()
+
+    await expect(harness.run({
+      sessionId: 'policy-continue',
+      input: '开始',
+      context: {},
+      runInstanceId: 'run-policy-continue',
+      promptName: 'policy-task',
+      stepMode: true,
+      maxSteps: 1,
+      executionPolicy: policy,
+      toolExecution: { execute: bridgeCalls },
+    })).resolves.toEqual({ type: 'step_done' })
+
+    await expect(harness.continue({
+      sessionId: 'policy-continue',
+      context: {},
+      runInstanceId: 'run-policy-continue',
+      promptName: 'policy-task',
+      maxSteps: 1,
+      executionPolicy: policy,
+      toolExecution: { execute: failingBridgeCalls },
+    })).resolves.toMatchObject({ type: 'step_done' })
+
+    const fallback = { ok: false }
+    await expect(harness.continue({
+      sessionId: 'policy-continue',
+      context: {},
+      runInstanceId: 'run-policy-continue',
+      promptName: 'policy-task',
+      maxSteps: 1,
+      executionPolicy: policy,
+      toolExecution: { execute: failingBridgeCalls },
+      failureFallback: fallback,
+    })).resolves.toEqual({ type: 'final', output: fallback })
+
+    expect(registryExecute).not.toHaveBeenCalled()
+    expect(bridgeCalls).toHaveBeenCalledTimes(1)
+    expect(failingBridgeCalls).toHaveBeenCalledTimes(2)
+  })
+
+  it('resume_rejects_missing_or_mismatched_policy', async () => {
+    const tools = createToolRegistry()
+    const registryExecute = vi.fn(async () => ({ ok: true }))
+    const bridgeExecute = vi.fn(async () => ({ ok: true }))
+    tools.register({
+      name: 'remote_tool',
+      execution: 'remote',
+      input: z.object({}),
+      output: z.object({ ok: z.boolean() }),
+    })
+    tools.register({
+      name: 'server_tool',
+      execution: 'server',
+      input: z.object({}),
+      output: z.object({ ok: z.boolean() }),
+      execute: registryExecute,
+    })
+    let modelCalls = 0
+    const harness = createAgentHarness({
+      llm: { complete: async () => {
+        modelCalls += 1
+        if (modelCalls === 1) return callsOf({ callId: 'policy-resume', toolName: 'remote_tool', input: {} })
+        if (modelCalls === 2) return callsOf({ callId: 'policy-server', toolName: 'server_tool', input: {} })
+        return { type: 'final', output: '完成' }
+      } },
+      sessions: createMemorySessionStore(),
+      tools,
+      maxSteps: 2,
+    })
+    const policy = executionPolicy({ allowedToolNames: ['remote_tool', 'server_tool'], maxSteps: 2 })
+
+    await harness.run({
+      sessionId: 'policy-resume-session',
+      input: '调用远端',
+      context: {},
+      runInstanceId: 'run-resume',
+      executionPolicy: policy,
+    })
+
+    await expect(harness.resume({
+      sessionId: 'policy-resume-session',
+      callId: 'policy-resume',
+      output: { ok: true },
+      runInstanceId: 'run-resume',
+    })).rejects.toMatchObject({ code: 'EXECUTION_POLICY_UNAVAILABLE' })
+
+    await expect(harness.resume({
+      sessionId: 'policy-resume-session',
+      callId: 'policy-resume',
+      output: { ok: true },
+      runInstanceId: 'run-resume',
+      executionPolicy: { ...policy, policyDigest: 'sha256:other-policy' },
+    })).rejects.toMatchObject({ code: 'EXECUTION_POLICY_UNAVAILABLE' })
+
+    await expect(harness.resume({
+      sessionId: 'policy-resume-session',
+      callId: 'policy-resume',
+      output: { ok: true },
+      runInstanceId: 'run-resume',
+      executionPolicy: policy,
+      toolExecution: { execute: bridgeExecute },
+    })).resolves.toEqual({ type: 'final', output: '完成' })
+    expect(bridgeExecute).toHaveBeenCalledTimes(1)
+    expect(registryExecute).not.toHaveBeenCalled()
+  })
+
+  it('policy_cannot_widen_tools_or_steps', async () => {
+    const tools = createToolRegistry()
+    for (const name of ['server_tool', 'other_tool']) {
+      tools.register({
+        name,
+        execution: 'server',
+        input: z.object({}),
+        output: z.object({}),
+        execute: async () => ({}),
+      })
+    }
+    const harness = createAgentHarness({
+      llm: { complete: async () => ({ type: 'final', output: '不应执行' }) },
+      sessions: createMemorySessionStore(),
+      tools,
+      maxSteps: 4,
+    })
+    const policy = executionPolicy({ allowedToolNames: ['server_tool'], maxSteps: 1 })
+
+    await expect(harness.run({
+      sessionId: 'policy-widen-tools',
+      input: '执行',
+      context: {},
+      runInstanceId: 'run-widen',
+      executionPolicy: policy,
+      allowedToolNames: ['server_tool', 'other_tool'],
+    })).rejects.toMatchObject({ code: 'EXECUTION_POLICY_MISMATCH' })
+
+    await expect(harness.run({
+      sessionId: 'policy-widen-steps',
+      input: '执行',
+      context: {},
+      runInstanceId: 'run-widen',
+      executionPolicy: policy,
+      maxSteps: 2,
+    })).rejects.toMatchObject({ code: 'EXECUTION_POLICY_MISMATCH' })
+
+    await expect(harness.continue({
+      sessionId: 'policy-widen-continue',
+      context: {},
+      runInstanceId: 'run-widen',
+      executionPolicy: policy,
+      allowedToolNames: ['other_tool'],
+    })).rejects.toMatchObject({ code: 'EXECUTION_POLICY_MISMATCH' })
+  })
+
+  it('policy_bridge_missing_fails_closed', async () => {
+    const tools = createToolRegistry()
+    const registryExecute = vi.fn(async () => ({ ok: true }))
+    tools.register({
+      name: 'server_tool',
+      execution: 'server',
+      input: z.object({}),
+      output: z.object({ ok: z.boolean() }),
+      execute: registryExecute,
+    })
+    let modelCalls = 0
+    const harness = createAgentHarness({
+      llm: { complete: async () => {
+        modelCalls += 1
+        return modelCalls === 1
+          ? callsOf({ callId: 'missing-bridge', toolName: 'server_tool', input: {} })
+          : { type: 'final', output: '不应继续' }
+      } },
+      sessions: createMemorySessionStore(),
+      tools,
+      maxSteps: 2,
+    })
+
+    await expect(harness.run({
+      sessionId: 'missing-bridge',
+      input: '执行',
+      context: {},
+      runInstanceId: 'run-missing-bridge',
+      executionPolicy: executionPolicy(),
+    })).rejects.toMatchObject({ code: 'EXECUTION_POLICY_UNAVAILABLE' })
+
+    expect(registryExecute).not.toHaveBeenCalled()
+    expect(modelCalls).toBe(1)
+  })
+
+  it('resume_rejects_call_from_other_run_or_input', async () => {
+    const sessions = createMemorySessionStore()
+    const tools = createToolRegistry()
+    tools.register({
+      name: 'remote_tool',
+      execution: 'remote',
+      input: z.object({ value: z.string() }),
+      output: z.object({ ok: z.boolean() }),
+    })
+    let modelCalls = 0
+    const harness = createAgentHarness({
+      llm: { complete: async () => {
+        modelCalls += 1
+        return modelCalls === 1
+          ? callsOf({ callId: 'scoped-call', toolName: 'remote_tool', input: { value: 'original' } })
+          : { type: 'final', output: '完成' }
+      } },
+      sessions,
+      tools,
+      maxSteps: 2,
+    })
+    const policy = executionPolicy({ allowedToolNames: ['remote_tool'] })
+
+    await harness.run({
+      sessionId: 'scoped-resume',
+      input: '调用远端',
+      context: {},
+      runInstanceId: 'run-original',
+      executionPolicy: policy,
+    })
+
+    await expect(harness.resume({
+      sessionId: 'scoped-resume',
+      callId: 'scoped-call',
+      output: { ok: true },
+      runInstanceId: 'run-other',
+      executionPolicy: policy,
+    })).rejects.toMatchObject({ code: 'EXECUTION_POLICY_MISMATCH' })
+
+    const history = await sessions.load('scoped-resume')
+    await sessions.save('scoped-resume', history.map((message) => message.role === 'assistant' && message.toolCalls
+      ? {
+          ...message,
+          toolCalls: message.toolCalls.map((call) => call.callId === 'scoped-call'
+            ? { ...call, input: { value: 'tampered' } }
+            : call),
+        }
+      : message))
+
+    await expect(harness.resume({
+      sessionId: 'scoped-resume',
+      callId: 'scoped-call',
+      output: { ok: true },
+      runInstanceId: 'run-original',
+      executionPolicy: policy,
+    })).rejects.toMatchObject({ code: 'EXECUTION_POLICY_MISMATCH' })
+    expect(modelCalls).toBe(1)
+  })
+
+  it('legacy_requests_keep_1_8_behavior', async () => {
+    const tools = createToolRegistry()
+    const serverExecute = vi.fn(async () => ({ ok: true }))
+    tools.register({
+      name: 'server_tool',
+      execution: 'server',
+      input: z.object({}),
+      output: z.object({ ok: z.boolean() }),
+      execute: serverExecute,
+    })
+    tools.register({
+      name: 'remote_tool',
+      execution: 'remote',
+      input: z.object({}),
+      output: z.object({ ok: z.boolean() }),
+    })
+    const pendingStore = new Map<string, PendingCall>()
+    let modelCalls = 0
+    const harness = createAgentHarness({
+      llm: { complete: async () => {
+        modelCalls += 1
+        if (modelCalls === 1) return callsOf({ callId: 'legacy-server', toolName: 'server_tool', input: {} })
+        if (modelCalls === 2) return callsOf({ callId: 'legacy-remote', toolName: 'remote_tool', input: {} })
+        return { type: 'final', output: '完成' }
+      } },
+      sessions: createMemorySessionStore(),
+      tools,
+      maxSteps: 3,
+      pendingCalls: {
+        get: (callId) => pendingStore.get(callId),
+        set: (callId, call) => void pendingStore.set(callId, call),
+        delete: (callId) => void pendingStore.delete(callId),
+      },
+    })
+
+    await expect(harness.run({ sessionId: 'legacy-policy', input: '开始', context: {} }))
+      .resolves.toMatchObject({ type: 'pending_tool_calls', calls: [{ callId: 'legacy-remote' }] })
+    expect(serverExecute).toHaveBeenCalledTimes(1)
+    expect(pendingStore.get('legacy-remote')).toEqual({
+      sessionId: 'legacy-policy',
+      toolName: 'remote_tool',
+    })
+
+    await expect(harness.resume({
+      sessionId: 'legacy-policy',
+      callId: 'legacy-remote',
+      output: { ok: true },
+    })).resolves.toEqual({ type: 'final', output: '完成' })
   })
 })
 

@@ -15,3 +15,20 @@ CREATE TABLE IF NOT EXISTS agent_sessions (
   messages TEXT NOT NULL,
   updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
+
+-- agent_pending_calls 保存跨进程恢复所需的远端 Tool Call。
+-- policy_version=1 表示旧行仅有 session/tool/prompt；新 Runtime 写入 version=2 的执行身份。
+CREATE TABLE IF NOT EXISTS agent_pending_calls (
+  call_id TEXT PRIMARY KEY,
+  session_id TEXT NOT NULL,
+  tool_name TEXT NOT NULL,
+  prompt_name TEXT,
+  run_instance_id TEXT,
+  execution_scope_id TEXT,
+  policy_digest TEXT,
+  input_digest TEXT,
+  policy_version INTEGER NOT NULL DEFAULT 2 CHECK (policy_version IN (1, 2)),
+  created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
+
+PRAGMA user_version = 2;
