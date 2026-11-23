@@ -1,0 +1,21 @@
+examples/agent-runtime-bff
+  s_4c6fd21fda9ac8::t_94b37b9063c58e 1
+pnpm-lock.yaml
+  s_4c6fd21fda9ac8::t_217f3e5d1b384e 53-55,1641-1644,3792-3793
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "13ce0d16ece2f985f6ea9ba701da32b487969296",
+  "prompts": {},
+  "sessions": {
+    "s_4c6fd21fda9ac8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a208e4-9eb4-7922-a365-de436a52ee6f",
+        "model": "auto/deepseek-v4.1-flash"
+      },
+      "human_author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
