@@ -1,0 +1,14 @@
+VERSION
+  h_a390bb826605cb 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "a58addcef38f0cad3b2aeb3e8f4cf46e0762033b",
+  "prompts": {},
+  "humans": {
+    "h_a390bb826605cb": {
+      "author": "vincent-xw <7712289+vincent-xw@users.noreply.github.com>"
+    }
+  }
+}
